@@ -4,7 +4,7 @@ public class Level {
     static public enum GateType {AND, OR, NOT, NAND, NOR, XOR, XNOR, Switch, Wire, Light};
 
     public static void main(String[] args) {
-        Switch s = new Switch(GateType.Switch, true);
+        Switch s = new Switch( true);
         Gate g = new Gate(GateType.AND, true);
         ArrayList<Switch> inputs = new ArrayList<Switch>();
         ArrayList<Switch> ouputs = new ArrayList<Switch>();

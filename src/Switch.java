@@ -1,13 +1,16 @@
 import java.util.ArrayList;
 
+// Base plate for gates can either be on or off and can have multiple outputs
+
+
 public class Switch {
     private Level.GateType type;
     private boolean light;
     private ArrayList<Switch> outputs;
 
     // Creating Fresh game
-    public Switch(Level.GateType type, boolean light){
-        this.type = type;
+    public Switch( boolean light){
+        this.type = Level.GateType.Switch;
         this.light = light;
         this.outputs = new ArrayList<Switch>();
     }
@@ -19,6 +22,7 @@ public class Switch {
         this.outputs = outputs;
     }
 
+    //getters and setters
     public void addOutput(Switch output){
         this.outputs.add(output);
     }
@@ -27,6 +31,14 @@ public class Switch {
         this.outputs.remove(output);
     }
 
+    public ArrayList<Switch> getOutputs(){
+        return this.outputs;
+    }
+
+    public void setOutputs(ArrayList<Switch> outputs){
+        this.outputs = outputs;
+    }
+    
     public Level.GateType getType(){
         return this.type;
     }
@@ -39,13 +51,7 @@ public class Switch {
         this.light = light;
     }
 
-    public ArrayList<Switch> getOutputs(){
-        return this.outputs;
-    }
-
-    public void setOutputs(ArrayList<Switch> outputs){
-        this.outputs = outputs;
-    }
+    
 
 
 
