@@ -151,4 +151,7 @@ public class Gate extends Switch {
         return light;
     }
 
+
+    //
+
 }
