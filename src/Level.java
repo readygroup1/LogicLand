@@ -8,7 +8,6 @@ public class Level {
         Gate g = new Gate(GateType.AND, true);
         ArrayList<Switch> inputs = new ArrayList<Switch>();
         ArrayList<Switch> ouputs = new ArrayList<Switch>();
-
         inputs.add(s);
         inputs.add(g);
         Gate w = new Gate(GateType.AND, true, inputs, ouputs);

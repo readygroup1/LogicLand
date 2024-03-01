@@ -58,7 +58,7 @@ public class DataBase {
         }
     }
 
-    private void executeSQL(String SQL) {
+    public void executeSQL(String SQL) {
         try (Connection conn = DriverManager.getConnection(dbURL);
                 Statement stmt = conn.createStatement()) {
             stmt.execute(SQL);
