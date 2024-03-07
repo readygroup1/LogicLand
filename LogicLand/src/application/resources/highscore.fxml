@@ -33,13 +33,13 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <TableView layoutX="288.0" layoutY="158.0" prefHeight="312.0" prefWidth="575.0">
+      <TableView fx:id="HighScoreTable" layoutX="288.0" layoutY="158.0" prefHeight="312.0" prefWidth="575.0">
         <columns>
           <TableColumn prefWidth="117.0" text="Name" />
-          <TableColumn minWidth="7.0" prefWidth="90.5" text="Score" />
-            <TableColumn minWidth="9.0" prefWidth="79.0" text="Column X" />
-            <TableColumn minWidth="0.0" prefWidth="87.5" text="Column X" />
-            <TableColumn minWidth="0.0" prefWidth="92.0" text="Column X" />
+          <TableColumn minWidth="7.0" prefWidth="97.5" text="Score" />
+            <TableColumn minWidth="9.0" prefWidth="92.5" text="Time" />
+            <TableColumn minWidth="0.0" prefWidth="113.5" text="Stars" />
+            <TableColumn minWidth="0.0" prefWidth="153.5" text="Level" />
         </columns>
       </TableView>
    </children>

@@ -3,10 +3,43 @@ package application.resources;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class sandboxController {
 	
-	// ----------------Buttons -----------------------
+	// ----------------Constants/Resources -----------------------
+	
+	DraggableMaker drag =  new DraggableMaker();
+	
+	// ----------------Variables -----------------------
+	
+	@FXML
+	ImageView batteryGen;
+	@FXML
+	Pane pane;
+	@FXML
+	VBox switchPanel;
+	
+	
+	// ---------------- Buttons -----------------------
+	
+	public void batteryGen() {
+		
+		Battery battery = new Battery();
+		pane.getChildren().add(battery.getBattery());
+		switchPanel.getChildren().add(battery.getButton());
+		drag.makeDraggable(battery.getBattery());
+		battery.getButton().setOnMouseClicked(event ->{battery.switchState();});
+	}
+	
+	
+	
+	
+	
+	// ----------------UserDashboard Buttons -----------------------
 	
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	

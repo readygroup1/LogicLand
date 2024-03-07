@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 
 public class roadmapController {
 	
-	// ----------------Buttons -----------------------
+	// ----------------User Dashboard Buttons -----------------------
 	
 		SceneSwitcher sceneSwitcher = new SceneSwitcher();
 		

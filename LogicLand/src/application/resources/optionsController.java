@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 
 public class optionsController {
 	
-	// ----------------Buttons -----------------------
+	// ---------------- User Dashboard Buttons -----------------------
 	
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	
