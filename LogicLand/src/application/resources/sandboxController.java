@@ -22,6 +22,8 @@ public class sandboxController {
 	Pane pane;
 	@FXML
 	VBox switchPanel;
+	int numGenerated = 0;
+	int offset = 100;
 	
 	
 	// ---------------- Buttons -----------------------
@@ -30,6 +32,8 @@ public class sandboxController {
 		
 		Battery battery = new Battery();
 		pane.getChildren().add(battery.getBattery());
+		battery.getBattery().setLayoutY(battery.getBattery().getLayoutY() + (offset*numGenerated));
+		numGenerated+=1;
 		switchPanel.getChildren().add(battery.getButton());
 		drag.makeDraggable(battery.getBattery());
 		battery.getButton().setOnMouseClicked(event ->{battery.switchState();});

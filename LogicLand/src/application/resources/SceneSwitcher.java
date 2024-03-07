@@ -20,17 +20,25 @@ public class SceneSwitcher {
 		public SceneSwitcher() {
 			
 		}		
-		
+		// copied code. Need to document.
 		public void switchScene(ActionEvent event, String fxml) throws IOException {
 			try {
-				  // copied code. Need to document.
+				// An analogy for how this works
+				// root is like a script or stage directions
+				// scene is like actors acting out the script
+				// stage is where it would happen, the window
+				  
+				  // This loads the new fxml into the root variable
 				  root = FXMLLoader.load(getClass().getResource(fxml));
+				  // This sets the value of stage as the window that is currently open for the user. It takes the input event, and gets the window it came from.
 				  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				  //This makes a scene that is composed of the fxml we previously loaded
 				  scene = new Scene(root);
+				  // This sets the stage with out new scene
 				  stage.setScene(scene);
 				  // This removes the default highlighting of a single button. Comment it out to see what I mean. 
 				  scene.getRoot().requestFocus();
-					
+				  //This displays out new scene on the window
 				  stage.show();
 			}
 			
