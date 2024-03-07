@@ -10,37 +10,21 @@ import javafx.scene.layout.VBox;
 
 public class sandboxController {
 	
-	// ----------------Constants/Resources -----------------------
 	
-	DraggableMaker drag =  new DraggableMaker();
 	
 	// ----------------Variables -----------------------
 	
-	@FXML
-	ImageView batteryGen;
+	
 	@FXML
 	Pane pane;
 	@FXML
 	VBox switchPanel;
-	int numGenerated = 0;
-	int offset = 100;
+	
 	
 	
 	// ---------------- Buttons -----------------------
 	
-	public void batteryGen() {
-		
-		Battery battery = new Battery();
-		pane.getChildren().add(battery.getBattery());
-		battery.getBattery().setLayoutY(battery.getBattery().getLayoutY() + (offset*numGenerated));
-		numGenerated+=1;
-		switchPanel.getChildren().add(battery.getButton());
-		drag.makeDraggable(battery.getBattery());
-		battery.getButton().setOnMouseClicked(event ->{battery.switchState();});
-	}
-	
-	
-	
+
 	
 	
 	// ----------------UserDashboard Buttons -----------------------
