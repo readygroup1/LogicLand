@@ -1,6 +1,6 @@
 .button {
-  -fx-background-color: #FFF; /* White */
-  -fx-text-fill: #000; /* Black */
+  -fx-background-color: rgba(255, 255, 255, 0); /* White with 0% opacity */
+  -fx-text-fill: #FFF; /* White */
 }
 
 .button:hover {

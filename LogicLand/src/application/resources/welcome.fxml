@@ -23,27 +23,27 @@
                   <Image url="@images/Arcadebox.png" />
                </image>
             </ImageView>
-            <Button fx:id="startNewGame" layoutX="492.0" layoutY="316.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="148.0" stylesheets="@../application.css" text="Start New Game" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="startNewGame" layoutX="556.0" layoutY="309.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="178.0" stylesheets="@../application.css" text="Start New Game" textAlignment="CENTER" wrapText="true">
                <font>
-                  <Font name="Vermin Vibes 1989 Regular" size="15.0" />
+                  <Font name="Vermin Vibes 1989 Regular" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="loadGame" layoutX="640.0" layoutY="316.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="50.0" prefWidth="148.0" stylesheets="@../application.css" text="Load Game">
+            <Button fx:id="loadGame" layoutX="564.0" layoutY="334.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="38.0" prefWidth="157.0" stylesheets="@../application.css" text="Load Game">
                <font>
-                  <Font name="Vermin Vibes 1989 Regular" size="15.0" />
+                  <Font name="Vermin Vibes 1989 Regular" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="tutorial" layoutX="490.0" layoutY="379.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="94.0" stylesheets="@../application.css" text="Tutorial">
+            <Button fx:id="tutorial" layoutX="569.0" layoutY="360.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="148.0" stylesheets="@../application.css" text="Tutorial">
                <font>
-                  <Font name="Vermin Vibes 1989 Regular" size="15.0" />
+                  <Font name="Vermin Vibes 1989 Regular" size="20.0" />
                </font></Button>
-            <Button fx:id="highScores" layoutX="592.0" layoutY="379.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="106.0" stylesheets="@../application.css" text="High Scores">
+            <Button fx:id="highScores" layoutX="563.0" layoutY="385.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="163.0" stylesheets="@../application.css" text="High Scores">
                <font>
-                  <Font name="Vermin Vibes 1989 Regular" size="15.0" />
+                  <Font name="Vermin Vibes 1989 Regular" size="20.0" />
                </font></Button>
-            <Button fx:id="quit" layoutX="698.0" layoutY="379.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" stylesheets="@../application.css" text="Quit">
+            <Button fx:id="quit" layoutX="568.0" layoutY="410.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="148.0" stylesheets="@../application.css" text="Quit">
                <font>
-                  <Font name="Vermin Vibes 1989 Regular" size="15.0" />
+                  <Font name="Vermin Vibes 1989 Regular" size="20.0" />
                </font></Button>
             <ImageView fx:id="bulb" fitHeight="50.0" fitWidth="77.0" layoutX="757.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
                <image>
