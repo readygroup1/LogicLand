@@ -7,50 +7,77 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.welcomeController">
    <children>
-      <ImageView fx:id="title" fitHeight="84.0" fitWidth="451.0" layoutX="426.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" rotate="1.0">
+      <ImageView fitHeight="766.0" fitWidth="1907.0" layoutX="-434.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/LogicLandTitle.png" />
+            <Image url="@images/retroBG.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="580.0" layoutY="70.0" prefHeight="26.0" prefWidth="139.0" text="Welcome to">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="397.0" layoutY="230.0" text="An educational game by Andres Pedreros, Callum Thompson, Kalundi Serumaga, Nick Howard, Thomas Llamzo.">
+      <AnchorPane layoutX="-1.0" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <ImageView fitHeight="720.0" fitWidth="1164.0" layoutX="172.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Arcadebox.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="startNewGame" layoutX="492.0" layoutY="316.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="148.0" stylesheets="@../application.css" text="Start New Game" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Vermin Vibes 1989 Regular" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="loadGame" layoutX="640.0" layoutY="316.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="50.0" prefWidth="148.0" stylesheets="@../application.css" text="Load Game">
+               <font>
+                  <Font name="Vermin Vibes 1989 Regular" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="tutorial" layoutX="490.0" layoutY="379.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="94.0" stylesheets="@../application.css" text="Tutorial">
+               <font>
+                  <Font name="Vermin Vibes 1989 Regular" size="15.0" />
+               </font></Button>
+            <Button fx:id="highScores" layoutX="592.0" layoutY="379.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="106.0" stylesheets="@../application.css" text="High Scores">
+               <font>
+                  <Font name="Vermin Vibes 1989 Regular" size="15.0" />
+               </font></Button>
+            <Button fx:id="quit" layoutX="698.0" layoutY="379.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" stylesheets="@../application.css" text="Quit">
+               <font>
+                  <Font name="Vermin Vibes 1989 Regular" size="15.0" />
+               </font></Button>
+            <ImageView fx:id="bulb" fitHeight="50.0" fitWidth="77.0" layoutX="757.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/bulbOff.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="battery" fitHeight="50.0" fitWidth="66.0" layoutX="555.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/batteryOff.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="onOffButton" fitHeight="56.0" fitWidth="63.0" layoutX="484.0" layoutY="448.0" onMouseClicked="#switchState" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/off.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="484.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIC LAND" wrappingWidth="379.5">
+               <font>
+                  <Font name="Vermin Vibes 1989 Regular" size="67.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Label alignment="TOP_LEFT" layoutX="32.0" layoutY="659.0" prefHeight="50.0" prefWidth="210.0" style="-fx-text-fill: #FFF;" text="An educational game by Andres Pedreros, Callum Thompson, Kalundi Serumaga, Nick Howard, Thomas Llamzon." wrapText="true">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Button fx:id="startNewGame" layoutX="410.0" layoutY="259.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Start New Game" textAlignment="CENTER" wrapText="true" />
-      <Button fx:id="loadGame" layoutX="510.0" layoutY="259.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="50.0" prefWidth="100.0" text="Load Game" />
-      <Button fx:id="highScores" layoutX="710.0" layoutY="259.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="High Scores" />
-      <Button fx:id="tutorial" layoutX="610.0" layoutY="259.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Tutorial" />
-      <Button fx:id="quit" layoutX="810.0" layoutY="259.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Quit" />
-      <Label layoutX="556.0" layoutY="680.0" prefHeight="16.0" prefWidth="171.0" text="TEAM ONE - WINTER 2024" />
-      <Label layoutX="556.0" layoutY="696.0" text="Created for CS2212 at Western University ">
+      <Label layoutX="1083.0" layoutY="668.0" prefHeight="16.0" prefWidth="171.0" style="-fx-text-fill: #FFF;" text="TEAM ONE - WINTER 2024" />
+      <Label layoutX="1083.0" layoutY="684.0" style="-fx-text-fill: #FFF;" text="Created for CS2212 at Western University ">
          <font>
             <Font size="8.0" />
          </font>
       </Label>
-      <ImageView fx:id="onOffButton" fitHeight="56.0" fitWidth="63.0" layoutX="384.0" layoutY="440.0" onMouseClicked="#switchState" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/off.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="battery" fitHeight="50.0" fitWidth="66.0" layoutX="487.0" layoutY="446.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/batteryOff.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="bulb" fitHeight="50.0" fitWidth="77.0" layoutX="847.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/bulbOff.png" />
-         </image>
-      </ImageView>
-      <Line endX="244.0" layoutX="628.0" layoutY="493.0" startX="-100.0" strokeWidth="2.0" />
+      <Line endX="153.0" layoutX="628.0" layoutY="493.0" startX="-66.0" strokeWidth="2.0" />
    </children>
 </AnchorPane>
