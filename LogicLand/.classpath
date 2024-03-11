@@ -17,5 +17,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Derby"/>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFx"/>
+>>>>>>> 2584a3e6e8fae1d97e215dd3a606c8be53c733cc
 	<classpathentry kind="output" path="bin"/>
 </classpath>
