@@ -28,7 +28,7 @@ public class Database {
             return;
         }
         executeSQL(
-                "CREATE TABLE ADMIN (AdminID INT PRIMARY KEY, AdminName VARCHAR(255), AdminPassword VARCHAR(255), AdminEmail VARCHAR(255))");
+                "CREATE TABLE ADMIN (AdminID INT PRIMARY KEY, AdminName VARCHAR(255), Initals VARCHAR(255), AdminPassword VARCHAR(255), AdminEmail VARCHAR(255))");
         executeSQL(
                 "CREATE TABLE CLASSROOM (ClassID INT PRIMARY KEY, ClassName VARCHAR(255), AdminID INT, FOREIGN KEY (AdminID) REFERENCES ADMIN(AdminID))");
         executeSQL(
@@ -49,7 +49,8 @@ public class Database {
                 "CREATE TABLE LEVELS (LevelID INT PRIMARY KEY, CurrentLevel INT, LevelScore INT, CurrentLevelSaveState VARCHAR(255), PlayerID INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
         executeSQL(
                 "CREATE TABLE HIGHSCORE (PlayerID INT, Initals VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
-        addAdmin("defualt", "password", "default@email.com");
+        
+        addAdmin("defualt", "df", "password", "default@email.com");
         addClassroom("defaultClass", 1);
     }
     
@@ -126,11 +127,12 @@ public class Database {
         executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initals + "', 0)");
     }
     
-    public void addAdmin(String name, String password, String email) {
+    public int addAdmin(String name, String initals, String password, String email) {
         // Count how many rows in table to find next primary key
         int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM ADMIN") + 1;
-        executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + password + "', '" + email
+        executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + initals + "', '" + password + "', '" + email
                 + "')");
+        return primaryKey;
     }
 
     // VERY IMPORTANT: Cannot add a classroom if no admins exist

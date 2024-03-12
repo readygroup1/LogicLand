@@ -24,6 +24,11 @@ public class AccountManager {
 		db.printDB(); // Just for testing
 	}
 	
+	public void newAdminAccount(String username, String initals, String password, String email, String className) {
+		db.addClassroom(className, db.addAdmin(username, initals, password, email));
+		db.printDB(); // Just for testing
+	}
+	
 	public ArrayList<String> getClassrooms() {
 		return db.getClassrooms();
 	}

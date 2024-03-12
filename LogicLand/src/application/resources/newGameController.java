@@ -100,6 +100,17 @@ public class newGameController implements Initializable{
 					return;
 				}
 				account.newPlayerAccount(userName, userInitals, userPassword, userEmail, classID);
+			} else {
+				String userName = username.getText();
+				String userPassword = password.getText();
+				String userEmail = email.getText();
+				String userInitals = initals.getText();
+				String className = enterClassName.getText();
+				if(userName.equals("") || userPassword.equals("") || userEmail.equals("") || userInitals.equals("") || className.equals("")) {
+					System.out.println("There is an error in one of the input fields");
+					return;
+				}
+				account.newAdminAccount(userName, userInitals, userPassword, userEmail, className);
 			}
 			
 			if(isTeacher) {
