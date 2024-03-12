@@ -12,7 +12,7 @@ public class Main extends Application {
 	@Override
 	
 	// This is boiler plate code to open up a window. 
-	// There is an explination for how this works in SceneSwitcher
+	// There is an explanation for how this works in SceneSwitcher
 	public void start(Stage stage) {		
 		
 		try {
