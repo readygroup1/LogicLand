@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 
 
 
@@ -16,7 +17,13 @@ public class Main extends Application {
 	public void start(Stage stage) {		
 		
 		try {
-		
+			Font customFont = Font.loadFont(getClass().getResourceAsStream("/application/resources/Vermin Vibes 1989.ttf"), 12);
+			if (customFont == null) {
+			    // Handle the error, font not loaded
+			    System.out.println("There was an error loading the font.");
+			} else {
+			    System.out.println("Font loaded: " + customFont.getName());
+			}
 			Parent root = FXMLLoader.load(getClass().getResource("/application/resources/mainMenu.fxml"));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
