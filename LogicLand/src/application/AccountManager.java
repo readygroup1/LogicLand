@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 public class AccountManager {
 	// Instance variable
 	private int currentUserID;
@@ -22,6 +24,19 @@ public class AccountManager {
 		db.addClassroom("1", 1);
 		db.addPlayer("pler", "PLA", "123", "1227", 1);
 		db.printDB(); // Just for testing
+	}
+	
+	public void newAdminAccount(String username, String initals, String password, String email, String className) {
+		db.addClassroom(className, db.addAdmin(username, initals, password, email));
+		db.printDB(); // Just for testing
+	}
+	
+	public ArrayList<String> getClassrooms() {
+		return db.getClassrooms();
+	}
+	
+	public int getClassID(String name) {
+		return db.getClassID(name);
 	}
 	
 	

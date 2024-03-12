@@ -6,12 +6,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Database {
 	// Instance variables
 	private String dbURLnocreate = "jdbc:derby:LogicLandDB;dataEncryption=true;encryptionAlgorithm=DES/CBC/NoPadding;bootPassword=brianstorm";
     private String dbURL = dbURLnocreate + ";create=true";
-    private int numLevels = 15;
+    private int numLevels = 8;
     
     public Database() {
         try {
@@ -27,7 +28,7 @@ public class Database {
             return;
         }
         executeSQL(
-                "CREATE TABLE ADMIN (AdminID INT PRIMARY KEY, AdminName VARCHAR(255), AdminPassword VARCHAR(255), AdminEmail VARCHAR(255))");
+                "CREATE TABLE ADMIN (AdminID INT PRIMARY KEY, AdminName VARCHAR(255), Initals VARCHAR(255), AdminPassword VARCHAR(255), AdminEmail VARCHAR(255))");
         executeSQL(
                 "CREATE TABLE CLASSROOM (ClassID INT PRIMARY KEY, ClassName VARCHAR(255), AdminID INT, FOREIGN KEY (AdminID) REFERENCES ADMIN(AdminID))");
         executeSQL(
@@ -48,6 +49,9 @@ public class Database {
                 "CREATE TABLE LEVELS (LevelID INT PRIMARY KEY, CurrentLevel INT, LevelScore INT, CurrentLevelSaveState VARCHAR(255), PlayerID INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
         executeSQL(
                 "CREATE TABLE HIGHSCORE (PlayerID INT, Initals VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
+        
+        addAdmin("defualt", "df", "password", "default@email.com");
+        addClassroom("defaultClass", 1);
     }
     
     private boolean databaseExists() {
@@ -123,11 +127,12 @@ public class Database {
         executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initals + "', 0)");
     }
     
-    public void addAdmin(String name, String password, String email) {
+    public int addAdmin(String name, String initals, String password, String email) {
         // Count how many rows in table to find next primary key
         int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM ADMIN") + 1;
-        executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + password + "', '" + email
+        executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + initals + "', '" + password + "', '" + email
                 + "')");
+        return primaryKey;
     }
 
     // VERY IMPORTANT: Cannot add a classroom if no admins exist
@@ -225,9 +230,35 @@ public class Database {
         return executeQueryGetInt("SELECT LevelID FROM LEVELS WHERE PlayerID = " + PlayerID + " AND CurrentLevel = "
                 + currentLevel);
     }
+    
+    public int getPlayerCurrentLevel(int PlayerID) {
+        return executeQueryGetInt("SELECT CurrentLevel FROM LEVELS WHERE PlayerID = " + PlayerID);
+    }
 
     public int getHighScore(int PlayerID) {
         return executeQueryGetInt("SELECT UserScore FROM HIGHSCORE WHERE PlayerID = " + PlayerID);
+    }
+    
+    public ArrayList<String> getClassrooms() {
+        ArrayList<String> classrooms = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT ClassName FROM CLASSROOM")) {
+            while (rs.next()) {
+                classrooms.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return classrooms;
+    }
+
+    public int getClassID(String className) {
+    	try {
+    		return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE ClassName = '" + className + "'");
+    	} catch (Exception e) {
+    		return -1;
+    	}
     }
 
     public void resetDataBase() {
