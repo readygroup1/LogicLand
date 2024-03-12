@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.animation.FadeTransition;
@@ -60,6 +61,19 @@ public class mainMenuController {
 	public void quit(ActionEvent event) {
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.close();
+		
+	}
+	
+	public void developerLogin(MouseEvent event) throws IOException {
+		
+		if(state) {
+			try {			
+				sceneSwitcher.switchScene(event, "developerLogin.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}
+		}
 		
 	}
 	

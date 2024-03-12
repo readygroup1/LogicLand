@@ -45,7 +45,7 @@
                <font>
                   <Font name="Vermin Vibes 1989 Regular" size="20.0" />
                </font></Button>
-            <ImageView fx:id="bulb" fitHeight="50.0" fitWidth="77.0" layoutX="757.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="bulb" fitHeight="50.0" fitWidth="77.0" layoutX="757.0" layoutY="448.0" onMouseClicked="#developerLogin" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/bulbOff.png" />
                </image>

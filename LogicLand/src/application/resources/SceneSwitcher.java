@@ -2,6 +2,8 @@ package application.resources;
 
 
 import java.io.IOException;
+import java.util.EventObject;
+
 import javafx.scene.Node;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
@@ -20,8 +22,8 @@ public class SceneSwitcher {
 		public SceneSwitcher() {
 			
 		}		
-		// copied code. Need to document.
-		public void switchScene(ActionEvent event, String fxml) throws IOException {
+		// Kinda copied code. I change it a bit. Might Need to document.
+		public void switchScene(EventObject event, String fxml) throws IOException {
 			try {
 				// An analogy for how this works
 				// root is like a script or stage directions
@@ -51,7 +53,7 @@ public class SceneSwitcher {
 		// Copied Code
 		public void fadeSwitchScene(ActionEvent event, String fxml) {
 			try {
-				  //kinda copied code. Need to document.
+				  //kinda copied code. Might Need to document.
 				  root = FXMLLoader.load(getClass().getResource(fxml));
 				  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		    } 

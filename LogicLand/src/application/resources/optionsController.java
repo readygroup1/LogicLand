@@ -3,12 +3,27 @@ package application.resources;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.stage.Stage;
 
 public class optionsController {
 	
-	// ---------------- User Dashboard Button Functions -----------------------
 	
-	SceneSwitcher sceneSwitcher = new SceneSwitcher();
+	//-----------Constants/Resources---------
+	
+		SceneSwitcher sceneSwitcher = new SceneSwitcher();
+		
+	//-------------Button Functions------------------------
+		
+		public void quit(ActionEvent event) {
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			stage.close();
+			
+		}
+	
+	// ----------- User Dashboard Button Functions ---------
+	
+	
 	
 	public void roadmap(ActionEvent event) throws IOException {			
 		try {			
