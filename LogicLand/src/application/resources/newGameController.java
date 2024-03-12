@@ -20,10 +20,14 @@ public class newGameController {
 			SceneSwitcher sceneSwitcher = new SceneSwitcher();
 			AccountManager account = new AccountManager();
 			Image bulbOn = new Image(getClass().getResourceAsStream("images/bulbOn.png"));
+			Image bulbOff = new Image(getClass().getResourceAsStream("images/bulbOff.png"));
+			Image batteryOn = new Image(getClass().getResourceAsStream("images/batteryOn.png"));
+			Image batteryOff = new Image(getClass().getResourceAsStream("images/batteryOff.png"));
+			
 			
 	//---------------Variables--------------------
 		@FXML
-		ImageView bulb;
+		ImageView image;
 		@FXML
 		Button backButton;
 		@FXML
@@ -62,12 +66,14 @@ public class newGameController {
 	public void imATeacher(ActionEvent event) {
 		
 		if(isTeacher) {
+			image.setImage(bulbOff);
 			chooseClassName.setVisible(true);
 			enterClassName.setVisible(false);
 			isTeacher = false;
 		}
 		
 		else {
+			image.setImage(batteryOff);
 			chooseClassName.setVisible(false);
 			enterClassName.setVisible(true);
 			isTeacher = true;			
@@ -92,6 +98,15 @@ public class newGameController {
 				account.newPlayerAccount(userName, userInitals, userPassword, userEmail, classID);
 			}
 			bulb.setImage(bulbOn);		
+			
+			if(isTeacher) {
+				image.setImage(batteryOn);
+			}
+			
+			else {
+				image.setImage(bulbOn);
+			}	
+					
 			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
 		}
 		catch(Exception e) {
