@@ -2,6 +2,7 @@ package application.resources;
 
 import java.io.IOException;
 
+import application.AccountManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,6 +18,7 @@ public class newGameController {
 	//--------Constants/Resources---------
 	
 			SceneSwitcher sceneSwitcher = new SceneSwitcher();
+			AccountManager account = new AccountManager();
 			Image bulbOn = new Image(getClass().getResourceAsStream("images/bulbOn.png"));
 			
 	//---------------Variables--------------------
@@ -27,13 +29,13 @@ public class newGameController {
 		@FXML
 		Button createGame;
 		@FXML
-		TextField name;
-		@FXML
 		TextField initals;
 		@FXML
 		TextField username;
 		@FXML
 		PasswordField password;
+		@FXML
+		TextField email;
 		@FXML
 		CheckBox imATeacher;
 		@FXML
@@ -75,7 +77,20 @@ public class newGameController {
 	public void createGame(ActionEvent event) throws Exception {
 		
 		try {
-		
+			if(!isTeacher) {
+				String userName = username.getText();
+				String userPassword = password.getText();
+				String userEmail = email.getText();
+				String userInitals = initals.getText();
+				int classID = 1;
+				//classID = (int) chooseClassName.getSelectionModel().getSelectedItem();
+				
+				if(userName.equals("") || userPassword.equals("") || userEmail.equals("") || userInitals.equals("") || classID == -1) {
+					System.out.println("There is an error in one of the input fields");
+					return;
+				}
+				account.newPlayerAccount(userName, userInitals, userPassword, userEmail, classID);
+			}
 			bulb.setImage(bulbOn);		
 			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
 		}

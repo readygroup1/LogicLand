@@ -35,6 +35,7 @@ public class Database {
         executeSQL("CREATE TABLE PLAYER (" +
                 "PlayerID INT PRIMARY KEY, " +
                 "Name VARCHAR(255), " +
+                "Initals VARCHAR(255), " +
                 "Password VARCHAR(255), " +
                 "Email VARCHAR(255), " +
                 "SandboxID INT, " +
@@ -46,7 +47,7 @@ public class Database {
         executeSQL(
                 "CREATE TABLE LEVELS (LevelID INT PRIMARY KEY, CurrentLevel INT, LevelScore INT, CurrentLevelSaveState VARCHAR(255), PlayerID INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
         executeSQL(
-                "CREATE TABLE HIGHSCORE (PlayerID INT, UserName VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
+                "CREATE TABLE HIGHSCORE (PlayerID INT, Initals VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
     }
     
     private boolean databaseExists() {
@@ -101,7 +102,7 @@ public class Database {
     }
     
     // VERY IMPORTANT: Cannot add a player if no classrooms exist
-    public void addPlayer(String name, String password, String email, int ClassID) {
+    public void addPlayer(String name, String initals, String password, String email, int ClassID) {
         // Count how many rows in table to find next primary key
         int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM PLAYER") + 1;
         // Count all rows in sandbox table to find next sandboxID
@@ -109,7 +110,7 @@ public class Database {
         // Create a new sandbox for the player
         executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '0000')");
 
-        executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + password + "', '" + email
+        executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initals + "', '" + password + "', '" + email
                 + "', " + sandboxID + ", " + false + ", " + ClassID + ")");
         // Create 15 new levels for the player
         for (int i = 1; i <=numLevels; i++) {
@@ -119,7 +120,7 @@ public class Database {
                     + ")");
         }
         // Create a new highscore for the player
-        executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + name + "', 0)");
+        executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initals + "', 0)");
     }
     
     public void addAdmin(String name, String password, String email) {
@@ -238,4 +239,5 @@ public class Database {
         executeSQL("DROP TABLE ADMIN");
         createDB();
     }
+
 }

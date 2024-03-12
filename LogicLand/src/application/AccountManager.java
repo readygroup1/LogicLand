@@ -5,16 +5,21 @@ public class AccountManager {
 	private int currentUserID;
 	public static Database db = new Database();
 	
-	public AccountManager(int currentUserID) {
+	public AccountManager(int currentUserID, boolean isTeacher) {
 		this.currentUserID = currentUserID;
+	}
+	
+	public AccountManager() {
+		return;
 	}
 	
 	public int getCurrentUser() {
 		return currentUserID;
 	}
 	
-	public void saveAccount(String username, String password, String email, int classID) {
-		db.addPlayer(username, password, email, classID);
+	public void newPlayerAccount(String username, String initals, String password, String email, int classID) {
+		db.addPlayer(username, initals, password, email, classID);
+		db.printDB(); // Just for testing
 	}
 	
 	
