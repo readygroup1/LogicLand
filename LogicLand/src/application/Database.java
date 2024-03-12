@@ -50,8 +50,8 @@ public class Database {
         executeSQL(
                 "CREATE TABLE HIGHSCORE (PlayerID INT, Initals VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
         
-        addAdmin("defualt", "df", "password", "default@email.com");
-        addClassroom("defaultClass", 1);
+        addAdmin("default", "df", "password", "default@email.com");
+        addClassroom("<public classroom>", 1);
     }
     
     private boolean databaseExists() {
@@ -106,7 +106,7 @@ public class Database {
     }
     
     // VERY IMPORTANT: Cannot add a player if no classrooms exist
-    public void addPlayer(String name, String initals, String password, String email, int ClassID) {
+    public int addPlayer(String name, String initals, String password, String email, int ClassID) {
         // Count how many rows in table to find next primary key
         int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM PLAYER") + 1;
         // Count all rows in sandbox table to find next sandboxID
@@ -125,6 +125,7 @@ public class Database {
         }
         // Create a new highscore for the player
         executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initals + "', 0)");
+        return primaryKey;
     }
     
     public int addAdmin(String name, String initals, String password, String email) {
@@ -218,6 +219,14 @@ public class Database {
         }
     }
 
+    public int getPlayerID(String name) {
+        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "'");
+    }
+
+    public int getAdminID(String name) {
+        return executeQueryGetInt("SELECT AdminID FROM ADMIN WHERE AdminName = '" + name + "'");
+    }
+
     public int getAdminID(int ClassID) {
         return executeQueryGetInt("SELECT AdminID FROM CLASSROOM WHERE ClassID = " + ClassID);
     }
@@ -259,6 +268,16 @@ public class Database {
     	} catch (Exception e) {
     		return -1;
     	}
+    }
+
+    public boolean verifyAdmin(String name, String password) {
+        return executeQueryGetInt("SELECT AdminID FROM ADMIN WHERE AdminName = '" + name + "' AND AdminPassword = '"
+                + password + "'") != -1;
+    }
+
+    public boolean verifyPlayer(String name, String password) {
+        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "' AND Password = '"
+                + password + "'") != -1;
     }
 
     public void resetDataBase() {

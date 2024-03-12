@@ -5,14 +5,22 @@ import java.util.ArrayList;
 public class AccountManager {
 	// Instance variable
 	private int currentUserID;
+	private boolean isAdmin;
 	public static Database db = new Database();
 	
 	public AccountManager(int currentUserID, boolean isTeacher) {
 		this.currentUserID = currentUserID;
+		isAdmin = isTeacher;
 	}
 	
 	public AccountManager() {
+		currentUserID = -1;
+		isAdmin = false;
 		return;
+	}
+	
+	public boolean isAdmin() {
+		return isAdmin;
 	}
 	
 	public int getCurrentUser() {
@@ -20,12 +28,15 @@ public class AccountManager {
 	}
 	
 	public void newPlayerAccount(String username, String initals, String password, String email, int classID) {
-		db.addPlayer(username, initals, password, email, classID);
+		currentUserID = db.addPlayer(username, initals, password, email, classID);
+		isAdmin = false;
 		db.printDB(); // Just for testing
 	}
 	
 	public void newAdminAccount(String username, String initals, String password, String email, String className) {
-		db.addClassroom(className, db.addAdmin(username, initals, password, email));
+		currentUserID = db.addAdmin(username, initals, password, email);
+		db.addClassroom(className, currentUserID);
+		isAdmin = true;
 		db.printDB(); // Just for testing
 	}
 	
@@ -38,8 +49,21 @@ public class AccountManager {
 	}
 	
 	
-	//public boolean verifyLogin(String name, String password) {
-		
-	//}
+	public boolean verifyLogin(String name, String password, boolean isAdmin) {
+		if(isAdmin) {
+			if(db.verifyAdmin(name, password)) {
+				currentUserID = db.getAdminID(name);
+				this.isAdmin = true;
+				return true;
+			}
+		} else {
+			if(db.verifyPlayer(name, password)) {
+				currentUserID = db.getPlayerID(name);
+				this.isAdmin = false;
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }
