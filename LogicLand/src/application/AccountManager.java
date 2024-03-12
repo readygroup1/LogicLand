@@ -28,16 +28,9 @@ public class AccountManager {
 	}
 	
 	public void newPlayerAccount(String username, String initals, String password, String email, int classID) {
-		
-		db.addAdmin("andres", "123", "dj@hbkac", "lnscd");
-		db.addClassroom("1", 1);
-		db.addPlayer("pler", "PLA", "123", "1227", 1);
 		currentUserID = db.addPlayer(username, initals, password, email, classID);
 		isAdmin = false;
 		db.printDB(); // Just for testing
-		User player1 = new User("1");
-		System.out.print(player1.getUsername());
-		
 	}
 	
 	public void newAdminAccount(String username, String initals, String password, String email, String className) {
