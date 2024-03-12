@@ -28,10 +28,10 @@
       <Label layoutX="456.0" layoutY="466.0" text="Class:" />
       <TextField fx:id="initals" layoutX="534.0" layoutY="314.0" />
       <TextField fx:id="username" layoutX="534.0" layoutY="353.0" />
-      <TextField fx:id="email" layoutX="534.0" layoutY="425.0" />
-      <PasswordField fx:id="password" layoutX="534.0" layoutY="389.0" />
-      <CheckBox fx:id="imATeacher" contentDisplay="RIGHT" layoutX="549.0" layoutY="504.0" mnemonicParsing="false" onAction="#imATeacher" text="I am a Teacher" />
+      <TextField fx:id="email" accessibleRole="PASSWORD_FIELD" layoutX="534.0" layoutY="389.0" />
+      <PasswordField fx:id="password" accessibleRole="TEXT_FIELD" layoutX="534.0" layoutY="425.0" />
       <ChoiceBox fx:id="chooseClassName" layoutX="534.0" layoutY="462.0" prefWidth="150.0" />
+      <CheckBox fx:id="imATeacher" contentDisplay="RIGHT" layoutX="549.0" layoutY="504.0" mnemonicParsing="false" onAction="#imATeacher" text="I am a Teacher" />
       <Button fx:id="createGame" layoutX="534.0" layoutY="597.0" mnemonicParsing="false" onAction="#createGame" prefHeight="50.0" prefWidth="150.0" text="Create Game" />
       <TextField fx:id="enterClassName" layoutX="534.0" layoutY="462.0" promptText="Enter Class Name" visible="false" />
       <ImageView fx:id="bulb" fitHeight="150.0" fitWidth="200.0" layoutX="520.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
