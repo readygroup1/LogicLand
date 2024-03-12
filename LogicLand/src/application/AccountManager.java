@@ -20,7 +20,7 @@ public class AccountManager {
 	}
 	
 	public void newPlayerAccount(String username, String initals, String password, String email, int classID) {
-		db.addAdmin("andres", "123", "dj@hbkac");
+		db.addAdmin("andres", "123", "dj@hbkac", "lnscd");
 		db.addClassroom("1", 1);
 		db.addPlayer("pler", "PLA", "123", "1227", 1);
 		db.printDB(); // Just for testing
@@ -30,6 +30,7 @@ public class AccountManager {
 		db.addClassroom(className, db.addAdmin(username, initals, password, email));
 		db.printDB(); // Just for testing
 	}
+	
 	
 	public ArrayList<String> getClassrooms() {
 		return db.getClassrooms();
