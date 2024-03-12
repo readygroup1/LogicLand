@@ -1,10 +1,13 @@
 package application.resources;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import application.AccountManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -13,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class newGameController {
+public class newGameController implements Initializable{
 	
 	//--------Constants/Resources---------
 	
@@ -43,12 +46,14 @@ public class newGameController {
 		@FXML
 		CheckBox imATeacher;
 		@FXML
-		ChoiceBox chooseClassName; // Input Field for students only. 
+		ChoiceBox<String> chooseClassName; // Input Field for students only. 
 		@FXML
 		TextField enterClassName; // Input field for teachers only.
 		Boolean isTeacher = false; // Used in imATeacher() to switch between input fields.
 		
-		
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+		chooseClassName.getItems().addAll(account.getClassrooms());
+	}
 		
 	//---------Button Functions-------------------
 	
@@ -64,7 +69,6 @@ public class newGameController {
 	
 	// Function for imATeacher checkbox that switches between student and teacher class input fields.
 	public void imATeacher(ActionEvent event) {
-		
 		if(isTeacher) {
 			image.setImage(bulbOff);
 			chooseClassName.setVisible(true);
@@ -81,8 +85,8 @@ public class newGameController {
 	}
 	
 	public void createGame(ActionEvent event) throws Exception {
-		
 		try {
+			
 			if(!isTeacher) {
 				String userName = username.getText();
 				String userPassword = password.getText();
@@ -106,7 +110,7 @@ public class newGameController {
 				image.setImage(bulbOn);
 			}	
 					
-			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
+		sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
 		}
 		catch(Exception e) {
 			e.printStackTrace();

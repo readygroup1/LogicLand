@@ -6,12 +6,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Database {
 	// Instance variables
 	private String dbURLnocreate = "jdbc:derby:LogicLandDB;dataEncryption=true;encryptionAlgorithm=DES/CBC/NoPadding;bootPassword=brianstorm";
     private String dbURL = dbURLnocreate + ";create=true";
-    private int numLevels = 15;
+    private int numLevels = 8;
     
     public Database() {
         try {
@@ -48,6 +49,8 @@ public class Database {
                 "CREATE TABLE LEVELS (LevelID INT PRIMARY KEY, CurrentLevel INT, LevelScore INT, CurrentLevelSaveState VARCHAR(255), PlayerID INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
         executeSQL(
                 "CREATE TABLE HIGHSCORE (PlayerID INT, Initals VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
+        addAdmin("defualt", "password", "default@email.com");
+        addClassroom("defaultClass", 1);
     }
     
     private boolean databaseExists() {
@@ -225,9 +228,27 @@ public class Database {
         return executeQueryGetInt("SELECT LevelID FROM LEVELS WHERE PlayerID = " + PlayerID + " AND CurrentLevel = "
                 + currentLevel);
     }
+    
+    public int getPlayerCurrentLevel(int PlayerID) {
+        return executeQueryGetInt("SELECT CurrentLevel FROM LEVELS WHERE PlayerID = " + PlayerID);
+    }
 
     public int getHighScore(int PlayerID) {
         return executeQueryGetInt("SELECT UserScore FROM HIGHSCORE WHERE PlayerID = " + PlayerID);
+    }
+    
+    public ArrayList<String> getClassrooms() {
+        ArrayList<String> classrooms = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT ClassName FROM CLASSROOM")) {
+            while (rs.next()) {
+                classrooms.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return classrooms;
     }
 
     public void resetDataBase() {
