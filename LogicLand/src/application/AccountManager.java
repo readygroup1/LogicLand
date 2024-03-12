@@ -18,7 +18,9 @@ public class AccountManager {
 	}
 	
 	public void newPlayerAccount(String username, String initals, String password, String email, int classID) {
-		db.addPlayer(username, initals, password, email, classID);
+		db.addAdmin("andres", "123", "dj@hbkac");
+		db.addClassroom("1", 1);
+		db.addPlayer("pler", "PLA", "123", "1227", 1);
 		db.printDB(); // Just for testing
 	}
 	
