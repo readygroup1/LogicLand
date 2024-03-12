@@ -32,7 +32,7 @@
       <CheckBox fx:id="imATeacher" contentDisplay="RIGHT" layoutX="549.0" layoutY="504.0" mnemonicParsing="false" onAction="#imATeacher" text="I am a Teacher" />
       <Button fx:id="createGame" layoutX="534.0" layoutY="597.0" mnemonicParsing="false" onAction="#createGame" prefHeight="50.0" prefWidth="150.0" text="Create Game" />
       <TextField fx:id="enterClassName" layoutX="534.0" layoutY="462.0" promptText="Enter Class Name" visible="false" />
-      <ImageView fx:id="bulb" fitHeight="150.0" fitWidth="200.0" layoutX="520.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="520.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/bulbOff.png" />
          </image>
