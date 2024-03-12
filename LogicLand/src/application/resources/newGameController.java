@@ -97,7 +97,6 @@ public class newGameController {
 				}
 				account.newPlayerAccount(userName, userInitals, userPassword, userEmail, classID);
 			}
-			bulb.setImage(bulbOn);		
 			
 			if(isTeacher) {
 				image.setImage(batteryOn);
