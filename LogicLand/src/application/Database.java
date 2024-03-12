@@ -222,6 +222,41 @@ public class Database {
         return executeQueryGetInt("SELECT AdminID FROM CLASSROOM WHERE ClassID = " + ClassID);
     }
 
+    public String getPlayer(int PlayerID) {
+        // Initialize a variable to hold player information
+        String playerInfo = "Player not found";
+        // SQL query to fetch all player details
+        String SQLquery = "SELECT * FROM PLAYER WHERE PlayerID = " + PlayerID;
+        
+        try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(SQLquery)) {
+            // Check if the player exists
+            if (rs.next()) {
+                // Construct the player information string
+                String name = rs.getString("Name");
+                String initials = rs.getString("Initals");
+                String password = rs.getString("Password"); // Consider security implications of handling passwords
+                String email = rs.getString("Email");
+                int sandboxID = rs.getInt("SandboxID");
+                boolean inTutorial = rs.getBoolean("inTutorial");
+                int classID = rs.getInt("ClassID");
+                
+                // Constructing the info string. Note: handling of the password might need to be reconsidered for security reasons.
+                playerInfo = String.format("Name: %s, Initials: %s, Password: %s, Email: %s, SandboxID: %d, InTutorial: %b, ClassID: %d",
+                                            name, initials, password, email, sandboxID, inTutorial, classID);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            playerInfo = "Error retrieving player: " + e.getMessage();
+        }
+        
+        return playerInfo;
+    }
+
+
+    
+
     public int getSandboxID(int PlayerID) {
         return executeQueryGetInt("SELECT SandboxID FROM PLAYER WHERE PlayerID = " + PlayerID);
     }

@@ -24,6 +24,8 @@ public class AccountManager {
 		db.addClassroom("1", 1);
 		db.addPlayer("pler", "PLA", "123", "1227", 1);
 		db.printDB(); // Just for testing
+		System.out.print(db.getPlayer(1));
+		
 	}
 	
 	public void newAdminAccount(String username, String initals, String password, String email, String className) {

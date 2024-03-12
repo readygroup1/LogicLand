@@ -7,7 +7,7 @@ public class User {
 	private String initials;
 	private String email;
 	private String highScore;
-	public User () {
-		
+	public User (String PlayerID) {
+			
 	}
 }
