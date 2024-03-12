@@ -17,7 +17,7 @@ public class Main extends Application {
 		
 		try {
 		
-			Parent root = FXMLLoader.load(getClass().getResource("/application/resources/welcome.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/application/resources/mainMenu.fxml"));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.setTitle("Logic Land");

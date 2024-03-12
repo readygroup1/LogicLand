@@ -27,7 +27,7 @@ public class sandboxController {
 
 	
 	
-	// ----------------UserDashboard Buttons -----------------------
+	// ----------------UserDashboard Button Functions -----------------------
 	
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	
