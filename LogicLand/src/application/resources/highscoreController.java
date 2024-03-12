@@ -13,7 +13,7 @@ public class highscoreController {
 	@FXML
 	TableView HighScoreTable;
 	
-	// ----------------Buttons -----------------------
+	// ----------------User Dashboard Button Functions -----------------------
 	
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	public void roadmap(ActionEvent event) throws IOException {			
