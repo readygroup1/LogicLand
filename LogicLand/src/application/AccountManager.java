@@ -28,6 +28,10 @@ public class AccountManager {
 		return db.getClassrooms();
 	}
 	
+	public int getClassID(String name) {
+		return db.getClassID(name);
+	}
+	
 	
 	//public boolean verifyLogin(String name, String password) {
 		

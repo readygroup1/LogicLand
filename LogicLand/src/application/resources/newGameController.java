@@ -92,8 +92,8 @@ public class newGameController implements Initializable{
 				String userPassword = password.getText();
 				String userEmail = email.getText();
 				String userInitals = initals.getText();
-				int classID = 1;
-				//classID = (int) chooseClassName.getSelectionModel().getSelectedItem();
+				String className = chooseClassName.getSelectionModel().getSelectedItem();
+				int classID = account.getClassID(className);
 				
 				if(userName.equals("") || userPassword.equals("") || userEmail.equals("") || userInitals.equals("") || classID == -1) {
 					System.out.println("There is an error in one of the input fields");

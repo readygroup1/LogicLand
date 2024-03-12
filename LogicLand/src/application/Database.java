@@ -251,6 +251,14 @@ public class Database {
         return classrooms;
     }
 
+    public int getClassID(String className) {
+    	try {
+    		return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE ClassName = '" + className + "'");
+    	} catch (Exception e) {
+    		return -1;
+    	}
+    }
+
     public void resetDataBase() {
         executeSQL("DROP TABLE LEVELS");
         executeSQL("DROP TABLE HIGHSCORE");
