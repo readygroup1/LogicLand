@@ -13,7 +13,7 @@ public class Database {
     private String dbURLnocreate = "jdbc:derby:LogicLandDB;dataEncryption=true;encryptionAlgorithm=DES/CBC/NoPadding;bootPassword=brianstorm";
     private String dbURL = dbURLnocreate + ";create=true";
     private int numLevels = 8;
-
+   
     public Database() {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -422,6 +422,14 @@ public class Database {
     public boolean verifyPlayer(String name, String password) {
         return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "' AND Password = '"
                 + password + "'") != -1;
+    }
+
+    public boolean userNameExists(String name) {
+        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "'") != -1;
+    }
+
+    public boolean classroomNameExists(String name) {
+        return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE ClassName = '" + name + "'") != -1;
     }
 
     public void resetDataBase() {

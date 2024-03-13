@@ -51,8 +51,6 @@ public class highscoreController implements Initializable{
 		thirdScore.setText(top5Scores.get(2).toString());
 		fourthScore.setText(top5Scores.get(3).toString());
 		fifthScore.setText(top5Scores.get(4).toString());
-		
-		
 	}
 	
 	// ----------------User Dashboard Button Functions -----------------------

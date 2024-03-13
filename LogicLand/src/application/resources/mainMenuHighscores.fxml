@@ -1,19 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.mainMenuHighscoresController">
    <children>
-      <TableView fx:id="highScoreTable" layoutX="432.0" layoutY="200.0" prefHeight="200.0" prefWidth="357.0">
-        <columns>
-          <TableColumn prefWidth="118.5" text="Name" />
-          <TableColumn prefWidth="97.0" text="User Name" />
-            <TableColumn prefWidth="140.5" text="Score" />
-        </columns>
-      </TableView>
       <Button fx:id="backButton" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" text="Back" />
+      <Text layoutX="461.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscores">
+         <font>
+            <Font name="Vermin Vibes Regular" size="62.0" />
+         </font>
+      </Text>
+      <Text layoutX="288.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1st">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text layoutX="283.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2nd">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text layoutX="573.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text layoutX="277.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3rd">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text layoutX="273.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4th">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text layoutX="273.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5th">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text layoutX="863.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="firstName" layoutX="573.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AAA" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="secondName" layoutX="573.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AAA" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="thirdName" layoutX="573.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AAA" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="fourthName" layoutX="573.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AAA" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="fifthName" layoutX="573.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AAA" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="firstScore" layoutX="877.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="secondScore" layoutX="877.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="thirdScore" layoutX="877.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="fourthScore" layoutX="877.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="fifthScore" layoutX="877.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

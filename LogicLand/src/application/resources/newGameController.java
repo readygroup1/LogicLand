@@ -16,6 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 public class newGameController implements Initializable{
 	
@@ -29,6 +30,8 @@ public class newGameController implements Initializable{
 			
 			
 	//---------------Variables--------------------
+		@FXML
+		Text status;
 		@FXML
 		ImageView image;
 		@FXML
@@ -95,10 +98,25 @@ public class newGameController implements Initializable{
 				String className = chooseClassName.getSelectionModel().getSelectedItem();
 				int classID = AccountManager.getClassID(className);
 				
-				if(userName.equals("") || userPassword.equals("") || userEmail.equals("") || userInitials.equals("") || classID == -1) {
-					System.out.println("There is an error in one of the input fields");
+				
+				// Error handling cases for text input
+				if(userName.trim().isEmpty() || userPassword.trim().isEmpty() || userEmail.trim().isEmpty() || userInitials.trim().isEmpty() || className.trim().isEmpty() || classID == -1) {
+					status.setText("Input fields cannot be blank!");
 					return;
 				}
+				if(AccountManager.db.userNameExists(userName)) {
+					status.setText("Name is taken!");
+					return;
+				}
+				if(userInitials.length() != 3) {
+					status.setText("Initials must be 3 letters!");
+					return;
+				}
+				if(userPassword.length() < 4) {
+					status.setText("Password is too short!");
+					return;
+				}
+				
 				AccountManager.newPlayerAccount(userName, userInitials, userPassword, userEmail, classID);
 			} else {
 				String userName = username.getText();
@@ -106,8 +124,22 @@ public class newGameController implements Initializable{
 				String userEmail = email.getText();
 				String userInitials = initials.getText();
 				String className = enterClassName.getText();
-				if(userName.equals("") || userPassword.equals("") || userEmail.equals("") || userInitials.equals("") || className.equals("")) {
-					System.out.println("There is an error in one of the input fields");
+				
+				// Error handling cases for text input
+				if(userName.trim().isEmpty() || userPassword.trim().isEmpty() || userEmail.trim().isEmpty() || userInitials.trim().isEmpty() || className.trim().isEmpty()) {
+					status.setText("Input fields cannot be blank!");
+					return;
+				}
+				if(AccountManager.db.classroomNameExists(className)) {
+					status.setText("Class name is taken!");
+					return;
+				}
+				if(userInitials.length() != 3) {
+					status.setText("Initials must be 3 letters!");
+					return;
+				}
+				if(userPassword.length() < 4) {
+					status.setText("Password is too short!");
 					return;
 				}
 				AccountManager.newAdminAccount(userName, userInitials, userPassword, userEmail, className);
