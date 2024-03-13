@@ -17,7 +17,6 @@ public class loginController {
 	//--------Constants/Resources---------
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	Image bulbOn = new Image(getClass().getResourceAsStream("images/bulbOn.png"));
-	AccountManager account = new AccountManager();
 	
 	//---------------Variables--------------------	
 	@FXML
@@ -43,7 +42,7 @@ public class loginController {
 			return;
 		}
 		
-		if(account.verifyLogin(userName, userPassword, isTeacher) == false) {
+		if(AccountManager.verifyLogin(userName, userPassword, isTeacher) == false) {
 			System.out.println("Incorrect username or password");
 			return;
 		}

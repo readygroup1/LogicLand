@@ -28,7 +28,7 @@ public class Database {
             return;
         }
         executeSQL(
-                "CREATE TABLE ADMIN (AdminID INT PRIMARY KEY, AdminName VARCHAR(255), Initals VARCHAR(255), AdminPassword VARCHAR(255), AdminEmail VARCHAR(255))");
+                "CREATE TABLE ADMIN (AdminID INT PRIMARY KEY, AdminName VARCHAR(255), Initials VARCHAR(255), AdminPassword VARCHAR(255), AdminEmail VARCHAR(255))");
         executeSQL(
                 "CREATE TABLE CLASSROOM (ClassID INT PRIMARY KEY, ClassName VARCHAR(255), AdminID INT, FOREIGN KEY (AdminID) REFERENCES ADMIN(AdminID))");
         executeSQL(
@@ -36,7 +36,7 @@ public class Database {
         executeSQL("CREATE TABLE PLAYER (" +
                 "PlayerID INT PRIMARY KEY, " +
                 "Name VARCHAR(255), " +
-                "Initals VARCHAR(255), " +
+                "Initials VARCHAR(255), " +
                 "Password VARCHAR(255), " +
                 "Email VARCHAR(255), " +
                 "SandboxID INT, " +
@@ -48,7 +48,7 @@ public class Database {
         executeSQL(
                 "CREATE TABLE LEVELS (LevelID INT PRIMARY KEY, CurrentLevel INT, LevelScore INT, CurrentLevelSaveState VARCHAR(255), PlayerID INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
         executeSQL(
-                "CREATE TABLE HIGHSCORE (PlayerID INT, Initals VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
+                "CREATE TABLE HIGHSCORE (PlayerID INT, Initials VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
         
         addAdmin("default", "df", "password", "default@email.com");
         addClassroom("<public classroom>", 1);
@@ -106,7 +106,7 @@ public class Database {
     }
     
     // VERY IMPORTANT: Cannot add a player if no classrooms exist
-    public int addPlayer(String name, String initals, String password, String email, int ClassID) {
+    public int addPlayer(String name, String initials, String password, String email, int ClassID) {
         // Count how many rows in table to find next primary key
         int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM PLAYER") + 1;
         // Count all rows in sandbox table to find next sandboxID
@@ -114,7 +114,7 @@ public class Database {
         // Create a new sandbox for the player
         executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '0000')");
 
-        executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initals + "', '" + password + "', '" + email
+        executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password + "', '" + email
                 + "', " + sandboxID + ", " + false + ", " + ClassID + ")");
         // Create 15 new levels for the player
         for (int i = 1; i <=numLevels; i++) {
@@ -124,14 +124,14 @@ public class Database {
                     + ")");
         }
         // Create a new highscore for the player
-        executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initals + "', 0)");
+        executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initials + "', 0)");
         return primaryKey;
     }
     
-    public int addAdmin(String name, String initals, String password, String email) {
+    public int addAdmin(String name, String initials, String password, String email) {
         // Count how many rows in table to find next primary key
         int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM ADMIN") + 1;
-        executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + initals + "', '" + password + "', '" + email
+        executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password + "', '" + email
                 + "')");
         return primaryKey;
     }
@@ -245,7 +245,7 @@ public class Database {
                 // Construct the player information string
             	String playerID = rs.getString("PlayerID");
                 String name = rs.getString("Name");
-                String initials = rs.getString("Initals");
+                String initials = rs.getString("Initials");
                 String password = rs.getString("Password"); // Consider security implications of handling passwords
                 String email = rs.getString("Email");
                 int sandboxID = rs.getInt("SandboxID");

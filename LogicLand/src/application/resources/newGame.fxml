@@ -20,12 +20,12 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <Label layoutX="408.0" layoutY="318.0" text="3 Letter Initals:" textAlignment="RIGHT" />
+      <Label layoutX="408.0" layoutY="318.0" text="3 Letter Initials:" textAlignment="RIGHT" />
       <Label layoutX="455.0" layoutY="429.0" text="Email:" />
       <Label layoutX="433.0" layoutY="393.0" text="Password:" />
       <Label layoutX="466.0" layoutY="281.0" text="Name:" />
       <Label layoutX="456.0" layoutY="466.0" text="Class:" />
-      <TextField fx:id="initals" layoutX="534.0" layoutY="314.0" />
+      <TextField fx:id="initials" layoutX="534.0" layoutY="314.0" />
       <PasswordField fx:id="password" accessibleRole="PASSWORD_FIELD" layoutX="534.0" layoutY="389.0" />
       <TextField fx:id="email" accessibleRole="TEXT_FIELD" layoutX="534.0" layoutY="425.0" />
       <ChoiceBox fx:id="chooseClassName" layoutX="534.0" layoutY="462.0" prefWidth="150.0" />

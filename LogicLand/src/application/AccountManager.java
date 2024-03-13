@@ -4,63 +4,67 @@ import java.util.ArrayList;
 
 public class AccountManager {
 	// Instance variable
-	private int currentUserID;
-	private boolean isAdmin;
+	private static int currentUserID;
+	private static boolean isAdmin;
 	public static Database db = new Database();
 	
 	public AccountManager(int currentUserID, boolean isTeacher) {
-		this.currentUserID = currentUserID;
-		isAdmin = isTeacher;
+		AccountManager.currentUserID = currentUserID;
+		AccountManager.isAdmin = isTeacher;
 	}
 	
 	public AccountManager() {
-		currentUserID = -1;
-		isAdmin = false;
+		AccountManager.currentUserID = -1;
+		AccountManager.isAdmin = false;
 		return;
 	}
 	
-	public boolean isAdmin() {
-		return isAdmin;
+	public static boolean isAdmin() {
+		return AccountManager.isAdmin;
 	}
 	
-	public int getCurrentUser() {
-		return currentUserID;
+	public static int getCurrentUser() {
+		return AccountManager.currentUserID;
 	}
 	
-	public void newPlayerAccount(String username, String initals, String password, String email, int classID) {
-		currentUserID = db.addPlayer(username, initals, password, email, classID);
-		isAdmin = false;
+	public static void newPlayerAccount(String username, String initials, String password, String email, int classID) {
+		AccountManager.currentUserID = db.addPlayer(username, initials, password, email, classID);
+		AccountManager.isAdmin = false;
 		db.printDB(); // Just for testing
 	}
 	
-	public void newAdminAccount(String username, String initals, String password, String email, String className) {
-		currentUserID = db.addAdmin(username, initals, password, email);
-		db.addClassroom(className, currentUserID);
-		isAdmin = true;
+	public static void newAdminAccount(String username, String initials, String password, String email, String className) {
+		AccountManager.currentUserID = db.addAdmin(username, initials, password, email);
+		db.addClassroom(className, AccountManager.currentUserID);
+		AccountManager.isAdmin = true;
 		db.printDB(); // Just for testing
 	}
 	
 	
-	public ArrayList<String> getClassrooms() {
+	public static ArrayList<String> getClassrooms() {
 		return db.getClassrooms();
 	}
 	
-	public int getClassID(String name) {
+	public static int getClassID(String name) {
 		return db.getClassID(name);
 	}
 	
+	public static String getPlayer(int playerID) {
+		return db.getPlayer(playerID);
+	}
 	
-	public boolean verifyLogin(String name, String password, boolean isAdmin) {
-		if(isAdmin) {
+	
+	public static boolean verifyLogin(String name, String password, boolean isAdmin) {
+		if(AccountManager.isAdmin) {
 			if(db.verifyAdmin(name, password)) {
-				currentUserID = db.getAdminID(name);
-				this.isAdmin = true;
+				AccountManager.currentUserID = db.getAdminID(name);
+				AccountManager.isAdmin = true;
 				return true;
 			}
 		} else {
 			if(db.verifyPlayer(name, password)) {
-				currentUserID = db.getPlayerID(name);
-				this.isAdmin = false;
+				AccountManager.currentUserID = db.getPlayerID(name);
+				AccountManager.isAdmin = false;
 				return true;
 			}
 		}

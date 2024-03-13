@@ -1,17 +1,26 @@
 package application.resources;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableView;
+import javafx.fxml.Initializable;
+import javafx.scene.text.Text;
 
-public class highscoreController {
+public class highscoreController implements Initializable{
 	
 	
 	// ----------------Variables -----------------------
 	@FXML
-	TableView HighScoreTable;
+	Text firstName;
+	
+	
+	
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+		firstName.setText("Helloooo");
+	}
 	
 	// ----------------User Dashboard Button Functions -----------------------
 	
