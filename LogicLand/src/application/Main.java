@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 
 
@@ -26,6 +27,8 @@ public class Main extends Application {
 			}
 			Parent root = FXMLLoader.load(getClass().getResource("/application/resources/mainMenu.fxml"));
 			Scene scene = new Scene(root);
+			Image applicationIcon = new Image(getClass().getResourceAsStream("/application/resources/images/Arcadebox.png"));
+	        stage.getIcons().add(applicationIcon);
 			stage.setScene(scene);
 			stage.setTitle("Logic Land");
 			stage.setResizable(false);

@@ -1,10 +1,24 @@
 package application.resources;
 
 import java.io.IOException;
-
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import application.User;
 import javafx.event.ActionEvent;
 
 public class roadmapController {
+		
+	  @FXML
+	  private Label name;
+	  @FXML
+	  private Label score;
+	  
+	  public void initialize() {
+		    User player = new User("1");
+		    name.setText(player.getUsername()); 
+		    score.setText(player.getHighScore());
+	}
+	
 	
 	// ----------------User Dashboard Button Functions -----------------------
 	
