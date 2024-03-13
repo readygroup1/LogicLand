@@ -9,11 +9,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Database {
-	// Instance variables
-	private String dbURLnocreate = "jdbc:derby:LogicLandDB;dataEncryption=true;encryptionAlgorithm=DES/CBC/NoPadding;bootPassword=brianstorm";
+    // Instance variables
+    private String dbURLnocreate = "jdbc:derby:LogicLandDB;dataEncryption=true;encryptionAlgorithm=DES/CBC/NoPadding;bootPassword=brianstorm";
     private String dbURL = dbURLnocreate + ";create=true";
     private int numLevels = 8;
-    
+
     public Database() {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -22,9 +22,9 @@ public class Database {
             e.printStackTrace();
         }
     }
-    
+
     private void createDB() {
-        if(databaseExists()) {
+        if (databaseExists()) {
             return;
         }
         executeSQL(
@@ -49,11 +49,11 @@ public class Database {
                 "CREATE TABLE LEVELS (LevelID INT PRIMARY KEY, CurrentLevel INT, LevelScore INT, CurrentLevelSaveState VARCHAR(255), PlayerID INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
         executeSQL(
                 "CREATE TABLE HIGHSCORE (PlayerID INT, Initials VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
-        
+
         addAdmin("default", "df", "password", "default@email.com");
         addClassroom("<public classroom>", 1);
     }
-    
+
     private boolean databaseExists() {
         try (Connection conn = DriverManager.getConnection(dbURLnocreate)) {
             return true;
@@ -70,7 +70,7 @@ public class Database {
             e.printStackTrace();
         }
     }
-    
+
     @SuppressWarnings("unused")
     private ResultSet executeQuery(String SQLquery) {
         try (Connection conn = DriverManager.getConnection(dbURL);
@@ -93,7 +93,7 @@ public class Database {
         }
         return -1;
     }
-    
+
     private int executeQueryGetInt(String SQLquery) {
         try (Connection conn = DriverManager.getConnection(dbURL);
                 Statement stmt = conn.createStatement()) {
@@ -104,7 +104,7 @@ public class Database {
         }
         return -1;
     }
-    
+
     // VERY IMPORTANT: Cannot add a player if no classrooms exist
     public int addPlayer(String name, String initials, String password, String email, int ClassID) {
         // Count how many rows in table to find next primary key
@@ -114,10 +114,11 @@ public class Database {
         // Create a new sandbox for the player
         executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '0000')");
 
-        executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password + "', '" + email
+        executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
+                + "', '" + email
                 + "', " + sandboxID + ", " + false + ", " + ClassID + ")");
         // Create 15 new levels for the player
-        for (int i = 1; i <=numLevels; i++) {
+        for (int i = 1; i <= numLevels; i++) {
             // count to find level primary key
             int levelPrimaryKey = executeQueryGetInt("SELECT COUNT(*) FROM LEVELS") + 1;
             executeSQL("INSERT INTO LEVELS VALUES (" + levelPrimaryKey + ", " + i + ", 0, '0000', " + primaryKey
@@ -127,11 +128,12 @@ public class Database {
         executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initials + "', 0)");
         return primaryKey;
     }
-    
+
     public int addAdmin(String name, String initials, String password, String email) {
         // Count how many rows in table to find next primary key
         int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM ADMIN") + 1;
-        executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password + "', '" + email
+        executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
+                + "', '" + email
                 + "')");
         return primaryKey;
     }
@@ -178,7 +180,7 @@ public class Database {
         // then delete player
         int sandboxID = getSandboxID(PlayerID);
         executeSQL("DELETE FROM PLAYER WHERE PlayerID = " + PlayerID);
-        //finally delete sandbox for player
+        // finally delete sandbox for player
         executeSQL("DELETE FROM SANDBOX WHERE SandboxID = " + sandboxID);
     }
 
@@ -230,20 +232,28 @@ public class Database {
     public int getAdminID(int ClassID) {
         return executeQueryGetInt("SELECT AdminID FROM CLASSROOM WHERE ClassID = " + ClassID);
     }
+    
+    public int getClassID(int playerID) {
+        return executeQueryGetInt("SELECT ClassID FROM PLAYER WHERE PlayerID = " + playerID);
+    }
+
+    public int getClassIDAdmin(int adminID) {
+        return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE AdminID = " + adminID);
+    }
 
     public String getPlayer(int PlayerID) {
         // Initialize a variable to hold player information
         String playerInfo = "Player not found";
         // SQL query to fetch all player details
         String SQLquery = "SELECT * FROM PLAYER WHERE PlayerID = " + PlayerID;
-        
+
         try (Connection conn = DriverManager.getConnection(dbURL);
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(SQLquery)) {
             // Check if the player exists
             if (rs.next()) {
                 // Construct the player information string
-            	String playerID = rs.getString("PlayerID");
+                String playerID = rs.getString("PlayerID");
                 String name = rs.getString("Name");
                 String initials = rs.getString("Initials");
                 String password = rs.getString("Password"); // Consider security implications of handling passwords
@@ -251,21 +261,19 @@ public class Database {
                 int sandboxID = rs.getInt("SandboxID");
                 boolean inTutorial = rs.getBoolean("inTutorial");
                 int classID = rs.getInt("ClassID");
-                
-                // Constructing the info string. Note: handling of the password might need to be reconsidered for security reasons.
+
+                // Constructing the info string. Note: handling of the password might need to be
+                // reconsidered for security reasons.
                 playerInfo = String.format("%s,%s,%s,%s,%d,%b,%d,%s",
-                                            name, initials, password, email, sandboxID, inTutorial, classID, playerID);
+                        name, initials, password, email, sandboxID, inTutorial, classID, playerID);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             playerInfo = "Error retrieving player: " + e.getMessage();
         }
-        
+
         return playerInfo;
     }
-
-
-    
 
     public int getSandboxID(int PlayerID) {
         return executeQueryGetInt("SELECT SandboxID FROM PLAYER WHERE PlayerID = " + PlayerID);
@@ -275,7 +283,7 @@ public class Database {
         return executeQueryGetInt("SELECT LevelID FROM LEVELS WHERE PlayerID = " + PlayerID + " AND CurrentLevel = "
                 + currentLevel);
     }
-    
+
     public int getPlayerCurrentLevel(int PlayerID) {
         return executeQueryGetInt("SELECT CurrentLevel FROM LEVELS WHERE PlayerID = " + PlayerID);
     }
@@ -283,7 +291,107 @@ public class Database {
     public int getHighScore(int PlayerID) {
         return executeQueryGetInt("SELECT UserScore FROM HIGHSCORE WHERE PlayerID = " + PlayerID);
     }
-    
+
+    public ArrayList<String> getTopFiveNames() throws SQLException {
+        // get the top 5 initials from high score table
+        try {
+            ArrayList<String> initials = new ArrayList<>();
+            try (Connection conn = DriverManager.getConnection(dbURL);
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT Initials FROM HIGHSCORE ORDER BY UserScore DESC")) {
+                for (int i = 0; i < 5; i++) {
+                    if (rs.next()) {
+                        initials.add(rs.getString(1));
+                    }
+                }
+            }
+            if(initials.size() < 5) {
+            	for (int i = initials.size(); i < 5; i++) {
+            		initials.add("AAA");
+            	}
+            }
+            return initials;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<Integer> getTopFiveScores() throws SQLException {
+        // get the top 5 scores from high score table
+        try {
+            ArrayList<Integer> scores = new ArrayList<>();
+            try (Connection conn = DriverManager.getConnection(dbURL);
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT UserScore FROM HIGHSCORE ORDER BY UserScore DESC")) {
+                for (int i = 0; i < 5; i++) {
+                    if (rs.next()) {
+                        scores.add(rs.getInt(1));
+                    }
+                }
+            }
+            if(scores.size() < 5) {
+            	for (int i = scores.size(); i < 5; i++) {
+            		scores.add(0);
+            	}
+            }
+            return scores;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<String> getTop5NamesClassroom(int classID) throws SQLException{
+        // get the top 5 initials from high score table, each player must have same classroom ID
+        try {
+            ArrayList<String> initials = new ArrayList<>();
+            try (Connection conn = DriverManager.getConnection(dbURL);
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT Initials FROM HIGHSCORE WHERE PlayerID IN (SELECT PlayerID FROM PLAYER WHERE ClassID = " + classID + ") ORDER BY UserScore DESC")) {
+                for (int i = 0; i < 5; i++) {
+                    if (rs.next()) {
+                        initials.add(rs.getString(1));
+                    }
+                }
+            }
+            if(initials.size() < 5) {
+            	for (int i = initials.size(); i < 5; i++) {
+            		initials.add("AAA");
+            	}
+            }
+            return initials;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<Integer> getTop5ScoresClassroom(int classID) throws SQLException {
+        // get the top 5 scores from high score table, each player must have same classroom ID
+        try {
+            ArrayList<Integer> scores = new ArrayList<>();
+            try (Connection conn = DriverManager.getConnection(dbURL);
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT UserScore FROM HIGHSCORE WHERE PlayerID IN (SELECT PlayerID FROM PLAYER WHERE ClassID = " + classID + ") ORDER BY UserScore DESC")) {
+                for (int i = 0; i < 5; i++) {
+                    if (rs.next()) {
+                        scores.add(rs.getInt(1));
+                    }
+                }
+            }
+            if(scores.size() < 5) {
+            	for (int i = scores.size(); i < 5; i++) {
+            		scores.add(0);
+            	}
+            }
+            return scores;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public ArrayList<String> getClassrooms() {
         ArrayList<String> classrooms = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(dbURL);
@@ -299,11 +407,11 @@ public class Database {
     }
 
     public int getClassID(String className) {
-    	try {
-    		return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE ClassName = '" + className + "'");
-    	} catch (Exception e) {
-    		return -1;
-    	}
+        try {
+            return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE ClassName = '" + className + "'");
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     public boolean verifyAdmin(String name, String password) {
