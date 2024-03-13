@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +22,6 @@ public class newGameController implements Initializable{
 	//--------Constants/Resources---------
 	
 			SceneSwitcher sceneSwitcher = new SceneSwitcher();
-			AccountManager account = new AccountManager();
 			Image bulbOn = new Image(getClass().getResourceAsStream("images/bulbOn.png"));
 			Image bulbOff = new Image(getClass().getResourceAsStream("images/bulbOff.png"));
 			Image batteryOn = new Image(getClass().getResourceAsStream("images/batteryOn.png"));
@@ -36,7 +36,7 @@ public class newGameController implements Initializable{
 		@FXML
 		Button createGame;
 		@FXML
-		TextField initals;
+		TextField initials;
 		@FXML
 		TextField username;
 		@FXML
@@ -52,7 +52,7 @@ public class newGameController implements Initializable{
 		Boolean isTeacher = false; // Used in imATeacher() to switch between input fields.
 		
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		chooseClassName.getItems().addAll(account.getClassrooms());
+		chooseClassName.getItems().addAll(AccountManager.getClassrooms());
 	}
 		
 	//---------Button Functions-------------------
@@ -91,26 +91,26 @@ public class newGameController implements Initializable{
 				String userName = username.getText();
 				String userPassword = password.getText();
 				String userEmail = email.getText();
-				String userInitals = initals.getText();
+				String userInitials = initials.getText();
 				String className = chooseClassName.getSelectionModel().getSelectedItem();
-				int classID = account.getClassID(className);
+				int classID = AccountManager.getClassID(className);
 				
-				if(userName.equals("") || userPassword.equals("") || userEmail.equals("") || userInitals.equals("") || classID == -1) {
+				if(userName.equals("") || userPassword.equals("") || userEmail.equals("") || userInitials.equals("") || classID == -1) {
 					System.out.println("There is an error in one of the input fields");
 					return;
 				}
-				account.newPlayerAccount(userName, userInitals, userPassword, userEmail, classID);
+				AccountManager.newPlayerAccount(userName, userInitials, userPassword, userEmail, classID);
 			} else {
 				String userName = username.getText();
 				String userPassword = password.getText();
 				String userEmail = email.getText();
-				String userInitals = initals.getText();
+				String userInitials = initials.getText();
 				String className = enterClassName.getText();
-				if(userName.equals("") || userPassword.equals("") || userEmail.equals("") || userInitals.equals("") || className.equals("")) {
+				if(userName.equals("") || userPassword.equals("") || userEmail.equals("") || userInitials.equals("") || className.equals("")) {
 					System.out.println("There is an error in one of the input fields");
 					return;
 				}
-				account.newAdminAccount(userName, userInitals, userPassword, userEmail, className);
+				AccountManager.newAdminAccount(userName, userInitials, userPassword, userEmail, className);
 			}
 			
 			if(isTeacher) {

@@ -11,14 +11,9 @@ public class User {
 	private String classID;
 	private String playerID;
 	
-	public User (String PlayerID) {
-		String player = AccountManager.db.getPlayer(Integer.parseInt(PlayerID));
-		
+	public User (int PlayerID) {
+		String player = AccountManager.getPlayer(PlayerID);
 		String info[] = player.split(",");
-		
-		for(int i = 0; i < info.length; i++) {
-			System.out.print(info.length);
-		}
 		
 		this.username = info[0];
 		this.initials = info[1];
