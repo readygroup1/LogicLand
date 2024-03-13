@@ -36,6 +36,7 @@ public class Main extends Application {
 			scene.getRoot().requestFocus();
 			
 			stage.show();		
+			
 		}
 		
 		catch(Exception e) {
