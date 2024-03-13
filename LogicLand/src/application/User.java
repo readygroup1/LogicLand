@@ -14,14 +14,16 @@ public class User {
 	public User (int PlayerID) {
 		String player = AccountManager.getPlayer(PlayerID);
 		String info[] = player.split(",");
+		if(info.length > 7) {
+			this.username = info[0];
+			this.initials = info[1];
+			this.email = info[3];
+			this.sandboxID = info[4];
+			this.intutorial = info[5];
+			this.classID = info[6];
+			this.playerID = info[7];
+		}
 		
-		this.username = info[0];
-		this.initials = info[1];
-		this.email = info[3];
-		this.sandboxID = info[4];
-		this.intutorial = info[5];
-		this.classID = info[6];
-		this.playerID = info[7];
 		
 	}
 

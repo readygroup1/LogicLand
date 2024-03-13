@@ -35,7 +35,7 @@ public class loginController {
 	
 	// ----------------Button Functions -----------------------
 	public void login(ActionEvent event) throws Exception {
-		String userName = username.getText();;
+		String userName = username.getText();
 		String userPassword = password.getText();
 		if(userName.equals("") || userPassword.equals("")) {
 			System.out.println("Error in one of the input fields");
