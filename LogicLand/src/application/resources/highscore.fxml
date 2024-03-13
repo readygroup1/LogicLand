@@ -71,7 +71,52 @@
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text fx:id="firstName" layoutX="525.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;blank&gt;">
+      <Text fx:id="firstName" layoutX="563.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AAA" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="secondName" layoutX="563.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AAA" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="thirdName" layoutX="563.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AAA" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="fourthName" layoutX="563.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AAA" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="fifthName" layoutX="563.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AAA" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="firstScore" layoutX="867.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="secondScore" layoutX="867.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="thirdScore" layoutX="867.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="fourthScore" layoutX="867.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" wrappingWidth="70.875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="fifthScore" layoutX="867.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" wrappingWidth="70.875">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
