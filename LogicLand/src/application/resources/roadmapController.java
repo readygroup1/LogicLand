@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import application.AccountManager;
+import application.Instructor;
 import application.Main;
 import application.User;
 import javafx.event.ActionEvent;
@@ -20,8 +21,11 @@ public class roadmapController {
 		    User player = new User(AccountManager.getCurrentUser());
 		    name.setText(player.getUsername()); 
 		    score.setText(player.getHighScore());
+		    
 		  } else if(AccountManager.isAdmin()) {
-			  
+			  Instructor teacher = new Instructor(AccountManager.getCurrentUser());
+			    name.setText(teacher.getName()); 
+			    score.setText("Class ID: " + teacher.getClassID());
 		  }
 	}
 	  
