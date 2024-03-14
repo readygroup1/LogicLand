@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 public class loginController {	
 
@@ -19,6 +20,8 @@ public class loginController {
 	Image bulbOn = new Image(getClass().getResourceAsStream("images/bulbOn.png"));
 	
 	//---------------Variables--------------------	
+	@FXML
+	Text status;
 	@FXML
 	ImageView bulb;
 	@FXML
@@ -37,13 +40,13 @@ public class loginController {
 	public void login(ActionEvent event) throws Exception {
 		String userName = username.getText();
 		String userPassword = password.getText();
-		if(userName.equals("") || userPassword.equals("")) {
-			System.out.println("Error in one of the input fields");
+		if(userName.trim().isEmpty() || userPassword.trim().isEmpty()) {
+			status.setText("Input fields cannot be blank!");
 			return;
 		}
 		
 		if(AccountManager.verifyLogin(userName, userPassword, isTeacher) == false) {
-			System.out.println("Incorrect username or password");
+			status.setText("Incorrect username or password");
 			return;
 		}
 		
