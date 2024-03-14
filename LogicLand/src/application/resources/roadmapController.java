@@ -21,9 +21,11 @@ public class roadmapController {
 		    User player = new User(AccountManager.getCurrentUser());
 		    name.setText(player.getUsername()); 
 		    score.setText(player.getHighScore());
+		  } else if(AccountManager.isAdmin()) {
+			  
 		  }
 	}
-	
+	  
 	
 	// ----------------User Dashboard Button Functions -----------------------
 	
