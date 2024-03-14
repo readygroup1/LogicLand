@@ -23,15 +23,9 @@ public class Instructor {
 	}
 	
 
-//	public Classroom getClassroom() {
-//		
-//		
-//		AccountManager.db.getClassID(AccountManager.getCurrentUser());
-//		
-//		
-//		return void;
-//	
-//}
+	public Classroom getClassroom() {
+		return myRoom;
+	}
 	
 
 }

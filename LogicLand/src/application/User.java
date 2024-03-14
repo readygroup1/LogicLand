@@ -6,10 +6,10 @@ public class User {
 	private String initials;
 	private String email;
 	private String highScore;
-	private String sandboxID;
+	private int sandboxID;
 	private String intutorial;
-	private String classID;
-	private String playerID;
+	private int classID;
+	private int playerID;
 	
 	public User (int PlayerID) {
 		String player = AccountManager.getPlayer(PlayerID);
@@ -18,10 +18,10 @@ public class User {
 			this.username = info[0];
 			this.initials = info[1];
 			this.email = info[3];
-			this.sandboxID = info[4];
+			this.sandboxID = Integer.parseInt(info[4]);
 			this.intutorial = info[5];
-			this.classID = info[6];
-			this.playerID = info[7];
+			this.classID = Integer.parseInt(info[6]);   
+			this.playerID = Integer.parseInt(info[7]);    
 		}
 		
 		
@@ -42,7 +42,7 @@ public class User {
 		return highScore;
 	}
 
-	public String getSandboxID() {
+	public int getSandboxID() {
 		return sandboxID;
 	}
 
@@ -50,8 +50,12 @@ public class User {
 		return intutorial;
 	}
 
-	public String getClassID() {
+	public int getClassID() {
 		return classID;
+	}
+	
+	public int getPlayerID() {
+		return playerID;
 	}
 
 	
