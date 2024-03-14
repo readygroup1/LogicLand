@@ -125,6 +125,37 @@ public class Database {
         return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE AdminID = " + adminID);
     }
 
+    public String getAdminName(int AdminID) {
+        // Initialize a variable to hold player information
+        String name = "Player not found";
+        // SQL query to fetch all player details
+        String SQLquery = "SELECT AdminName FROM ADMIN WHERE AdminID = " + AdminID;
+
+        try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(SQLquery)) {
+            // Check if the player exists
+            if (rs.next()) {
+                // Construct the player information string
+
+                
+                name = rs.getString("AdminName");
+                
+
+                // Constructing the info string. Note: handling of the password might need to be
+                // reconsidered for security reasons.
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            name = "Error retrieving player: " + e.getMessage();
+        }
+
+        return name;
+    }
+    
+    
+    
+    
     public String getPlayer(int PlayerID) {
         // Initialize a variable to hold player information
         String playerInfo = "Player not found";
@@ -158,6 +189,8 @@ public class Database {
 
         return playerInfo;
     }
+    
+    
 
     public int getSandboxID(int PlayerID) {
         return executeQueryGetInt("SELECT SandboxID FROM PLAYER WHERE PlayerID = " + PlayerID);

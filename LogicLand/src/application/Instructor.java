@@ -3,19 +3,25 @@ package application;
 public class Instructor {
 	
 	
-		
-		
+	private String name;
+	private int ClassID;
+	
+	
+	public Instructor(int AdminID) {
+		name = AccountManager.db.getAdminName(AdminID);
+		ClassID = AccountManager.db.getClassID(AdminID);
+	}
 	
 
 //	public Classroom getClassroom() {
-//		Database db = new Database();
 //		
-//		db.getClass();
 //		
-//		Classroom MyClass = new Classroom(AccountManager.getCurrentUser());
-//		return MyClass;
+//		AccountManager.db.getClassID(AccountManager.getCurrentUser());
 //		
-//	}
+//		
+//		return void;
+//	
+//}
 	
 
 }
