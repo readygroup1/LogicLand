@@ -25,15 +25,17 @@ public class newGameController implements Initializable{
 			SceneSwitcher sceneSwitcher = new SceneSwitcher();
 			Image bulbOn = new Image(getClass().getResourceAsStream("images/bulbOn.png"));
 			Image bulbOff = new Image(getClass().getResourceAsStream("images/bulbOff.png"));
-			Image batteryOn = new Image(getClass().getResourceAsStream("images/batteryOn.png"));
-			Image batteryOff = new Image(getClass().getResourceAsStream("images/batteryOff.png"));
+			Image student = new Image(getClass().getResourceAsStream("images/student.png"));
+			Image teacher = new Image(getClass().getResourceAsStream("images/teacher.png"));
 			
 			
 	//---------------Variables--------------------
 		@FXML
 		Text status;
 		@FXML
-		ImageView image;
+		ImageView userIcon;
+		@FXML
+		ImageView bulb;
 		@FXML
 		Button backButton;
 		@FXML
@@ -73,17 +75,20 @@ public class newGameController implements Initializable{
 	// Function for imATeacher checkbox that switches between student and teacher class input fields.
 	public void imATeacher(ActionEvent event) {
 		if(isTeacher) {
-			image.setImage(bulbOff);
+			userIcon.setImage(student);
 			chooseClassName.setVisible(true);
 			enterClassName.setVisible(false);
 			isTeacher = false;
+			// This lines the bulb up with the head
+			bulb.setX(bulb.getX()-15);
 		}
 		
 		else {
-			image.setImage(batteryOff);
+			userIcon.setImage(teacher);
 			chooseClassName.setVisible(false);
 			enterClassName.setVisible(true);
-			isTeacher = true;			
+			isTeacher = true;
+			bulb.setX(bulb.getX()+15);
 		}		
 	}
 	
@@ -148,15 +153,9 @@ public class newGameController implements Initializable{
 				AccountManager.newAdminAccount(userName, userInitials, userPassword, userEmail, className);
 			}
 			
-			if(isTeacher) {
-				image.setImage(batteryOn);
-			}
 			
-			else {
-				image.setImage(bulbOn);
-			}	
-					
-		sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
+			bulb.setImage(bulbOn);	
+			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
 		}
 		catch(Exception e) {
 			e.printStackTrace();

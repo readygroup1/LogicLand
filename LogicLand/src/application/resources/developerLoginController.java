@@ -32,7 +32,7 @@ public class developerLoginController {
 			try {
 			
 				lightning.setImage(lightningOn);		
-				sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
+				sceneSwitcher.fadeSwitchScene(event, "roadmap.fxml");
 			}
 			catch(Exception e) {
 				e.printStackTrace();
