@@ -15,33 +15,38 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.newGameController">
    <children>
       <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" text="Back" />
-      <TextField fx:id="username" layoutX="534.0" layoutY="277.0" />
-      <Label layoutX="448.0" layoutY="44.0" text="Create New Game">
+      <TextField fx:id="username" layoutX="532.0" layoutY="303.0" />
+      <Label layoutX="449.0" layoutY="14.0" text="Create New Game">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <Label layoutX="408.0" layoutY="318.0" text="3 Letter Initials:" textAlignment="RIGHT" />
-      <Label layoutX="455.0" layoutY="429.0" text="Email:" />
-      <Label layoutX="433.0" layoutY="393.0" text="Password:" />
-      <Label layoutX="466.0" layoutY="281.0" text="Name:" />
-      <Label layoutX="456.0" layoutY="466.0" text="Class:" />
-      <TextField fx:id="initials" layoutX="534.0" layoutY="314.0" />
-      <PasswordField fx:id="password" accessibleRole="PASSWORD_FIELD" layoutX="534.0" layoutY="389.0" />
-      <TextField fx:id="email" accessibleRole="TEXT_FIELD" layoutX="534.0" layoutY="425.0" />
-      <ChoiceBox fx:id="chooseClassName" layoutX="534.0" layoutY="462.0" prefWidth="150.0" />
-      <CheckBox fx:id="imATeacher" contentDisplay="RIGHT" layoutX="549.0" layoutY="504.0" mnemonicParsing="false" onAction="#imATeacher" text="I am a Teacher" />
-      <Button fx:id="createGame" layoutX="534.0" layoutY="597.0" mnemonicParsing="false" onAction="#createGame" prefHeight="50.0" prefWidth="150.0" text="Create Game" />
-      <TextField fx:id="enterClassName" layoutX="534.0" layoutY="462.0" promptText="Enter Class Name" visible="false" />
-      <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="520.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="406.0" layoutY="344.0" text="3 Letter Initials:" textAlignment="RIGHT" />
+      <Label layoutX="453.0" layoutY="455.0" text="Email:" />
+      <Label layoutX="431.0" layoutY="419.0" text="Password:" />
+      <Label layoutX="464.0" layoutY="307.0" text="Name:" />
+      <Label layoutX="454.0" layoutY="492.0" text="Class:" />
+      <TextField fx:id="initials" layoutX="532.0" layoutY="340.0" />
+      <PasswordField fx:id="password" accessibleRole="PASSWORD_FIELD" layoutX="532.0" layoutY="415.0" />
+      <TextField fx:id="email" accessibleRole="TEXT_FIELD" layoutX="532.0" layoutY="451.0" />
+      <ChoiceBox fx:id="chooseClassName" layoutX="532.0" layoutY="488.0" prefWidth="150.0" />
+      <CheckBox fx:id="imATeacher" contentDisplay="RIGHT" layoutX="547.0" layoutY="530.0" mnemonicParsing="false" onAction="#imATeacher" text="I am a Teacher" />
+      <Button fx:id="createGame" layoutX="543.0" layoutY="615.0" mnemonicParsing="false" onAction="#createGame" prefHeight="50.0" prefWidth="150.0" text="Create Game" />
+      <TextField fx:id="enterClassName" layoutX="532.0" layoutY="488.0" promptText="Enter Class Name" visible="false" />
+      <ImageView fx:id="bulb" fitHeight="44.0" fitWidth="39.0" layoutX="599.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/bulbOff.png" />
          </image>
       </ImageView>
-      <Text fx:id="status" layoutX="408.0" layoutY="566.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="428.8000488281249">
+      <Text fx:id="status" layoutX="406.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="428.8000488281249">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
+      <ImageView fx:id="userIcon" fitHeight="150.0" fitWidth="200.0" layoutX="543.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/student.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
