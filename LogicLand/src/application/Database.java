@@ -9,11 +9,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Database {
-    // Instance variables
+    // Instance variables -------------------------------------------------------------------
     private String dbURLnocreate = "jdbc:derby:LogicLandDB;dataEncryption=true;encryptionAlgorithm=DES/CBC/NoPadding;bootPassword=brianstorm";
     private String dbURL = dbURLnocreate + ";create=true";
     private int numLevels = 8;
    
+    // Constructor ---------------------------------------------------------------------------
     public Database() {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -23,6 +24,7 @@ public class Database {
         }
     }
 
+    // Init -----------------------------------------------------------------------------------
     private void createDB() {
         if (databaseExists()) {
             return;
@@ -51,15 +53,34 @@ public class Database {
                 "CREATE TABLE HIGHSCORE (PlayerID INT, Initials VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
 
         addAdmin("default", "df", "password", "default@email.com");
-        addClassroom("<public classroom>", 1);
+        addClassroom("<public>", 1);
     }
 
+    // Boolean methods ----------------------------------------------------------------------------------
     private boolean databaseExists() {
         try (Connection conn = DriverManager.getConnection(dbURLnocreate)) {
             return true;
         } catch (SQLException e) {
             return false;
         }
+    }
+    
+    public boolean verifyAdmin(String name, String password) {
+        return executeQueryGetInt("SELECT AdminID FROM ADMIN WHERE AdminName = '" + name + "' AND AdminPassword = '"
+                + password + "'") != -1;
+    }
+
+    public boolean verifyPlayer(String name, String password) {
+        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "' AND Password = '"
+                + password + "'") != -1;
+    }
+
+    public boolean userNameExists(String name) {
+        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "'") != -1;
+    }
+
+    public boolean classroomNameExists(String name) {
+        return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE ClassName = '" + name + "'") != -1;
     }
 
     private void executeSQL(String SQL) {
@@ -71,29 +92,8 @@ public class Database {
         }
     }
 
-    @SuppressWarnings("unused")
-    private ResultSet executeQuery(String SQLquery) {
-        try (Connection conn = DriverManager.getConnection(dbURL);
-                Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery(SQLquery);
-            return rs.next() ? rs : null;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    @SuppressWarnings("unused")
-    private int getInt(ResultSet rs, int index) {
-        try (Connection conn = DriverManager.getConnection(dbURL);
-                Statement stmt = conn.createStatement()) {
-            return rs.getInt(index);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
-
+    // Getter methods ----------------------------------------------------------------------------------
+ 
     private int executeQueryGetInt(String SQLquery) {
         try (Connection conn = DriverManager.getConnection(dbURL);
                 Statement stmt = conn.createStatement()) {
@@ -104,123 +104,7 @@ public class Database {
         }
         return -1;
     }
-
-    // VERY IMPORTANT: Cannot add a player if no classrooms exist
-    public int addPlayer(String name, String initials, String password, String email, int ClassID) {
-        // Count how many rows in table to find next primary key
-        int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM PLAYER") + 1;
-        // Count all rows in sandbox table to find next sandboxID
-        int sandboxID = executeQueryGetInt("SELECT COUNT(*) FROM SANDBOX") + 1;
-        // Create a new sandbox for the player
-        executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '0000')");
-
-        executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
-                + "', '" + email
-                + "', " + sandboxID + ", " + false + ", " + ClassID + ")");
-        // Create 15 new levels for the player
-        for (int i = 1; i <= numLevels; i++) {
-            // count to find level primary key
-            int levelPrimaryKey = executeQueryGetInt("SELECT COUNT(*) FROM LEVELS") + 1;
-            executeSQL("INSERT INTO LEVELS VALUES (" + levelPrimaryKey + ", " + i + ", 0, '0000', " + primaryKey
-                    + ")");
-        }
-        // Create a new highscore for the player
-        executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initials + "', 0)");
-        return primaryKey;
-    }
-
-    public int addAdmin(String name, String initials, String password, String email) {
-        // Count how many rows in table to find next primary key
-        int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM ADMIN") + 1;
-        executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
-                + "', '" + email
-                + "')");
-        return primaryKey;
-    }
-
-    // VERY IMPORTANT: Cannot add a classroom if no admins exist
-    public void addClassroom(String name, int AdminID) {
-        // Count how many rows in table to find next primary key
-        int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM CLASSROOM") + 1;
-        executeSQL("INSERT INTO CLASSROOM VALUES (" + primaryKey + ", '" + name + "', " + AdminID + ")");
-    }
-
-    public void updatePlayerSandbox(int PlayerID, String projectTitle, String saveState) {
-        // First get the sandbox ID from playerID
-        int sandboxID = getSandboxID(PlayerID);
-        executeSQL("UPDATE SANDBOX SET ProjectTitle = '" + projectTitle
-                + "', LastModified = CURRENT_DATE, SaveState = '" + saveState + "' WHERE SandboxID = " + sandboxID);
-    }
-
-    public void updatePlayerProgress(int LevelID, int LevelScore, String CurrentLevelSaveState) {
-        executeSQL("UPDATE LEVELS SET LevelScore = " + LevelScore + ", CurrentLevelSaveState = '"
-                + CurrentLevelSaveState + "' WHERE LevelID = " + LevelID);
-    }
-
-    public void updatePlayer(int PlayerID, String name, String password, String email, int ClassID,
-            boolean inTutorial) {
-        executeSQL("UPDATE PLAYER SET Name = '" + name + "', Password = '" + password + "', Email = '" + email
-                + "', ClassID = " + ClassID + ", inTutorial = " + inTutorial + " WHERE PlayerID = " + PlayerID);
-    }
-
-    public void updateAdmin(int AdminID, String name, String password, String email) {
-        executeSQL("UPDATE ADMIN SET AdminName = '" + name + "', AdminPassword = '" + password
-                + "', AdminEmail = '" + email + "' WHERE AdminID = " + AdminID);
-    }
-
-    public void updateHighScore(int PlayerID, int UserScore) {
-        executeSQL("UPDATE HIGHSCORE SET UserScore = " + UserScore + " WHERE PlayerID = " + PlayerID);
-    }
-
-    public void deletePlayer(int PlayerID) {
-        // first delete highscore for player
-        executeSQL("DELETE FROM HIGHSCORE WHERE PlayerID = " + PlayerID);
-        // then delete levels for player
-        executeSQL("DELETE FROM LEVELS WHERE PlayerID = " + PlayerID);
-        // then delete player
-        int sandboxID = getSandboxID(PlayerID);
-        executeSQL("DELETE FROM PLAYER WHERE PlayerID = " + PlayerID);
-        // finally delete sandbox for player
-        executeSQL("DELETE FROM SANDBOX WHERE SandboxID = " + sandboxID);
-    }
-
-    public void printDB() {
-        try (Connection conn = DriverManager.getConnection(dbURL)) {
-            DatabaseMetaData dbMetaData = conn.getMetaData();
-            String[] types = { "TABLE" };
-            ResultSet tables = dbMetaData.getTables(null, null, "%", types);
-
-            while (tables.next()) {
-                String tableName = tables.getString("TABLE_NAME");
-                System.out.println("Table: " + tableName);
-
-                // Get columns for the table
-                ResultSet columns = dbMetaData.getColumns(null, null, tableName, "%");
-                StringBuilder columnNames = new StringBuilder("| ");
-                while (columns.next()) {
-                    columnNames.append(columns.getString("COLUMN_NAME")).append(" | ");
-                }
-                System.out.println(columnNames.toString());
-
-                // Get data for the table
-                try (Statement stmt = conn.createStatement();
-                        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName)) {
-
-                    while (rs.next()) {
-                        StringBuilder rowData = new StringBuilder("| ");
-                        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                            rowData.append(rs.getString(i)).append(" | ");
-                        }
-                        System.out.println(rowData.toString());
-                    }
-                }
-                System.out.println("\n");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     public int getPlayerID(String name) {
         return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "'");
     }
@@ -414,22 +298,135 @@ public class Database {
         }
     }
 
-    public boolean verifyAdmin(String name, String password) {
-        return executeQueryGetInt("SELECT AdminID FROM ADMIN WHERE AdminName = '" + name + "' AND AdminPassword = '"
-                + password + "'") != -1;
+    public String getClassName(int classID) {
+    	try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT ClassName FROM CLASSROOM WHERE ClassID = " + classID)) {
+           if(rs.next()) {
+                return rs.getString(1);
+           } else {
+        	   return "Class not found";
+           }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    	return "Error";
+    }
+    
+    // Setter methods -------------------------------------------------------------------------------
+  
+    public int addPlayer(String name, String initials, String password, String email, int ClassID) {
+        // Count how many rows in table to find next primary key
+        int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM PLAYER") + 1;
+        // Count all rows in sandbox table to find next sandboxID
+        int sandboxID = executeQueryGetInt("SELECT COUNT(*) FROM SANDBOX") + 1;
+        // Create a new sandbox for the player
+        executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '0000')");
+
+        executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
+                + "', '" + email
+                + "', " + sandboxID + ", " + false + ", " + ClassID + ")");
+        // Create 15 new levels for the player
+        for (int i = 1; i <= numLevels; i++) {
+            // count to find level primary key
+            int levelPrimaryKey = executeQueryGetInt("SELECT COUNT(*) FROM LEVELS") + 1;
+            executeSQL("INSERT INTO LEVELS VALUES (" + levelPrimaryKey + ", " + i + ", 0, '0000', " + primaryKey
+                    + ")");
+        }
+        // Create a new highscore for the player
+        executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initials + "', 0)");
+        return primaryKey;
     }
 
-    public boolean verifyPlayer(String name, String password) {
-        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "' AND Password = '"
-                + password + "'") != -1;
+    public int addAdmin(String name, String initials, String password, String email) {
+        // Count how many rows in table to find next primary key
+        int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM ADMIN") + 1;
+        executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
+                + "', '" + email
+                + "')");
+        return primaryKey;
     }
 
-    public boolean userNameExists(String name) {
-        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "'") != -1;
+    public void addClassroom(String name, int AdminID) {
+        // Count how many rows in table to find next primary key
+        int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM CLASSROOM") + 1;
+        executeSQL("INSERT INTO CLASSROOM VALUES (" + primaryKey + ", '" + name + "', " + AdminID + ")");
     }
 
-    public boolean classroomNameExists(String name) {
-        return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE ClassName = '" + name + "'") != -1;
+    public void updatePlayerSandbox(int PlayerID, String projectTitle, String saveState) {
+        // First get the sandbox ID from playerID
+        int sandboxID = getSandboxID(PlayerID);
+        executeSQL("UPDATE SANDBOX SET ProjectTitle = '" + projectTitle
+                + "', LastModified = CURRENT_DATE, SaveState = '" + saveState + "' WHERE SandboxID = " + sandboxID);
+    }
+
+    public void updatePlayerProgress(int LevelID, int LevelScore, String CurrentLevelSaveState) {
+        executeSQL("UPDATE LEVELS SET LevelScore = " + LevelScore + ", CurrentLevelSaveState = '"
+                + CurrentLevelSaveState + "' WHERE LevelID = " + LevelID);
+    }
+
+    public void updatePlayer(int PlayerID, String name, String password, String email, int ClassID,
+            boolean inTutorial) {
+        executeSQL("UPDATE PLAYER SET Name = '" + name + "', Password = '" + password + "', Email = '" + email
+                + "', ClassID = " + ClassID + ", inTutorial = " + inTutorial + " WHERE PlayerID = " + PlayerID);
+    }
+
+    public void updateAdmin(int AdminID, String name, String password, String email) {
+        executeSQL("UPDATE ADMIN SET AdminName = '" + name + "', AdminPassword = '" + password
+                + "', AdminEmail = '" + email + "' WHERE AdminID = " + AdminID);
+    }
+
+    public void updateHighScore(int PlayerID, int UserScore) {
+        executeSQL("UPDATE HIGHSCORE SET UserScore = " + UserScore + " WHERE PlayerID = " + PlayerID);
+    }
+
+    public void deletePlayer(int PlayerID) {
+        // first delete highscore for player
+        executeSQL("DELETE FROM HIGHSCORE WHERE PlayerID = " + PlayerID);
+        // then delete levels for player
+        executeSQL("DELETE FROM LEVELS WHERE PlayerID = " + PlayerID);
+        // then delete player
+        int sandboxID = getSandboxID(PlayerID);
+        executeSQL("DELETE FROM PLAYER WHERE PlayerID = " + PlayerID);
+        // finally delete sandbox for player
+        executeSQL("DELETE FROM SANDBOX WHERE SandboxID = " + sandboxID);
+    }
+
+    // Misc methods -----------------------------------------------------------------------------------
+    
+    public void printDB() {
+        try (Connection conn = DriverManager.getConnection(dbURL)) {
+            DatabaseMetaData dbMetaData = conn.getMetaData();
+            String[] types = { "TABLE" };
+            ResultSet tables = dbMetaData.getTables(null, null, "%", types);
+
+            while (tables.next()) {
+                String tableName = tables.getString("TABLE_NAME");
+                // Get columns for the table
+                ResultSet columns = dbMetaData.getColumns(null, null, tableName, "%");
+                StringBuilder columnNames = new StringBuilder("| ");
+                while (columns.next()) {
+                    columnNames.append(columns.getString("COLUMN_NAME")).append(" | ");
+                }
+                System.out.println(columnNames.toString());
+
+                // Get data for the table
+                try (Statement stmt = conn.createStatement();
+                        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName)) {
+
+                    while (rs.next()) {
+                        StringBuilder rowData = new StringBuilder("| ");
+                        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                            rowData.append(rs.getString(i)).append(" | ");
+                        }
+                        System.out.println(rowData.toString());
+                    }
+                }
+                System.out.println("\n");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void resetDataBase() {
