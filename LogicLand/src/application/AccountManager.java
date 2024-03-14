@@ -49,6 +49,10 @@ public class AccountManager {
 	public static int getClassID(String name) {
 		return db.getClassID(name);
 	}
+
+	public static String getClassName(int classID) {
+		return db.getClassName(classID);
+	}
 	
 	public static String getPlayer(int playerID) {
 		return db.getPlayer(playerID);

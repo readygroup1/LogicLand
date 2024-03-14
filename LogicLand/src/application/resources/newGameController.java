@@ -134,6 +134,9 @@ public class newGameController implements Initializable{
 					status.setText("Class name is taken!");
 					return;
 				}
+				if(className.length() > 15) {
+					status.setText("Class name is too long");
+				}
 				if(userInitials.length() != 3) {
 					status.setText("Initials must be 3 letters!");
 					return;

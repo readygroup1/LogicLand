@@ -37,6 +37,9 @@ public class highscoreController implements Initializable{
 	@FXML
 	Text fifthScore;
 	
+	@FXML
+	Text className;
+	
 	
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		ArrayList<String> top5Names = AccountManager.getTopFiveNames(AccountManager.getCurrentClassID());
@@ -51,6 +54,12 @@ public class highscoreController implements Initializable{
 		thirdScore.setText(top5Scores.get(2).toString());
 		fourthScore.setText(top5Scores.get(3).toString());
 		fifthScore.setText(top5Scores.get(4).toString());
+		if(AccountManager.isAdmin()) {
+			className.setText(AccountManager.getClassName(AccountManager.db.getClassIDAdmin(AccountManager.getCurrentUser())));
+		} else {
+			System.out.println(AccountManager.db.getClassID(AccountManager.getCurrentUser()));
+			className.setText(AccountManager.getClassName(AccountManager.db.getClassID(AccountManager.getCurrentUser())));
+		}
 	}
 	
 	// ----------------User Dashboard Button Functions -----------------------

@@ -121,5 +121,15 @@
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
+      <Text layoutX="5.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class:">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="className" layoutX="144.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="369.06663513183594">
+         <font>
+            <Font name="Vermin Vibes Regular" size="42.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

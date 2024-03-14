@@ -51,7 +51,7 @@ public class Database {
                 "CREATE TABLE HIGHSCORE (PlayerID INT, Initials VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
 
         addAdmin("default", "df", "password", "default@email.com");
-        addClassroom("<public classroom>", 1);
+        addClassroom("<public>", 1);
     }
 
     private boolean databaseExists() {
@@ -412,6 +412,21 @@ public class Database {
         } catch (Exception e) {
             return -1;
         }
+    }
+
+    public String getClassName(int classID) {
+    	try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT ClassName FROM CLASSROOM WHERE ClassID = " + classID)) {
+           if(rs.next()) {
+                return rs.getString(1);
+           } else {
+        	   return "Class not found";
+           }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    	return "Error";
     }
 
     public boolean verifyAdmin(String name, String password) {
