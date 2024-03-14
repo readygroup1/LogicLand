@@ -12,7 +12,7 @@ import javafx.event.ActionEvent;
 public class roadmapController {
 		
 	  @FXML
-	  private Text name; //Testing Kalundi Push
+	  private Text name;
 	  @FXML
 	  private Text score;
 	  
