@@ -1,9 +1,12 @@
 .button {
   -fx-background-color: rgba(255, 255, 255, 0); /* White with 0% opacity */
   -fx-text-fill: #FFF; /* White */
+  -fx-padding: -20, -7 -5 -7;
+  
 }
 
 .button:hover {
   -fx-background-color: #FF9900; /* Bright orange on hover */
   -fx-cursor: hand; /* Change cursor to hand */
+  -fx-padding: -20, -7 -5 -7;
 }
