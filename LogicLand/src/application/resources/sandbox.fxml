@@ -1,41 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.sandboxController">
+<Pane fx:id="circuitBoardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.sandboxController">
    <children>
-      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" text="Options">
+   <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" text="Options">
          <font>
             <Font size="24.0" />
-         </font>
-      </Button>
+         </font></Button>
       <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" text="High Scores">
          <font>
             <Font size="24.0" />
-         </font>
-      </Button>
+         </font></Button>
       <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" text="Discoveries">
          <font>
             <Font size="24.0" />
-         </font>
-      </Button>
+         </font></Button>
       <Button fx:id="sandbox" layoutX="256.0" layoutY="661.0" mnemonicParsing="false" onAction="#sandbox" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: #DDEEFF; -fx-border-color: #607D8B; -fx-border-radius: 2;" text="Sand Box">
          <font>
             <Font size="24.0" />
-         </font>
-      </Button>
+         </font></Button>
       <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" text="RoadMap">
          <font>
             <Font size="24.0" />
-         </font>
-      </Button>
-      <VBox fx:id="switchPanel" prefHeight="663.0" prefWidth="121.0" />
-      <Pane fx:id="pane" layoutX="118.0" prefHeight="566.0" prefWidth="1162.0" />
-      <HBox fx:id="iconPanel" layoutX="118.0" layoutY="566.0" prefHeight="96.0" prefWidth="1162.0" />
+         </font></Button>
+      <ImageView fx:id="batteryGen" fitHeight="75.0" fitWidth="75.0" layoutX="384.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/batteryOff.png" />
+         </image></ImageView>
+      <ImageView fx:id="andGen" fitHeight="100.0" fitWidth="100.0" layoutX="466.0" layoutY="561.0" onMouseClicked="#andGenerator" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/and.png" />
+         </image></ImageView>
+      <ImageView fx:id="orGen" fitHeight="100.0" fitWidth="100.0" layoutX="566.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/or.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="notGen" fitHeight="100.0" fitWidth="100.0" layoutX="676.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/not.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bulbGen" fitHeight="75.0" fitWidth="75.0" layoutX="785.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/bulbOff.png" />
+         </image>
+      </ImageView>
    </children>
-</AnchorPane>
+</Pane>
