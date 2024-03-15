@@ -2,16 +2,19 @@ package application.resources;
 
 import java.io.IOException;
 
-import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.animation.FadeTransition;
 
 
 public class mainMenuController {
@@ -21,43 +24,32 @@ public class mainMenuController {
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	
 	//---------Buttons-------------------
-	
+	@FXML 
+	Button startNewGame;
 	public void newGame(ActionEvent event) throws IOException {			
-		try {			
-			sceneSwitcher.switchScene(event, "newGame.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
+		transitionScene("newGame.fxml", event);	
 	}
 	
+	@FXML
+	Button loadGame;
 	public void loadGame(ActionEvent event) throws IOException {			
-		try {			
-			sceneSwitcher.switchScene(event, "login.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
+		transitionScene("login.fxml", event);		
 	}
 	
+	@FXML 
+	Button tutorial;
 	public void tutorial(ActionEvent event) throws IOException {			
-		try {			
-			sceneSwitcher.switchScene(event, "tutorial.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
+		transitionScene("tutorial.fxml", event);			
 	}	
 	
-	public void highScores(ActionEvent event) throws IOException {			
-		try {			
-			sceneSwitcher.switchScene(event, "mainMenuHighscores.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
+	@FXML
+	Button highScores;
+	public void highScores(ActionEvent event) throws IOException {	
+		transitionScene("mainMenuHighscores.fxml", event);	
 	}
 	
+	@FXML
+	Button quit;
 	public void quit(ActionEvent event) {
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.close();
@@ -67,12 +59,7 @@ public class mainMenuController {
 	public void developerLogin(MouseEvent event) throws IOException {
 		
 		if(state) {
-			try {			
-				sceneSwitcher.switchScene(event, "developerLogin.fxml");
-			}			
-			catch(IOException exception) {				
-				exception.printStackTrace();				
-			}
+			transitionScene("developerLogin.fxml", event);
 		}
 		
 	}
@@ -104,6 +91,8 @@ public class mainMenuController {
 		ImageView battery;
 		@FXML
 		ImageView bulb;
+		@FXML
+		Line line;
 	
 		//---------Functions----------------
 		
@@ -123,7 +112,122 @@ public class mainMenuController {
 	 		}		
 	 		
 	 	}
+		
+		public void transitionScene(String sceneName, ActionEvent event) {
+			startNewGame.setVisible(false);
+			loadGame.setVisible(false);
+			tutorial.setVisible(false);
+			highScores.setVisible(false);
+			quit.setVisible(false);
+			onOffButton.setVisible(false);
+			battery.setVisible(false);
+			bulb.setVisible(false);
+			line.setVisible(false);
+			try {
+				Node currentNode = ((Node)event.getSource()).getScene().getRoot();
+
+		        double scaleX = 4; // zoom factor
+		        double scaleY = 4;
+
+		        // Calculate the focus point for zooming slightly lower than center
+		        double focusX = currentNode.getBoundsInParent().getWidth() / 2;
+		        double focusY = currentNode.getBoundsInParent().getHeight() / 2 + currentNode.getBoundsInParent().getHeight() * 0.1; // Slightly lower
+
+		        // Setup scale transition
+		        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(1.5), currentNode);
+		        scaleTransition.setToX(scaleX);
+		        scaleTransition.setToY(scaleY);
+
+		        // Calculate translation to keep the focus area visible
+		        double initialWidth = currentNode.getBoundsInParent().getWidth();
+		        double initialHeight = currentNode.getBoundsInParent().getHeight();
+		        double deltaX = focusX - initialWidth / 2;
+		        double deltaY = focusY - initialHeight / 2;
+		        double targetTranslateX = deltaX * (1 - scaleX);
+		        double targetTranslateY = deltaY * (1 - scaleY);
+
+		        // Setup translate transition
+		        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(1.5), currentNode);
+		        translateTransition.setToX(targetTranslateX);
+		        translateTransition.setToY(targetTranslateY);
+
+		        // Combine both transitions
+		        ParallelTransition parallelTransition = new ParallelTransition(currentNode, scaleTransition, translateTransition);
+
+		        parallelTransition.setOnFinished(e -> {
+		            // After zooming, switch the scene
+		            try {
+		                sceneSwitcher.switchScene(event, sceneName);
+		            } catch (IOException ioException) {
+		                ioException.printStackTrace();
+		            }
+		        });
+
+		        // Start the combined transition
+		        parallelTransition.play();
+		        
+		    } catch(Exception exception) {
+		        exception.printStackTrace();
+		    }
+		}
 	
+		public void transitionScene(String sceneName, MouseEvent event) {
+			startNewGame.setVisible(false);
+			loadGame.setVisible(false);
+			tutorial.setVisible(false);
+			highScores.setVisible(false);
+			quit.setVisible(false);
+			onOffButton.setVisible(false);
+			battery.setVisible(false);
+			bulb.setVisible(false);
+			line.setVisible(false);
+			try {
+				Node currentNode = ((Node)event.getSource()).getScene().getRoot();
+
+		        double scaleX = 4; // zoom factor
+		        double scaleY = 4;
+
+		        // Calculate the focus point for zooming slightly lower than center
+		        double focusX = currentNode.getBoundsInParent().getWidth() / 2;
+		        double focusY = currentNode.getBoundsInParent().getHeight() / 2 + currentNode.getBoundsInParent().getHeight() * 0.1; // Slightly lower
+
+		        // Setup scale transition
+		        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(1.5), currentNode);
+		        scaleTransition.setToX(scaleX);
+		        scaleTransition.setToY(scaleY);
+
+		        // Calculate translation to keep the focus area visible
+		        double initialWidth = currentNode.getBoundsInParent().getWidth();
+		        double initialHeight = currentNode.getBoundsInParent().getHeight();
+		        double deltaX = focusX - initialWidth / 2;
+		        double deltaY = focusY - initialHeight / 2;
+		        double targetTranslateX = deltaX * (1 - scaleX);
+		        double targetTranslateY = deltaY * (1 - scaleY);
+
+		        // Setup translate transition
+		        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(1.5), currentNode);
+		        translateTransition.setToX(targetTranslateX);
+		        translateTransition.setToY(targetTranslateY);
+
+		        // Combine both transitions
+		        ParallelTransition parallelTransition = new ParallelTransition(currentNode, scaleTransition, translateTransition);
+
+		        parallelTransition.setOnFinished(e -> {
+		            // After zooming, switch the scene
+		            try {
+		                sceneSwitcher.switchScene(event, sceneName);
+		            } catch (IOException ioException) {
+		                ioException.printStackTrace();
+		            }
+		        });
+
+		        // Start the combined transition
+		        parallelTransition.play();
+		        
+		    } catch(Exception exception) {
+		        exception.printStackTrace();
+		    }
+		}
 	
 
 }

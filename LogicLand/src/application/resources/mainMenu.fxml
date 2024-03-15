@@ -78,6 +78,6 @@
             <Font size="8.0" />
          </font>
       </Label>
-      <Line endX="153.0" layoutX="628.0" layoutY="493.0" startX="-66.0" strokeWidth="2.0" />
+      <Line fx:id="line" endX="153.0" layoutX="628.0" layoutY="493.0" startX="-66.0" strokeWidth="2.0" />
    </children>
 </AnchorPane>

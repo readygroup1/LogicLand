@@ -10,7 +10,6 @@ public class AccountManager {
 	public static Database db = new Database();
 	
 	// Constructors --------------------------------------------------
-	
 	public AccountManager(int currentUserID, boolean isTeacher) {
 		AccountManager.currentUserID = currentUserID;
 		AccountManager.isAdmin = isTeacher;
