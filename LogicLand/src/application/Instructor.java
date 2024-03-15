@@ -10,7 +10,7 @@ public class Instructor {
 	
 	public Instructor(int AdminID) {
 		name = AccountManager.db.getAdminName(AdminID);
-		ClassID = AccountManager.db.getClassID(AdminID);
+		ClassID = AccountManager.db.getClassIDAdmin(AdminID);
 		myRoom = new Classroom(AdminID);
 	}
 	
