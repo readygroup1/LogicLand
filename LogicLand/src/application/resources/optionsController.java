@@ -3,7 +3,9 @@ package application.resources;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class optionsController {
@@ -15,10 +17,22 @@ public class optionsController {
 		
 	//-------------Button Functions------------------------
 		
+		@FXML 
+		Button quit;
 		public void quit(ActionEvent event) {
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			stage.close();
-			
+		}
+		
+		@FXML
+		Button logout;
+		public void logout(ActionEvent event) {
+			try {			
+				sceneSwitcher.switchScene(event, "mainMenu.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
 		}
 	
 	// ----------- User Dashboard Button Functions ---------
