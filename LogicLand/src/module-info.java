@@ -6,5 +6,6 @@ module LogicLand {
 	
 	opens application.resources to javafx.graphics, javafx.fxml;
 	opens application.resources.gates to javafx.graphics, javafx.fxml;
+	opens application.resources.levels to javafx.graphics, javafx.fxml;
 	exports application;
 }
