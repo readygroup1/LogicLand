@@ -219,8 +219,9 @@ public class sandboxController implements Initializable{
 		// This draws the line as the user makes the connection
 		// +5 to make line not directly under the cursor so we can check what object it is hovering over when click is released.
 		circuitBoardPane.setOnMouseDragged(event1 ->{			
-			connectLine.setEndX(event1.getSceneX()+ 5);
-			connectLine.setEndY(event1.getSceneY()+ 5);
+			connectLine.setEndX(event1.getSceneX());
+			connectLine.setEndY(event1.getSceneY());
+			connectLine.toBack();
 		});
 		
 		circuitBoardPane.setOnMouseReleased(event2 ->{
