@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.resources.sandboxController;
+import application.resources.gates.gateObject.Type;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -13,12 +14,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
-public class batteryController implements Initializable{
+public class batteryController extends gateObject implements Initializable{
 	
 	//----------------Variables-------------------
 		boolean state = false;
 		sandboxController sboxController;
 		Pane circuitBoardPane;
+		Type type;
 		
 		boolean dragged = false;
 		Double dragStartX;
@@ -94,6 +96,18 @@ public class batteryController implements Initializable{
 		public void setBoard (sandboxController board) {
 			sboxController = board;
 			circuitBoardPane = sboxController.getCircuitBoardPane();
+		}
+		
+		public Boolean getState() {
+			return state;
+		}
+		
+		public void setState(Boolean inputState) {
+			this.state = inputState;		
+		}
+		
+		public Type getType() {
+			return type;
 		}
 
 }

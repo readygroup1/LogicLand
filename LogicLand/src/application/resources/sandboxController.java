@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.resources.gates.andController;
+import application.resources.gates.gateObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,8 +37,19 @@ public class sandboxController implements Initializable{
 	@FXML
 	ImageView bulbGen;
 	
+	//-------------Constants--------------------------------------------
 	
+	public enum Type{
+		battery,and,or,not,nor,nand,xor,bulb		
+	}
 	
+	// --------------------Initializer-----------------------------------------
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			
+			andGen.setPickOnBounds(true);
+			
+		}
 	//----------------Getter and Setter Functions ---------------------
 	
 	public Pane getCircuitBoardPane() {
@@ -81,16 +93,16 @@ public class sandboxController implements Initializable{
 			}	
 		}
 	
-	public void generator(String fxml, String type, ImageView origin) throws IOException{
+	public void generator(String fxml, Type type, ImageView origin) throws IOException{
 		try {
 			
 			// Create the object and set up the properties
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 			Pane object = loader.load();
-			Object controller = loader.getController();
+			gateObject controller = loader.getController();
 			object.getProperties().put("controller", controller);
 			object.getProperties().put("type", type);
-			//controller.setBoard(this);
+			controller.setBoard(this);
 			
 			// Display the object
 			circuitBoardPane.getChildren().add(object);
@@ -105,7 +117,7 @@ public class sandboxController implements Initializable{
 	public void batteryGenerator() throws IOException{
 		
 		try {		
-			this.generator("/application/resources/gates/battery.fxml", "battery", batteryGen);
+			this.generator("/application/resources/gates/battery.fxml", Type.battery, batteryGen);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -253,12 +265,6 @@ public class sandboxController implements Initializable{
 		}		
 	}
 
-	// --------------------Initializer-----------------------------------------
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		andGen.setPickOnBounds(true);
-		
-	}
+	
 
 }
