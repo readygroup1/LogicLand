@@ -9,3 +9,17 @@
   -fx-cursor: hand; /* Change cursor to hand */
   -fx-padding: -5px -10px;
 }
+
+.loginText {
+	-fx-font-size: 18px;
+	-fx-font-family: Tahoma;
+}
+
+.backbutton {
+  -fx-font-size: 30px;
+  -fx-font-family: Tahoma;
+  -fx-background-color: #F38307; /* Ensure the hex color starts with '#' */
+  -fx-font-weight: Bold
+}
+
+
