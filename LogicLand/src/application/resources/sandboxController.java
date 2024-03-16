@@ -124,15 +124,36 @@ public class sandboxController implements Initializable{
 		}
 	}
 	
-public void orGenerator() throws IOException{
+	public void orGenerator() throws IOException{
+			
+			try {		
+				this.generator("/application/resources/gates/or.fxml", Type.or, orGen);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}	
+	
+	public void bulbGenerator() throws IOException{
 		
 		try {		
-			this.generator("/application/resources/gates/or.fxml", Type.or, orGen);
+			this.generator("/application/resources/gates/bulb.fxml", Type.bulb, bulbGen);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+public void notGenerator() throws IOException{
+		
+		try {		
+			this.generator("/application/resources/gates/not.fxml", Type.not, notGen);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}	
+
 	
 	
 	//--------------Object Interaction Functions -------------------------

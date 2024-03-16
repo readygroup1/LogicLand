@@ -41,12 +41,12 @@
             <Image url="@images/or.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="notGen" fitHeight="100.0" fitWidth="100.0" layoutX="676.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="notGen" fitHeight="100.0" fitWidth="100.0" layoutX="676.0" layoutY="561.0" onMouseClicked="#notGenerator" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/not.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bulbGen" fitHeight="75.0" fitWidth="75.0" layoutX="785.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bulbGen" fitHeight="75.0" fitWidth="75.0" layoutX="785.0" layoutY="574.0" onMouseClicked="#bulbGenerator" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/bulbOff.png" />
          </image>

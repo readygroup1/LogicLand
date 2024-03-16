@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Rectangle?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="75.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.gates.bulbController">
+   <children>
+      <ImageView fx:id="bulb" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bulbOff.png" />
+         </image>
+      </ImageView>
+      <Ellipse fx:id="body" fill="DODGERBLUE" layoutX="36.0" layoutY="32.0" opacity="0.0" radiusX="31.0" radiusY="34.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle fx:id="input1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="12.0" layoutX="28.0" layoutY="64.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="19.0" />
+   </children>
+</Pane>
