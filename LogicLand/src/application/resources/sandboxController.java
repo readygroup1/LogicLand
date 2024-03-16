@@ -2,6 +2,7 @@ package application.resources;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.resources.gates.andController;
@@ -49,6 +50,8 @@ public class sandboxController implements Initializable{
 	@FXML
 	ImageView xorGen;
 	
+	static private ArrayList<Node> connectedTerminals = new ArrayList<>();
+
 	
 	//-------------Constants / Resources--------------------------------------------
 	
@@ -201,6 +204,10 @@ public class sandboxController implements Initializable{
 	 *   then the two nodes are passed to the function makeWire. */
 	public void beginConnection(MouseEvent event) {
 		
+		
+		
+		
+		
 		// Store the start node information while the line is being drawn.
 		Rectangle startNode = (Rectangle) event.getSource();
 		String startType =((String)((Rectangle) event.getSource()).getProperties().get("type"));
@@ -236,6 +243,9 @@ public class sandboxController implements Initializable{
 					
 					// Check which is the output to match the parameter order of makeWire.
 					if (startType == "output") {
+						endNode.getProperties().put("state", startNode.getProperties().get("state"));
+						((andController)endNode.getProperties().get("parentGate")).checktype();
+						
 						this.makeWire(startNode, endNode);
 					}
 					
@@ -278,10 +288,12 @@ public class sandboxController implements Initializable{
 		circuitBoardPane.getChildren().add(connectLine);
 		connectLine.toBack();
 		
+		
 		// Release the mouse binding from beginConnection so the line isn't created again.
 		circuitBoardPane.setOnMouseReleased(null);
 		
 	}
+	
 	
 	public void deleteButton(MouseEvent event) {
 		
