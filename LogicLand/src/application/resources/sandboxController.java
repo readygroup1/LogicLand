@@ -10,9 +10,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
@@ -22,7 +26,7 @@ public class sandboxController implements Initializable{
 	
 	
 	// ----------------Variables ---------------------------------------
-	
+	Boolean deleteState = false;
 	
 	@FXML
 	Pane circuitBoardPane;
@@ -36,18 +40,27 @@ public class sandboxController implements Initializable{
 	ImageView orGen;
 	@FXML
 	ImageView bulbGen;
+	@FXML
+	ImageView deleteImage;
 	
-	//-------------Constants--------------------------------------------
+	
+	//-------------Constants / Resources--------------------------------------------
 	
 	public enum Type{
 		battery,and,or,not,nor,nand,xor,bulb		
 	}
+	Image deleteOn = new Image(getClass().getResourceAsStream("images/deleteOn.png"));
+ 	Image deleteOff = new Image(getClass().getResourceAsStream("images/deleteOff.png"));
 	
 	// --------------------Initializer-----------------------------------------
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			
 			andGen.setPickOnBounds(true);
+			deleteImage.setPickOnBounds(true);
+			
+			// Delete is always bound to the click function but only works when deleteState is set to true by the delete button.
+			circuitBoardPane.setOnMousePressed(event ->{this.delete(event);});
 			
 		}
 	//----------------Getter and Setter Functions ---------------------
@@ -112,7 +125,7 @@ public class sandboxController implements Initializable{
 	}	
 	
 	
-	//--------------Object Connecting Functions -------------------------
+	//--------------Object Interaction Functions -------------------------
 	
 	/** When a click is made on any terminal of a gate and the mouse is dragged, beginConnection draws a line on the screen from a terminal to the mouse while the mouse is dragged.
 	 * It also records the starting node of the drag, and the ending node of the drag.
@@ -156,6 +169,7 @@ public class sandboxController implements Initializable{
 					if (startType == "output") {
 						this.makeWire(startNode, endNode);
 					}
+					
 					else {
 						this.makeWire(endNode, startNode);
 					}
@@ -198,6 +212,33 @@ public class sandboxController implements Initializable{
 		// Release the mouse binding from beginConnection so the line isn't created again.
 		circuitBoardPane.setOnMouseReleased(null);
 		
+	}
+	
+	public void deleteButton(MouseEvent event) {
+		
+		if(deleteState) {
+			deleteState = false;
+			deleteImage.setImage(deleteOff);
+			circuitBoardPane.setCursor(Cursor.DEFAULT);
+		}
+		
+		else {
+			deleteState = true;
+			deleteImage.setImage(deleteOn);
+			circuitBoardPane.setCursor(Cursor.CROSSHAIR);			
+		}		
+	}
+	
+	public void delete(MouseEvent event) {
+				
+		if(deleteState && ((Node) event.getSource()).getLayoutY() < 600) {
+			if(event.getPickResult().getIntersectedNode() instanceof Line) {
+				circuitBoardPane.getChildren().remove(event.getPickResult().getIntersectedNode());
+			}
+			if(event.getPickResult().getIntersectedNode() instanceof Ellipse) {
+				circuitBoardPane.getChildren().remove(((Node) event.getPickResult().getIntersectedNode().getParent()));
+			}
+		}
 	}
 		
 		
