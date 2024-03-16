@@ -104,6 +104,9 @@ public class newGameController implements Initializable{
 			
 			if(!isTeacher) {
 				String className = chooseClassName.getSelectionModel().getSelectedItem();
+				if(className == null) {
+					className = "";
+				}
 				int classID = AccountManager.getClassID(className);
 				
 				
