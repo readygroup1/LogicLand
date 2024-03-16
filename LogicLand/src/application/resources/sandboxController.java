@@ -42,6 +42,12 @@ public class sandboxController implements Initializable{
 	ImageView bulbGen;
 	@FXML
 	ImageView deleteImage;
+	@FXML
+	ImageView nandGen;
+	@FXML
+	ImageView norGen;
+	@FXML
+	ImageView xorGen;
 	
 	
 	//-------------Constants / Resources--------------------------------------------
@@ -144,10 +150,40 @@ public class sandboxController implements Initializable{
 		}
 	}
 	
-public void notGenerator() throws IOException{
+	public void notGenerator() throws IOException{
+			
+			try {		
+				this.generator("/application/resources/gates/not.fxml", Type.not, notGen);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
+	public void norGenerator() throws IOException{
 		
 		try {		
-			this.generator("/application/resources/gates/not.fxml", Type.not, notGen);
+			this.generator("/application/resources/gates/nor.fxml", Type.nor, norGen);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	public void nandGenerator() throws IOException{
+		
+		try {		
+			this.generator("/application/resources/gates/nand.fxml", Type.nand, nandGen);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	public void xorGenerator() throws IOException{
+		
+		try {		
+			this.generator("/application/resources/gates/xor.fxml", Type.xor, xorGen);
 		}
 		catch(Exception e) {
 			e.printStackTrace();

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Rectangle?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.gates.nandController">
+   <children>
+      <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/nand.png" />
+         </image>
+      </ImageView>
+      <Ellipse fx:id="body" fill="DODGERBLUE" layoutX="48.0" layoutY="49.0" opacity="0.0" radiusX="31.0" radiusY="34.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle fx:id="input1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="16.0" layoutX="2.0" layoutY="24.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+      <Rectangle fx:id="input2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="16.0" layoutX="4.0" layoutY="61.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+      <Rectangle fx:id="output" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="16.0" layoutX="76.0" layoutY="41.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+   </children>
+</Pane>
