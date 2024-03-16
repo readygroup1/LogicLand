@@ -30,12 +30,15 @@ public class Main extends Application {
 			}
 			
 			Parent root;
+			
+			// Skip login Code
 			if(skipLogin) {
 				root = FXMLLoader.load(getClass().getResource("/application/resources/roadmap.fxml"));
 			}
 			else {
 				root = FXMLLoader.load(getClass().getResource("/application/resources/mainMenu.fxml"));
 			}
+			
 			Scene scene = new Scene(root);
 			Image applicationIcon = new Image(getClass().getResourceAsStream("/application/resources/images/Arcadebox.png"));
 	        stage.getIcons().add(applicationIcon);
