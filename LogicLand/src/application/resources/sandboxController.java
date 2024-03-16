@@ -60,7 +60,7 @@ public class sandboxController implements Initializable{
 	
 	// ---------------- Object Generator Buttons -----------------------
 
-	/** This is the button that generates and gates. The first in the block of code where all the object generator will be.
+	/** This is the button that generates gatesObjects. The first in the block of code where all the object generator will be.
 	 * In the user interface, every gate is represented as a node. Nodes are what will be used to pass information from the 
 	 * user interface events to the sandboxController.
 	 * To get information from a node use .getProperties.get(KEY).
@@ -69,30 +69,6 @@ public class sandboxController implements Initializable{
 	 * Then you would be to call any function andControllers have  it like ctl.getState().
 	 * I also set this instance of the sandboxController in every gate that is created. That may come in useful to pass information
 	 * to a central source. */
-	
-	public void andGenerator() throws IOException {			
-			
-			try {
-				
-				// Create the object and set up the properties
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/resources/gates/and.fxml"));
-				Pane and = loader.load();
-				andController controller = loader.getController();
-				and.getProperties().put("controller", controller);
-				and.getProperties().put("type", "and");
-				controller.setBoard(this);
-				
-				// Display the object
-				circuitBoardPane.getChildren().add(and);
-				and.setLayoutY(andGen.getLayoutY() - 100);
-				and.setLayoutX(andGen.getLayoutX());
-			}
-			
-			catch(Exception e) {
-				e.printStackTrace();
-			}	
-		}
-	
 	public void generator(String fxml, Type type, ImageView origin) throws IOException{
 		try {
 			
@@ -114,6 +90,17 @@ public class sandboxController implements Initializable{
 		}	
 	}
 	
+	public void andGenerator() throws IOException {			
+			
+			try {
+				this.generator("/application/resources/gates/and.fxml", Type.and, andGen);
+			}			
+			catch(Exception e) {
+				e.printStackTrace();
+			}	
+		}
+	
+		
 	public void batteryGenerator() throws IOException{
 		
 		try {		
