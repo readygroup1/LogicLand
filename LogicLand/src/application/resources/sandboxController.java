@@ -122,6 +122,16 @@ public class sandboxController implements Initializable{
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+public void orGenerator() throws IOException{
+		
+		try {		
+			this.generator("/application/resources/gates/or.fxml", Type.or, orGen);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}	
 	
 	
@@ -232,9 +242,12 @@ public class sandboxController implements Initializable{
 	public void delete(MouseEvent event) {
 				
 		if(deleteState && ((Node) event.getSource()).getLayoutY() < 600) {
+			//If it is wire
 			if(event.getPickResult().getIntersectedNode() instanceof Line) {
 				circuitBoardPane.getChildren().remove(event.getPickResult().getIntersectedNode());
 			}
+			
+			// If it is a gate
 			if(event.getPickResult().getIntersectedNode() instanceof Ellipse) {
 				circuitBoardPane.getChildren().remove(((Node) event.getPickResult().getIntersectedNode().getParent()));
 			}

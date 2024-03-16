@@ -16,10 +16,10 @@ import javafx.scene.shape.Rectangle;
 public class andController extends gateObject implements Initializable {
 	
 	//----------------Variables-------------------
-	boolean State;
+	boolean state = false;
 	sandboxController sboxController;
 	Pane circuitBoardPane;
-	Type type;
+	Type type = Type.and;
 	
 	@FXML
 	Ellipse body;
