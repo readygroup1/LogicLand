@@ -1,11 +1,15 @@
-package application.resources;
+package application.resources.levels;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.EnumMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
-import application.resources.gates.andController;
+import application.resources.SceneSwitcher;
+import application.resources.sandboxController;
 import application.resources.gates.gateObject;
+import application.resources.sandboxController.Type;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,34 +24,38 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
+public class LevelControllerTemplate extends sandboxController implements Initializable{
 
-public class sandboxController implements Initializable{
-	
-	
-	
+
 	// ----------------Variables ---------------------------------------
-	Boolean deleteState = false;
+	public Boolean deleteState = false;
 	
 	@FXML
 	Pane circuitBoardPane;
-	@FXML
+	
+	//Uncomment @FXML above any generator/delete objects that you want to include in the level and make sure the names match in the fxml file
+	//@FXML
 	ImageView andGen;
-	@FXML
+	//@FXML
 	ImageView batteryGen;
-	@FXML
+	//@FXML
 	ImageView notGen;
-	@FXML
+	//@FXML
 	ImageView orGen;
-	@FXML
+	//@FXML
 	ImageView bulbGen;
-	@FXML
+	//@FXML
 	ImageView deleteImage;
-	@FXML
+	//@FXML
 	ImageView nandGen;
-	@FXML
+	//@FXML
 	ImageView norGen;
-	@FXML
+	//@FXML
 	ImageView xorGen;
+	
+	
+	
+	// Put all preload objects here.
 	
 	
 	//-------------Constants / Resources--------------------------------------------
@@ -55,6 +63,10 @@ public class sandboxController implements Initializable{
 	public enum Type{
 		BATTERY, AND, OR, NOT, NOR, XOR, NAND, BULB		
 	}
+	
+	Map<Type, String> fxmlPath = new EnumMap<>(Type.class);
+	
+	
 	Image deleteOn = new Image(getClass().getResourceAsStream("/application/resources/images/deleteOn.png"));
  	Image deleteOff = new Image(getClass().getResourceAsStream("/application/resources/images/deleteOff.png"));
 	
@@ -62,12 +74,20 @@ public class sandboxController implements Initializable{
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			
-			andGen.setPickOnBounds(true);
-			deleteImage.setPickOnBounds(true);
-			
 			// Delete is always bound to the click function but only works when deleteState is set to true by the delete button.
 			circuitBoardPane.setOnMousePressed(event ->{this.delete(event);});
 			circuitBoardPane.setViewOrder(1);
+			
+			// Create Enum Map to file locations. This is used in the parameters for load.
+			
+			fxmlPath.put(Type.BATTERY, "/application/resources/gates/battery.fxml");
+			fxmlPath.put( Type.OR, "/application/resources/gates/or.fxml");
+			fxmlPath.put(Type.AND, "/application/resources/gates/and.fxml");
+			fxmlPath.put(Type.NOR, "/application/resources/gates/nor.fxml" );
+			fxmlPath.put(Type.BULB,"/application/resources/gates/bulb.fxml" );
+			fxmlPath.put(Type.NOT,"/application/resources/gates/not.fxml");
+			fxmlPath.put(Type.NAND,"/application/resources/gates/nand.fxml");
+			fxmlPath.put(Type.XOR,"/application/resources/gates/xor.fxml");
 			
 		}
 	//----------------Getter and Setter Functions ---------------------
@@ -78,7 +98,33 @@ public class sandboxController implements Initializable{
 		
 	}
 	
+	//------------------Object Pre-Load Functions-----------------------
+	// use these to pre-load up objects into the level, not object generator.
+	
+	public void load(Pane pane,  Type type) throws IOException{
+		try {
+			
+			System.out.println("here");
+			// Create the object and set up the properties
+			FXMLLoader loader = new FXMLLoader(getClass().getResource((String) fxmlPath.get(type)));
+			pane = loader.load();
+			gateObject controller = loader.getController();
+			pane.getProperties().put("controller", controller);
+			pane.getProperties().put("type", type);
+			controller.setBoard(this);		
+			pane.setViewOrder(-1);
+			
+			
+		}		
+		catch(Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	
 	// ---------------- Object Generator Buttons -----------------------
+	
+	// Use these to let the user add objects to the level
 
 	/** This is the button that generates gatesObjects. The first in the block of code where all the object generator will be.
 	 * In the user interface, every gate is represented as a node. Nodes are what will be used to pass information from the 
@@ -301,7 +347,7 @@ public class sandboxController implements Initializable{
 	
 	public void delete(MouseEvent event) {
 				
-		if(deleteState && ((Node) event.getSource()).getLayoutY() < 600) {
+		if(deleteState && ((Node) event.getSource()).getLayoutY() < 450 && ((Node) event.getSource()).getLayoutY() > 50 && ((Node) event.getSource()).getLayoutX() < 950 && ((Node) event.getSource()).getLayoutY() > 200 ){
 			//If it is wire
 			if(event.getPickResult().getIntersectedNode() instanceof Line) {
 				circuitBoardPane.getChildren().remove(event.getPickResult().getIntersectedNode());
@@ -317,11 +363,11 @@ public class sandboxController implements Initializable{
 		
 	
 	
-	// ----------------UserDashboard Button Functions -----------------------
+	// ---------------- Button Functions -----------------------
 	
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	
-	public void roadmap(ActionEvent event) throws IOException {			
+	public void back(ActionEvent event) throws IOException {			
 		try {			
 			sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
 		}			
@@ -330,41 +376,7 @@ public class sandboxController implements Initializable{
 		}		
 	}
 	
-	public void sandbox(ActionEvent event) throws IOException {			
-		try {			
-			sceneSwitcher.switchScene(event, "/application/resources/sandbox.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
-	}
 	
-	public void highscore(ActionEvent event) throws IOException {			
-		try {			
-			sceneSwitcher.switchScene(event, "/application/resources/highscore.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
-	}
-	
-	public void discoveries(ActionEvent event) throws IOException {			
-		try {			
-			sceneSwitcher.switchScene(event, "/application/resources/discoveries.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
-	}
-	
-	public void options(ActionEvent event) throws IOException {			
-		try {			
-			sceneSwitcher.switchScene(event, "/application/resources/options.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
-	}
 
 	
 

@@ -109,5 +109,11 @@ public class batteryController extends gateObject implements Initializable{
 		public Type getType() {
 			return type;
 		}
+		public Rectangle getOutput1() {
+			return output1;		
+		}
+		public Rectangle getOutput2() {
+			return output;		
+		}
 
 }

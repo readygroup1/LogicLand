@@ -2,6 +2,8 @@ package application.resources;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import application.AccountManager;
 import application.Instructor;
@@ -10,11 +12,14 @@ import application.User;
 import javafx.event.ActionEvent;
 
 public class roadmapController {
-		
+	
+	// ------------------Variables--------------------------------------------
 	  @FXML
 	  private Text name;
 	  @FXML
 	  private Text score;
+	  @FXML
+	  private ImageView andLevel;
 	  
 	  public void initialize() {
 		  if(!AccountManager.isAdmin()) {
@@ -27,12 +32,29 @@ public class roadmapController {
 			    name.setText(teacher.getName()); 
 			    score.setText("Class ID: " + teacher.getClassID());
 		  }
+		  
+		  andLevel.setPickOnBounds(true);
 	}
 	  
+	  
+	//-----------------Constants & Resources----------------------------------
+	  SceneSwitcher sceneSwitcher = new SceneSwitcher();
+	  
+	//----------------Level Buttons-------------------------------------------
+	  
+	  public void andLevel(MouseEvent event) throws IOException {
+		  
+		  try {			
+			  sceneSwitcher.switchScene(event, "/application/resources/levels/level1A.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		  
+	  }
 	
 	// ----------------User Dashboard Button Functions -----------------------
 	
-		SceneSwitcher sceneSwitcher = new SceneSwitcher();
+		
 		
 		public void roadmap(ActionEvent event) throws IOException {			
 			try {			
