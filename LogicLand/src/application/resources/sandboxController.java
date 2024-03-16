@@ -67,7 +67,6 @@ public class sandboxController implements Initializable{
 			
 			// Delete is always bound to the click function but only works when deleteState is set to true by the delete button.
 			circuitBoardPane.setOnMousePressed(event ->{this.delete(event);});
-			circuitBoardPane.setViewOrder(1);
 			
 		}
 	//----------------Getter and Setter Functions ---------------------
@@ -85,10 +84,10 @@ public class sandboxController implements Initializable{
 	 * user interface events to the sandboxController.
 	 * To get information from a node use .getProperties.get(KEY).
 	 * I set two keys below. "controller" will be a unique instance of the gate object. 
-	 * You can use "andController ctl = node..getProperties.get("controller);" to retrieve the controller.
+	 * You can use "andController ctl = node..getProperties.get("controller);" to retreive the controller.
 	 * Then you would be to call any function andControllers have  it like ctl.getState().
 	 * I also set this instance of the sandboxController in every gate that is created. That may come in useful to pass information
-	 * to a central source.*/
+	 * to a central source. */
 	public void generator(String fxml, Type type, ImageView origin) throws IOException{
 		try {
 			
@@ -102,7 +101,6 @@ public class sandboxController implements Initializable{
 			
 			// Display the object
 			circuitBoardPane.getChildren().add(object);
-			object.setViewOrder(-1);
 			object.setLayoutY(origin.getLayoutY() - 100);
 			object.setLayoutX(origin.getLayoutX());
 		}		
@@ -207,8 +205,10 @@ public class sandboxController implements Initializable{
 		Rectangle startNode = (Rectangle) event.getSource();
 		String startType =((String)((Rectangle) event.getSource()).getProperties().get("type"));
 		
-		double startX = event.getSceneX();
-		double startY = event.getSceneY();
+		// Calculate the center of the Rectangle relative to the scene.
+		double startX = startNode.localToScene(startNode.getBoundsInLocal()).getMinX() + startNode.getWidth() / 2;
+		double startY = startNode.localToScene(startNode.getBoundsInLocal()).getMinY() + startNode.getHeight() / 2;
+
 		
 		// Add the temporary line to the pane.
 		Line connectLine = new Line(startX, startY, startX, startY);
@@ -219,9 +219,8 @@ public class sandboxController implements Initializable{
 		// This draws the line as the user makes the connection
 		// +5 to make line not directly under the cursor so we can check what object it is hovering over when click is released.
 		circuitBoardPane.setOnMouseDragged(event1 ->{			
-			connectLine.setEndX(event1.getSceneX());
-			connectLine.setEndY(event1.getSceneY());
-			connectLine.setViewOrder(0);
+			connectLine.setEndX(event1.getSceneX()+ 5);
+			connectLine.setEndY(event1.getSceneY()+ 5);
 		});
 		
 		circuitBoardPane.setOnMouseReleased(event2 ->{
@@ -277,7 +276,7 @@ public class sandboxController implements Initializable{
 		
 		// Add to the pane and push behind the gates so the user can click the terminal again.
 		circuitBoardPane.getChildren().add(connectLine);
-		connectLine.setViewOrder(0);
+		connectLine.toBack();
 		
 		// Release the mouse binding from beginConnection so the line isn't created again.
 		circuitBoardPane.setOnMouseReleased(null);
