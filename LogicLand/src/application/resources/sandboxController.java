@@ -81,6 +81,38 @@ public class sandboxController implements Initializable{
 			}	
 		}
 	
+	public void generator(String fxml, String type, ImageView origin) throws IOException{
+		try {
+			
+			// Create the object and set up the properties
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+			Pane object = loader.load();
+			Object controller = loader.getController();
+			object.getProperties().put("controller", controller);
+			object.getProperties().put("type", type);
+			//controller.setBoard(this);
+			
+			// Display the object
+			circuitBoardPane.getChildren().add(object);
+			object.setLayoutY(origin.getLayoutY() - 100);
+			object.setLayoutX(origin.getLayoutX());
+		}		
+		catch(Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	public void batteryGenerator() throws IOException{
+		
+		try {		
+			this.generator("/application/resources/gates/battery.fxml", "battery", batteryGen);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	
 	//--------------Object Connecting Functions -------------------------
 	
 	/** When a click is made on any terminal of a gate and the mouse is dragged, beginConnection draws a line on the screen from a terminal to the mouse while the mouse is dragged.
@@ -141,9 +173,9 @@ public class sandboxController implements Initializable{
 	 * This draws a persistent wire between two valid terminals a user has connected with beginConnection.
 	 * The endpoints of the line that makes the connection is bound to the terminal nodes. So when they move the line is moved as well.
 	 * To find the instance gates the terminals belong to use *terminal*.getParent().getProperties().get("controller") */
-	public void makeWire(Rectangle outputTerminal, Rectangle inputTerminal) {
-		
-		
+	
+	
+	public void makeWire(Rectangle outputTerminal, Rectangle inputTerminal) {		
 		
 		// Get the parent node of the terminal, the gate, so I can figure out the absolute position of the terminal. 
 		// outputTerminal.layoutXProperty() only give the relative x,y coordiniates inside the gate
@@ -153,7 +185,7 @@ public class sandboxController implements Initializable{
 		Line connectLine = new Line();
 		connectLine.setStrokeWidth(5);
 		
-		// Set the bindings. 
+		// Set the bindings. These four lines are Kinda copied code. Need to document or change.
 		connectLine.startXProperty().bind(outputTerminal.layoutXProperty().add(outputPane.layoutXProperty().add(outputTerminal.getBoundsInParent().getWidth() / 2)));
 		connectLine.startYProperty().bind(outputTerminal.layoutYProperty().add(outputPane.layoutYProperty().add(outputTerminal.getBoundsInParent().getHeight() / 2)));
 

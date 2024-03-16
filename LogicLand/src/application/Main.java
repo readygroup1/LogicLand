@@ -11,6 +11,9 @@ import javafx.scene.text.Font;
 
 
 public class Main extends Application {
+	
+	// For DEvelopment. REmove before hanging in.
+	boolean skipLogin = false;
 	@Override
 	
 	// This is boiler plate code to open up a window. 
@@ -25,7 +28,14 @@ public class Main extends Application {
 			} else {
 			    System.out.println("Font loaded: " + customFont.getName());
 			}
-			Parent root = FXMLLoader.load(getClass().getResource("/application/resources/mainMenu.fxml"));
+			
+			Parent root;
+			if(skipLogin) {
+				root = FXMLLoader.load(getClass().getResource("/application/resources/roadmap.fxml"));
+			}
+			else {
+				root = FXMLLoader.load(getClass().getResource("/application/resources/mainMenu.fxml"));
+			}
 			Scene scene = new Scene(root);
 			Image applicationIcon = new Image(getClass().getResourceAsStream("/application/resources/images/Arcadebox.png"));
 	        stage.getIcons().add(applicationIcon);

@@ -34,7 +34,7 @@ public class andController  implements Initializable {
 	Double dragStartY;
 	
 	//----------------Initializer------------------
-	/**The first two blocks initialized the gate to be draggabble. 
+	/**The first two blocks initialized the gate to be draggable. 
 	 * The third block initialized node properties on the terminals.
 	 * Every gate and terminal will have properties such as type that can be accessed using
 	 * (*Any Node*).getProperties().get("type"). */
@@ -65,7 +65,7 @@ public class andController  implements Initializable {
 	}
 	
 	//----------------Getters & Setters-----------
-	/** This function is used by sandbox Controller to set instance vairables of the sandboxPane and sandboxController
+	/** This function is used by sandbox Controller to set instance variables of the sandboxPane and sandboxController
 	 * in every gate that is created. It is helpful for communicating events back to a central source.
 	 * You can call any function in sandbox controller on this instance.
 	 * The board instance can be used to draw things on the screen from a gate if needed.  */
