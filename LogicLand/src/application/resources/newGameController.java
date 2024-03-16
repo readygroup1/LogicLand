@@ -47,6 +47,8 @@ public class newGameController implements Initializable{
 		@FXML
 		PasswordField password;
 		@FXML
+		PasswordField confirmPassword;
+		@FXML
 		TextField email;
 		@FXML
 		CheckBox imATeacher;
@@ -94,18 +96,19 @@ public class newGameController implements Initializable{
 	
 	public void createGame(ActionEvent event) throws Exception {
 		try {
+			String userName = username.getText();
+			String userPassword = password.getText();
+			String userConfirmPassword = confirmPassword.getText();
+			String userEmail = email.getText();
+			String userInitials = initials.getText();
 			
 			if(!isTeacher) {
-				String userName = username.getText();
-				String userPassword = password.getText();
-				String userEmail = email.getText();
-				String userInitials = initials.getText();
 				String className = chooseClassName.getSelectionModel().getSelectedItem();
 				int classID = AccountManager.getClassID(className);
 				
 				
 				// Error handling cases for text input
-				if(userName.trim().isEmpty() || userPassword.trim().isEmpty() || userEmail.trim().isEmpty() || userInitials.trim().isEmpty() || className.trim().isEmpty() || classID == -1) {
+				if(userName.trim().isEmpty() || userPassword.trim().isEmpty() || userConfirmPassword.trim().isEmpty() || userEmail.trim().isEmpty() || userInitials.trim().isEmpty() || className.trim().isEmpty() || classID == -1) {
 					status.setText("Input fields cannot be blank!");
 					return;
 				}
@@ -121,17 +124,17 @@ public class newGameController implements Initializable{
 					status.setText("Password is too short!");
 					return;
 				}
+				if(!userConfirmPassword.equals(userPassword)) {
+					status.setText("Password confirmation does not match!");
+					return;
+				}
 				
 				AccountManager.newPlayerAccount(userName, userInitials, userPassword, userEmail, classID);
 			} else {
-				String userName = username.getText();
-				String userPassword = password.getText();
-				String userEmail = email.getText();
-				String userInitials = initials.getText();
 				String className = enterClassName.getText();
 				
 				// Error handling cases for text input
-				if(userName.trim().isEmpty() || userPassword.trim().isEmpty() || userEmail.trim().isEmpty() || userInitials.trim().isEmpty() || className.trim().isEmpty()) {
+				if(userName.trim().isEmpty() || userPassword.trim().isEmpty() || userConfirmPassword.trim().isEmpty() || userEmail.trim().isEmpty() || userInitials.trim().isEmpty() || className.trim().isEmpty()) {
 					status.setText("Input fields cannot be blank!");
 					return;
 				}
@@ -148,6 +151,10 @@ public class newGameController implements Initializable{
 				}
 				if(userPassword.length() < 4) {
 					status.setText("Password is too short!");
+					return;
+				}
+				if(!userConfirmPassword.equals(userPassword)) {
+					status.setText("Password confirmation does not match!");
 					return;
 				}
 				AccountManager.newAdminAccount(userName, userInitials, userPassword, userEmail, className);

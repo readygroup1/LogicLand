@@ -22,23 +22,23 @@
                </font>
       </Label>
       <Label layoutX="390.0" layoutY="340.0" styleClass="loginText" stylesheets="@../application.css" text="3 Letter Initials:" textAlignment="RIGHT" />
-      <Label layoutX="465.0" layoutY="420.0" styleClass="loginText" stylesheets="@../application.css" text="Email:" />
+      <Label layoutX="462.0" layoutY="463.0" styleClass="loginText" stylesheets="@../application.css" text="Email:" />
       <Label layoutX="435.0" layoutY="380.0" styleClass="loginText" stylesheets="@../application.css" text="Password:" />
       <Label layoutX="464.0" layoutY="300.0" styleClass="loginText" stylesheets="@../application.css" text="Name:" />
-      <Label layoutX="466.0" layoutY="460.0" styleClass="loginText" stylesheets="@../application.css" text="Class:" />
+      <Label layoutX="463.0" layoutY="503.0" styleClass="loginText" stylesheets="@../application.css" text="Class:" />
       <TextField fx:id="initials" layoutX="544.0" layoutY="340.0" />
       <PasswordField fx:id="password" accessibleRole="PASSWORD_FIELD" layoutX="544.0" layoutY="380.0" />
-      <TextField fx:id="email" accessibleRole="TEXT_FIELD" layoutX="544.0" layoutY="420.0" />
-      <ChoiceBox fx:id="chooseClassName" layoutX="544.0" layoutY="460.0" prefWidth="150.0" />
-      <CheckBox fx:id="imATeacher" contentDisplay="RIGHT" layoutX="544.0" layoutY="500.0" mnemonicParsing="false" onAction="#imATeacher" styleClass="loginText" stylesheets="@../application.css" text="I am a Teacher" />
+      <TextField fx:id="email" accessibleRole="TEXT_FIELD" layoutX="541.0" layoutY="463.0" />
+      <ChoiceBox fx:id="chooseClassName" layoutX="540.0" layoutY="503.0" prefWidth="150.0" />
+      <CheckBox fx:id="imATeacher" contentDisplay="RIGHT" layoutX="530.0" layoutY="661.0" mnemonicParsing="false" onAction="#imATeacher" styleClass="loginText" stylesheets="@../application.css" text="I am a Teacher" />
       <Button fx:id="createGame" layoutX="538.0" layoutY="597.0" mnemonicParsing="false" onAction="#createGame" prefHeight="39.0" prefWidth="159.0" style="-fx-font-size: 20;" styleClass="backbutton" stylesheets="@../application.css" text="Create Game" />
-      <TextField fx:id="enterClassName" layoutX="544.0" layoutY="460.0" promptText="Enter Class Name" visible="false" />
+      <TextField fx:id="enterClassName" layoutX="544.0" layoutY="501.0" promptText="Enter Class Name" visible="false" />
       <ImageView fx:id="bulb" fitHeight="44.0" fitWidth="39.0" layoutX="599.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/bulbOff.png" />
          </image>
       </ImageView>
-      <Text fx:id="status" layoutX="406.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="428.8000488281249">
+      <Text fx:id="status" layoutX="405.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="428.8000488281249">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
@@ -48,5 +48,7 @@
             <Image url="@images/student.png" />
          </image>
       </ImageView>
+      <Label layoutX="369.0" layoutY="420.0" styleClass="loginText" stylesheets="@../application.css" text="Confirm Password:" />
+      <PasswordField fx:id="confirmPassword" accessibleRole="PASSWORD_FIELD" layoutX="544.0" layoutY="419.0" />
    </children>
 </AnchorPane>
