@@ -12,22 +12,33 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0AB9FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.developerLoginController">
    <children>
-      <Label layoutX="502.0" layoutY="58.0" text="Developer Mode ">
+      <Label layoutX="332.0" layoutY="47.0" text="Developer Mode ">
          <font>
-            <Font name="System Bold Italic" size="27.0" />
-         </font>
+                  <Font name="Vermin Vibes Regular" size="72.0" />
+               </font>
       </Label>
-      <Label layoutX="583.0" layoutY="303.0" text="Username" />
-      <Label layoutX="583.0" layoutY="368.0" prefHeight="16.0" prefWidth="67.0" text="Password" />
-      <TextField fx:id="devUsername" layoutX="531.0" layoutY="331.0" />
-      <PasswordField fx:id="devPassword" layoutX="531.0" layoutY="395.0" />
-      <Button fx:id="login" layoutX="583.0" layoutY="478.0" mnemonicParsing="false" onAction="#login" text="Login" />
-      <Button fx:id="back" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" text="Back" />
-      <ImageView fx:id="lightning" fitHeight="150.0" fitWidth="200.0" layoutX="542.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="533.0" layoutY="340.0" prefHeight="30.0" prefWidth="100.0" text="Username">
+         <font>
+            <Font name="Tahoma" size="18.0" />
+         </font></Label>
+      <Label layoutX="533.0" layoutY="409.0" prefHeight="27.0" prefWidth="100.0" text="Password">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TextField fx:id="devUsername" layoutX="531.0" layoutY="371.0" />
+      <PasswordField fx:id="devPassword" layoutX="531.0" layoutY="437.0" />
+      <Button fx:id="login" layoutX="583.0" layoutY="541.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <Button fx:id="back" alignment="TOP_CENTER" layoutX="46.0" layoutY="47.0" mnemonicParsing="false" onAction="#back" prefHeight="58.0" prefWidth="120.0" style="-fx-background-color: F38307; " styleClass="loginBackButton" stylesheets="@../application.css" text="Back"><font>
+                  <Font name="Vermin Vibes Regular" size="30.0" />
+               </font></Button>
+      <ImageView fx:id="lightning" fitHeight="150.0" fitWidth="200.0" layoutX="531.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/lightningOff.png" />
          </image>
       </ImageView>
-      <Text fx:id="status" layoutX="459.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="296.79998779296875" />
+      <Text fx:id="status" layoutX="464.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="283.5999755859377">
+         <font>
+            <Font name="Tahoma" size="18.0" />
+         </font></Text>
    </children>
 </AnchorPane>
