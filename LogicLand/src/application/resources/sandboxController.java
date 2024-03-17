@@ -141,6 +141,55 @@ public class sandboxController implements Initializable{
 				catch(Exception e) {
 					e.printStackTrace();
 				}	
+			} else if(type.equals("a")) {
+				try {
+					this.generator("/application/resources/gates/and.fxml", Type.AND, origin);
+				}		
+				catch(Exception e) {
+					e.printStackTrace();
+				}	
+			} else if(type.equals("b")) {
+				try {
+					this.generator("/application/resources/gates/battery.fxml", Type.BATTERY, origin);
+				}		
+				catch(Exception e) {
+					e.printStackTrace();
+				}	
+			} else if(type.equals("d")) {
+				try {
+					this.generator("/application/resources/gates/nand.fxml", Type.NAND, origin);
+				}		
+				catch(Exception e) {
+					e.printStackTrace();
+				}	
+			} else if(type.equals("r")) {
+				try {
+					this.generator("/application/resources/gates/nor.fxml", Type.NOR, origin);
+				}		
+				catch(Exception e) {
+					e.printStackTrace();
+				}	
+			} else if(type.equals("n")) {
+				try {
+					this.generator("/application/resources/gates/not.fxml", Type.NOT, origin);
+				}		
+				catch(Exception e) {
+					e.printStackTrace();
+				}	
+			} else if(type.equals("o")) {
+				try {
+					this.generator("/application/resources/gates/or.fxml", Type.OR, origin);
+				}		
+				catch(Exception e) {
+					e.printStackTrace();
+				}	
+			} else if(type.equals("x")) {
+				try {
+					this.generator("/application/resources/gates/xor.fxml", Type.XOR, origin);
+				}		
+				catch(Exception e) {
+					e.printStackTrace();
+				}	
 			}
 		}
 	}
@@ -354,6 +403,20 @@ public class sandboxController implements Initializable{
 			
 			// If it is a gate
 			if(event.getPickResult().getIntersectedNode() instanceof Ellipse) {
+				double locationX = (event.getPickResult().getIntersectedNode().getParent().getLayoutX());
+				double locationY = (event.getPickResult().getIntersectedNode().getParent().getLayoutY());
+				String[] codes = {"a", "b", "l", "d", "r", "n", "o", "x"};
+				int i = 0;
+				String toRemove = "";
+				do {
+					if(i == 8) {
+						break;
+					}
+					AccountManager.removeOldPosition(locationX, locationY, codes[i]);
+					toRemove = codes[i] +","+ locationX +","+ locationY + ",";
+					i++;
+				} while(AccountManager.getSandboxSaveState().replace(toRemove, "") != "");
+				System.out.println("State: " + AccountManager.getSandboxSaveState());
 				circuitBoardPane.getChildren().remove(((Node) event.getPickResult().getIntersectedNode().getParent()));
 			}
 		}

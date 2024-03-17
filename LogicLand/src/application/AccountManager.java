@@ -125,18 +125,18 @@ public class AccountManager {
 	// Setter methods ------------------------------------------------
 	
 	public static void setSandboxSaveState(String state) {
-		sandboxSaveState = state;
+		AccountManager.sandboxSaveState = state;
 	}
 	
 	public static void setIndividualGate(String state) {
-		sandboxSaveState = sandboxSaveState + state;
+		AccountManager.sandboxSaveState = AccountManager.sandboxSaveState + state;
 	}
 	
 	public static void removeOldPosition(Double StartX, Double StartY, String type) {
 		//Look for string in the save state instance variable that contains and 'l'plug the dragStartX and dragStartY locations, will look
 		// like this ex: "l,243.443,232.423"
-		String oldPosition = "l," + StartX + "," + StartY + ",";
-		sandboxSaveState = sandboxSaveState.replace(oldPosition, "");
+		String oldPosition = type + "," + StartX + "," + StartY + ",";
+		AccountManager.sandboxSaveState = AccountManager.sandboxSaveState.replace(oldPosition, "");
 
 	}
 	

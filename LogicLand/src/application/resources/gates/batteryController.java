@@ -3,6 +3,7 @@ package application.resources.gates;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.AccountManager;
 import application.resources.sandboxController;
 import application.resources.gates.gateObject.Type;
 import javafx.fxml.FXML;
@@ -37,6 +38,8 @@ public class batteryController extends gateObject implements Initializable{
 		@FXML
 		ImageView batteryImage;
 		
+		String saveState = ""; //battery has code 'b'
+		
 		Image batteryOn = new Image(getClass().getResourceAsStream("/application/resources/images/batteryOn.png"));
 	 	Image batteryOff = new Image(getClass().getResourceAsStream("/application/resources/images/batteryOff.png")); 
 		
@@ -55,9 +58,12 @@ public class batteryController extends gateObject implements Initializable{
 			});
 			
 			body.setOnMouseDragged(event -> {
+				AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "b");
 				pane.setLayoutX(event.getSceneX() - dragStartX);
 				pane.setLayoutY(event.getSceneY() - dragStartY);
 				dragged = true;
+				saveState = "b," + Double.toString(pane.getLayoutX()) + "," + Double.toString(pane.getLayoutY()) + ",";
+				AccountManager.setIndividualGate(saveState);
 			});
 			
 			output1.getProperties().put("type", "output");

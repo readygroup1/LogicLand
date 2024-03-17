@@ -3,6 +3,7 @@ package application.resources.gates;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.AccountManager;
 import application.resources.sandboxController;
 import application.resources.gates.gateObject.Type;
 import javafx.fxml.FXML;
@@ -33,6 +34,8 @@ public class norController extends gateObject implements Initializable{
 		Double dragStartX;
 		Double dragStartY;
 		
+		String saveState = ""; //Nor has code r
+		
 		//----------------Initializer------------------
 		/**The first two blocks initialized the gate to be draggable. 
 		 * The third block initialized node properties on the terminals.
@@ -46,8 +49,12 @@ public class norController extends gateObject implements Initializable{
 			});
 			
 			body.setOnMouseDragged(event -> {
+				AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "r");
 				pane.setLayoutX(event.getSceneX() - dragStartX);
-				pane.setLayoutY(event.getSceneY() - dragStartY);			
+				pane.setLayoutY(event.getSceneY() - dragStartY);	
+				
+				saveState = "r," + Double.toString(pane.getLayoutX()) + "," + Double.toString(pane.getLayoutY()) + ",";
+				AccountManager.setIndividualGate(saveState);
 			});
 			
 			input1.getProperties().put("type", "input");
