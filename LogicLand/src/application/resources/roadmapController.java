@@ -2,6 +2,7 @@ package application.resources;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import application.AccountManager;
 import application.Instructor;
@@ -80,6 +81,82 @@ public class roadmapController {
 		}
 		
 		
+		// ----------------Level Selection Functions -----------------------
+		
+		
+		
+		
+		public void levelOne(ActionEvent event) throws IOException {	
+			try {			
+				sceneSwitcher.switchScene(event, "/application/resources/Level1.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
+		}
+		
+		public void levelTwo(ActionEvent event) throws IOException {	
+			try {			
+				sceneSwitcher.switchScene(event, "/application/resources/Level2.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}	
+		}
+		
+		public void levelThree(ActionEvent event) throws IOException {	
+			try {			
+				sceneSwitcher.switchScene(event, "/application/resources/Level3.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
+		}
+		
+		public void levelFour(ActionEvent event) throws IOException {	
+			try {			
+				sceneSwitcher.switchScene(event, "/application/resources/Level4.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
+		}
+		
+		public void levelFive(ActionEvent event) throws IOException {	
+			try {			
+				sceneSwitcher.switchScene(event, "/application/resources/Level5.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
+		}
+		
+		public void levelSix(ActionEvent event) throws IOException {	
+			try {			
+				sceneSwitcher.switchScene(event, "/application/resources/Level6.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
+		}
+		
+		public void levelSeven(ActionEvent event) throws IOException {	
+			try {			
+				sceneSwitcher.switchScene(event, "/application/resources/Level7.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
+		}
+		
+		public void levelEight(ActionEvent event) throws IOException {	
+			try {			
+				sceneSwitcher.switchScene(event, "/application/resources/Level8.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
+		}
 
 
 }

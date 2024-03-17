@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -34,5 +35,14 @@
       </Button>
       <Text fx:id="name" layoutX="1024.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" />
       <Text fx:id="score" layoutX="1138.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="score" />
+      <ButtonBar layoutX="216.0" layoutY="193.0" prefHeight="40.0" prefWidth="200.0" />
+      <Button layoutX="136.0" layoutY="468.0" mnemonicParsing="false" onAction="#levelOne" text="Level 1" />
+      <Button layoutX="228.0" layoutY="391.0" mnemonicParsing="false" onAction="#levelTwo" text="Level 2" />
+      <Button layoutX="348.0" layoutY="333.0" mnemonicParsing="false" onAction="#levelThree" text="Level 3" />
+      <Button layoutX="484.0" layoutY="271.0" mnemonicParsing="false" onAction="#levelFour" text="Level 4" />
+      <Button layoutX="712.0" layoutY="178.0" mnemonicParsing="false" onAction="#levelSix" text="Level 6" />
+      <Button layoutX="597.0" layoutY="218.0" mnemonicParsing="false" onAction="#levelFive" text="Level 5" />
+      <Button layoutX="840.0" layoutY="136.0" mnemonicParsing="false" onAction="#levelSeven" text="Level 7" />
+      <Button layoutX="968.0" layoutY="151.0" mnemonicParsing="false" onAction="#levelEight" text="Level 8" />
    </children>
 </AnchorPane>
