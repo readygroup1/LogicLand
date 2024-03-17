@@ -326,10 +326,12 @@ public class sandboxController implements Initializable{
 					
 					// Check which is the output to match the parameter order of makeWire.
 					if (startType == "output") {
-						endNode.getProperties().put("state", startNode.getProperties().get("state"));	//Andres
+						endNode.getProperties().put("put", startNode);	//Andres
+						startNode.getProperties().put("put", endNode);
 						((andController)endNode.getProperties().get("parentGate")).checktype();			//Andres
 						
 						this.makeWire(startNode, endNode);
+					
 					}
 					
 					else {

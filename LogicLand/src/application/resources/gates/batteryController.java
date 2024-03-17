@@ -68,8 +68,15 @@ public class batteryController extends gateObject implements Initializable{
 			
 			output1.getProperties().put("type", "output");
 			output1.getProperties().put("state", false);
+			output1.getProperties().put("parentGate", this);//Andres
+			output1.getProperties().put("put", null);
+			
 			output.getProperties().put("type", "output");
 			output.getProperties().put("state", false);
+			output.getProperties().put("parentGate", this);//Andres
+			output.getProperties().put("put", null);
+			
+			
 			body.getProperties().put("type", "body");
 		}
 		
@@ -89,6 +96,16 @@ public class batteryController extends gateObject implements Initializable{
 		 	 		state = false;
 		 	 		output1.getProperties().put("state", false);
 		 	 		output.getProperties().put("state", false);
+		 	 		if(output.getProperties().get("put") != null) {
+		 	 			
+		 	 			((andController)(((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate"))).checktype();
+		 	 				 	 			
+		 	 		}
+		 	 		if(output1.getProperties().get("put") != null) {
+		 	 			
+		 	 			((andController)(((Rectangle)output1.getProperties().get("put")).getProperties().get("parentGate"))).checktype();
+		 	 				 	 			
+		 	 		}
 		 	 		
 		 		}
 		 		else {			 			
@@ -96,7 +113,16 @@ public class batteryController extends gateObject implements Initializable{
 		 	 		state = true;
 		 	 		output1.getProperties().put("state", true);
 		 	 		output.getProperties().put("state", true);
-		 	 		
+		 	 		if(output.getProperties().get("put") != null) {
+		 	 			
+		 	 			((andController)(((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate"))).checktype();
+		 	 				 	 			
+		 	 		}
+		 	 		if(output1.getProperties().get("put") != null) {
+		 	 			
+		 	 			((andController)(((Rectangle)output1.getProperties().get("put")).getProperties().get("parentGate"))).checktype();
+		 	 				 	 			
+		 	 		}
 		 		}		
 			}							
 			dragged = false;

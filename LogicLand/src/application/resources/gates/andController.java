@@ -66,14 +66,17 @@ public class andController extends gateObject implements Initializable {
 		input1.getProperties().put("type", "input");
 		input1.getProperties().put("state", false);		//Andres
 		input1.getProperties().put("parentGate", this);//Andres
+		input1.getProperties().put("put", null);
 		
 		input2.getProperties().put("type", "input");
 		input2.getProperties().put("state", false);		//Andres
 		input2.getProperties().put("parentGate", this);//Andres
+		input2.getProperties().put("put", null);
 		
 		output.getProperties().put("type", "output");
 		output.getProperties().put("state", false);//Andres
 		output.getProperties().put("parentGate", this);//Andres
+		output.getProperties().put("put", null);	//Andres
 		
 		body.getProperties().put("type", "body");
 	}
@@ -85,6 +88,7 @@ public class andController extends gateObject implements Initializable {
 		sboxController.beginConnection(event);
 		
 	}
+	
 	
 	
 	//----------------Getters & Setters-----------
@@ -110,12 +114,21 @@ public class andController extends gateObject implements Initializable {
 	}
 	
 	public void checktype() {
-		if (((boolean)input1.getProperties().get("state")) && (boolean) input2.getProperties().get("state")) {
+		if (((boolean)((Rectangle)input1.getProperties().get("put")).getProperties().get("state")) && ((boolean)((Rectangle)input2.getProperties().get("put")).getProperties().get("state"))) {
 			output.getProperties().put("state", true);
+			if( ( (Rectangle)output.getProperties().get("put")) != null) {
+				((Rectangle)output.getProperties().get("put")).getProperties().put("state", true);
+				((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+			}
 			
 			System.out.println("Switched to true");
 		}
 		else {
+			output.getProperties().put("state", false);
+			if( ( (Rectangle)output.getProperties().get("put")) != null) {
+				((Rectangle)output.getProperties().get("put")).getProperties().put("state", false);
+				((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+			}
 			System.out.println("Switched to false");
 		}
 	}
