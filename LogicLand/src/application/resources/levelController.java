@@ -40,7 +40,7 @@ public class levelController {
     }
 
     /**
-     * Switches the scene to the previous level view when the "Previous Level" button is clicked.
+     * Switches the scene to the previous level view when the "Previous Level" button is pressed.
      * 
      *
      * @param event The ActionEvent triggered by clicking the "Previous Level" button.
