@@ -8,6 +8,7 @@ public class AccountManager {
 	private static int currentUserID;
 	private static boolean isAdmin;
 	public static Database db = new Database();
+	private static String sandboxSaveState = "";
 	
 	// Constructors --------------------------------------------------
 	public AccountManager(int currentUserID, boolean isTeacher) {
@@ -18,6 +19,7 @@ public class AccountManager {
 	public AccountManager() {
 		AccountManager.currentUserID = -1;
 		AccountManager.isAdmin = false;
+		AccountManager.sandboxSaveState = "";
 		return;
 	}
 	
@@ -32,12 +34,14 @@ public class AccountManager {
 			if(db.verifyAdmin(name, password)) {
 				AccountManager.currentUserID = db.getAdminID(name);
 				AccountManager.isAdmin = true;
+				AccountManager.setSandboxSaveState("");
 				return true;
 			}
 		} else {
 			if(db.verifyPlayer(name, password)) {
 				AccountManager.currentUserID = db.getPlayerID(name);
 				AccountManager.isAdmin = false;
+				AccountManager.setSandboxSaveState("");
 				return true;
 			}
 		}
@@ -45,6 +49,10 @@ public class AccountManager {
 	}
 	
 	// Getter methods -------------------------------------------------
+	
+	public static String getSandboxSaveState() {
+		return sandboxSaveState;
+	}
 	
 	public static int getCurrentUser() {
 		return AccountManager.currentUserID;
@@ -115,6 +123,22 @@ public class AccountManager {
 	}
 	
 	// Setter methods ------------------------------------------------
+	
+	public static void setSandboxSaveState(String state) {
+		sandboxSaveState = state;
+	}
+	
+	public static void setIndividualGate(String state) {
+		sandboxSaveState = sandboxSaveState + state;
+	}
+	
+	public static void removeOldPosition(Double StartX, Double StartY, String type) {
+		//Look for string in the save state instance variable that contains and 'l'plug the dragStartX and dragStartY locations, will look
+		// like this ex: "l,243.443,232.423"
+		String oldPosition = "l," + StartX + "," + StartY + ",";
+		sandboxSaveState = sandboxSaveState.replace(oldPosition, "");
+
+	}
 	
 	public static void newPlayerAccount(String username, String initials, String password, String email, int classID) {
 		AccountManager.currentUserID = db.addPlayer(username, initials, password, email, classID);

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import application.AccountManager;
 import application.resources.sandboxController;
 import application.resources.gates.gateObject.Type;
 import javafx.fxml.FXML;
@@ -34,6 +35,8 @@ public class bulbController extends gateObject implements Initializable {
 	Double dragStartX;
 	Double dragStartY;
 	
+	String saveState = ""; //Bulb has code 'l'
+	
 	// --------------Constants & Resources----------------
 	
 	Image bulbOn = new Image(getClass().getResourceAsStream("/application/resources/images/bulbOn.png"));
@@ -53,8 +56,12 @@ public class bulbController extends gateObject implements Initializable {
 		});
 		
 		body.setOnMouseDragged(event -> {
-			pane.setLayoutX(event.getSceneX() - dragStartX);
-			pane.setLayoutY(event.getSceneY() - dragStartY);			
+			AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "l");
+			pane.setLayoutX(event.getSceneX() - dragStartX); 
+			pane.setLayoutY(event.getSceneY() - dragStartY);
+			
+			saveState = "l," + Double.toString(pane.getLayoutX()) + "," + Double.toString(pane.getLayoutY()) + ",";
+			AccountManager.setIndividualGate(saveState);
 		});
 		
 		input1.getProperties().put("type", "input");
@@ -78,6 +85,10 @@ public class bulbController extends gateObject implements Initializable {
 	public void setBoard (sandboxController board) {
 		sboxController = board;
 		circuitBoardPane = sboxController.getCircuitBoardPane();
+	}
+	
+	public String getSaveState() {
+		return saveState;
 	}
 	
 	public Boolean getState() {

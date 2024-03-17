@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import application.AccountManager;
 import application.resources.gates.andController;
 import application.resources.gates.gateObject;
 import javafx.event.ActionEvent;
@@ -64,6 +65,11 @@ public class sandboxController implements Initializable{
 	// --------------------Initializer-----------------------------------------
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
+			try {
+				generateFromSave();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			andGen.setPickOnBounds(true);
 			deleteImage.setPickOnBounds(true);
@@ -93,7 +99,6 @@ public class sandboxController implements Initializable{
 	 * to a central source. */
 	public void generator(String fxml, Type type, ImageView origin) throws IOException{
 		try {
-			
 			// Create the object and set up the properties
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 			Pane object = loader.load();
@@ -110,6 +115,34 @@ public class sandboxController implements Initializable{
 		catch(Exception e) {
 			e.printStackTrace();
 		}	
+	}
+	
+	public void generateFromSave() throws IOException {
+		if(AccountManager.getSandboxSaveState() == null) {
+			return;
+		}
+		String saveState = AccountManager.getSandboxSaveState();
+		while(!saveState.trim().isEmpty()) {
+			String type = saveState.split(",")[0];
+			String locationX = saveState.split(",")[1];
+			String locationY = saveState.split(",")[2];
+			double locationXD = Double.parseDouble(locationX);
+			double locationYD = Double.parseDouble(locationY);
+			String toRemove = type +","+ locationX +","+ locationY + ",";
+			saveState = saveState.replace(toRemove, ""); 
+			ImageView origin = new ImageView();
+			origin.setLayoutX(locationXD);
+			origin.setLayoutY(locationYD + 100);
+			
+			if(type.equals("l")) {
+				try {
+					this.generator("/application/resources/gates/bulb.fxml", Type.BULB, origin);
+				}		
+				catch(Exception e) {
+					e.printStackTrace();
+				}	
+			}
+		}
 	}
 	
 	public void andGenerator() throws IOException {			
