@@ -10,6 +10,11 @@ import application.resources.gates.andController;
 import application.resources.gates.batteryController;
 import application.resources.gates.bulbController;
 import application.resources.gates.gateObject;
+import application.resources.gates.nandController;
+import application.resources.gates.norController;
+import application.resources.gates.notController;
+import application.resources.gates.orController;
+import application.resources.gates.xorController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -344,14 +349,19 @@ public class sandboxController implements Initializable{
 							((bulbController)startNode.getProperties().get("parentGate")).checktype();
 							break;
 						case "NAND":
+							((nandController)startNode.getProperties().get("parentGate")).checktype();
 							break;
 						case "NOR":
+							((norController)startNode.getProperties().get("parentGate")).checktype();
 							break;
 						case "XOR":
+							((xorController)startNode.getProperties().get("parentGate")).checktype();
 							break;
 						case "NOT":
+							((notController)startNode.getProperties().get("parentGate")).checktype();
 							break;
 						case "OR":
+							((orController)startNode.getProperties().get("parentGate")).checktype();
 							break;
 							
 			
