@@ -388,8 +388,7 @@ public class sandboxController implements Initializable{
 		// Get the parent node of the terminal, the gate, so I can figure out the absolute position of the terminal. 
 		// outputTerminal.layoutXProperty() only give the relative x,y coordiniates inside the gate
 		Pane outputPane = (Pane) outputTerminal.getParent();
-		Pane inputPane = (Pane)inputTerminal.getParent();			
-		
+		Pane inputPane = (Pane)inputTerminal.getParent();
 		Line connectLine = new Line();
 		connectLine.setStrokeWidth(5);
 		
@@ -403,7 +402,6 @@ public class sandboxController implements Initializable{
 		// Add to the pane and push behind the gates so the user can click the terminal again.
 		circuitBoardPane.getChildren().add(connectLine);
 		connectLine.toBack();
-		
 		
 		// Release the mouse binding from beginConnection so the line isn't created again.
 		circuitBoardPane.setOnMouseReleased(null);
