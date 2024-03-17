@@ -109,6 +109,7 @@ public class batteryController extends gateObject implements Initializable{
 							break;
 						case "BULB":
 							((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
 						case "NAND":
 							((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
 							break;
@@ -139,6 +140,7 @@ public class batteryController extends gateObject implements Initializable{
 							break;
 						case "BULB":
 							((bulbController)((Rectangle)output1.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
 						case "NAND":
 							((nandController)((Rectangle)output1.getProperties().get("put")).getProperties().get("parentGate")).checktype();
 							break;
@@ -177,6 +179,7 @@ public class batteryController extends gateObject implements Initializable{
 								break;
 							case "BULB":
 								((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+								break;
 							case "NAND":
 								((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
 								break;
@@ -207,6 +210,7 @@ public class batteryController extends gateObject implements Initializable{
 							break;
 						case "BULB":
 							((bulbController)((Rectangle)output1.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
 						case "NAND":
 							((nandController)((Rectangle)output1.getProperties().get("put")).getProperties().get("parentGate")).checktype();
 							break;
@@ -246,6 +250,7 @@ public class batteryController extends gateObject implements Initializable{
 					break;
 				case "BULB":
 					((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+					break;
 				case "NAND":
 					((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
 					break;
@@ -277,6 +282,7 @@ public class batteryController extends gateObject implements Initializable{
 						break;
 					case "BULB":
 						((bulbController)((Rectangle)output1.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
 					case "NAND":
 						((nandController)((Rectangle)output1.getProperties().get("put")).getProperties().get("parentGate")).checktype();
 						break;

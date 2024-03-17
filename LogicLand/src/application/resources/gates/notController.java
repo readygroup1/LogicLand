@@ -67,7 +67,19 @@ public class notController extends gateObject implements Initializable {
 			});
 			
 			input1.getProperties().put("type", "input");
+			input1.getProperties().put("state", false);		//Andres
+			input1.getProperties().put("parentGate", this);//Andres
+			input1.getProperties().put("put", null);
+			input1.getProperties().put("ClassType", "NOT");
+			
+			
 			output.getProperties().put("type", "output");
+			output.getProperties().put("state", false);//Andres
+			output.getProperties().put("parentGate", this);//Andres
+			output.getProperties().put("put", null);	//Andres
+			output.getProperties().put("ClassType", "NOT");
+			
+			
 			body.getProperties().put("type", "body");
 		}
 		
@@ -107,6 +119,124 @@ public class notController extends gateObject implements Initializable {
 		
 		public Type getType() {
 			return type;
+		}
+		
+		
+		public void checktype() {
+			
+			if(((Rectangle)input1.getProperties().get("put") != null) ) {
+			
+				if (((boolean)((Rectangle)input1.getProperties().get("put")).getProperties().get("state")) ) {
+					
+					output.getProperties().put("state", false);//Andres
+					if(	((Rectangle)output.getProperties().get("put")) != null) {
+						((Rectangle)output.getProperties().get("put")).getProperties().put("state", false);
+						switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
+						case "AND":
+							((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "BATTERY":
+							((batteryController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "BULB":
+							((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "NAND":
+							((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "NOR":
+							((norController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "XOR":
+							((xorController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "NOT":
+							((notController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "OR":
+							((orController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						
+						
+						}
+					}
+					setImageOff();
+					
+				}
+				else {
+					
+					output.getProperties().put("state", true);//Andres
+					if(	((Rectangle)output.getProperties().get("put")) != null) {
+						((Rectangle)output.getProperties().get("put")).getProperties().put("state", true);
+						switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
+						case "AND":
+							((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "BATTERY":
+							((batteryController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "BULB":
+							((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "NAND":
+							((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "NOR":
+							((norController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "XOR":
+							((xorController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "NOT":
+							((notController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						case "OR":
+							((orController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
+						
+						
+						}
+					}
+					setImageOn();
+					
+				}
+			}	
+			else {
+				
+				output.getProperties().put("state", false);//Andres
+				if(	((Rectangle)output.getProperties().get("put")) != null) {
+					((Rectangle)output.getProperties().get("put")).getProperties().put("state", false);
+					switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
+					case "AND":
+						((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "BATTERY":
+						((batteryController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "BULB":
+						((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "NAND":
+						((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "NOR":
+						((norController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "XOR":
+						((xorController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "NOT":
+						((notController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "OR":
+						((orController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					
+					
+					}
+				}
+				setImageOff();
+			}
 		}
 
 }

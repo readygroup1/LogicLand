@@ -376,6 +376,39 @@ public class sandboxController implements Initializable{
 					}
 					
 					else {
+						
+						
+						
+						endNode.getProperties().put("put", startNode);	//Andres
+						startNode.getProperties().put("put", endNode);
+						
+						switch( (String)(endNode.getProperties().get("ClassType")) ) {
+						case "AND":
+							((andController)(endNode.getProperties().get("parentGate"))).checktype();			//Andres
+							break;
+						case "BATTERY":
+							((batteryController)endNode.getProperties().get("parentGate")).checktype();			//Andres
+							break;
+						case "BULB":
+							((bulbController)endNode.getProperties().get("parentGate")).checktype();
+							break;
+						case "NAND":
+							((nandController)endNode.getProperties().get("parentGate")).checktype();
+							break;
+						case "NOR":
+							((norController)endNode.getProperties().get("parentGate")).checktype();
+							break;
+						case "XOR":
+							((xorController)endNode.getProperties().get("parentGate")).checktype();
+							break;
+						case "NOT":
+							((notController)endNode.getProperties().get("parentGate")).checktype();
+							break;
+						case "OR":
+							((orController)endNode.getProperties().get("parentGate")).checktype();
+							break;
+						}
+						
 						this.makeWire(endNode, startNode);
 					}
 				}
