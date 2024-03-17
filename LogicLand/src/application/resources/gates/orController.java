@@ -59,8 +59,11 @@ public class orController extends gateObject implements Initializable {
 			});
 			
 			input1.getProperties().put("type", "input");
+			
 			input2.getProperties().put("type", "input");
+			
 			output.getProperties().put("type", "output");
+			
 			body.getProperties().put("type", "body");
 		}
 		
