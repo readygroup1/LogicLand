@@ -115,22 +115,27 @@ public class newGameController implements Initializable{
 				
 				// Error handling cases for text input
 				if(userName.trim().isEmpty() || userPassword.trim().isEmpty() || userConfirmPassword.trim().isEmpty() || userEmail.trim().isEmpty() || userInitials.trim().isEmpty() || className.trim().isEmpty() || classID == -1) {
+					audio.errorPlay();
 					status.setText("Input fields cannot be blank!");
 					return;
 				}
 				if(AccountManager.db.userNameExists(userName)) {
+					audio.errorPlay();
 					status.setText("Name is taken!");
 					return;
 				}
 				if(userInitials.length() != 3) {
+					audio.errorPlay();
 					status.setText("Initials must be 3 letters!");
 					return;
 				}
 				if(userPassword.length() < 4) {
+					audio.errorPlay();
 					status.setText("Password is too short!");
 					return;
 				}
 				if(!userConfirmPassword.equals(userPassword)) {
+					audio.errorPlay();
 					status.setText("Password confirmation does not match!");
 					return;
 				}
@@ -141,25 +146,31 @@ public class newGameController implements Initializable{
 				
 				// Error handling cases for text input
 				if(userName.trim().isEmpty() || userPassword.trim().isEmpty() || userConfirmPassword.trim().isEmpty() || userEmail.trim().isEmpty() || userInitials.trim().isEmpty() || className.trim().isEmpty()) {
+					audio.errorPlay();
 					status.setText("Input fields cannot be blank!");
 					return;
 				}
 				if(AccountManager.db.classroomNameExists(className)) {
+					audio.errorPlay();
 					status.setText("Class name is taken!");
 					return;
 				}
 				if(className.length() > 15) {
+					audio.errorPlay();
 					status.setText("Class name is too long");
 				}
 				if(userInitials.length() != 3) {
+					audio.errorPlay();
 					status.setText("Initials must be 3 letters!");
 					return;
 				}
 				if(userPassword.length() < 4) {
+					audio.errorPlay();
 					status.setText("Password is too short!");
 					return;
 				}
 				if(!userConfirmPassword.equals(userPassword)) {
+					audio.errorPlay();
 					status.setText("Password confirmation does not match!");
 					return;
 				}
