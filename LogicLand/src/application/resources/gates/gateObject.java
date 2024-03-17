@@ -30,6 +30,10 @@ public class gateObject {
 		sboxController = board;
 		circuitBoardPane = sboxController.getCircuitBoardPane();
 	}
+	
+	public void checktype() {
+		
+	}
 
 
 }

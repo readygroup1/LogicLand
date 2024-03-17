@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import application.AccountManager;
 import application.resources.gates.andController;
+import application.resources.gates.batteryController;
 import application.resources.gates.gateObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -328,7 +329,16 @@ public class sandboxController implements Initializable{
 					if (startType == "output") {
 						endNode.getProperties().put("put", startNode);	//Andres
 						startNode.getProperties().put("put", endNode);
-						((andController)endNode.getProperties().get("parentGate")).checktype();			//Andres
+						
+						switch( (String)(startNode.getProperties().get("ClassType")) ) {
+						case "AND":
+							((andController)(startNode.getProperties().get("parentGate"))).checktype();			//Andres
+							break;
+						case "BATTERY":
+							((batteryController)startNode.getProperties().get("parentGate")).checktype();			//Andres
+							break;
+						}
+						
 						
 						this.makeWire(startNode, endNode);
 					

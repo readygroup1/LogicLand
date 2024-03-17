@@ -70,11 +70,13 @@ public class batteryController extends gateObject implements Initializable{
 			output1.getProperties().put("state", false);
 			output1.getProperties().put("parentGate", this);//Andres
 			output1.getProperties().put("put", null);
+			output1.getProperties().put("ClassType", "BATTERY");
 			
 			output.getProperties().put("type", "output");
 			output.getProperties().put("state", false);
 			output.getProperties().put("parentGate", this);//Andres
 			output.getProperties().put("put", null);
+			output.getProperties().put("ClassType", "BATTERY");
 			
 			
 			body.getProperties().put("type", "body");
@@ -126,6 +128,19 @@ public class batteryController extends gateObject implements Initializable{
 		 		}		
 			}							
 			dragged = false;
+		}
+		
+		public void checktype() {
+			if(output.getProperties().get("put") != null) {
+ 	 			
+ 	 			((andController)(((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate"))).checktype();
+ 	 				 	 			
+ 	 		}
+ 	 		if(output1.getProperties().get("put") != null) {
+ 	 			
+ 	 			((andController)(((Rectangle)output1.getProperties().get("put")).getProperties().get("parentGate"))).checktype();
+ 	 				 	 			
+ 	 		}
 		}
 		
 		//----------------Getters & Setters-----------
