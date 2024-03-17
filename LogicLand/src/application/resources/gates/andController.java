@@ -9,6 +9,8 @@ import application.resources.sandboxController;
 import application.resources.gates.gateObject.Type;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
@@ -27,6 +29,8 @@ public class andController extends gateObject implements Initializable {
 	Type type = Type.and;
 	
 	@FXML
+	ImageView andImage;
+	@FXML
 	Ellipse body;
 	@FXML
 	Rectangle input1;
@@ -42,7 +46,12 @@ public class andController extends gateObject implements Initializable {
 	
 	String saveState = ""; //and has code 'a'
 	
-	//----------------Initializer------------------
+	//---------------Resources------------------------------
+	
+	Image andOff = new Image(getClass().getResourceAsStream("/application/resources/images/and.png"));
+ 	Image andOn = new Image(getClass().getResourceAsStream("/application/resources/images/andOn.png")); 
+	
+	//----------------Initializer---------------------------
 	/**The first two blocks initialized the gate to be draggable. 
 	 * The third block initialized node properties on the terminals.
 	 * Every gate and terminal will have properties such as type that can be accessed using
@@ -101,6 +110,15 @@ public class andController extends gateObject implements Initializable {
 	 * in every gate that is created. It is helpful for communicating events back to a central source.
 	 * You can call any function in sandbox controller on this instance.
 	 * The board instance can be used to draw things on the screen from a gate if needed.  */
+	
+	public void setImageOn() {
+		andImage.setImage(andOn);
+	}
+	
+	public void setImageOff() {
+		andImage.setImage(andOff);
+	}
+	
 	public void setBoard (sandboxController board) {
 		sboxController = board;
 		circuitBoardPane = sboxController.getCircuitBoardPane();

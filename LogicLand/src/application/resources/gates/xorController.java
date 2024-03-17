@@ -8,6 +8,8 @@ import application.resources.sandboxController;
 import application.resources.gates.gateObject.Type;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
@@ -31,13 +33,19 @@ public class xorController extends gateObject implements Initializable{
 		Rectangle output;	
 		@FXML
 		Pane pane;
+		@FXML
+		ImageView xorImage;
 		
 		Double dragStartX;
 		Double dragStartY;
 		
 		String saveState = ""; //xor has code 'x'
 		
-		//----------------Initializer------------------
+		// -----------------------Resources-------------------------------
+		Image xorOff = new Image(getClass().getResourceAsStream("/application/resources/images/xor.png"));
+	 	Image xorOn = new Image(getClass().getResourceAsStream("/application/resources/images/xorOn.png")); 
+		
+		//----------------Initializer-------------------------------------
 		/**The first two blocks initialized the gate to be draggable. 
 		 * The third block initialized node properties on the terminals.
 		 * Every gate and terminal will have properties such as type that can be accessed using
@@ -77,6 +85,15 @@ public class xorController extends gateObject implements Initializable{
 		 * in every gate that is created. It is helpful for communicating events back to a central source.
 		 * You can call any function in sandbox controller on this instance.
 		 * The board instance can be used to draw things on the screen from a gate if needed.  */
+		
+		public void setImageOn() {
+			xorImage.setImage(xorOn);
+		}
+		
+		public void setImageOff() {
+			xorImage.setImage(xorOff);
+		}
+		
 		public void setBoard (sandboxController board) {
 			sboxController = board;
 			circuitBoardPane = sboxController.getCircuitBoardPane();

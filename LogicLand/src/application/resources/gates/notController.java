@@ -8,6 +8,8 @@ import application.resources.sandboxController;
 import application.resources.gates.gateObject.Type;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
@@ -15,7 +17,7 @@ import javafx.scene.shape.Rectangle;
 
 public class notController extends gateObject implements Initializable {
 	
-	//----------------Variables-------------------
+	//----------------Variables---------------------------
 		boolean state = false;
 		sandboxController sboxController;
 		Pane circuitBoardPane;
@@ -29,13 +31,21 @@ public class notController extends gateObject implements Initializable {
 		Rectangle output;	
 		@FXML
 		Pane pane;
+		@FXML
+		ImageView notImage;
 		
 		Double dragStartX;
 		Double dragStartY;
 		
 		String saveState = ""; //not has code 'n'
 		
-		//----------------Initializer------------------
+		
+		
+		//-------------------Resources--------------------------
+		Image notOff = new Image(getClass().getResourceAsStream("/application/resources/images/not.png"));
+	 	Image notOn = new Image(getClass().getResourceAsStream("/application/resources/images/notOn.png")); 
+		
+		//----------------Initializer---------------------------
 		/**The first two blocks initialized the gate to be draggable. 
 		 * The third block initialized node properties on the terminals.
 		 * Every gate and terminal will have properties such as type that can be accessed using
@@ -74,6 +84,14 @@ public class notController extends gateObject implements Initializable {
 		 * in every gate that is created. It is helpful for communicating events back to a central source.
 		 * You can call any function in sandbox controller on this instance.
 		 * The board instance can be used to draw things on the screen from a gate if needed.  */
+		
+		public void setImageOn() {
+			notImage.setImage(notOn);
+		}
+		
+		public void setImageOff() {
+			notImage.setImage(notOff);
+		}
 		public void setBoard (sandboxController board) {
 			sboxController = board;
 			circuitBoardPane = sboxController.getCircuitBoardPane();

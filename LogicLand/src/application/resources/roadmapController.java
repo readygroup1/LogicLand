@@ -20,7 +20,7 @@ public class roadmapController {
 	  @FXML
 	  private Text score;
 	  @FXML
-	  private ImageView andLevel;
+	  private ImageView levelOne;
 	  
 	  audioPlayer audio = new audioPlayer();
 	  
@@ -36,25 +36,13 @@ public class roadmapController {
 			    score.setText("Class ID: " + teacher.getClassID());
 		  }
 		  
-		  andLevel.setPickOnBounds(true);
+		  levelOne.setPickOnBounds(true);
 	}
 	  
 	  
 	//-----------------Constants & Resources----------------------------------
 	  SceneSwitcher sceneSwitcher = new SceneSwitcher();
-	  
-	//----------------Level Buttons-------------------------------------------
-	  
-	  public void andLevel(MouseEvent event) throws IOException {
-		  
-		  try {		
-			  audio.boopPlay();
-			  sceneSwitcher.switchScene(event, "/application/resources/levels/level1A.fxml");
-			}			
-			catch(IOException exception) {				
-				exception.printStackTrace();				
-			}		  
-	  }
+
 	
 	// ----------------User Dashboard Button Functions -----------------------
 	
@@ -116,14 +104,14 @@ public class roadmapController {
 		
 		
 		
-		public void levelOne(ActionEvent event) throws IOException {	
-			try {	
-				audio.boopPlay();
-				sceneSwitcher.switchScene(event, "/application/resources/Level1.fxml");
-			}			
-			catch(IOException exception) {				
-				exception.printStackTrace();				
-			}		
+		public void levelOne(MouseEvent event) throws IOException {	
+			 try {		
+				  audio.boopPlay();
+				  sceneSwitcher.switchScene(event, "/application/resources/levels/level1A.fxml");
+				}			
+				catch(IOException exception) {				
+					exception.printStackTrace();				
+				}		  
 		}
 		
 		public void levelTwo(ActionEvent event) throws IOException {	

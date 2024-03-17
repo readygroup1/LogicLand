@@ -1,7 +1,9 @@
-package application.resources;
+package application.resources.levels;
 
 import java.io.IOException;
 
+import application.resources.SceneSwitcher;
+import application.resources.audioPlayer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

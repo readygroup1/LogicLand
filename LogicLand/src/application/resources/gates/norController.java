@@ -8,6 +8,8 @@ import application.resources.sandboxController;
 import application.resources.gates.gateObject.Type;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
@@ -30,11 +32,18 @@ public class norController extends gateObject implements Initializable{
 		Rectangle output;	
 		@FXML
 		Pane pane;
+		@FXML
+		ImageView norImage;
 		
 		Double dragStartX;
 		Double dragStartY;
 		
 		String saveState = ""; //Nor has code r
+		
+		
+		// ---------------Resources----------------------------
+		Image norOff = new Image(getClass().getResourceAsStream("/application/resources/images/nor.png"));
+	 	Image norOn = new Image(getClass().getResourceAsStream("/application/resources/images/norOn.png")); 
 		
 		//----------------Initializer------------------
 		/**The first two blocks initialized the gate to be draggable. 
@@ -98,6 +107,14 @@ public class norController extends gateObject implements Initializable{
 		 * in every gate that is created. It is helpful for communicating events back to a central source.
 		 * You can call any function in sandbox controller on this instance.
 		 * The board instance can be used to draw things on the screen from a gate if needed.  */
+		public void setImageOn() {
+			norImage.setImage(norOn);
+		}
+		
+		public void setImageOff() {
+			norImage.setImage(norOff);
+		}
+		
 		public void setBoard (sandboxController board) {
 			sboxController = board;
 			circuitBoardPane = sboxController.getCircuitBoardPane();
