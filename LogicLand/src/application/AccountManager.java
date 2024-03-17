@@ -19,7 +19,6 @@ public class AccountManager {
 	public AccountManager() {
 		AccountManager.currentUserID = -1;
 		AccountManager.isAdmin = false;
-		AccountManager.sandboxSaveState = "";
 		return;
 	}
 	
@@ -34,14 +33,14 @@ public class AccountManager {
 			if(db.verifyAdmin(name, password)) {
 				AccountManager.currentUserID = db.getAdminID(name);
 				AccountManager.isAdmin = true;
-				AccountManager.setSandboxSaveState("");
+				AccountManager.setSandboxSaveState(db.getSandboxSaveStateAdmin(currentUserID));
 				return true;
 			}
 		} else {
 			if(db.verifyPlayer(name, password)) {
 				AccountManager.currentUserID = db.getPlayerID(name);
 				AccountManager.isAdmin = false;
-				AccountManager.setSandboxSaveState("");
+				AccountManager.setSandboxSaveState(db.getSandboxSaveState(currentUserID));
 				return true;
 			}
 		}
@@ -126,10 +125,20 @@ public class AccountManager {
 	
 	public static void setSandboxSaveState(String state) {
 		AccountManager.sandboxSaveState = state;
+		if(isAdmin) {
+			db.updateAdminSandBoxSave(AccountManager.currentUserID, AccountManager.sandboxSaveState);
+		} else {
+			db.updatePlayerSandboxSave(AccountManager.currentUserID, AccountManager.sandboxSaveState);
+		}
 	}
 	
 	public static void setIndividualGate(String state) {
 		AccountManager.sandboxSaveState = AccountManager.sandboxSaveState + state;
+		if(isAdmin) {
+			db.updateAdminSandBoxSave(AccountManager.currentUserID, AccountManager.sandboxSaveState);
+		} else {
+			db.updatePlayerSandboxSave(AccountManager.currentUserID, AccountManager.sandboxSaveState);
+		}
 	}
 	
 	public static void removeOldPosition(Double StartX, Double StartY, String type) {
@@ -137,12 +146,17 @@ public class AccountManager {
 		// like this ex: "l,243.443,232.423"
 		String oldPosition = type + "," + StartX + "," + StartY + ",";
 		AccountManager.sandboxSaveState = AccountManager.sandboxSaveState.replace(oldPosition, "");
-
+		if(isAdmin) {
+			db.updateAdminSandBoxSave(AccountManager.currentUserID, AccountManager.sandboxSaveState);
+		} else {
+			db.updatePlayerSandboxSave(AccountManager.currentUserID, AccountManager.sandboxSaveState);
+		}
 	}
 	
 	public static void newPlayerAccount(String username, String initials, String password, String email, int classID) {
 		AccountManager.currentUserID = db.addPlayer(username, initials, password, email, classID);
 		AccountManager.isAdmin = false;
+		AccountManager.setSandboxSaveState("");
 		db.printDB(); // Just for testing
 	}
 	
@@ -150,6 +164,7 @@ public class AccountManager {
 		AccountManager.currentUserID = db.addAdmin(username, initials, password, email);
 		db.addClassroom(className, AccountManager.currentUserID);
 		AccountManager.isAdmin = true;
+		AccountManager.setSandboxSaveState("");
 		db.printDB(); // Just for testing
 	}
 	

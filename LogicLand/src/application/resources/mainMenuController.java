@@ -2,6 +2,7 @@ package application.resources;
 
 import java.io.IOException;
 
+import application.AccountManager;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -32,8 +33,8 @@ public class mainMenuController {
 	
 	@FXML
 	Button loadGame;
-	public void loadGame(ActionEvent event) throws IOException {			
-		transitionScene("login.fxml", event);		
+	public void loadGame(ActionEvent event) throws IOException {	
+		transitionScene("login.fxml", event);	
 	}
 	
 	@FXML 
