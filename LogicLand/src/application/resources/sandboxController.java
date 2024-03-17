@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import application.AccountManager;
 import application.resources.gates.andController;
 import application.resources.gates.batteryController;
+import application.resources.gates.bulbController;
 import application.resources.gates.gateObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -339,6 +340,24 @@ public class sandboxController implements Initializable{
 						case "BATTERY":
 							((batteryController)startNode.getProperties().get("parentGate")).checktype();			//Andres
 							break;
+						case "BULB":
+							((bulbController)startNode.getProperties().get("parentGate")).checktype();
+							break;
+						case "NAND":
+							break;
+						case "NOR":
+							break;
+						case "XOR":
+							break;
+						case "NOT":
+							break;
+						case "OR":
+							break;
+							
+			
+					
+						
+						
 						}
 						
 						

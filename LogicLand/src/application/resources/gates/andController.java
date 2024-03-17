@@ -67,7 +67,6 @@ public class andController extends gateObject implements Initializable {
 		input1.getProperties().put("state", false);		//Andres
 		input1.getProperties().put("parentGate", this);//Andres
 		input1.getProperties().put("put", null);
-		input1.getProperties().put("ClassType", andController.class);
 		input1.getProperties().put("ClassType", "AND");
 
 		
@@ -75,14 +74,12 @@ public class andController extends gateObject implements Initializable {
 		input2.getProperties().put("state", false);		//Andres
 		input2.getProperties().put("parentGate", this);//Andres
 		input2.getProperties().put("put", null);
-		input2.getProperties().put("ClassType", andController.class);
 		input2.getProperties().put("ClassType", "AND");
 		
 		output.getProperties().put("type", "output");
 		output.getProperties().put("state", false);//Andres
 		output.getProperties().put("parentGate", this);//Andres
 		output.getProperties().put("put", null);	//Andres
-		output.getProperties().put("ClassType", andController.class);
 		output.getProperties().put("ClassType", "AND");
 		
 		
@@ -123,22 +120,51 @@ public class andController extends gateObject implements Initializable {
 	
 	public void checktype() {
 		
-		if((( (Rectangle)input1.getProperties().get("put") != null) && ((Rectangle)input1.getProperties().get("put")) != null)) {
+		if((( (Rectangle)input1.getProperties().get("put") != null) && ((Rectangle)input2.getProperties().get("put")) != null)) {
 		
 			if (((boolean)((Rectangle)input1.getProperties().get("put")).getProperties().get("state")) && ((boolean)((Rectangle)input2.getProperties().get("put")).getProperties().get("state"))) {
 				output.getProperties().put("state", true);
 				if( ( (Rectangle)output.getProperties().get("put")) != null) {
 					((Rectangle)output.getProperties().get("put")).getProperties().put("state", true);
-					((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-				}
+					
+					
+					switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
+					case "AND":
+						((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "BATTERY":
+						((batteryController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "BULB":
+						((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+
+						
+					}				}
 				
 				System.out.println("Switched to true");
 			}
+			
 			else {
 				output.getProperties().put("state", false);
 				if( ( (Rectangle)output.getProperties().get("put")) != null) {
 					((Rectangle)output.getProperties().get("put")).getProperties().put("state", false);
-					((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+					
+
+					switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
+					case "AND":
+						((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "BATTERY":
+						((batteryController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "BULB":
+						((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+
+						
+					}
+					
+					
+					
 				}
 				System.out.println("Switched to false");
 			}
@@ -147,7 +173,23 @@ public class andController extends gateObject implements Initializable {
 			output.getProperties().put("state", false);
 			if( ( (Rectangle)output.getProperties().get("put")) != null) {
 				((Rectangle)output.getProperties().get("put")).getProperties().put("state", false);
-				((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+				
+				
+				
+				switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
+				case "AND":
+					((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+					break;
+				case "BATTERY":
+					((batteryController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+					break;
+				case "BULB":
+					((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+
+					
+				}			
+			
+			
 			}
 			System.out.println("Switched to false");
 		}
