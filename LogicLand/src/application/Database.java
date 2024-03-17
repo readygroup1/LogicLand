@@ -36,11 +36,10 @@ public class Database {
             return;
         }
         executeSQL(
-                "CREATE TABLE ADMIN (AdminID INT PRIMARY KEY, AdminName VARCHAR(255), Initials VARCHAR(255), AdminPassword VARCHAR(255), AdminEmail VARCHAR(255))");
+                "CREATE TABLE SANDBOX (SandboxID INT PRIMARY KEY, ProjectTitle VARCHAR(255), LastModified DATE, SaveState VARCHAR(255))");
+        executeSQL("CREATE TABLE ADMIN (AdminID INT PRIMARY KEY, AdminName VARCHAR(255), Initials VARCHAR(255), AdminPassword VARCHAR(255), AdminEmail VARCHAR(255), SandboxID INT, FOREIGN KEY (SandboxID) REFERENCES SANDBOX(SandboxID))");
         executeSQL(
                 "CREATE TABLE CLASSROOM (ClassID INT PRIMARY KEY, ClassName VARCHAR(255), AdminID INT, FOREIGN KEY (AdminID) REFERENCES ADMIN(AdminID))");
-        executeSQL(
-                "CREATE TABLE SANDBOX (SandboxID INT PRIMARY KEY, ProjectTitle VARCHAR(255), LastModified DATE, SaveState VARCHAR(255))");
         executeSQL("CREATE TABLE PLAYER (" +
                 "PlayerID INT PRIMARY KEY, " +
                 "Name VARCHAR(255), " +
@@ -235,6 +234,44 @@ public class Database {
     }
     
     
+    /** 
+     * @param PlayerID
+     * @return String
+     */
+    public String getSandboxSaveState(int PlayerID) {
+        try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT SaveState FROM SANDBOX WHERE SandboxID = (SELECT SandboxID FROM PLAYER WHERE PlayerID = " + PlayerID + ")")) {
+            if(rs.next()) {
+                return rs.getString(1);
+            } else {
+            	return "";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "Error";
+    }
+
+    
+    /** 
+     * @param AdminID
+     * @return String
+     */
+    public String getSandboxSaveStateAdmin(int AdminID) {
+        try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT SaveState FROM SANDBOX WHERE SandboxID = (SELECT SandboxID FROM ADMIN WHERE AdminID = " + AdminID + ")")) {
+            if(rs.next()) {
+                return rs.getString(1);
+            } else {
+            	return "";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "Error";
+    }
     
     
     
@@ -287,6 +324,15 @@ public class Database {
      */
     public int getSandboxID(int PlayerID) {
         return executeQueryGetInt("SELECT SandboxID FROM PLAYER WHERE PlayerID = " + PlayerID);
+    }
+
+    
+    /** 
+     * @param AdminID
+     * @return int
+     */
+    public int getSandboxIDAdmin(int AdminID) {
+        return executeQueryGetInt("SELECT SandboxID FROM ADMIN WHERE AdminID = " + AdminID);
     }
 
     
@@ -517,7 +563,7 @@ public class Database {
         // Count all rows in sandbox table to find next sandboxID
         int sandboxID = executeQueryGetInt("SELECT COUNT(*) FROM SANDBOX") + 1;
         // Create a new sandbox for the player
-        executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '0000')");
+        executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '')");
 
         executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
                 + "', '" + email
@@ -546,9 +592,13 @@ public class Database {
     public int addAdmin(String name, String initials, String password, String email) {
         // Count how many rows in table to find next primary key
         int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM ADMIN") + 1;
+
+        int sandboxID = executeQueryGetInt("SELECT COUNT(*) FROM SANDBOX") + 1;
+        // Create a new sandbox for the player
+        executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '')");
+
         executeSQL("INSERT INTO ADMIN VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
-                + "', '" + email
-                + "')");
+                + "', '" + email + "', " + sandboxID + ")");
         return primaryKey;
     }
 
@@ -578,6 +628,28 @@ public class Database {
                 + "', LastModified = CURRENT_DATE, SaveState = '" + saveState + "' WHERE SandboxID = " + sandboxID);
     }
 
+    
+    /** 
+     * This method updates the player's current sandbox save state.
+     * @param PlayerID
+     * @param saveState
+     */
+    public void updatePlayerSandboxSave(int PlayerID, String saveState) {
+        // First get the sandbox ID from playerID
+        int sandboxID = getSandboxID(PlayerID);
+        executeSQL("UPDATE SANDBOX SET SaveState = '" + saveState + "' WHERE SandboxID = " + sandboxID);
+    }
+
+    
+    /** 
+     * @param AdminID
+     * @param saveState
+     */
+    public void updateAdminSandBoxSave(int AdminID, String saveState) {
+        // First get the sandbox ID from playerID
+        int sandboxID = getSandboxIDAdmin(AdminID);
+        executeSQL("UPDATE SANDBOX SET SaveState = '" + saveState + "' WHERE SandboxID = " + sandboxID);
+    }
     
     /** 
      * This method updates the player's current level save state.
@@ -687,9 +759,9 @@ public class Database {
         executeSQL("DROP TABLE LEVELS");
         executeSQL("DROP TABLE HIGHSCORE");
         executeSQL("DROP TABLE PLAYER");
-        executeSQL("DROP TABLE SANDBOX");
         executeSQL("DROP TABLE CLASSROOM");
         executeSQL("DROP TABLE ADMIN");
+        executeSQL("DROP TABLE SANDBOX");
         createDB();
     }
 

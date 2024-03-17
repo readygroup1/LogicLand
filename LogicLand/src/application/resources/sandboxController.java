@@ -418,7 +418,6 @@ public class sandboxController implements Initializable{
 					toRemove = codes[i] +","+ locationX +","+ locationY + ",";
 					i++;
 				} while(AccountManager.getSandboxSaveState().replace(toRemove, "") != "");
-				System.out.println("State: " + AccountManager.getSandboxSaveState());
 				circuitBoardPane.getChildren().remove(((Node) event.getPickResult().getIntersectedNode().getParent()));
 			}
 		}
