@@ -135,22 +135,18 @@ public class norController extends gateObject implements Initializable{
 		
 		public void checktype() {
 			
-			if( (( (Rectangle)input1.getProperties().get("put") != null) || ((Rectangle)input2.getProperties().get("put")) != null)) {
-			
-				boolean on = false;
-				
-				if(( (Rectangle)input1.getProperties().get("put") != null)) {
+			//check if both inputs are null
+			if(  
+					((Rectangle)input1.getProperties().get("put") != null && !((boolean)((Rectangle)input1.getProperties().get("put")).getProperties().get("state")) ) 
+				||  ((Rectangle)input2.getProperties().get("put") != null && !((boolean)((Rectangle)input2.getProperties().get("put")).getProperties().get("state")))
 					
-				}
+				) {
 				
-				
-				
-				if (((boolean)((Rectangle)input1.getProperties().get("put")).getProperties().get("state")) && ((boolean)((Rectangle)input2.getProperties().get("put")).getProperties().get("state"))) {
 					output.getProperties().put("state", true);
-					if( ( (Rectangle)output.getProperties().get("put")) != null) {
+		
+	
+					if(	((Rectangle)output.getProperties().get("put")) != null) {
 						((Rectangle)output.getProperties().get("put")).getProperties().put("state", true);
-						
-						
 						switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
 						case "AND":
 							((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
@@ -160,6 +156,7 @@ public class norController extends gateObject implements Initializable{
 							break;
 						case "BULB":
 							((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+							break;
 						case "NAND":
 							((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
 							break;
@@ -175,38 +172,15 @@ public class norController extends gateObject implements Initializable{
 						case "OR":
 							((orController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
 							break;
-							
-							
-						}				}
-					
-					System.out.println("Switched to true");
-				}
-				
-				else {
-					output.getProperties().put("state", false);
-					if( ( (Rectangle)output.getProperties().get("put")) != null) {
-						((Rectangle)output.getProperties().get("put")).getProperties().put("state", false);
 						
-
-						switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
-						case "AND":
-							((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-							break;
-						case "BATTERY":
-							((batteryController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-							break;
-						case "BULB":
-							((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-
-							
+						
 						}
-						
-						
-						
 					}
-					System.out.println("Switched to false");
-				}
-			}	
+	
+				System.out.println("Switched to true");
+			}
+				
+				
 			else {
 				output.getProperties().put("state", false);
 				if( ( (Rectangle)output.getProperties().get("put")) != null) {
@@ -223,11 +197,27 @@ public class norController extends gateObject implements Initializable{
 						break;
 					case "BULB":
 						((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-
+						break;
+					case "NAND":
+						((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "NOR":
+						((norController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "XOR":
+						((xorController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "NOT":
+						((notController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
+					case "OR":
+						((orController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
+						break;
 						
-					}			
+						
+					}		
 				
-				
+					
 				}
 				System.out.println("Switched to false");
 			}
