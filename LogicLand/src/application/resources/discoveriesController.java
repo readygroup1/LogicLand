@@ -10,8 +10,11 @@ public class discoveriesController {
 	
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	
+	audioPlayer audio = new audioPlayer();
+	
 	public void roadmap(ActionEvent event) throws IOException {			
 		try {			
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
 		}			
 		catch(IOException exception) {				
@@ -21,6 +24,7 @@ public class discoveriesController {
 	
 	public void sandbox(ActionEvent event) throws IOException {			
 		try {			
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/sandbox.fxml");
 		}			
 		catch(IOException exception) {				
@@ -29,7 +33,8 @@ public class discoveriesController {
 	}
 	
 	public void highscore(ActionEvent event) throws IOException {			
-		try {			
+		try {		
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/highscore.fxml");
 		}			
 		catch(IOException exception) {				
@@ -38,7 +43,8 @@ public class discoveriesController {
 	}
 	
 	public void discoveries(ActionEvent event) throws IOException {			
-		try {			
+		try {		
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/discoveries.fxml");
 		}			
 		catch(IOException exception) {				
@@ -47,7 +53,8 @@ public class discoveriesController {
 	}
 	
 	public void options(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/options.fxml");
 		}			
 		catch(IOException exception) {				

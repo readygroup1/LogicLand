@@ -16,10 +16,13 @@ public class tutorialController {
 		@FXML
 		Button backButton;
 		
+		audioPlayer audio = new audioPlayer();
+		
 	//---------Button Functions-------------------
 	
 	public void back(ActionEvent event) throws IOException {			
 		try {			
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "mainMenu.fxml");
 		}			
 		catch(IOException exception) {				

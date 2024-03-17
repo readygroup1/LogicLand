@@ -36,6 +36,8 @@ public class loginController {
 	CheckBox imATeacher;
 	Boolean isTeacher = false; // Used in imATeacher() to switch between input fields.
 	
+	audioPlayer audio = new audioPlayer();
+	
 	// ----------------Button Functions -----------------------
 	public void login(ActionEvent event) throws Exception {
 		String userName = username.getText();
@@ -52,7 +54,8 @@ public class loginController {
 		
 		try {
 		
-			bulb.setImage(bulbOn);		
+			bulb.setImage(bulbOn);	
+			audio.boopPlay();
 			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
 		}
 		catch(Exception e) {
@@ -61,7 +64,8 @@ public class loginController {
 	}
 	
 	public void back(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "mainMenu.fxml");
 		}			
 		catch(IOException exception) {				

@@ -42,6 +42,8 @@ public class mainMenuHighscoresController implements Initializable{
 	@FXML
 	Text fifthScore;
 	
+	audioPlayer audio = new audioPlayer();
+	
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		ArrayList<String> top5Names = AccountManager.getTopFiveNames();
 		ArrayList<Integer> top5Scores = AccountManager.getTopFiveScores();
@@ -58,7 +60,8 @@ public class mainMenuHighscoresController implements Initializable{
 	}
 	// ----------------Buttons Functions-----------------------
 	public void back(ActionEvent event) throws IOException {			
-		try {			
+		try {		
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "mainMenu.fxml");
 		}			
 		catch(IOException exception) {				

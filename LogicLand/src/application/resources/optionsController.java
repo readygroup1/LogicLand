@@ -15,11 +15,14 @@ public class optionsController {
 	
 		SceneSwitcher sceneSwitcher = new SceneSwitcher();
 		
+		audioPlayer audio = new audioPlayer();
+		
 	//-------------Button Functions------------------------
 		
 		@FXML 
 		Button quit;
 		public void quit(ActionEvent event) {
+			audio.boopPlay();
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			stage.close();
 		}
@@ -27,7 +30,8 @@ public class optionsController {
 		@FXML
 		Button logout;
 		public void logout(ActionEvent event) {
-			try {			
+			try {		
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "mainMenu.fxml");
 			}			
 			catch(IOException exception) {				
@@ -40,7 +44,8 @@ public class optionsController {
 	
 	
 	public void roadmap(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
 		}			
 		catch(IOException exception) {				
@@ -49,7 +54,8 @@ public class optionsController {
 	}
 	
 	public void sandbox(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/sandbox.fxml");
 		}			
 		catch(IOException exception) {				
@@ -58,7 +64,8 @@ public class optionsController {
 	}
 	
 	public void highscore(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/highscore.fxml");
 		}			
 		catch(IOException exception) {				
@@ -67,7 +74,8 @@ public class optionsController {
 	}
 	
 	public void discoveries(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/discoveries.fxml");
 		}			
 		catch(IOException exception) {				
@@ -76,7 +84,8 @@ public class optionsController {
 	}
 	
 	public void options(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/options.fxml");
 		}			
 		catch(IOException exception) {				

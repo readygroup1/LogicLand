@@ -17,6 +17,8 @@ public class levelController {
 
     @FXML
     private Label currentLevelLabel; // Inject the Label from FXML
+    
+    audioPlayer audio = new audioPlayer();
 
     
     
@@ -33,6 +35,7 @@ public class levelController {
      */
     public void back(ActionEvent event) throws IOException {
         try {
+        	audio.boopPlay();
             sceneSwitcher.switchScene(event, "roadmap.fxml");
         } catch (IOException exception) {
             exception.printStackTrace();
@@ -52,6 +55,7 @@ public class levelController {
             currentLevel--;
             String previousLevelFXML = "Level" + currentLevel + ".fxml";
             sceneSwitcher.switchScene(event, previousLevelFXML);
+            audio.boopPlay();
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -69,6 +73,7 @@ public class levelController {
             currentLevel++;
             String nextLevelFXML = "Level" + currentLevel + ".fxml";
             sceneSwitcher.switchScene(event, nextLevelFXML);
+            audio.boopPlay();
         } catch (IOException exception) {
             exception.printStackTrace();
         }

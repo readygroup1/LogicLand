@@ -58,6 +58,8 @@ public class newGameController implements Initializable{
 		TextField enterClassName; // Input field for teachers only.
 		Boolean isTeacher = false; // Used in imATeacher() to switch between input fields.
 		
+		audioPlayer audio = new audioPlayer();
+		
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		chooseClassName.getItems().addAll(AccountManager.getClassrooms());
 	}
@@ -66,6 +68,7 @@ public class newGameController implements Initializable{
 	
 	public void back(ActionEvent event) throws IOException {			
 		try {			
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "mainMenu.fxml");
 		}			
 		catch(IOException exception) {				
@@ -165,6 +168,7 @@ public class newGameController implements Initializable{
 			
 			
 			bulb.setImage(bulbOn);	
+			audio.boopPlay();
 			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
 		}
 		catch(Exception e) {

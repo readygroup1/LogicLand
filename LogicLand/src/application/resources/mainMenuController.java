@@ -27,31 +27,36 @@ public class mainMenuController {
 	//---------Buttons-------------------
 	@FXML 
 	Button startNewGame;
-	public void newGame(ActionEvent event) throws IOException {			
+	public void newGame(ActionEvent event) throws IOException {	
+		audio.boopPlay();
 		transitionScene("newGame.fxml", event);	
 	}
 	
 	@FXML
 	Button loadGame;
 	public void loadGame(ActionEvent event) throws IOException {	
+		audio.boopPlay();
 		transitionScene("login.fxml", event);	
 	}
 	
 	@FXML 
 	Button tutorial;
-	public void tutorial(ActionEvent event) throws IOException {			
+	public void tutorial(ActionEvent event) throws IOException {	
+		audio.boopPlay();
 		transitionScene("tutorial.fxml", event);			
 	}	
 	
 	@FXML
 	Button highScores;
 	public void highScores(ActionEvent event) throws IOException {	
+		audio.boopPlay();
 		transitionScene("mainMenuHighscores.fxml", event);	
 	}
 	
 	@FXML
 	Button quit;
 	public void quit(ActionEvent event) {
+		audio.boopPlay();
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.close();
 		
@@ -60,6 +65,7 @@ public class mainMenuController {
 	public void developerLogin(MouseEvent event) throws IOException {
 		
 		if(state) {
+			audio.boopPlay();
 			transitionScene("developerLogin.fxml", event);
 		}
 		
@@ -94,6 +100,8 @@ public class mainMenuController {
 		ImageView bulb;
 		@FXML
 		Line line;
+		
+		audioPlayer audio = new audioPlayer();
 	
 		//---------Functions----------------
 		

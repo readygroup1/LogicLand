@@ -22,6 +22,8 @@ public class roadmapController {
 	  @FXML
 	  private ImageView andLevel;
 	  
+	  audioPlayer audio = new audioPlayer();
+	  
 	  public void initialize() {
 		  if(!AccountManager.isAdmin()) {
 		    User player = new User(AccountManager.getCurrentUser());
@@ -45,7 +47,8 @@ public class roadmapController {
 	  
 	  public void andLevel(MouseEvent event) throws IOException {
 		  
-		  try {			
+		  try {		
+			  audio.boopPlay();
 			  sceneSwitcher.switchScene(event, "/application/resources/levels/level1A.fxml");
 			}			
 			catch(IOException exception) {				
@@ -58,7 +61,8 @@ public class roadmapController {
 		
 		
 		public void roadmap(ActionEvent event) throws IOException {			
-			try {			
+			try {	
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
 			}			
 			catch(IOException exception) {				
@@ -67,7 +71,8 @@ public class roadmapController {
 		}
 		
 		public void sandbox(ActionEvent event) throws IOException {			
-			try {			
+			try {	
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/sandbox.fxml");
 			}			
 			catch(IOException exception) {				
@@ -76,7 +81,8 @@ public class roadmapController {
 		}
 		
 		public void highscore(ActionEvent event) throws IOException {			
-			try {			
+			try {
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/highscore.fxml");
 			}			
 			catch(IOException exception) {				
@@ -85,7 +91,8 @@ public class roadmapController {
 		}
 		
 		public void discoveries(ActionEvent event) throws IOException {			
-			try {			
+			try {	
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/discoveries.fxml");
 			}			
 			catch(IOException exception) {				
@@ -94,7 +101,8 @@ public class roadmapController {
 		}
 		
 		public void options(ActionEvent event) throws IOException {			
-			try {			
+			try {	
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/options.fxml");
 			}			
 			catch(IOException exception) {				
@@ -109,7 +117,8 @@ public class roadmapController {
 		
 		
 		public void levelOne(ActionEvent event) throws IOException {	
-			try {			
+			try {	
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/Level1.fxml");
 			}			
 			catch(IOException exception) {				
@@ -118,7 +127,8 @@ public class roadmapController {
 		}
 		
 		public void levelTwo(ActionEvent event) throws IOException {	
-			try {			
+			try {	
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/Level2.fxml");
 			}			
 			catch(IOException exception) {				
@@ -127,7 +137,8 @@ public class roadmapController {
 		}
 		
 		public void levelThree(ActionEvent event) throws IOException {	
-			try {			
+			try {	
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/Level3.fxml");
 			}			
 			catch(IOException exception) {				
@@ -136,7 +147,8 @@ public class roadmapController {
 		}
 		
 		public void levelFour(ActionEvent event) throws IOException {	
-			try {			
+			try {
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/Level4.fxml");
 			}			
 			catch(IOException exception) {				
@@ -145,7 +157,8 @@ public class roadmapController {
 		}
 		
 		public void levelFive(ActionEvent event) throws IOException {	
-			try {			
+			try {
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/Level5.fxml");
 			}			
 			catch(IOException exception) {				
@@ -154,7 +167,8 @@ public class roadmapController {
 		}
 		
 		public void levelSix(ActionEvent event) throws IOException {	
-			try {			
+			try {	
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/Level6.fxml");
 			}			
 			catch(IOException exception) {				
@@ -163,7 +177,8 @@ public class roadmapController {
 		}
 		
 		public void levelSeven(ActionEvent event) throws IOException {	
-			try {			
+			try {	
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/Level7.fxml");
 			}			
 			catch(IOException exception) {				
@@ -172,7 +187,8 @@ public class roadmapController {
 		}
 		
 		public void levelEight(ActionEvent event) throws IOException {	
-			try {			
+			try {	
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/Level8.fxml");
 			}			
 			catch(IOException exception) {				

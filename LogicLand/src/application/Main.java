@@ -28,9 +28,9 @@ public class Main extends Application {
 			} else {
 			    System.out.println("Font loaded: " + customFont.getName());
 			}
-			
+	        
 			Parent root;
-			
+						
 			// Skip login Code
 			if(skipLogin) {
 				root = FXMLLoader.load(getClass().getResource("/application/resources/roadmap.fxml"));

@@ -40,6 +40,8 @@ public class highscoreController implements Initializable{
 	@FXML
 	Text className;
 	
+	audioPlayer audio = new audioPlayer();
+	
 	
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		ArrayList<String> top5Names = AccountManager.getTopFiveNames(AccountManager.getCurrentClassID());
@@ -66,7 +68,8 @@ public class highscoreController implements Initializable{
 	
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	public void roadmap(ActionEvent event) throws IOException {			
-		try {			
+		try {		
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
 		}			
 		catch(IOException exception) {				
@@ -75,7 +78,8 @@ public class highscoreController implements Initializable{
 	}
 	
 	public void sandbox(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/sandbox.fxml");
 		}			
 		catch(IOException exception) {				
@@ -84,7 +88,8 @@ public class highscoreController implements Initializable{
 	}
 	
 	public void highscore(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/highscore.fxml");
 		}			
 		catch(IOException exception) {				
@@ -93,7 +98,8 @@ public class highscoreController implements Initializable{
 	}
 	
 	public void discoveries(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/discoveries.fxml");
 		}			
 		catch(IOException exception) {				
@@ -102,7 +108,8 @@ public class highscoreController implements Initializable{
 	}
 	
 	public void options(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/options.fxml");
 		}			
 		catch(IOException exception) {				

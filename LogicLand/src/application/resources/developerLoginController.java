@@ -31,6 +31,8 @@ public class developerLoginController {
 		@FXML
 		Button backButton;
 		
+		audioPlayer audio = new audioPlayer();
+		
 		// ----------------Button Functions -----------------------
 		public void login(ActionEvent event) throws Exception {
 			String userName = devUsername.getText();
@@ -47,7 +49,8 @@ public class developerLoginController {
 		
 			try {
 			
-				lightning.setImage(lightningOn);		
+				lightning.setImage(lightningOn);
+				audio.boopPlay();
 				sceneSwitcher.fadeSwitchScene(event, "roadmap.fxml");
 			}
 			catch(Exception e) {
@@ -57,6 +60,7 @@ public class developerLoginController {
 		
 		public void back(ActionEvent event) throws IOException {			
 			try {			
+				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "mainMenu.fxml");
 			}			
 			catch(IOException exception) {				

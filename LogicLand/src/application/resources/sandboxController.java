@@ -52,6 +52,8 @@ public class sandboxController implements Initializable{
 	@FXML
 	ImageView xorGen;
 	
+	audioPlayer audio = new audioPlayer();
+	
 	static private ArrayList<Node> connectedTerminals = new ArrayList<>();
 
 	
@@ -441,7 +443,8 @@ public class sandboxController implements Initializable{
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	
 	public void roadmap(ActionEvent event) throws IOException {			
-		try {			
+		try {
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
 		}			
 		catch(IOException exception) {				
@@ -450,7 +453,8 @@ public class sandboxController implements Initializable{
 	}
 	
 	public void sandbox(ActionEvent event) throws IOException {			
-		try {			
+		try {
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/sandbox.fxml");
 		}			
 		catch(IOException exception) {				
@@ -459,7 +463,8 @@ public class sandboxController implements Initializable{
 	}
 	
 	public void highscore(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/highscore.fxml");
 		}			
 		catch(IOException exception) {				
@@ -468,7 +473,8 @@ public class sandboxController implements Initializable{
 	}
 	
 	public void discoveries(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/discoveries.fxml");
 		}			
 		catch(IOException exception) {				
@@ -477,7 +483,8 @@ public class sandboxController implements Initializable{
 	}
 	
 	public void options(ActionEvent event) throws IOException {			
-		try {			
+		try {	
+			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/options.fxml");
 		}			
 		catch(IOException exception) {				
