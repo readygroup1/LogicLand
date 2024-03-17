@@ -66,6 +66,11 @@ public class bulbController extends gateObject implements Initializable {
 		
 		input1.getProperties().put("type", "input");
 		body.getProperties().put("type", "body");
+		input1.getProperties().put("state", false);		//Andres
+		input1.getProperties().put("parentGate", this);//Andres
+		input1.getProperties().put("put", null);
+		input1.getProperties().put("ClassType", "BULB");
+		
 	}
 	
 	//----------------Terminal Buttons------------
@@ -110,6 +115,29 @@ public class bulbController extends gateObject implements Initializable {
 	}
 	public Rectangle getInput1() {
 		return input1;		
+	}
+	
+public void checktype() {
+		
+		if(((Rectangle)input1.getProperties().get("put") != null) ) {
+		
+			if (((boolean)((Rectangle)input1.getProperties().get("put")).getProperties().get("state")) ) {
+				
+				System.out.println("Bulb Switched to true");
+				bulb.setImage(bulbOn);
+				
+			}
+			else {
+				
+				System.out.println("Bulb Switched to false");
+				bulb.setImage(bulbOff);
+			}
+		}	
+		else {
+			
+			System.out.println("Bulb Switched to false");
+			bulb.setImage(bulbOff);
+		}
 	}
 
 
