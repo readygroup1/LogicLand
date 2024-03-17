@@ -61,7 +61,9 @@ public class batteryController extends gateObject implements Initializable{
 			});
 			
 			output1.getProperties().put("type", "output");
+			output1.getProperties().put("state", false);
 			output.getProperties().put("type", "output");
+			output.getProperties().put("state", false);
 			body.getProperties().put("type", "body");
 		}
 		
@@ -79,10 +81,16 @@ public class batteryController extends gateObject implements Initializable{
 				if(state) {
 		 	 		batteryImage.setImage(batteryOff);
 		 	 		state = false;
+		 	 		output1.getProperties().put("state", false);
+		 	 		output.getProperties().put("state", false);
+		 	 		
 		 		}
 		 		else {			 			
 		 	 		batteryImage.setImage(batteryOn);			 	 		
 		 	 		state = true;
+		 	 		output1.getProperties().put("state", true);
+		 	 		output.getProperties().put("state", true);
+		 	 		
 		 		}		
 			}							
 			dragged = false;
@@ -108,6 +116,12 @@ public class batteryController extends gateObject implements Initializable{
 		
 		public Type getType() {
 			return type;
+		}
+		public Rectangle getOutput1() {
+			return output1;		
+		}
+		public Rectangle getOutput2() {
+			return output;		
 		}
 
 }

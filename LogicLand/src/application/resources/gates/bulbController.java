@@ -1,6 +1,7 @@
 package application.resources.gates;
 
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import application.resources.sandboxController;
@@ -96,5 +97,11 @@ public class bulbController extends gateObject implements Initializable {
 	public Type getType() {
 		return type;
 	}
+	public Rectangle getInput1() {
+		return input1;		
+	}
+
+
+	
 
 }

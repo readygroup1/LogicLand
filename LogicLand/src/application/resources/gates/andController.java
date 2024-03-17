@@ -17,6 +17,10 @@ public class andController extends gateObject implements Initializable {
 	
 	//----------------Variables-------------------
 	boolean state = false;
+	boolean firstInput = false;
+	boolean secondInput = false;
+	
+	
 	sandboxController sboxController;
 	Pane circuitBoardPane;
 	Type type = Type.and;
@@ -53,8 +57,17 @@ public class andController extends gateObject implements Initializable {
 		});
 		
 		input1.getProperties().put("type", "input");
+		input1.getProperties().put("state", false);		//Andres
+		input1.getProperties().put("parentGate", this);//Andres
+		
 		input2.getProperties().put("type", "input");
+		input2.getProperties().put("state", false);		//Andres
+		input2.getProperties().put("parentGate", this);//Andres
+		
 		output.getProperties().put("type", "output");
+		output.getProperties().put("state", false);//Andres
+		output.getProperties().put("parentGate", this);//Andres
+		
 		body.getProperties().put("type", "body");
 	}
 	
@@ -65,6 +78,7 @@ public class andController extends gateObject implements Initializable {
 		sboxController.beginConnection(event);
 		
 	}
+	
 	
 	//----------------Getters & Setters-----------
 	/** This function is used by sandbox Controller to set instance variables of the sandboxPane and sandboxController
@@ -80,12 +94,38 @@ public class andController extends gateObject implements Initializable {
 		return state;
 	}
 	
-	public void setState(Boolean inputState) {
-		this.state = inputState;		
+	public void setfirstInput(Boolean state) {
+		this.firstInput = state;		
+	}
+	
+	public void setSecondInput(Boolean state) {
+		this.secondInput = state;		
+	}
+	
+	public void checktype() {
+		if (((boolean)input1.getProperties().get("state")) && (boolean) input2.getProperties().get("state")) {
+			output.getProperties().put("state", true);
+			
+			System.out.println("Switched to true");
+		}
+		else {
+			System.out.println("Switched to false");
+		}
 	}
 	
 	public Type getType() {
 		return type;
 	}
+	
+	public Rectangle getInput1() {
+		return input1;		
+	}
+	public Rectangle getInput2() {
+		return input2;		
+	}
+	public Rectangle getOutput() {
+		return output;		
+	}
+
 
 }
