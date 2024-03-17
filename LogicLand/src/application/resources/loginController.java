@@ -44,11 +44,13 @@ public class loginController {
 		String userPassword = password.getText();
 		if(userName.trim().isEmpty() || userPassword.trim().isEmpty()) {
 			status.setText("Input fields cannot be blank!");
+			audio.errorPlay();
 			return;
 		}
 		
 		if(AccountManager.verifyLogin(userName, userPassword, isTeacher) == false) {
 			status.setText("Incorrect username or password");
+			audio.errorPlay();
 			return;
 		}
 		
