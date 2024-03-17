@@ -14,7 +14,7 @@ public class audioPlayer {
     Media errorSound = new Media(errorSoundFile);
     // Creating a MediaPlayer with the media
     MediaPlayer boop = new MediaPlayer(sound);
-    MediaPlayer error = new MediaPlayer(errorSound);
+    
     
     public void boopPlay() {
     	// Playing the audio
@@ -22,6 +22,7 @@ public class audioPlayer {
     }
     
     public void errorPlay() {
+    	MediaPlayer error = new MediaPlayer(errorSound);
     	error.play();
     }
 }
