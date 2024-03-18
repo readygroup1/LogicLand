@@ -16,7 +16,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: #DDEEFF; -fx-border-color: #607d8b; -fx-border-radius: 2;" text="Discoveries">
+      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" style="-fx-border-color: #607d8b; -fx-border-radius: 2; -fx-background-color: F38307;" text="Discoveries">
          <font>
             <Font size="24.0" />
          </font>

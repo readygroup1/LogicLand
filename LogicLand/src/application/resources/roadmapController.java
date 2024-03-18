@@ -21,6 +21,8 @@ public class roadmapController {
 	  private Text score;
 	  @FXML
 	  private ImageView levelOne;
+	  @FXML
+	  private Text classroom;
 	  
 	  audioPlayer audio = new audioPlayer();
 	  
@@ -28,12 +30,14 @@ public class roadmapController {
 		  if(!AccountManager.isAdmin()) {
 		    User player = new User(AccountManager.getCurrentUser());
 		    name.setText(player.getUsername()); 
-		    score.setText(player.getHighScore());
+		    classroom.setText(player.getClassName());
+		    score.setText("Score: " + player.getHighScore());
 		    
 		  } else if(AccountManager.isAdmin()) {
 			  Instructor teacher = new Instructor(AccountManager.getCurrentUser());
 			    name.setText(teacher.getName()); 
-			    score.setText("Class ID: " + teacher.getClassID());
+			    classroom.setText(null);
+			    score.setText("Class: " + AccountManager.getClassName(AccountManager.db.getClassIDAdmin(AccountManager.getCurrentUser())));
 		  }
 		  
 		  levelOne.setPickOnBounds(true);

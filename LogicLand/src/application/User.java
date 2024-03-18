@@ -5,10 +5,11 @@ public class User {
 	private String username;
 	private String initials;
 	private String email;
-	private String highScore;
+	private int highScore;
 	private int sandboxID;
 	private String intutorial;
 	private int classID;
+	private String className;
 	private int playerID;
 	
 	public User (int PlayerID) {
@@ -21,7 +22,9 @@ public class User {
 			this.sandboxID = Integer.parseInt(info[4]);
 			this.intutorial = info[5];
 			this.classID = Integer.parseInt(info[6]);   
-			this.playerID = Integer.parseInt(info[7]);    
+			this.playerID = Integer.parseInt(info[7]);  
+			this.highScore = AccountManager.db.getHighScore(playerID);
+			this.className = AccountManager.db.getClassName(AccountManager.db.getClassID(playerID));
 		}
 		
 		
@@ -38,7 +41,7 @@ public class User {
 		return email;
 	}
 
-	public String getHighScore() {
+	public int getHighScore() {
 		return highScore;
 	}
 
@@ -56,6 +59,10 @@ public class User {
 	
 	public int getPlayerID() {
 		return playerID;
+	}
+	
+	public String getClassName() {
+		return className;
 	}
 
 	

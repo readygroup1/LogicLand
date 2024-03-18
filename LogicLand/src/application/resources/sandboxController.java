@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
+import application.Instructor;
+import application.User;
 import application.resources.gates.andController;
 import application.resources.gates.batteryController;
 import application.resources.gates.bulbController;
@@ -28,6 +30,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 
 public class sandboxController implements Initializable{
@@ -58,6 +61,9 @@ public class sandboxController implements Initializable{
 	@FXML
 	ImageView xorGen;
 	
+	@FXML
+	Text name;
+	
 	audioPlayer audio = new audioPlayer();
 	
 	static private ArrayList<Node> connectedTerminals = new ArrayList<>();
@@ -76,6 +82,14 @@ public class sandboxController implements Initializable{
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			try {
 				generateFromSave();
+				if(AccountManager.isAdmin()) {
+					  Instructor teacher = new Instructor(AccountManager.getCurrentUser());
+					  name.setText("Created By: " + teacher.getName());
+					  
+				} else {
+					User player = new User(AccountManager.getCurrentUser());
+					name.setText("Created By: " + player.getUsername());
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -495,6 +509,16 @@ public class sandboxController implements Initializable{
 		}
 	}
 		
+	public void clearAll(ActionEvent event) {
+		AccountManager.setSandboxSaveState("");
+		try {
+			audio.boopPlay();
+			sceneSwitcher.switchScene(event, "/application/resources/sandbox.fxml");
+		}			
+		catch(IOException exception) {				
+			exception.printStackTrace();				
+		}	
+	}
 		
 	
 	
