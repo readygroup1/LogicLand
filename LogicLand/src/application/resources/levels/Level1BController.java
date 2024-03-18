@@ -12,6 +12,11 @@ import application.resources.gates.andController;
 import application.resources.gates.batteryController;
 import application.resources.gates.bulbController;
 import application.resources.gates.gateObject;
+import application.resources.gates.nandController;
+import application.resources.gates.norController;
+import application.resources.gates.notController;
+import application.resources.gates.orController;
+import application.resources.gates.xorController;
 import application.resources.levels.LevelControllerTemplate.Type;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -128,13 +133,28 @@ public class Level1BController extends sandboxController implements Initializabl
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			((batteryController)battery1.getProperties().get("controller")).getOutput1().getProperties().put("put",((andController) and1.getProperties().get("controller")).getInput1());
+			((andController) and1.getProperties().get("controller")).getInput1().getProperties().put("put", ((batteryController)battery1.getProperties().get("controller")).getOutput1());
 			 
+			
+			((batteryController)battery2.getProperties().get("controller")).getOutput1().getProperties().put("put",((andController) and1.getProperties().get("controller")).getInput2());
+			((andController) and1.getProperties().get("controller")).getInput2().getProperties().put("put", ((batteryController)battery2.getProperties().get("controller")).getOutput1());
+			
+			((andController) and1.getProperties().get("controller")).getOutput().getProperties().put("put", ( (bulbController) bulb.getProperties().get("controller")).getInput1());
+			( (bulbController) bulb.getProperties().get("controller")).getInput1().getProperties().put("put",((andController) and1.getProperties().get("controller")).getOutput());
+			
+			
+			
 			// Create function calls to make wire if you want connections. There is definitely a better way to do this. I will work on it.
 			this.makeWire(((batteryController)battery1.getProperties().get("controller")).getOutput1(), ((andController) and1.getProperties().get("controller")).getInput1());
 			this.makeWire(((batteryController)battery2.getProperties().get("controller")).getOutput1(), ((andController) and1.getProperties().get("controller")).getInput2());
 			this.makeWire(((andController) and1.getProperties().get("controller")).getOutput(), ( (bulbController) bulb.getProperties().get("controller")).getInput1());
 			
 			
+			((batteryController)battery1.getProperties().get("controller")).checktype();
+			((batteryController)battery2.getProperties().get("controller")).checktype();
+
 		}
 		//----------------Getter and Setter Functions ---------------------
 		
@@ -334,10 +354,80 @@ public class Level1BController extends sandboxController implements Initializabl
 						
 						// Check which is the output to match the parameter order of makeWire.
 						if (startType == "output") {
+							endNode.getProperties().put("put", startNode);	//Andres
+							startNode.getProperties().put("put", endNode);
+							
+							switch( (String)(startNode.getProperties().get("ClassType")) ) {
+							case "AND":
+								((andController)(startNode.getProperties().get("parentGate"))).checktype();			//Andres
+								break;
+							case "BATTERY":
+								((batteryController)startNode.getProperties().get("parentGate")).checktype();			//Andres
+								break;
+							case "BULB":
+								((bulbController)startNode.getProperties().get("parentGate")).checktype();
+								break;
+							case "NAND":
+								((nandController)startNode.getProperties().get("parentGate")).checktype();
+								break;
+							case "NOR":
+								((norController)startNode.getProperties().get("parentGate")).checktype();
+								break;
+							case "XOR":
+								((xorController)startNode.getProperties().get("parentGate")).checktype();
+								break;
+							case "NOT":
+								((notController)startNode.getProperties().get("parentGate")).checktype();
+								break;
+							case "OR":
+								((orController)startNode.getProperties().get("parentGate")).checktype();
+								break;
+								
+				
+						
+							
+							
+							}
+							
+							
 							this.makeWire(startNode, endNode);
+						
 						}
 						
 						else {
+							
+							
+							
+							endNode.getProperties().put("put", startNode);	//Andres
+							startNode.getProperties().put("put", endNode);
+							
+							switch( (String)(endNode.getProperties().get("ClassType")) ) {
+							case "AND":
+								((andController)(endNode.getProperties().get("parentGate"))).checktype();			//Andres
+								break;
+							case "BATTERY":
+								((batteryController)endNode.getProperties().get("parentGate")).checktype();			//Andres
+								break;
+							case "BULB":
+								((bulbController)endNode.getProperties().get("parentGate")).checktype();
+								break;
+							case "NAND":
+								((nandController)endNode.getProperties().get("parentGate")).checktype();
+								break;
+							case "NOR":
+								((norController)endNode.getProperties().get("parentGate")).checktype();
+								break;
+							case "XOR":
+								((xorController)endNode.getProperties().get("parentGate")).checktype();
+								break;
+							case "NOT":
+								((notController)endNode.getProperties().get("parentGate")).checktype();
+								break;
+							case "OR":
+								((orController)endNode.getProperties().get("parentGate")).checktype();
+								break;
+							}
+							
 							this.makeWire(endNode, startNode);
 						}
 					}
