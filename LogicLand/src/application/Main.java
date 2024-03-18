@@ -21,12 +21,18 @@ public class Main extends Application {
 	public void start(Stage stage) {		
 		
 		try {
-			Font customFont = Font.loadFont(getClass().getResourceAsStream("/application/resources/Vermin Vibes 1989.ttf"), 12);
-			if (customFont == null) {
+			Font vermin = Font.loadFont(getClass().getResourceAsStream("/application/resources/Vermin Vibes 1989.ttf"), 12);
+			Font tahoma = Font.loadFont(getClass().getResourceAsStream("/application/resources/tahoma.ttf"), 12);
+			if (vermin == null) {
 			    // Handle the error, font not loaded
-			    System.out.println("There was an error loading the font.");
-			} else {
-			    System.out.println("Font loaded: " + customFont.getName());
+			    System.out.println("There was an error loading the font vermin.");
+			} if (tahoma == null) {
+			    // Handle the error, font not loaded
+			    System.out.println("There was an error loading the font tahoma.");
+			}
+			else {
+			    System.out.println("Font loaded: " + vermin.getName());
+			    System.out.println("Font loaded: " + tahoma.getName());
 			}
 	        
 			Parent root;
