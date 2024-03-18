@@ -4,6 +4,7 @@ package application.resources;
 import java.io.IOException;
 import java.util.EventObject;
 
+import application.AccountManager;
 import javafx.scene.Node;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
@@ -25,6 +26,11 @@ public class SceneSwitcher {
 		// Kinda copied code. I change it a bit. Might Need to document.
 		public void switchScene(EventObject event, String fxml) throws IOException {
 			try {
+				if(fxml.equals("/application/resources/sandbox.fxml")) {
+					AccountManager.setInSandbox(true);
+				} else {
+					AccountManager.setInSandbox(false);
+				}
 				// An analogy for how this works
 				// root is like a script or stage directions
 				// scene is like actors acting out the script

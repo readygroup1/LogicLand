@@ -9,6 +9,7 @@ public class AccountManager {
 	private static boolean isAdmin;
 	public static Database db = new Database();
 	private static String sandboxSaveState = "";
+	private static boolean inSandbox = false;
 	
 	// Constructors --------------------------------------------------
 	public AccountManager(int currentUserID, boolean isTeacher) {
@@ -26,6 +27,10 @@ public class AccountManager {
 	
 	public static boolean isAdmin() {
 		return AccountManager.isAdmin;
+	}
+	
+	public static boolean isInSandbox() {
+		return inSandbox;
 	}
 	
 	public static boolean verifyLogin(String name, String password, boolean isAdmin) {
@@ -131,6 +136,10 @@ public class AccountManager {
 	
 	// Setter methods ------------------------------------------------
 	
+	public static void setInSandbox(boolean inSandbox) {
+		AccountManager.inSandbox = inSandbox;
+	}
+	
 	public static void setLevelScore(int levelID, int score) {
 		db.updateLevelScore(levelID, score);
 	}
@@ -145,6 +154,9 @@ public class AccountManager {
 	}
 	
 	public static void setIndividualGate(String state) {
+		if(!AccountManager.isInSandbox()) {
+			return;
+		}
 		AccountManager.sandboxSaveState = AccountManager.sandboxSaveState + state;
 		if(isAdmin) {
 			db.updateAdminSandBoxSave(AccountManager.currentUserID, AccountManager.sandboxSaveState);
@@ -154,6 +166,9 @@ public class AccountManager {
 	}
 	
 	public static void removeOldPosition(Double StartX, Double StartY, String type) {
+		if(!AccountManager.isInSandbox()) {
+			return;
+		}
 		//Look for string in the save state instance variable that contains and 'l'plug the dragStartX and dragStartY locations, will look
 		// like this ex: "l,243.443,232.423"
 		String oldPosition = type + "," + StartX + "," + StartY + ",";
