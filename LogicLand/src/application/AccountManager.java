@@ -72,6 +72,14 @@ public class AccountManager {
 	public static String getPlayer(int playerID) {
 		return db.getPlayer(playerID);
 	}
+
+	public static int getLevelScore(int levelID) {
+		return db.getLevelScore(levelID);
+	}
+
+	public static int getLevelID(int level) {
+		return db.getLevelID(AccountManager.currentUserID, level);
+	}
 	
 	public static int getCurrentClassID() {
 		if(AccountManager.isAdmin) {
@@ -123,6 +131,10 @@ public class AccountManager {
 	
 	// Setter methods ------------------------------------------------
 	
+	public static void setLevelScore(int levelID, int score) {
+		db.updateLevelScore(levelID, score);
+	}
+
 	public static void setSandboxSaveState(String state) {
 		AccountManager.sandboxSaveState = state;
 		if(isAdmin) {

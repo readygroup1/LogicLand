@@ -149,7 +149,14 @@ public class Database {
         return -1;
     }
     
+    public int getLevelScore(int levelID) {
+        return executeQueryGetInt("SELECT LevelScore FROM LEVELS WHERE LevelID = " + levelID);
+    }
     
+    public int getLevelNumber(int levelID) {
+        return executeQueryGetInt("SELECT CurrentLevel FROM LEVELS WHERE LevelID = " + levelID);
+    }
+
     /** 
      * This method gets the player ID given a player name.
      * @param name
@@ -660,6 +667,10 @@ public class Database {
     public void updatePlayerProgress(int LevelID, int LevelScore, String CurrentLevelSaveState) {
         executeSQL("UPDATE LEVELS SET LevelScore = " + LevelScore + ", CurrentLevelSaveState = '"
                 + CurrentLevelSaveState + "' WHERE LevelID = " + LevelID);
+    }
+
+    public void updateLevelScore(int LevelID, int LevelScore) {
+        executeSQL("UPDATE LEVELS SET LevelScore = " + LevelScore + " WHERE LevelID = " + LevelID);
     }
 
     
