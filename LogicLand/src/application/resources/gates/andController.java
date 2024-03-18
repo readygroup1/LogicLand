@@ -175,7 +175,7 @@ public class andController extends gateObject implements Initializable {
 					}				
 				}
 				
-				System.out.println("Switched to true");
+				
 				setImageOn();
 			}
 			
@@ -217,7 +217,7 @@ public class andController extends gateObject implements Initializable {
 					
 					
 				}
-				System.out.println("Switched to false");
+				
 				setImageOff();
 			}
 		}	
@@ -259,7 +259,7 @@ public class andController extends gateObject implements Initializable {
 			
 			
 			}
-			System.out.println("Switched to false");
+			
 			setImageOff();
 		}
 	}

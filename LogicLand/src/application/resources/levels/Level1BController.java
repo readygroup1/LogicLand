@@ -187,7 +187,7 @@ public class Level1BController extends sandboxController implements Initializabl
 			
 			if(Textoutput1.getText().equals("0") && Textoutput2.getText().equals("0") && Textoutput3.getText().equals("0") && Textoutput4.getText().equals("1")) {
 				title.setText("Great Job! Head to the next Level!");
-				System.out.println("should Print");
+				
 
 			}
 		}
