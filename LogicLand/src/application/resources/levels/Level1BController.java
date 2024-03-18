@@ -127,6 +127,7 @@ public class Level1BController extends sandboxController implements Initializabl
 			// Use Load to create the preloaded object and store them in the previous placeholders.
 			 try {
 				battery1 = this.load(battery1, Type.BATTERY);
+			
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
