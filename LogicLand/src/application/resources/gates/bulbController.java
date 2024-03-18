@@ -123,21 +123,18 @@ public void checktype() {
 		
 			if (((boolean)((Rectangle)input1.getProperties().get("put")).getProperties().get("state")) ) {
 				
-				System.out.println("Bulb Switched to true");
 				setState(true);
 				bulb.setImage(bulbOn);
 				
 			}
 			else {
 				
-				System.out.println("Bulb Switched to false");
 				setState(false);
 				bulb.setImage(bulbOff);
 			}
 		}	
 		else {
 			
-			System.out.println("Bulb Switched to false");
 			setState(false);
 			bulb.setImage(bulbOff);
 		}

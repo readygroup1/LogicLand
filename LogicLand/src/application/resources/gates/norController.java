@@ -177,7 +177,7 @@ public class norController extends gateObject implements Initializable{
 						}
 					}
 	
-				System.out.println("Switched to true");
+				
 				setImageOn();
 			}
 				
@@ -220,7 +220,7 @@ public class norController extends gateObject implements Initializable{
 				
 					
 				}
-				System.out.println("Switched to false");
+				
 				setImageOff();
 			}
 		}

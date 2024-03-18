@@ -169,7 +169,7 @@ public class nandController extends gateObject implements Initializable {
 							}				
 						}
 						
-						System.out.println("Switched to true");
+						
 						setImageOn();
 					}
 					
@@ -211,7 +211,7 @@ public class nandController extends gateObject implements Initializable {
 							
 							
 						}
-						System.out.println("Switched to false");
+						
 						setImageOff();
 					}
 				}	
@@ -253,7 +253,7 @@ public class nandController extends gateObject implements Initializable {
 					
 					
 					}
-					System.out.println("Switched to false");
+					
 					setImageOff();
 				}
 			}
