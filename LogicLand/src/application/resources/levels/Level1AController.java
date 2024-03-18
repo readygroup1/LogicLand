@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,6 +33,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 public class Level1AController extends sandboxController implements Initializable {
 
@@ -63,6 +65,12 @@ public class Level1AController extends sandboxController implements Initializabl
 		//@FXML
 		ImageView xorGen;
 		
+		@FXML
+		Label title;
+		
+		@FXML
+		Button checkWin;
+		
 		
 		
 		// I used these panes a way to store the coordinates of where I wanted the preloaded objects.
@@ -73,6 +81,9 @@ public class Level1AController extends sandboxController implements Initializabl
 		
 		@FXML
 		Pane bulb;
+		
+		
+		private bulbController endBulb;
 		
 		//-------------Constants / Resources--------------------------------------------
 		
@@ -125,11 +136,28 @@ public class Level1AController extends sandboxController implements Initializabl
 				e.printStackTrace();
 			}
 			 
+			 
+			 endBulb = ((bulbController) bulb.getProperties().get("controller"));
 			// Create function calls to make wire if you want connections
 			
+			 
 			
 			
 		}
+		
+		//----------------Check if game is won----------------------------
+		
+		public void CheckWin() {
+			//if bulb is on win
+			if(endBulb.getState()) {
+				title.setText("Great Job! Head to the next part!");
+			}
+		}
+
+		
+		
+		
+		
 		//----------------Getter and Setter Functions ---------------------
 		
 		public Pane getCircuitBoardPane() {
@@ -410,7 +438,12 @@ public class Level1AController extends sandboxController implements Initializabl
 					// Release the mouse binding if the mouse was not release over a terminal.
 					circuitBoardPane.setOnMouseReleased(null);				
 				}
+				
+				
 			});
+			
+			
+			
 		}
 		
 		/**This is probably where you will want to add code to manage the connections.

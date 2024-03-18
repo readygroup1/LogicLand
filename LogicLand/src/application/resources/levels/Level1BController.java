@@ -25,6 +25,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -75,6 +77,21 @@ public class Level1BController extends sandboxController implements Initializabl
 		
 		@FXML
 		Pane bulb;
+		
+		// Elements from the table
+		@FXML
+		Button checkOutput;
+		@FXML
+        TextField Textoutput1;
+		@FXML
+        TextField Textoutput2;
+		@FXML
+        TextField Textoutput3;
+		@FXML
+        TextField Textoutput4;
+		
+		@FXML
+		Label title;
 		
 		//-------------Constants / Resources--------------------------------------------
 		
@@ -156,6 +173,26 @@ public class Level1BController extends sandboxController implements Initializabl
 			((batteryController)battery2.getProperties().get("controller")).checktype();
 
 		}
+		
+		///----------------Check For Win -----------------------------------
+		
+		public void CheckToWin() {
+			
+			System.out.println(Textoutput1.getText());
+			System.out.println(Textoutput2.getText());
+			System.out.println(Textoutput3.getText());
+			System.out.println(Textoutput4.getText());
+			
+			
+			if(Textoutput1.getText().equals("0") && Textoutput2.getText().equals("0") && Textoutput3.getText().equals("0") && Textoutput4.getText().equals("1")) {
+				title.setText("Great Job! Head to the next Level!");
+				System.out.println("should Print");
+
+			}
+		}
+		
+		
+		
 		//----------------Getter and Setter Functions ---------------------
 		
 		public Pane getCircuitBoardPane() {
