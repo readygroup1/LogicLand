@@ -150,7 +150,7 @@ public class Level1AController extends sandboxController implements Initializabl
 		public void CheckWin() {
 			//if bulb is on win
 			if(endBulb.getState()) {
-				title.setText("Great Job! Head to the next part!");
+				title.setText("Great Job! Level 1A Completed! Click Next");
 			}
 		}
 		
@@ -584,7 +584,10 @@ public class Level1AController extends sandboxController implements Initializabl
 			}		
 		}
 		
-		public void next(ActionEvent event) throws IOException {			
+		public void next(ActionEvent event) throws IOException {	
+			if(!endBulb.getState()) {
+				return;
+			}
 			try {			
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level1B.fxml");
 			}			
