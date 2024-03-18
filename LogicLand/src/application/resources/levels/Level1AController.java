@@ -153,6 +153,36 @@ public class Level1AController extends sandboxController implements Initializabl
 				title.setText("Great Job! Head to the next part!");
 			}
 		}
+		
+		public void callChecktype(Rectangle node) {
+			switch( (String)(node.getProperties().get("ClassType")) ) {
+			case "AND":
+				((andController)(node.getProperties().get("parentGate"))).checktype();			//Andres
+				break;
+			case "BATTERY":
+				((batteryController)node.getProperties().get("parentGate")).checktype();			//Andres
+				break;
+			case "BULB":
+				((bulbController)node.getProperties().get("parentGate")).checktype();
+				break;
+			case "NAND":
+				((nandController)node.getProperties().get("parentGate")).checktype();
+				break;
+			case "NOR":
+				((norController)node.getProperties().get("parentGate")).checktype();
+				break;
+			case "XOR":
+				((xorController)node.getProperties().get("parentGate")).checktype();
+				break;
+			case "NOT":
+				((notController)node.getProperties().get("parentGate")).checktype();
+				break;
+			case "OR":
+				((orController)node.getProperties().get("parentGate")).checktype();
+				break;
+
+			}
+		}
 
 		
 		
@@ -475,6 +505,9 @@ public class Level1AController extends sandboxController implements Initializabl
 			connectLine.endXProperty().bind(inputTerminal.layoutXProperty().add(inputPane.layoutXProperty().add(inputTerminal.getBoundsInParent().getWidth() / 2)));
 			connectLine.endYProperty().bind(inputTerminal.layoutYProperty().add(inputPane.layoutYProperty().add(inputTerminal.getBoundsInParent().getHeight() / 2)));
 			
+			connectLine.getProperties().put("connection1",outputTerminal);
+			connectLine.getProperties().put("connection2", inputTerminal);
+			
 			// Add to the pane and push behind the gates so the user can click the terminal again.
 			circuitBoardPane.getChildren().add(connectLine);
 			connectLine.setViewOrder(0);
@@ -483,6 +516,11 @@ public class Level1AController extends sandboxController implements Initializabl
 			circuitBoardPane.setOnMouseReleased(null);
 			
 		}
+		
+		
+		
+		
+		
 		
 		public void deleteButton(MouseEvent event) {
 			
@@ -504,6 +542,22 @@ public class Level1AController extends sandboxController implements Initializabl
 			if(deleteState && event.getY() < 570 && event.getY() > 155 && event.getX() < 1000 && event.getX() > 260 ){
 				//If it is wire
 				if(event.getPickResult().getIntersectedNode() instanceof Line) {
+					
+					//deletes connection between wires
+					
+					Rectangle input = ((Rectangle)(event.getPickResult().getIntersectedNode().getProperties().get("connection1")));
+					Rectangle output = ((Rectangle)(event.getPickResult().getIntersectedNode().getProperties().get("connection2")));
+					input.getProperties().put("put", null);
+					output.getProperties().put("put", null);
+					
+					callChecktype(input);
+					callChecktype(output);
+						
+					
+					
+					
+					
+					//removes wire from screen 
 					circuitBoardPane.getChildren().remove(event.getPickResult().getIntersectedNode());
 				}
 				
