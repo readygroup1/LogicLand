@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * This class is used to interact with the database. It is used to create the database, add, delete, and update players, and get player information.
- * It is used directly in the class called {@link application.AccountManager}, which is static so each class can freely access the database.
+ * It is used directly in the class called {@link application.AccountManager.java}, which is static so each class can freely access the database.
  * 
  * <b>Example use:</b>
  * <pre>
@@ -154,7 +154,7 @@ public class Database {
 
     /**
      * This method gets the ID of the admin given the admin's class ID.
-     * @param SQLquery The SQL query to execute.
+     * @param int The ID of the class.
      * @return int
      */
     public int getAdminID(int ClassID) {
@@ -324,7 +324,6 @@ public class Database {
     /**
      * This method gets the top 5 names of users for the highscore page. 
      * This is for the global highscore page. 
-     * @see application.resources.mainMenuHighscoresController
      * @return ArrayList<String>
      * @throws SQLException
      */
@@ -356,7 +355,6 @@ public class Database {
     /**
      * This method gets the top 5 scores of users for the highscore page. 
      * This is for the global highscore page. 
-     * @see application.resources.mainMenuHighscoresController
      * @return ArrayList<Integer>
      * @throws SQLException
      */
@@ -388,7 +386,6 @@ public class Database {
     /**
      * This method gets the top 5 names of users for the highscore page. 
      * This is for the classroom highscore page. 
-     * @see application.resources.highscoreController
      * @param classID The ID of the classroom.
      * @return ArrayList<String>
      * @throws SQLException
@@ -421,7 +418,6 @@ public class Database {
     /**
      * This method gets the top 5 scores of users for the highscore page. 
      * This is for the classroom highscore page. 
-     * @see application.resources.highscoreController
      * @param classID The ID of the classroom.
      * @return ArrayList<Integer>
      * @throws SQLException
@@ -504,7 +500,6 @@ public class Database {
 
     /** 
      * This method verifies the admin's credentials. Used for login
-     * @see application.AccountManager
      * @param name The name of the admin.
      * @param password The password of the admin.
      * @return boolean
