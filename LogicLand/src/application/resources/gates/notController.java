@@ -43,7 +43,7 @@ public class notController extends gateObject implements Initializable {
 		
 		//-------------------Resources--------------------------
 		Image notOff = new Image(getClass().getResourceAsStream("/application/resources/images/not.png"));
-	 	Image notOn = new Image(getClass().getResourceAsStream("/application/resources/images/notOn.png")); 
+	 	Image notOn = new Image(getClass().getResourceAsStream("/application/resources/images/notOn_.png")); 
 		
 		//----------------Initializer---------------------------
 		/**The first two blocks initialized the gate to be draggable. 
