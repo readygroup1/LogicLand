@@ -352,6 +352,12 @@ public class Level1AController extends sandboxController implements Initializabl
 				if(event2.getPickResult().getIntersectedNode() instanceof Rectangle) {
 					Rectangle endNode = (Rectangle) event2.getPickResult().getIntersectedNode();
 					String endType = (String) endNode.getProperties().get("type");
+					
+					if((startNode.getProperties().get("ClassType") == "BATTERY" && endNode.getProperties().get("ClassType") == "BULB")||(startNode.getProperties().get("ClassType") == "BULB" && endNode.getProperties().get("ClassType") == "BATTERY")) {
+						return;
+					}
+
+					
 					if(startType != endType) {
 						
 						// Check which is the output to match the parameter order of makeWire.
