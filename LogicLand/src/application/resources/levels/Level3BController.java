@@ -88,7 +88,7 @@ public class Level3BController extends sandboxController implements Initializabl
         TextField Textoutput2;
 		
 		
-		//@FXML
+		@FXML
 		Label title;
 		
 		// Store the current level
