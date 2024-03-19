@@ -225,6 +225,9 @@ public class norController extends gateObject implements Initializable{
 				
 				setImageOff();
 			}
+			
+			
+			
 		}
 		
 		public Rectangle getInput1() {
