@@ -63,7 +63,7 @@ public class Level6BController extends sandboxController implements Initializabl
 		ImageView nandGen;
 		//@FXML
 		ImageView norGen;
-		//@FXML
+		@FXML
 		ImageView xorGen;
 		
 		
@@ -74,7 +74,7 @@ public class Level6BController extends sandboxController implements Initializabl
 		@FXML
 		Pane battery2;
 		@FXML 
-		Pane and1;
+		Pane xor1;
 		
 		@FXML
 		Pane bulb;
@@ -155,28 +155,28 @@ public class Level6BController extends sandboxController implements Initializabl
 			}
 			 
 			try {
-				and1 = this.load(and1, Type.AND);
+				xor1 = this.load(xor1, Type.XOR);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			((batteryController)battery1.getProperties().get("controller")).getOutput1().getProperties().put("put",((andController) and1.getProperties().get("controller")).getInput1());
-			((andController) and1.getProperties().get("controller")).getInput1().getProperties().put("put", ((batteryController)battery1.getProperties().get("controller")).getOutput1());
+			((batteryController)battery1.getProperties().get("controller")).getOutput1().getProperties().put("put",((xorController) xor1.getProperties().get("controller")).getInput1());
+			((xorController) xor1.getProperties().get("controller")).getInput1().getProperties().put("put", ((batteryController)battery1.getProperties().get("controller")).getOutput1());
 			 
 			
-			((batteryController)battery2.getProperties().get("controller")).getOutput1().getProperties().put("put",((andController) and1.getProperties().get("controller")).getInput2());
-			((andController) and1.getProperties().get("controller")).getInput2().getProperties().put("put", ((batteryController)battery2.getProperties().get("controller")).getOutput1());
+			((batteryController)battery2.getProperties().get("controller")).getOutput1().getProperties().put("put",((xorController) xor1.getProperties().get("controller")).getInput2());
+			((xorController) xor1.getProperties().get("controller")).getInput2().getProperties().put("put", ((batteryController)battery2.getProperties().get("controller")).getOutput1());
 			
-			((andController) and1.getProperties().get("controller")).getOutput().getProperties().put("put", ( (bulbController) bulb.getProperties().get("controller")).getInput1());
-			( (bulbController) bulb.getProperties().get("controller")).getInput1().getProperties().put("put",((andController) and1.getProperties().get("controller")).getOutput());
+			((xorController) xor1.getProperties().get("controller")).getOutput().getProperties().put("put", ( (bulbController) bulb.getProperties().get("controller")).getInput1());
+			( (bulbController) bulb.getProperties().get("controller")).getInput1().getProperties().put("put",((xorController) xor1.getProperties().get("controller")).getOutput());
 			
 			
 			
 			// Create function calls to make wire if you want connections. There is definitely a better way to do this. I will work on it.
-			this.makeWire(((batteryController)battery1.getProperties().get("controller")).getOutput1(), ((andController) and1.getProperties().get("controller")).getInput1());
-			this.makeWire(((batteryController)battery2.getProperties().get("controller")).getOutput1(), ((andController) and1.getProperties().get("controller")).getInput2());
-			this.makeWire(((andController) and1.getProperties().get("controller")).getOutput(), ( (bulbController) bulb.getProperties().get("controller")).getInput1());
+			this.makeWire(((batteryController)battery1.getProperties().get("controller")).getOutput1(), ((xorController) xor1.getProperties().get("controller")).getInput1());
+			this.makeWire(((batteryController)battery2.getProperties().get("controller")).getOutput1(), ((xorController) xor1.getProperties().get("controller")).getInput2());
+			this.makeWire(((xorController) xor1.getProperties().get("controller")).getOutput(), ( (bulbController) bulb.getProperties().get("controller")).getInput1());
 			
 			
 			((batteryController)battery1.getProperties().get("controller")).checktype();
@@ -194,7 +194,7 @@ public class Level6BController extends sandboxController implements Initializabl
 			System.out.println(Textoutput4.getText());
 			
 			
-			if(Textoutput1.getText().equals("0") && Textoutput2.getText().equals("0") && Textoutput3.getText().equals("0") && Textoutput4.getText().equals("1")) {
+			if(Textoutput1.getText().equals("0") && Textoutput2.getText().equals("1") && Textoutput3.getText().equals("1") && Textoutput4.getText().equals("0")) {
 				title.setText("Great Job! Head to the next Level!");
 				
 

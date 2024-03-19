@@ -238,5 +238,15 @@ public class notController extends gateObject implements Initializable {
 				setImageOff();
 			}
 		}
+		
+		
+		
+		public Rectangle getInput1() {
+			return input1;		
+		}
+		
+		public Rectangle getOutput() {
+			return output;		
+		}
 
 }
