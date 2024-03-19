@@ -91,7 +91,7 @@ public class Level2BController extends sandboxController implements Initializabl
 		@FXML
         TextField Textoutput4;
 		
-		//@FXML
+		@FXML
 		Label title;
 		
 		// Store the current level
@@ -194,7 +194,7 @@ public class Level2BController extends sandboxController implements Initializabl
 			System.out.println(Textoutput4.getText());
 			
 			
-			if(Textoutput1.getText().equals("0") && Textoutput2.getText().equals("0") && Textoutput3.getText().equals("0") && Textoutput4.getText().equals("1")) {
+			if(Textoutput1.getText().equals("0") && Textoutput2.getText().equals("1") && Textoutput3.getText().equals("1") && Textoutput4.getText().equals("1")) {
 				title.setText("Great Job! Head to the next Level!");
 				
 
