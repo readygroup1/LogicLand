@@ -68,7 +68,7 @@
             <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="447.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="the NAND gate has the opposite behaviour of the and gate. only a set of entirely false (0) values will result in a true (1) output." wrappingWidth="308.08905029296875">
+      <Text layoutX="447.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The NAND gate has the opposite behaviour of the and gate. only a set of entirely false (0) values will result in a true (1) output." wrappingWidth="308.08905029296875">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
@@ -133,9 +133,9 @@
             <Image url="@images/or.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="102.0" fitWidth="91.0" layoutX="881.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="102.0" fitWidth="91.0" layoutX="892.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/nxor.png" />
+            <Image url="@images/xor.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="102.0" fitWidth="91.0" layoutX="892.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
