@@ -1,17 +1,25 @@
 package application.resources;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import application.AccountManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class optionsController {
+public class optionsController implements Initializable {
 	
 	
 	//-----------Constants/Resources---------
+		@FXML
+		Button instructorDashboard;
+		
+		Boolean isTeacher = AccountManager.isAdmin();
 	
 		SceneSwitcher sceneSwitcher = new SceneSwitcher();
 		
@@ -63,14 +71,17 @@ public class optionsController {
 		}		
 	}
 	
-	public void highscore(ActionEvent event) throws IOException {			
+	public void highscore(ActionEvent event) throws IOException {	
+		
+			
 		try {	
-			audio.boopPlay();
-			sceneSwitcher.switchScene(event, "/application/resources/highscore.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
+				audio.boopPlay();
+				sceneSwitcher.switchScene(event, "/application/resources/highscore.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}
+			
 	}
 	
 	public void discoveries(ActionEvent event) throws IOException {			
@@ -83,7 +94,8 @@ public class optionsController {
 		}		
 	}
 	
-	public void options(ActionEvent event) throws IOException {			
+	public void options(ActionEvent event) throws IOException {	
+		
 		try {	
 			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/options.fxml");
@@ -91,5 +103,26 @@ public class optionsController {
 		catch(IOException exception) {				
 			exception.printStackTrace();				
 		}		
+	}
+	
+   public void instructorDashboard(ActionEvent event) throws IOException {	
+		
+		try {	
+			audio.boopPlay();
+			sceneSwitcher.switchScene(event, "/application/resources/instructorDashboard.fxml");
+		}			
+		catch(IOException exception) {				
+			exception.printStackTrace();				
+		}		
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		if(!isTeacher) {
+			instructorDashboard.setVisible(false);
+			
+		}
+		
 	}
 }

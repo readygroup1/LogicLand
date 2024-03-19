@@ -9,6 +9,7 @@ import application.AccountManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 public class highscoreController implements Initializable{
@@ -39,6 +40,10 @@ public class highscoreController implements Initializable{
 	
 	@FXML
 	Text className;
+	@FXML
+	Button instructorDashboard;
+		
+	Boolean isTeacher = AccountManager.isAdmin();
 	
 	audioPlayer audio = new audioPlayer();
 	
@@ -62,6 +67,11 @@ public class highscoreController implements Initializable{
 			System.out.println(AccountManager.db.getClassID(AccountManager.getCurrentUser()));
 			className.setText(AccountManager.getClassName(AccountManager.db.getClassID(AccountManager.getCurrentUser())));
 		}
+		
+		if(!isTeacher) {
+			instructorDashboard.setVisible(false);
+		}
+		
 	}
 	
 	// ----------------User Dashboard Button Functions -----------------------
@@ -111,6 +121,17 @@ public class highscoreController implements Initializable{
 		try {	
 			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/options.fxml");
+		}			
+		catch(IOException exception) {				
+			exception.printStackTrace();				
+		}		
+	}
+	
+	public void instructorDashboard(ActionEvent event) throws IOException {	
+		
+		try {	
+			audio.boopPlay();
+			sceneSwitcher.switchScene(event, "/application/resources/instructorDashboard.fxml");
 		}			
 		catch(IOException exception) {				
 			exception.printStackTrace();				

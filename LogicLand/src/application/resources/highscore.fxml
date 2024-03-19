@@ -131,5 +131,10 @@
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
+      <Button fx:id="instructorDashboard" layoutX="1050.0" layoutY="500.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="200.0" text="Instructor Dashboard">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
