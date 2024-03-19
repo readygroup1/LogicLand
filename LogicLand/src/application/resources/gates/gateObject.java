@@ -46,7 +46,6 @@ public class gateObject {
 		
 		if(body != null) {
 			body.setOnMouseDragged(null);
-			body.setOnMouseReleased(null);
 		}
 	}
 
