@@ -23,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -63,6 +64,10 @@ public class sandboxController implements Initializable{
 	
 	@FXML
 	Text name;
+	@FXML
+	Button instructorDashboard;
+		
+	Boolean isTeacher = AccountManager.isAdmin();
 	
 	audioPlayer audio = new audioPlayer();
 	
@@ -99,6 +104,10 @@ public class sandboxController implements Initializable{
 			
 			// Delete is always bound to the click function but only works when deleteState is set to true by the delete button.
 			circuitBoardPane.setOnMousePressed(event ->{this.delete(event);});
+			
+			if(!isTeacher) {
+				instructorDashboard.setVisible(false);
+			}
 			
 		}
 		
@@ -625,6 +634,17 @@ public class sandboxController implements Initializable{
 		try {	
 			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/options.fxml");
+		}			
+		catch(IOException exception) {				
+			exception.printStackTrace();				
+		}		
+	}
+	
+	public void instructorDashboard(ActionEvent event) throws IOException {	
+		
+		try {	
+			audio.boopPlay();
+			sceneSwitcher.switchScene(event, "/application/resources/instructorDashboard.fxml");
 		}			
 		catch(IOException exception) {				
 			exception.printStackTrace();				

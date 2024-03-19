@@ -1,7 +1,11 @@
 package application.resources;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -12,7 +16,7 @@ import application.Main;
 import application.User;
 import javafx.event.ActionEvent;
 
-public class roadmapController {
+public class roadmapController  implements Initializable{
 	
 	// ------------------Variables--------------------------------------------
 	  @FXML
@@ -23,6 +27,10 @@ public class roadmapController {
 	  private ImageView levelOne;
 	  @FXML
 	  private Text classroom;
+	  @FXML
+	  Button instructorDashboard;
+		
+	  Boolean isTeacher = AccountManager.isAdmin();
 	  
 	  audioPlayer audio = new audioPlayer();
 	  
@@ -188,5 +196,25 @@ public class roadmapController {
 			}		
 		}
 
+		public void instructorDashboard(ActionEvent event) throws IOException {	
+			
+			try {	
+				audio.boopPlay();
+				sceneSwitcher.switchScene(event, "/application/resources/instructorDashboard.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
+		}
+
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			
+			if(!isTeacher) {
+				instructorDashboard.setVisible(false);
+				
+			}
+			
+		}
 
 }

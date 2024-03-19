@@ -11,9 +11,9 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" text="High Scores">
+      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" text="High Scores" textOverrun="CLIP" wrapText="true">
          <font>
-            <Font size="24.0" />
+            <Font size="21.0" />
          </font>
       </Button>
       <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" text="Discoveries">
@@ -33,5 +33,10 @@
       </Button>
       <Button fx:id="quit" layoutX="574.0" layoutY="512.0" mnemonicParsing="false" onAction="#quit" prefHeight="25.0" prefWidth="100.0" text="Quit" />
       <Button fx:id="logout" layoutX="574.0" layoutY="422.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="100.0" text="Log Out" />
+      <Button fx:id="instructorDashboard" layoutX="1050.0" layoutY="500.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="200.0" text="Instructor Dashboard">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
