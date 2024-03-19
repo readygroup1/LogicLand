@@ -52,6 +52,8 @@ public class xorController extends gateObject implements Initializable{
 		 * (*Any Node*).getProperties().get("type"). */
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			
+			super.setBody(body);
+			
 			body.setOnMousePressed(event ->{			
 				 dragStartX = event.getSceneX() - pane.getLayoutX();
 				 dragStartY = event.getSceneY() - pane.getLayoutY();

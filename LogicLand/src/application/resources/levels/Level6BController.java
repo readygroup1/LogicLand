@@ -224,6 +224,7 @@ public class Level6BController extends sandboxController implements Initializabl
 				object.getProperties().put("controller", controller);
 				object.getProperties().put("type", type);
 				controller.setBoard(this);
+				controller.setImmovable();
 				
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
@@ -263,6 +264,7 @@ public class Level6BController extends sandboxController implements Initializabl
 				object.getProperties().put("controller", controller);
 				object.getProperties().put("type", type);
 				controller.setBoard(this);
+				
 				
 				// Display the object
 				circuitBoardPane.getChildren().add(object);

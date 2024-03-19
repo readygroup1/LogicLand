@@ -210,6 +210,7 @@ public class Level3AController extends sandboxController implements Initializabl
 				object.getProperties().put("controller", controller);
 				object.getProperties().put("type", type);
 				controller.setBoard(this);
+				controller.setImmovable();
 				
 				// Display the object
 				circuitBoardPane.getChildren().add(object);

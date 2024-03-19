@@ -19,6 +19,7 @@ public class Main extends Application {
 	
 	// ***** For Development. Remove before handing in!!! ******
 	boolean skipLogin = false;
+
 	
 	@Override
 	/**
