@@ -118,70 +118,70 @@ public class roadmapController {
 				}		  
 		}
 		
-		public void levelTwo(ActionEvent event) throws IOException {	
+		public void levelTwo(MouseEvent event) throws IOException {	
 			try {	
 				audio.boopPlay();
-				sceneSwitcher.switchScene(event, "/application/resources/Level2.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/level2A.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				
 			}	
 		}
 		
-		public void levelThree(ActionEvent event) throws IOException {	
+		public void levelThree(MouseEvent event) throws IOException {	
 			try {	
 				audio.boopPlay();
-				sceneSwitcher.switchScene(event, "/application/resources/Level3.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/level3A.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				
 			}		
 		}
 		
-		public void levelFour(ActionEvent event) throws IOException {	
+		public void levelFour(MouseEvent event) throws IOException {	
 			try {
 				audio.boopPlay();
-				sceneSwitcher.switchScene(event, "/application/resources/Level4.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/level4A.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				
 			}		
 		}
 		
-		public void levelFive(ActionEvent event) throws IOException {	
+		public void levelFive(MouseEvent event) throws IOException {	
 			try {
 				audio.boopPlay();
-				sceneSwitcher.switchScene(event, "/application/resources/Level5.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/level5A.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				
 			}		
 		}
 		
-		public void levelSix(ActionEvent event) throws IOException {	
+		public void levelSix(MouseEvent event) throws IOException {	
 			try {	
 				audio.boopPlay();
-				sceneSwitcher.switchScene(event, "/application/resources/Level6.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/level6A.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				
 			}		
 		}
 		
-		public void levelSeven(ActionEvent event) throws IOException {	
+		public void levelSeven(MouseEvent event) throws IOException {	
 			try {	
 				audio.boopPlay();
-				sceneSwitcher.switchScene(event, "/application/resources/Level7.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/level7A.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				
 			}		
 		}
 		
-		public void levelEight(ActionEvent event) throws IOException {	
+		public void levelEight(MouseEvent event) throws IOException {	
 			try {	
 				audio.boopPlay();
-				sceneSwitcher.switchScene(event, "/application/resources/Level8.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/Level8.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				

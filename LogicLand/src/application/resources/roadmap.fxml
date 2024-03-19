@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -44,8 +45,8 @@
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font></Text>
 
-      <ButtonBar layoutX="216.0" layoutY="193.0" prefHeight="40.0" prefWidth="200.0" />
-      <ImageView fx:id="levelOne" fitHeight="150.0" fitWidth="150.0" layoutX="28.0" layoutY="493.0" onMouseClicked="#levelOne" pickOnBounds="true" preserveRatio="true">
+      <ButtonBar layoutX="375.0" layoutY="158.0" prefHeight="40.0" prefWidth="200.0" />
+      <ImageView fx:id="levelOne" fitHeight="150.0" fitWidth="150.0" layoutX="187.0" layoutY="439.0" onMouseClicked="#levelOne" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/and.png" />
          </image>
@@ -55,10 +56,74 @@
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font>
       </Text>
-      <Text layoutX="33.0" layoutY="634.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level One" textAlignment="CENTER" wrappingWidth="139.60006713867188">
+      <Text layoutX="181.0" layoutY="598.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level One" textAlignment="CENTER" wrappingWidth="139.60006713867188">
          <font>
             <Font name="Vermin Vibes Regular" size="26.0" />
          </font>
       </Text>
+      <ImageView fx:id="levelThree" fitHeight="150.0" fitWidth="150.0" layoutX="393.0" layoutY="252.0" onMouseClicked="#levelThree" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/not.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="levelFour" fitHeight="150.0" fitWidth="150.0" layoutX="664.0" layoutY="439.0" onMouseClicked="#levelFour" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/nand.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="levelFive" fitHeight="150.0" fitWidth="150.0" layoutX="664.0" layoutY="96.0" onMouseClicked="#levelFive" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/nor.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="levelSix" fitHeight="150.0" fitWidth="150.0" layoutX="878.0" layoutY="252.0" onMouseClicked="#levelSix" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/xor.png" />
+         </image>
+      </ImageView>
+      <Line endX="-100.0" endY="-181.5" layoutX="422.0" layoutY="520.0" startX="-100.0" startY="-6.0" strokeWidth="6.0" />
+      <ImageView fx:id="levelTwo" fitHeight="150.0" fitWidth="150.0" layoutX="187.0" layoutY="96.0" onMouseClicked="#levelTwo" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/or.png" />
+         </image>
+      </ImageView>
+      <Line endX="-100.0" endY="-183.0" layoutX="422.0" layoutY="328.0" startX="-100.0" startY="13.0" strokeWidth="6.0" />
+      <Text layoutX="181.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level Two" textAlignment="CENTER" wrappingWidth="139.60006713867188">
+         <font>
+            <Font name="Vermin Vibes Regular" size="26.0" />
+         </font>
+      </Text>
+      <Line endX="-177.5" endY="-4.0" layoutX="503.0" layoutY="331.0" startX="-97.10000610351562" startY="-4.0" strokeWidth="6.0" />
+      <Line endX="281.9000244140625" endY="-69.0" layoutX="397.0" layoutY="214.0" startX="-75.10000610351562" startY="-69.0" strokeWidth="6.0" />
+      <Line endX="281.9000244140625" endY="-69.0" layoutX="408.0" layoutY="612.0" startX="-83.0" startY="-69.0" strokeWidth="6.0" />
+      <Line endX="-100.0" endY="-46.0" layoutX="422.0" layoutY="563.0" startX="-100.0" startY="-23.0" strokeWidth="6.0" />
+      <Line endX="37.899993896484375" endY="-69.0" layoutX="600.0" layoutY="396.0" startX="-75.10000610351562" startY="-69.0" strokeWidth="6.0" />
+      <Line endX="-100.00003051757812" endY="-210.0" layoutX="741.0" layoutY="409.0" startX="-100.00003051757812" startY="80.0" strokeWidth="6.0" />
+      <Line endX="-30.0999755859375" endY="-69.0" layoutX="716.0" layoutY="265.0" startX="-75.10000610351562" startY="-69.0" strokeWidth="6.0" />
+      <Line endX="-30.0999755859375" endY="-69.0" layoutX="716.0" layoutY="558.0" startX="-75.10000610351562" startY="-69.0" strokeWidth="6.0" />
+      <Line endX="-100.00003051757812" endY="-210.0" layoutX="899.0" layoutY="384.0" startX="-100.0" startY="-84.0" strokeWidth="6.0" />
+      <Text layoutX="393.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level Three" textAlignment="CENTER" wrappingWidth="139.60006713867188">
+         <font>
+            <Font name="Vermin Vibes Regular" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="663.0" layoutY="598.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level Four" textAlignment="CENTER" wrappingWidth="139.60006713867188">
+         <font>
+            <Font name="Vermin Vibes Regular" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="663.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level Five" textAlignment="CENTER" wrappingWidth="139.60006713867188">
+         <font>
+            <Font name="Vermin Vibes Regular" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="888.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level Six" textAlignment="CENTER" wrappingWidth="139.60006713867188">
+         <font>
+            <Font name="Vermin Vibes Regular" size="26.0" />
+         </font>
+      </Text>
+      <Line endX="-100.0" endY="-76.0" layoutX="898.0" layoutY="430.0" startX="-100.00003051757812" startY="80.0" strokeWidth="6.0" />
+      <Line endX="23.9000244140625" endY="-75.0" layoutX="876.0" layoutY="426.0" startX="-78.0" startY="-76.24261474609375" strokeWidth="6.0" />
+      <Line endX="35.9000244140625" endY="-76.24261474609375" layoutX="859.0" layoutY="379.0" startX="-60.0" startY="-74.75732421875" strokeWidth="6.0" />
    </children>
 </AnchorPane>

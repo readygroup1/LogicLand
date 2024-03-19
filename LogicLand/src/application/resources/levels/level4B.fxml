@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="circuitBoardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.levels.Level1BController">
+<Pane fx:id="circuitBoardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.levels.Level4BController">
    <children>
       <Pane fx:id="battery1" layoutX="37.0" layoutY="178.0" prefHeight="100.0" prefWidth="100.0" />
       <Pane fx:id="battery2" layoutX="37.0" layoutY="360.0" prefHeight="100.0" prefWidth="100.0" />
       <Pane fx:id="bulb" layoutX="1124.0" layoutY="285.0" prefHeight="100.0" prefWidth="100.0" />
       <Button fx:id="back" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" text="Road Map" />
-      <Label fx:id="title" layoutX="334.0" layoutY="89.0" prefHeight="50.0" prefWidth="611.0" text="Fill in the truth table" textAlignment="CENTER">
+      <Label fx:id="title" layoutX="425.0" layoutY="100.0" prefHeight="50.0" prefWidth="611.0" text="Fill in the truth table" textAlignment="CENTER">
          <font>
             <Font size="34.0" />
          </font>
@@ -38,11 +38,11 @@
       <Label layoutX="979.0" layoutY="631.0" prefHeight="16.0" prefWidth="14.0" text="1" />
       <Button layoutX="1098.0" layoutY="39.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="50.0" prefWidth="100.0" text="Next Level" />
       <Button layoutX="936.0" layoutY="39.0" mnemonicParsing="false" onAction="#previousLevel" prefHeight="50.0" prefWidth="100.0" text="Previous Level" />
-      <Label fx:id="currentLevelLabel" layoutX="485.0" layoutY="14.0" text="Level1">
+      <Label fx:id="currentLevelLabel" layoutX="501.0" layoutY="28.0" text="Level4">
          <font>
             <Font size="50.0" />
          </font>
       </Label>
-      <Button fx:id="back1" layoutX="64.0" layoutY="563.0" mnemonicParsing="false" onAction="#backPart" prefHeight="50.0" prefWidth="100.0" text="Back" />
+      <Button fx:id="back1" layoutX="50.0" layoutY="576.0" mnemonicParsing="false" onAction="#backPart" prefHeight="50.0" prefWidth="100.0" text="Back" />
    </children>
 </Pane>

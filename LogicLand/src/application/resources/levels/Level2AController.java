@@ -36,7 +36,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-public class Level1AController extends sandboxController implements Initializable {
+public class Level2AController extends sandboxController implements Initializable {
 
 	// ----------------Variables ---------------------------------------
 		public Boolean deleteState = false;
@@ -72,7 +72,7 @@ public class Level1AController extends sandboxController implements Initializabl
 		@FXML
 		Button checkWin;
 		
-		audioPlayer audio = new audioPlayer();
+		 audioPlayer audio = new audioPlayer();
 		
 		// I used these panes a way to store the coordinates of where I wanted the preloaded objects.
 		@FXML
@@ -524,9 +524,7 @@ public class Level1AController extends sandboxController implements Initializabl
 		
 		
 		public void deleteButton(MouseEvent event) {
-			
 			audio.boopPlay();
-			
 			if(deleteState) {
 				deleteState = false;
 				deleteImage.setImage(deleteOff);
@@ -542,8 +540,8 @@ public class Level1AController extends sandboxController implements Initializabl
 		
 		public void delete(MouseEvent event) {
 			//System.out.println("deleteState: " + deleteState + ", X: " + event.getX() + ", Y: " +event.getY());
-			audio.boopPlay();
 			
+			audio.boopPlay();
 			if(deleteState && event.getY() < 570 && event.getY() > 155 && event.getX() < 1000 && event.getX() > 260 ){
 				//If it is wire
 				if(event.getPickResult().getIntersectedNode() instanceof Line) {
@@ -593,7 +591,7 @@ public class Level1AController extends sandboxController implements Initializabl
 		public void next(ActionEvent event) throws IOException {			
 			audio.boopPlay();
 			try {			
-				sceneSwitcher.switchScene(event, "/application/resources/levels/level1B.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/level2B.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				

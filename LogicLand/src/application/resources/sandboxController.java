@@ -371,12 +371,14 @@ public class sandboxController implements Initializable{
 			connectLine.setEndX(event1.getSceneX());
 			connectLine.setEndY(event1.getSceneY());
 			connectLine.toBack();
+			
 		});
 		
 		circuitBoardPane.setOnMouseReleased(event2 ->{
 			
 			// Remove the temporary line when mouse released
 			circuitBoardPane.getChildren().remove(connectLine);
+			audio.boopPlay();//Play sound on connection doesnt work for every connection
 			
 			// If the mouse was released over a terminal
 			if(event2.getPickResult().getIntersectedNode() instanceof Rectangle) {
@@ -388,6 +390,7 @@ public class sandboxController implements Initializable{
 					if (startType == "output") {
 						endNode.getProperties().put("put", startNode);	//Andres
 						startNode.getProperties().put("put", endNode);
+						
 						
 						switch( (String)(startNode.getProperties().get("ClassType")) ) {
 						case "AND":
