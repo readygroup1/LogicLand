@@ -30,6 +30,8 @@ public class AccountManager {
 	private static String sandboxSaveState = "";
 	/** The boolean that stores whether the user is in the sandbox or not */
 	private static boolean inSandbox = false;
+	/** The integer that stores the current user's score */
+	private static int currentUserScore = 0;
 	
 	/**
 	 * Constructor for the AccountManager class. It sets the current user ID and whether the user is an admin or not.
@@ -251,7 +253,19 @@ public class AccountManager {
 	 * @param score
 	 */
 	public static void setLevelScore(int levelID, int score) {
-		db.updateLevelScore(levelID, score);
+		if(AccountManager.getLevelScore(levelID) <= score) {
+			AccountManager.currentUserScore += score;
+			db.updateLevelScore(levelID, score);
+			AccountManager.setHighScore();
+		}
+	}
+
+	/** 
+	 * This method sets the high score of the current user.
+	 * @param score
+	 */
+	public static void setHighScore() {
+		db.updateHighScore(AccountManager.currentUserID, AccountManager.currentUserScore);
 	}
 
 	/**
