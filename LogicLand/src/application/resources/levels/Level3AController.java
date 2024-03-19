@@ -47,11 +47,11 @@ public class Level3AController extends sandboxController implements Initializabl
 		Button back;
 		
 		//Uncomment @FXML above any generator/delete objects that you want to include in the level and make sure the names match in the fxml file
-		@FXML
+		//@FXML
 		ImageView andGen;
 		//@FXML
 		ImageView batteryGen;
-		//@FXML
+		@FXML
 		ImageView notGen;
 		//@FXML
 		ImageView orGen;

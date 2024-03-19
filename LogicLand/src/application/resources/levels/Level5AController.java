@@ -61,7 +61,7 @@ public class Level5AController extends sandboxController implements Initializabl
 		ImageView deleteImage;
 		//@FXML
 		ImageView nandGen;
-		//@FXML
+		@FXML
 		ImageView norGen;
 		//@FXML
 		ImageView xorGen;

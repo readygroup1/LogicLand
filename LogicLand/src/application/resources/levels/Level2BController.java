@@ -53,7 +53,7 @@ public class Level2BController extends sandboxController implements Initializabl
 		ImageView batteryGen;
 		//@FXML
 		ImageView notGen;
-		//@FXML
+		@FXML
 		ImageView orGen;
 		//@FXML
 		ImageView bulbGen;
@@ -74,7 +74,7 @@ public class Level2BController extends sandboxController implements Initializabl
 		@FXML
 		Pane battery2;
 		@FXML 
-		Pane and1;
+		Pane or1;
 		
 		@FXML
 		Pane bulb;
@@ -156,28 +156,28 @@ public class Level2BController extends sandboxController implements Initializabl
 			}
 			 
 			try {
-				and1 = this.load(and1, Type.AND);
+				or1 = this.load(or1, Type.OR);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			((batteryController)battery1.getProperties().get("controller")).getOutput1().getProperties().put("put",((andController) and1.getProperties().get("controller")).getInput1());
-			((andController) and1.getProperties().get("controller")).getInput1().getProperties().put("put", ((batteryController)battery1.getProperties().get("controller")).getOutput1());
+			((batteryController)battery1.getProperties().get("controller")).getOutput1().getProperties().put("put",((orController) or1.getProperties().get("controller")).getInput1());
+			((orController) or1.getProperties().get("controller")).getInput1().getProperties().put("put", ((batteryController)battery1.getProperties().get("controller")).getOutput1());
 			 
 			
-			((batteryController)battery2.getProperties().get("controller")).getOutput1().getProperties().put("put",((andController) and1.getProperties().get("controller")).getInput2());
-			((andController) and1.getProperties().get("controller")).getInput2().getProperties().put("put", ((batteryController)battery2.getProperties().get("controller")).getOutput1());
+			((batteryController)battery2.getProperties().get("controller")).getOutput1().getProperties().put("put",((orController) or1.getProperties().get("controller")).getInput2());
+			((orController) or1.getProperties().get("controller")).getInput2().getProperties().put("put", ((batteryController)battery2.getProperties().get("controller")).getOutput1());
 			
-			((andController) and1.getProperties().get("controller")).getOutput().getProperties().put("put", ( (bulbController) bulb.getProperties().get("controller")).getInput1());
-			( (bulbController) bulb.getProperties().get("controller")).getInput1().getProperties().put("put",((andController) and1.getProperties().get("controller")).getOutput());
+			((orController) or1.getProperties().get("controller")).getOutput().getProperties().put("put", ( (bulbController) bulb.getProperties().get("controller")).getInput1());
+			( (bulbController) bulb.getProperties().get("controller")).getInput1().getProperties().put("put",((orController) or1.getProperties().get("controller")).getOutput());
 			
 			
 			
 			// Create function calls to make wire if you want connections. There is definitely a better way to do this. I will work on it.
-			this.makeWire(((batteryController)battery1.getProperties().get("controller")).getOutput1(), ((andController) and1.getProperties().get("controller")).getInput1());
-			this.makeWire(((batteryController)battery2.getProperties().get("controller")).getOutput1(), ((andController) and1.getProperties().get("controller")).getInput2());
-			this.makeWire(((andController) and1.getProperties().get("controller")).getOutput(), ( (bulbController) bulb.getProperties().get("controller")).getInput1());
+			this.makeWire(((batteryController)battery1.getProperties().get("controller")).getOutput1(), ((orController) or1.getProperties().get("controller")).getInput1());
+			this.makeWire(((batteryController)battery2.getProperties().get("controller")).getOutput1(), ((orController) or1.getProperties().get("controller")).getInput2());
+			this.makeWire(((orController) or1.getProperties().get("controller")).getOutput(), ( (bulbController) bulb.getProperties().get("controller")).getInput1());
 			
 			
 			((batteryController)battery1.getProperties().get("controller")).checktype();
