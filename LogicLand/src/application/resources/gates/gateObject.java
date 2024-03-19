@@ -2,6 +2,7 @@ package application.resources.gates;
 
 import application.resources.sandboxController;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Ellipse;
 
 public class gateObject {
 	
@@ -9,6 +10,7 @@ public class gateObject {
 	Type type;
 	sandboxController sboxController;
 	Pane circuitBoardPane;
+	Ellipse body;
 	
 	public enum Type{
 		battery,and,or,not,nor,nand,xor,bulb		
@@ -33,7 +35,19 @@ public class gateObject {
 	
 	public void checktype() {
 		
+		
+	}
+	
+	public void setBody(Ellipse body) {
+		this.body = body;
 	}
 
+	public void setImmovable() {
+		
+		if(body != null) {
+			body.setOnMouseDragged(null);
+			body.setOnMouseReleased(null);
+		}
+	}
 
 }
