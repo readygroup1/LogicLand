@@ -8,12 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 
-
-
+/**
+ * @author Nick Howard
+ */
 public class Main extends Application {
 	
 	// For DEvelopment. REmove before hanging in.
-	boolean skipLogin = false;
+	boolean skipLogin = true;
 	@Override
 	
 	// This is boiler plate code to open up a window. 
