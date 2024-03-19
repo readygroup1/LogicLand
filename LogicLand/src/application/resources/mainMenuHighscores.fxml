@@ -13,22 +13,22 @@
             <Font name="Vermin Vibes Regular" size="62.0" />
          </font>
       </Text>
-      <Text layoutX="288.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1st">
+      <Text fill="#dabc43" layoutX="288.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1st">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text layoutX="283.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2nd">
+      <Text fill="#d7d7d7" layoutX="283.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2nd">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text layoutX="573.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+      <Text fill="WHITE" layoutX="573.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INITIALS">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text layoutX="277.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3rd">
+      <Text fill="#7c673d" layoutX="277.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3rd">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
@@ -43,7 +43,7 @@
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text layoutX="863.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
+      <Text fill="WHITE" layoutX="877.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>

@@ -58,6 +58,12 @@ public class developerLoginController {
 			}
 		}
 		
+		/**
+		 * Take user back to main menu from developer login page.
+		 * 
+		 * @param event
+		 * @throws IOException
+		 */
 		public void back(ActionEvent event) throws IOException {			
 			try {			
 				audio.boopPlay();

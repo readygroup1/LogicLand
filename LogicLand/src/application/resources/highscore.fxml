@@ -36,22 +36,22 @@
          <font>
             <Font name="Vermin Vibes Regular" size="62.0" />
          </font></Text>
-      <Text layoutX="278.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1st">
+      <Text fill="#dabc43" layoutX="278.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1st">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text layoutX="273.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2nd">
+      <Text fill="#d7d7d7" layoutX="273.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2nd">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text layoutX="563.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+      <Text fill="WHITE" layoutX="563.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INITIALS">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text layoutX="267.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3rd">
+      <Text fill="#7c673d" layoutX="267.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3rd">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
@@ -66,7 +66,7 @@
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text layoutX="853.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
+      <Text fill="WHITE" layoutX="853.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
@@ -121,17 +121,17 @@
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text layoutX="5.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class:">
+      <Text fill="WHITE" layoutX="5.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class:">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Text fx:id="className" layoutX="144.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="369.06663513183594">
+      <Text fx:id="className" fill="WHITE" layoutX="144.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="369.06663513183594">
          <font>
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Button fx:id="instructorDashboard" layoutX="1050.0" layoutY="500.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="200.0" text="Instructor Dashboard">
+      <Button fx:id="instructorDashboard" layoutX="18.0" layoutY="593.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="200.0" text="Instructor Dashboard">
          <font>
             <Font size="16.0" />
          </font>
