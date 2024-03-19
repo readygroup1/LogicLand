@@ -94,6 +94,7 @@ public class Level2BController extends sandboxController implements Initializabl
 		@FXML
 		Label title;
 		
+		
 		// Store the current level
 	    private int currentLevel; // currentLevel as its integer value
 
