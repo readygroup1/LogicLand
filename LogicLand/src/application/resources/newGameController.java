@@ -178,6 +178,7 @@ public class newGameController implements Initializable{
 			}
 			
 			
+			
 			bulb.setImage(bulbOn);	
 			audio.boopPlay();
 			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
