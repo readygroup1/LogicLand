@@ -8,16 +8,24 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 
-
-
+/**
+ * This Main Class is responsible for the initialization of the game. 
+ * It will open the window and determine where in the game a user will begin.
+ * 
+ * @author Nick Howard
+ * @version 1.0
+ */
 public class Main extends Application {
 	
-	// For DEvelopment. REmove before hanging in.
-	boolean skipLogin = true;
-	@Override
+	// ***** For Development. Remove before handing in!!! ******
+	boolean skipLogin = false;
+
 	
-	// This is boiler plate code to open up a window. 
+	@Override
+	/**
+	 * This is boiler plate code to open up a window. 
 	// There is an explanation for how this works in SceneSwitcher
+	 */
 	public void start(Stage stage) {		
 		
 		try {
@@ -63,7 +71,10 @@ public class Main extends Application {
 		} 						
 	}
 	
-	
+	/**
+	 * To open window for game.
+	 * @param args
+	 */
 	public static void main(String[] args) {		
 		launch(args);
 	}

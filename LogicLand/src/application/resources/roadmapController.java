@@ -34,23 +34,6 @@ public class roadmapController  implements Initializable{
 	  
 	  audioPlayer audio = new audioPlayer();
 	  
-	  public void initialize() {
-		  if(!AccountManager.isAdmin()) {
-		    User player = new User(AccountManager.getCurrentUser());
-		    name.setText(player.getUsername()); 
-		    classroom.setText(player.getClassName());
-		    score.setText("Score: " + player.getHighScore());
-		    
-		  } else if(AccountManager.isAdmin()) {
-			  Instructor teacher = new Instructor(AccountManager.getCurrentUser());
-			    name.setText(teacher.getName()); 
-			    classroom.setText(null);
-			    score.setText("Class: " + AccountManager.getClassName(AccountManager.db.getClassIDAdmin(AccountManager.getCurrentUser())));
-		  }
-		  
-		  levelOne.setPickOnBounds(true);
-	}
-	  
 	  
 	//-----------------Constants & Resources----------------------------------
 	  SceneSwitcher sceneSwitcher = new SceneSwitcher();
@@ -212,8 +195,22 @@ public class roadmapController  implements Initializable{
 			
 			if(!isTeacher) {
 				instructorDashboard.setVisible(false);
-				
 			}
+			
+			if(!AccountManager.isAdmin()) {
+			    User player = new User(AccountManager.getCurrentUser());
+			    name.setText(player.getUsername()); 
+			    classroom.setText(player.getClassName());
+			    score.setText("Score: " + player.getHighScore());
+			    
+			  } else if(AccountManager.isAdmin()) {
+				  Instructor teacher = new Instructor(AccountManager.getCurrentUser());
+				    name.setText(teacher.getName()); 
+				    classroom.setText(null);
+				    score.setText("Class: " + AccountManager.getClassName(AccountManager.db.getClassIDAdmin(AccountManager.getCurrentUser())));
+			  }
+			  
+			  levelOne.setPickOnBounds(true);
 			
 		}
 

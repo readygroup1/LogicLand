@@ -74,7 +74,7 @@
       </ImageView>
       <Text layoutX="45.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Sandbox">
          <font>
-            <Font name="Vermin Vibes Regular" size="55.0" />
+            <Font name="Vermin Vibes Regular" size="64.0" />
          </font>
       </Text>
       <Text fx:id="name" layoutX="661.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" textAlignment="RIGHT" wrappingWidth="546.6499633789062">
@@ -82,12 +82,12 @@
             <Font name="Vermin Vibes Regular" size="38.0" />
          </font>
       </Text>
-      <Button layoutX="1104.0" layoutY="590.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="28.0" prefWidth="89.0" style="-fx-background-color: #000;" text="Clear" textFill="WHITE">
+      <Button layoutX="1104.0" layoutY="590.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="49.0" prefWidth="142.0" style="-fx-background-color: #000;" text="Clear" textFill="WHITE">
          <font>
             <Font name="Vermin Vibes Regular" size="22.0" />
          </font>
       </Button>
-      <Button fx:id="instructorDashboard" layoutX="1050.0" layoutY="500.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="200.0" text="Instructor Dashboard">
+      <Button fx:id="instructorDashboard" layoutX="14.0" layoutY="591.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="164.0" text="Instructor Dashboard">
          <font>
             <Font size="16.0" />
          </font>
