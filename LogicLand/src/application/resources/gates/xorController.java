@@ -179,7 +179,7 @@ public void checktype() {
 						}
 					}
 	
-				System.out.println("Switched to true");
+				
 				setImageOn();
 			}
 				
@@ -222,7 +222,7 @@ public void checktype() {
 				
 					
 				}
-				System.out.println("Switched to false");
+				
 				setImageOff();
 			}
 		}
