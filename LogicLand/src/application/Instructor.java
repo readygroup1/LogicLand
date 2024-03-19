@@ -5,7 +5,7 @@ package application;
  * This class represents an Instructor of a course. 
  * Each instructor has a name, ID and a class that they teach.
  * 
- * @author Andres Pedreros
+ * @author Andres Pedreros Castro
  */
 public class Instructor {
 	

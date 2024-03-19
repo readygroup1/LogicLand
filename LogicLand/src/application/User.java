@@ -42,7 +42,7 @@ public class User {
 	private int playerID;
 	
 	/**
-	 * Constructor for the User class. It retreaves the information of the current user from the database, using the current playerID from account manager.
+	 * Constructor for the User class. It retrieves the information of the current user from the database, using the current playerID from account manager.
 	 * @param PlayerID
 	 */
 	public User (int PlayerID) {

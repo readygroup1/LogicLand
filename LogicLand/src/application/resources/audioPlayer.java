@@ -5,6 +5,11 @@ import java.time.Duration;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * This class is responsible for playing the "boop" sound effect on a clicked button. 
+ * 
+ * @author
+ */
 public class audioPlayer {
 	// Correct way to format the local file path as a URI
     String audioFile = getClass().getResource("/application/resources/boop.wav").toExternalForm();
@@ -15,7 +20,9 @@ public class audioPlayer {
     // Creating a MediaPlayer with the media
     MediaPlayer boop = new MediaPlayer(sound);
     
-    
+    /**
+     * Play "boop" sound.
+     */
     public void boopPlay() {
     	// Playing the audio
         boop.play();
