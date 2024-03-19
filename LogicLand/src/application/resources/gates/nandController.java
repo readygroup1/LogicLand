@@ -258,6 +258,16 @@ public class nandController extends gateObject implements Initializable {
 				}
 			}
 			
+			public Rectangle getInput1() {
+				return input1;		
+			}
+			public Rectangle getInput2() {
+				return input2;		
+			}
+			public Rectangle getOutput() {
+				return output;		
+			}
+			
 			
 			
 

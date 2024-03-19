@@ -17,7 +17,7 @@
             <Font size="34.0" />
          </font>
       </Label>
-      <Pane fx:id="and1" layoutX="554.0" layoutY="295.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="nor1" layoutX="554.0" layoutY="295.0" prefHeight="100.0" prefWidth="100.0" />
       <TextField fx:id="Textoutput1" layoutX="1045.0" layoutY="516.0" prefHeight="25.0" prefWidth="37.0" />
       <TextField fx:id="Textoutput2" layoutX="1045.0" layoutY="552.0" prefHeight="25.0" prefWidth="37.0" />
       <TextField fx:id="Textoutput3" layoutX="1045.0" layoutY="588.0" prefHeight="25.0" prefWidth="37.0" />
