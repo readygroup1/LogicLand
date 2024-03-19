@@ -8,15 +8,36 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * This class is used to interact with the database. It is used to create the database, add, delete, and update players, and get player information.
+ * It is used directly in the class called {@link application.AccountManager.java}, which is static so each class can freely access the database.
+ * 
+ * <b>Example use:</b>
+ * <pre>
+ * {@code
+ * Database db = new Database();
+ * db.addPlayer("John", "JDO", "password", "john@doe.com", 1);
+ * db.getPlayerID("John");
+ * }
+ * </pre>
+ * <b>Output:</b>
+ * <pre>
+ * <b>Output:</b> <code>1</code>
+ * <br>
+ * @version 1.0
+ * @since 1.0
+ * @author Callum Thompson
+ */
 public class Database {
-    // Instance variables -------------------------------------------------------------------
+    /** The URL to connect to the database. This URL has creating a new database disabled. */
     private String dbURLnocreate = "jdbc:derby:LogicLandDB;dataEncryption=true;encryptionAlgorithm=DES/CBC/NoPadding;bootPassword=brianstorm";
+    /** The URL to connect to the database. This URL has creating a new database enabled. */
     private String dbURL = dbURLnocreate + ";create=true";
+    /** The number of levels in the game. */
     private int numLevels = 8;
    
-    // Constructor ---------------------------------------------------------------------------
     /**
-     * Constructor for the Database class. This class is used to create and manage the database.
+     * The constructor for the database. It creates the database if it does not exist.
      */
     public Database() {
         try {
@@ -27,10 +48,6 @@ public class Database {
         }
     }
 
-    // Init -----------------------------------------------------------------------------------
-    /**
-     * This method is used to create the database if it does not exist. 
-     */
     private void createDB() {
         if (databaseExists()) {
             return;
@@ -61,66 +78,7 @@ public class Database {
         addClassroom("<public>", 1);
     }
 
-    // Boolean methods ----------------------------------------------------------------------------------
     /** 
-     * This method checks if the database exists. Used when creating the database.
-     * @return boolean
-     */
-    private boolean databaseExists() {
-        try (Connection conn = DriverManager.getConnection(dbURLnocreate)) {
-            return true;
-        } catch (SQLException e) {
-            return false;
-        }
-    }
-    
-    
-    /** 
-     * This method verifies if the admin login exists in the database, returns true if there is a name and password that match.
-     * @param name
-     * @param password
-     * @return boolean
-     */
-    public boolean verifyAdmin(String name, String password) {
-        return executeQueryGetInt("SELECT AdminID FROM ADMIN WHERE AdminName = '" + name + "' AND AdminPassword = '"
-                + password + "'") != -1;
-    }
-
-    
-    /** 
-     * This method verifies if the player login exists in the database, returns true if there is a name and password that match.
-     * @param name
-     * @param password
-     * @return boolean
-     */
-    public boolean verifyPlayer(String name, String password) {
-        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "' AND Password = '"
-                + password + "'") != -1;
-    }
-
-    
-    /** 
-     * This method verifies that the players username exists. Used when creating a new player to make sure there is no duplicate usernames.
-     * @param name
-     * @return boolean
-     */
-    public boolean userNameExists(String name) {
-        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "'") != -1;
-    }
-
-    
-    /** 
-     * This method verifies that the classroom name exists. Used when creating a new classroom to make sure there is no duplicate classroom names.
-     * @param name
-     * @return boolean
-     */
-    public boolean classroomNameExists(String name) {
-        return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE ClassName = '" + name + "'") != -1;
-    }
-
-    
-    /** 
-     * This is a private method to execute an SQL statement. Used when a full method is not needed. Also as a helper method.
      * @param SQL
      */
     private void executeSQL(String SQL) {
@@ -131,10 +89,19 @@ public class Database {
             e.printStackTrace();
         }
     }
-
-     // Getter methods ----------------------------------------------------------------------------------
+    
     /** 
-     * This method executes a query and returns the result as an int. Used when a full method is not needed. Also as a helper method.
+     * @return boolean
+     */
+    private boolean databaseExists() {
+        try (Connection conn = DriverManager.getConnection(dbURLnocreate)) {
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    /** 
      * @param SQLquery
      * @return int
      */
@@ -149,100 +116,94 @@ public class Database {
         return -1;
     }
     
+    /**
+     * This method gets the score of a specific level given the level ID.
+     * @param levelID The ID of the level.
+     * @return int
+     */
     public int getLevelScore(int levelID) {
         return executeQueryGetInt("SELECT LevelScore FROM LEVELS WHERE LevelID = " + levelID);
     }
     
+    /**
+     * This method gets the level number given the level ID.
+     * @param levelID The ID of the level.
+     * @return int
+     */
     public int getLevelNumber(int levelID) {
         return executeQueryGetInt("SELECT CurrentLevel FROM LEVELS WHERE LevelID = " + levelID);
     }
 
-    /** 
-     * This method gets the player ID given a player name.
-     * @param name
+    /**
+     * This method gets the ID of a player given the player's name.
+     * @param name The name of the player.
      * @return int
      */
     public int getPlayerID(String name) {
         return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "'");
     }
 
-    
-    /** 
-     * This method gets the admin ID given an admin name.
-     * @param name
+    /**
+     * This method gets the ID of the admin given the admin's name.
+     * @param name The name of the admin.
      * @return int
      */
     public int getAdminID(String name) {
         return executeQueryGetInt("SELECT AdminID FROM ADMIN WHERE AdminName = '" + name + "'");
     }
 
-    
-    /** 
-     * This method gets the admin ID given a class ID.
-     * @param ClassID
+    /**
+     * This method gets the ID of the admin given the admin's class ID.
+     * @param int The ID of the class.
      * @return int
      */
     public int getAdminID(int ClassID) {
         return executeQueryGetInt("SELECT AdminID FROM CLASSROOM WHERE ClassID = " + ClassID);
     }
     
-    
-    /** 
-     * This method gets the class ID given a player ID.
-     * @param playerID
+    /**
+     * This method gets the class ID of a player given the player's ID.
+     * @param playerID The ID of the player.
      * @return int
      */
     public int getClassID(int playerID) {
         return executeQueryGetInt("SELECT ClassID FROM PLAYER WHERE PlayerID = " + playerID);
     }
 
-    
-    /** 
-     * This method gets the class ID given an admin ID.
-     * @param adminID
+    /**
+     * This method gets the class ID of the admin given the admin's ID.
+     * @param adminID The ID of the admin.
      * @return int
      */
     public int getClassIDAdmin(int adminID) {
         return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE AdminID = " + adminID);
     }
 
-    
-    /** 
-     * This method gets the admin name given the admin ID.
-     * @param AdminID
+    /**
+     * This method gets the name of an admin given their ID.
+     * @param AdminID The ID of the admin.
      * @return String
      */
     public String getAdminName(int AdminID) {
-        // Initialize a variable to hold player information
         String name = "Player not found";
-        // SQL query to fetch all player details
         String SQLquery = "SELECT AdminName FROM ADMIN WHERE AdminID = " + AdminID;
 
         try (Connection conn = DriverManager.getConnection(dbURL);
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(SQLquery)) {
-            // Check if the player exists
             if (rs.next()) {
-                // Construct the player information string
-
-                
                 name = rs.getString("AdminName");
-                
-
-                // Constructing the info string. Note: handling of the password might need to be
-                // reconsidered for security reasons.
             }
         } catch (SQLException e) {
             e.printStackTrace();
             name = "Error retrieving player: " + e.getMessage();
         }
-
         return name;
     }
     
-    
-    /** 
-     * @param PlayerID
+    /**
+     * This method gets the string of how the terminals are placed in the sandbox, given the player's ID.
+     * @param PlayerID The ID of the player.
      * @return String
      */
     public String getSandboxSaveState(int PlayerID) {
@@ -260,9 +221,9 @@ public class Database {
         return "Error";
     }
 
-    
-    /** 
-     * @param AdminID
+    /**
+     * This method gets the string of how the terminals are placed in the sandbox, given the admin's ID.
+     * @param AdminID The ID of the admin.
      * @return String
      */
     public String getSandboxSaveStateAdmin(int AdminID) {
@@ -280,36 +241,28 @@ public class Database {
         return "Error";
     }
     
-    
-    
-    /** 
-     * This method gets the player String for the user class given the player ID.
-     * @param PlayerID
+    /**
+     * This method gets the information of a player given the player's ID.
+     * @param PlayerID The ID of the player.
      * @return String
      */
     public String getPlayer(int PlayerID) {
-        // Initialize a variable to hold player information
         String playerInfo = "Player not found";
-        // SQL query to fetch all player details
         String SQLquery = "SELECT * FROM PLAYER WHERE PlayerID = " + PlayerID;
 
         try (Connection conn = DriverManager.getConnection(dbURL);
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(SQLquery)) {
-            // Check if the player exists
             if (rs.next()) {
-                // Construct the player information string
                 String playerID = rs.getString("PlayerID");
                 String name = rs.getString("Name");
                 String initials = rs.getString("Initials");
-                String password = rs.getString("Password"); // Consider security implications of handling passwords
+                String password = rs.getString("Password"); 
                 String email = rs.getString("Email");
                 int sandboxID = rs.getInt("SandboxID");
                 boolean inTutorial = rs.getBoolean("inTutorial");
                 int classID = rs.getInt("ClassID");
 
-                // Constructing the info string. Note: handling of the password might need to be
-                // reconsidered for security reasons.
                 playerInfo = String.format("%s,%s,%s,%s,%d,%b,%d,%s",
                         name, initials, password, email, sandboxID, inTutorial, classID, playerID);
             }
@@ -321,32 +274,28 @@ public class Database {
         return playerInfo;
     }
     
-    
-
-    
-    /** 
-     * This method gets the sandbox ID given the player ID.
-     * @param PlayerID
+    /**
+     * This method gets the ID of a sanbox from the player's ID.
+     * @param PlayerID The ID of the player.
      * @return int
      */
     public int getSandboxID(int PlayerID) {
         return executeQueryGetInt("SELECT SandboxID FROM PLAYER WHERE PlayerID = " + PlayerID);
     }
 
-    
-    /** 
-     * @param AdminID
+    /**
+     * This method gets the ID of a sanbox from the admin's ID.
+     * @param AdminID The ID of the admin.
      * @return int
      */
     public int getSandboxIDAdmin(int AdminID) {
         return executeQueryGetInt("SELECT SandboxID FROM ADMIN WHERE AdminID = " + AdminID);
     }
 
-    
-    /** 
-     * This method gets the level ID given the player ID and the current level.
-     * @param PlayerID
-     * @param currentLevel
+    /**
+     * This method gets the ID of a specific level given the player's ID and the current level that they are on.
+     * @param PlayerID The ID of the player. 
+     * @param currentLevel The current level that the player is on.
      * @return int
      */
     public int getLevelID(int PlayerID, int currentLevel) {
@@ -354,29 +303,27 @@ public class Database {
                 + currentLevel);
     }
 
-    
-    /** 
-     * This method gets the current level given the player ID.
-     * @param PlayerID
+    /**
+     * This method gets the current level that the player is on given the player's ID.
+     * @param PlayerID The ID of the player.
      * @return int
      */
     public int getPlayerCurrentLevel(int PlayerID) {
         return executeQueryGetInt("SELECT CurrentLevel FROM LEVELS WHERE PlayerID = " + PlayerID);
     }
 
-    
-    /** 
-     * This method gets the high score given the level ID.
-     * @param PlayerID
+    /**
+     * This method gets the highscore of a specific player given their ID.
+     * @param PlayerID The ID of the player.
      * @return int
      */
     public int getHighScore(int PlayerID) {
         return executeQueryGetInt("SELECT UserScore FROM HIGHSCORE WHERE PlayerID = " + PlayerID);
     }
 
-    
-    /** 
-     * This method gets the top five names for the global high score.
+    /**
+     * This method gets the top 5 names of users for the highscore page. 
+     * This is for the global highscore page. 
      * @return ArrayList<String>
      * @throws SQLException
      */
@@ -405,9 +352,9 @@ public class Database {
         }
     }
 
-    
-    /** 
-     * This method gets the top five scores for the global high score.
+    /**
+     * This method gets the top 5 scores of users for the highscore page. 
+     * This is for the global highscore page. 
      * @return ArrayList<Integer>
      * @throws SQLException
      */
@@ -436,10 +383,10 @@ public class Database {
         }
     }
 
-    
-    /** 
-     * This method gets the top five names for the classroom high score given the class ID.
-     * @param classID
+    /**
+     * This method gets the top 5 names of users for the highscore page. 
+     * This is for the classroom highscore page. 
+     * @param classID The ID of the classroom.
      * @return ArrayList<String>
      * @throws SQLException
      */
@@ -468,10 +415,10 @@ public class Database {
         }
     }
 
-    
-    /** 
-     * This method gets the top five scores for the classroom high score given the class ID.
-     * @param classID
+    /**
+     * This method gets the top 5 scores of users for the highscore page. 
+     * This is for the classroom highscore page. 
+     * @param classID The ID of the classroom.
      * @return ArrayList<Integer>
      * @throws SQLException
      */
@@ -500,9 +447,8 @@ public class Database {
         }
     }
 
-    
-    /** 
-     * This method gets all available classrooms.
+    /**
+     * This method gets a list of every classroom.
      * @return ArrayList<String>
      */
     public ArrayList<String> getClassrooms() {
@@ -518,11 +464,10 @@ public class Database {
         }
         return classrooms;
     }
-
     
     /** 
-     * This method gets the class ID given a class name.
-     * @param className
+     * This method gets the ID of a classroom given the classroom's name.
+     * @param className The name of the classroom.
      * @return int
      */
     public int getClassID(String className) {
@@ -533,11 +478,10 @@ public class Database {
         }
     }
 
-    
     /** 
-     * This method gets the class name given a class ID.
+     * This method gets the name of a classroom given the classroom's ID.
      * @param classID
-     * @return String
+     * @return String 
      */
     public String getClassName(int classID) {
     	try (Connection conn = DriverManager.getConnection(dbURL);
@@ -553,48 +497,80 @@ public class Database {
         }
     	return "Error";
     }
-    
-    // Boolean methods ----------------------------------------------------------------------------------
+
     /** 
-     * This method adds a player and all associated tables. Returns the player ID.
+     * This method verifies the admin's credentials. Used for login
+     * @param name The name of the admin.
+     * @param password The password of the admin.
+     * @return boolean
+     */
+    public boolean verifyAdmin(String name, String password) {
+        return executeQueryGetInt("SELECT AdminID FROM ADMIN WHERE AdminName = '" + name + "' AND AdminPassword = '"
+                + password + "'") != -1;
+    }
+
+    /** 
+     * This method verifies the player's credentials. Used for login
+     * @param name The name of the player.
+     * @param password The password of the player.
+     * @return boolean
+     */
+    public boolean verifyPlayer(String name, String password) {
+        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "' AND Password = '"
+                + password + "'") != -1;
+    }
+
+    /** 
+     * This method checks to see if the user name of a player already exists.
      * @param name
-     * @param initials
-     * @param password
-     * @param email
-     * @param ClassID
-     * @return int
+     * @return boolean
+     */
+    public boolean userNameExists(String name) {
+        return executeQueryGetInt("SELECT PlayerID FROM PLAYER WHERE Name = '" + name + "'") != -1;
+    }
+
+    /** 
+     * This method checks to see if a classroom name already exists.
+     * @param name The name of the classroom.
+     * @return boolean
+     */
+    public boolean classroomNameExists(String name) {
+        return executeQueryGetInt("SELECT ClassID FROM CLASSROOM WHERE ClassName = '" + name + "'") != -1;
+    }
+    
+    /** 
+     * This method adds a player to the database. Also creates tables for all associated data.
+     * @param name The name of the player.
+     * @param initials The initials of the player.
+     * @param password The password of the player.
+     * @param email The email of the player.
+     * @param ClassID The ID of the classroom the player chooses to join.
+     * @return int The ID of the player.
      */
     public int addPlayer(String name, String initials, String password, String email, int ClassID) {
-        // Count how many rows in table to find next primary key
         int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM PLAYER") + 1;
-        // Count all rows in sandbox table to find next sandboxID
         int sandboxID = executeQueryGetInt("SELECT COUNT(*) FROM SANDBOX") + 1;
-        // Create a new sandbox for the player
         executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '')");
 
         executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
                 + "', '" + email
                 + "', " + sandboxID + ", " + false + ", " + ClassID + ")");
-        // Create 15 new levels for the player
         for (int i = 1; i <= numLevels; i++) {
-            // count to find level primary key
             int levelPrimaryKey = executeQueryGetInt("SELECT COUNT(*) FROM LEVELS") + 1;
             executeSQL("INSERT INTO LEVELS VALUES (" + levelPrimaryKey + ", " + i + ", 0, '0000', " + primaryKey
                     + ")");
         }
-        // Create a new highscore for the player
         executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initials + "', 0)");
         return primaryKey;
     }
-
     
     /** 
-     * This method adds a new admin to the database. Returns the admin ID.
-     * @param name
-     * @param initials
-     * @param password
-     * @param email
-     * @return int
+     * This method adds an admin to the database. Also creates tables for all associated data.
+     * @param name The name of the admin.
+     * @param initials The initials of the admin.
+     * @param password The password of the admin.
+     * @param email The email of the admin.
+     * @return int The ID of the admin.
      */
     public int addAdmin(String name, String initials, String password, String email) {
         // Count how many rows in table to find next primary key
@@ -608,25 +584,23 @@ public class Database {
                 + "', '" + email + "', " + sandboxID + ")");
         return primaryKey;
     }
-
     
     /** 
-     * This method adds a new classroom to the database.
-     * @param name
-     * @param AdminID
+     * This method adds a classroom to the database. 
+     * @param name The name of the classroom.
+     * @param AdminID The ID of the admin.
      */
     public void addClassroom(String name, int AdminID) {
         // Count how many rows in table to find next primary key
         int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM CLASSROOM") + 1;
         executeSQL("INSERT INTO CLASSROOM VALUES (" + primaryKey + ", '" + name + "', " + AdminID + ")");
     }
-
     
     /** 
-     * This method updates the save state of the player sandbox.
-     * @param PlayerID
-     * @param projectTitle
-     * @param saveState
+     * This method updates the player's sandbox.
+     * @param PlayerID The ID of the player.
+     * @param projectTitle The title of the project.
+     * @param saveState The state of the sandbox.
      */
     public void updatePlayerSandbox(int PlayerID, String projectTitle, String saveState) {
         // First get the sandbox ID from playerID
@@ -634,23 +608,22 @@ public class Database {
         executeSQL("UPDATE SANDBOX SET ProjectTitle = '" + projectTitle
                 + "', LastModified = CURRENT_DATE, SaveState = '" + saveState + "' WHERE SandboxID = " + sandboxID);
     }
-
     
     /** 
-     * This method updates the player's current sandbox save state.
-     * @param PlayerID
-     * @param saveState
+     * This method updates the players sandbox but only the save state.
+     * @param PlayerID The ID of the player.
+     * @param saveState The new save state of the sandbox.
      */
     public void updatePlayerSandboxSave(int PlayerID, String saveState) {
         // First get the sandbox ID from playerID
         int sandboxID = getSandboxID(PlayerID);
         executeSQL("UPDATE SANDBOX SET SaveState = '" + saveState + "' WHERE SandboxID = " + sandboxID);
     }
-
     
     /** 
-     * @param AdminID
-     * @param saveState
+     * This method updates the admin's sandbox.
+     * @param AdminID The ID of the admin.
+     * @param saveState The new save state of the sandbox.
      */
     public void updateAdminSandBoxSave(int AdminID, String saveState) {
         // First get the sandbox ID from playerID
@@ -659,63 +632,64 @@ public class Database {
     }
     
     /** 
-     * This method updates the player's current level save state.
-     * @param LevelID
-     * @param LevelScore
-     * @param CurrentLevelSaveState
+     * This method updates the player's progress in the levels.
+     * @param LevelID The ID of the level.
+     * @param LevelScore The score of the level.
+     * @param CurrentLevelSaveState The state of the level.
      */
     public void updatePlayerProgress(int LevelID, int LevelScore, String CurrentLevelSaveState) {
         executeSQL("UPDATE LEVELS SET LevelScore = " + LevelScore + ", CurrentLevelSaveState = '"
                 + CurrentLevelSaveState + "' WHERE LevelID = " + LevelID);
     }
-
+    
+    /** 
+     * This method updates the player's level score in a specific level.
+     * @param LevelID The ID of the level.
+     * @param LevelScore The score of the level.
+     */
     public void updateLevelScore(int LevelID, int LevelScore) {
         executeSQL("UPDATE LEVELS SET LevelScore = " + LevelScore + " WHERE LevelID = " + LevelID);
     }
-
     
     /** 
-     * This method updates the player's general database.
-     * @param PlayerID
-     * @param name
-     * @param password
-     * @param email
-     * @param ClassID
-     * @param inTutorial
+     * This method updates the player's information.
+     * @param PlayerID The ID of the player.
+     * @param name The name of the player.
+     * @param password The password of the player.
+     * @param email The email of the player.
+     * @param ClassID The ID of the classroom the player is in.
+     * @param inTutorial The state of the tutorial.
      */
     public void updatePlayer(int PlayerID, String name, String password, String email, int ClassID,
             boolean inTutorial) {
         executeSQL("UPDATE PLAYER SET Name = '" + name + "', Password = '" + password + "', Email = '" + email
                 + "', ClassID = " + ClassID + ", inTutorial = " + inTutorial + " WHERE PlayerID = " + PlayerID);
     }
-
     
     /** 
-     * This method updates the admin's general database.
-     * @param AdminID
-     * @param name
-     * @param password
-     * @param email
+     * This method updates the admin's information.
+     * @param AdminID The ID of the admin.
+     * @param name The name of the admin.
+     * @param password The password of the admin.
+     * @param email The email of the admin.
      */
     public void updateAdmin(int AdminID, String name, String password, String email) {
         executeSQL("UPDATE ADMIN SET AdminName = '" + name + "', AdminPassword = '" + password
                 + "', AdminEmail = '" + email + "' WHERE AdminID = " + AdminID);
     }
-
     
     /** 
-     * This method updates the high score for the player.
-     * @param PlayerID
-     * @param UserScore
+     * This method updates the highscore of a player.
+     * @param PlayerID The ID of the player.
+     * @param UserScore The score of the player.
      */
     public void updateHighScore(int PlayerID, int UserScore) {
         executeSQL("UPDATE HIGHSCORE SET UserScore = " + UserScore + " WHERE PlayerID = " + PlayerID);
     }
-
     
     /** 
-     * This method deletes the player and all associated tables.
-     * @param PlayerID
+     * This method deletes a player from the database.
+     * @param PlayerID The ID of the player.
      */
     public void deletePlayer(int PlayerID) {
         // first delete highscore for player
@@ -728,9 +702,10 @@ public class Database {
         // finally delete sandbox for player
         executeSQL("DELETE FROM SANDBOX WHERE SandboxID = " + sandboxID);
     }
-
-    // Misc methods -----------------------------------------------------------------------------------
     
+    /** 
+     * This method prints the current state of the database to the console.
+     */
     public void printDB() {
         try (Connection conn = DriverManager.getConnection(dbURL)) {
             DatabaseMetaData dbMetaData = conn.getMetaData();
@@ -766,6 +741,9 @@ public class Database {
         }
     }
 
+    /** 
+     * This method resets the database to its original state.
+     */
     public void resetDataBase() {
         executeSQL("DROP TABLE LEVELS");
         executeSQL("DROP TABLE HIGHSCORE");
