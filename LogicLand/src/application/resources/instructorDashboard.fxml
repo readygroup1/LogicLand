@@ -28,7 +28,7 @@
             <Font name="Tahoma" size="30.0" />
          </font>
       </Text>
-      <ScrollPane layoutX="73.0" layoutY="271.0" prefHeight="367.0" prefWidth="496.0">
+      <ScrollPane fx:id="pane" layoutX="73.0" layoutY="271.0" prefHeight="367.0" prefWidth="496.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="504.0" />
         </content>

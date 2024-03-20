@@ -197,6 +197,14 @@ public class AccountManager {
 	}
 
 	/**
+	 * This method returns a string of users in a class.
+	 * @return
+	 */
+	public static ArrayList<String> getClassList() {
+		return db.getClassList(AccountManager.currentUserID);
+	}
+
+	/**
 	 * This method checks if the current user is an admin or not.
 	 * @return boolean
 	 */

@@ -498,6 +498,25 @@ public class Database {
     	return "Error";
     }
 
+    /**
+     * This method gets the list of players in a specific classroom.
+     * @param AdminID
+     * @return
+     */
+    public ArrayList<String> getClassList(int AdminID) {
+        ArrayList<String> classes = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT ClassName FROM CLASSROOM WHERE AdminID = " + AdminID)) {
+            while (rs.next()) {
+                classes.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return classes;
+    }
+
     /** 
      * This method verifies the admin's credentials. Used for login
      * @param name The name of the admin.
