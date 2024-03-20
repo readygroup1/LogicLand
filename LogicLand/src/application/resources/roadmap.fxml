@@ -124,9 +124,9 @@
       <Line endX="-100.0" endY="-76.0" layoutX="898.0" layoutY="430.0" startX="-100.00003051757812" startY="80.0" strokeWidth="6.0" />
       <Line endX="23.9000244140625" endY="-75.0" layoutX="876.0" layoutY="426.0" startX="-78.0" startY="-76.24261474609375" strokeWidth="6.0" />
       <Line endX="35.9000244140625" endY="-76.24261474609375" layoutX="859.0" layoutY="379.0" startX="-60.0" startY="-74.75732421875" strokeWidth="6.0" />
-      <Button fx:id="instructorDashboard" layoutX="1050.0" layoutY="500.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="200.0" text="Instructor Dashboard">
+      <Button fx:id="instructorDashboard" layoutX="1060.0" layoutY="569.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="200.0" text="Instructor Dashboard">
          <font>
-            <Font size="16.0" />
+            <Font name="Tahoma" size="16.0" />
          </font></Button>
       <ImageView fitHeight="126.0" fitWidth="130.0" layoutX="1032.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
          <image>

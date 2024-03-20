@@ -131,9 +131,9 @@
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Button fx:id="instructorDashboard" layoutX="18.0" layoutY="593.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="200.0" text="Instructor Dashboard">
+      <Button fx:id="instructorDashboard" layoutX="1060.0" layoutY="561.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="200.0" text="Instructor Dashboard">
          <font>
-            <Font size="16.0" />
+            <Font name="Tahoma" size="16.0" />
          </font>
       </Button>
    </children>
