@@ -127,11 +127,6 @@ class AccountManagerTest {
 	}
 
 	@Test
-	void testSetHighScore() {
-		AccountManager.setHighScore();
-	}
-
-	@Test
 	void testSetSandboxSaveState() {
 		AccountManager.setSandboxSaveState("test");
 		assertEquals(AccountManager.getSandboxSaveState(), "test");

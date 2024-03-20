@@ -30,8 +30,6 @@ public class AccountManager {
 	private static String sandboxSaveState = "";
 	/** The boolean that stores whether the user is in the sandbox or not */
 	private static boolean inSandbox = false;
-	/** The integer that stores the current user's score */
-	private static int currentUserScore = 0;
 	
 	/**
 	 * Constructor for the AccountManager class. It sets the current user ID and whether the user is an admin or not.
@@ -205,6 +203,24 @@ public class AccountManager {
 	}
 
 	/**
+	 * This method returns the high score of a user.
+	 * @param userID
+	 * @return
+	 */
+	public static int getHighscore(int userID) {
+		return db.getHighScore(userID);
+	}
+
+	/**
+	 * Gets the played ID given their name
+	 * @param name
+	 * @return
+	 */
+	public static int getPlayerID(String name) {
+		return db.getPlayerID(name);
+	}
+
+	/**
 	 * This method checks if the current user is an admin or not.
 	 * @return boolean
 	 */
@@ -262,18 +278,17 @@ public class AccountManager {
 	 */
 	public static void setLevelScore(int levelID, int score) {
 		if(AccountManager.getLevelScore(levelID) <= score) {
-			AccountManager.currentUserScore += score;
-			db.updateLevelScore(levelID, score);
-			AccountManager.setHighScore();
+			AccountManager.setHighScore(AccountManager.getHighscore(AccountManager.currentUserID) + score);
+			db.updateLevelScore(levelID, db.getLevelScore(levelID) + score); 
 		}
 	}
 
-	/** 
-	 * This method sets the high score of the current user.
+	/**
+	 * Sets the high score of the current user
 	 * @param score
 	 */
-	public static void setHighScore() {
-		db.updateHighScore(AccountManager.currentUserID, AccountManager.currentUserScore);
+	public static void setHighScore(int score) {
+		db.updateHighScore(AccountManager.currentUserID, score);
 	}
 
 	/**

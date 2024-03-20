@@ -504,18 +504,28 @@ public class Database {
      * @return
      */
     public ArrayList<String> getClassList(int AdminID) {
-        ArrayList<String> classes = new ArrayList<>();
+        ArrayList<String> classList = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(dbURL);
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT ClassName FROM CLASSROOM WHERE AdminID = " + AdminID)) {
+                ResultSet rs = stmt.executeQuery("SELECT Name FROM PLAYER WHERE ClassID = (SELECT ClassID FROM CLASSROOM WHERE AdminID = " + AdminID + ")")) {
             while (rs.next()) {
-                classes.add(rs.getString(1));
+                classList.add(rs.getString(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return classes;
+        return classList;
     }
+    
+    /**
+     * This method returns the highscore of a specific user.
+     * @param userID
+     * @return
+     */
+    public int getUserHighscore(int userID) {
+        return executeQueryGetInt("SELECT UserScore FROM HIGHSCORE WHERE PlayerID = " + userID);
+    }
+
 
     /** 
      * This method verifies the admin's credentials. Used for login
