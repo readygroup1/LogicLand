@@ -753,5 +753,4 @@ public class Database {
         executeSQL("DROP TABLE SANDBOX");
         createDB();
     }
-
 }
