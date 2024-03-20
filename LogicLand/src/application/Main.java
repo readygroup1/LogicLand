@@ -12,7 +12,11 @@ import javafx.scene.text.Font;
  * This Main Class is responsible for the initialization of the game. 
  * It will open the window and determine where in the game a user will begin.
  * 
- * @author Nick Howard
+ * @author Nick Howard 
+ * @author Callum Thompson
+ * @author Andres Pedreros 
+ * @author Kalundi Serumaga
+ * @author Thomas Llamzon
  * @version 1.0
  */
 public class Main extends Application {

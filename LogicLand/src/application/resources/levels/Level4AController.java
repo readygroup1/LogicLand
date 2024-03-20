@@ -6,6 +6,7 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import application.AccountManager;
 import application.resources.SceneSwitcher;
 import application.resources.audioPlayer;
 import application.resources.sandboxController;
@@ -152,6 +153,9 @@ public class Level4AController extends sandboxController implements Initializabl
 			//if bulb is on win
 			if(endBulb.getState()) {
 				title.setText("Great Job! Head to the next part!");
+				if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) != 50) {
+					AccountManager.setLevelScore(AccountManager.getLevelID(4), 50);
+				}
 			}
 		}
 		

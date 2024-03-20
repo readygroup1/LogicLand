@@ -6,6 +6,7 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import application.AccountManager;
 import application.resources.SceneSwitcher;
 import application.resources.audioPlayer;
 import application.resources.sandboxController;
@@ -196,8 +197,9 @@ public class Level6BController extends sandboxController implements Initializabl
 			
 			if(Textoutput1.getText().equals("0") && Textoutput2.getText().equals("1") && Textoutput3.getText().equals("1") && Textoutput4.getText().equals("0")) {
 				title.setText("Great Job! Head to the next Level!");
-				
-
+				if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) != 75) {
+					AccountManager.setLevelScore(AccountManager.getLevelID(6), 75);
+				}
 			}
 		}
 		
