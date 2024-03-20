@@ -1,7 +1,7 @@
 package application;
 
 /**
- * @author Callum Thompson
+ * @author Andres Pedreros
  * @category 
  * @version 1.0
  * 

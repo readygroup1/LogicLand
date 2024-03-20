@@ -19,8 +19,8 @@ package application;
  * @since 1.0
  * @see AccountManager
  * @see Database
- * @author Andres Pedreros Castro
- */
+ * @author Andres Pedreros 
+ * */
 public class User {
 	/** The username of the current user */
 	private String username;
