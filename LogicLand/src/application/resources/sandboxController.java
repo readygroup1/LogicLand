@@ -105,6 +105,92 @@ public class sandboxController implements Initializable{
 			// Delete is always bound to the click function but only works when deleteState is set to true by the delete button.
 			circuitBoardPane.setOnMousePressed(event ->{this.delete(event);});
 			
+			circuitBoardPane.setOnKeyPressed(event ->{
+				
+				switch(event.getCode()) {
+				
+				case Q:
+					try {
+						this.batteryGenerator();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+				
+				case W:
+					try {
+						this.andGenerator();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+					
+				case E:
+					try {
+						this.orGenerator();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+					
+				case R:
+					try {
+						this.notGenerator();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+				case T:
+					try {
+						this.nandGenerator();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+					
+				case Y:
+					try {
+						this.norGenerator();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+					
+				case U:
+					try {
+						this.xorGenerator();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+					
+				case I:
+					try {
+						this.bulbGenerator();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+					
+				case O:
+					try {
+						this.deleteButton(null);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+				}
+			});
+			
 			if(!isTeacher) {
 				instructorDashboard.setVisible(false);
 			}
