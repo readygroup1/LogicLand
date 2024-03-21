@@ -95,8 +95,6 @@ public class Level5BController extends sandboxController implements Initializabl
 		@FXML
 		Label title;
 		
-		// Store the current level
-	    private int currentLevel; // currentLevel as its integer value
 
 	    @FXML
 	    private Label currentLevelLabel; // Inject the Label from FXML
@@ -564,9 +562,7 @@ public class Level5BController extends sandboxController implements Initializabl
 	    public void previousLevel(ActionEvent event) throws IOException {
 	    	audio.boopPlay();
 	    	try {
-	            currentLevel = extractLevelNumber(currentLevelLabel.getText());
-	            currentLevel--;
-	            String previousLevelFXML = "/application/resources/levels/level" + currentLevel + "A.fxml";
+	            String previousLevelFXML = "/application/resources/levels/level5A.fxml";
 	            sceneSwitcher.switchScene(event, previousLevelFXML);
 	            audio.boopPlay();
 	        } catch (IOException exception) {
@@ -581,11 +577,12 @@ public class Level5BController extends sandboxController implements Initializabl
 	     * @throws IOException If an I/O exception occurs during scene switching.
 	     */
 	    public void nextLevel(ActionEvent event) throws IOException {
+	    	if(AccountManager.getLevelScore(AccountManager.getLevelID(5)) < 75) {
+				return;
+			}
 	    	audio.boopPlay();
 	    	try {
-	            currentLevel = extractLevelNumber(currentLevelLabel.getText());
-	            currentLevel++;
-	            String nextLevelFXML = "/application/resources/levels/level" + currentLevel + "A.fxml";
+	            String nextLevelFXML = "/application/resources/levels/level6A.fxml";
 	            sceneSwitcher.switchScene(event, nextLevelFXML);
 	            audio.boopPlay();
 	        } catch (IOException exception) {

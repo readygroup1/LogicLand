@@ -512,7 +512,10 @@ public class Level1AController extends sandboxController implements Initializabl
 			}		
 		}
 		
-		public void next(ActionEvent event) throws IOException {			
+		public void next(ActionEvent event) throws IOException {
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 50) {
+				return;
+			}
 			audio.boopPlay();
 			try {			
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level1B.fxml");
