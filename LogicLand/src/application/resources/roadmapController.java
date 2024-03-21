@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -26,6 +27,16 @@ public class roadmapController  implements Initializable{
 	  @FXML
 	  private ImageView levelOne;
 	  @FXML
+	  private ImageView levelTwo;
+	  @FXML
+	  private ImageView levelThree;
+	  @FXML
+	  private ImageView levelFour;
+	  @FXML
+	  private ImageView levelFive;
+	  @FXML
+	  private ImageView levelSix;
+	  @FXML
 	  private Text classroom;
 	  @FXML
 	  Button instructorDashboard;
@@ -33,6 +44,8 @@ public class roadmapController  implements Initializable{
 	  Boolean isTeacher = AccountManager.isAdmin();
 	  
 	  audioPlayer audio = new audioPlayer();
+	  
+	  
 	  
 	  
 	//-----------------Constants & Resources----------------------------------
@@ -43,7 +56,8 @@ public class roadmapController  implements Initializable{
 	
 		
 		
-		public void roadmap(ActionEvent event) throws IOException {			
+		public void roadmap(ActionEvent event) throws IOException {	
+			 
 			try {	
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
@@ -110,6 +124,9 @@ public class roadmapController  implements Initializable{
 		}
 		
 		public void levelTwo(MouseEvent event) throws IOException {	
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 75) {
+				return;
+			}
 			try {	
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level2A.fxml");
@@ -119,7 +136,10 @@ public class roadmapController  implements Initializable{
 			}	
 		}
 		
-		public void levelThree(MouseEvent event) throws IOException {	
+		public void levelThree(MouseEvent event) throws IOException {
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(2)) < 75) {
+				return;
+			}
 			try {	
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level3A.fxml");
@@ -129,7 +149,10 @@ public class roadmapController  implements Initializable{
 			}		
 		}
 		
-		public void levelFour(MouseEvent event) throws IOException {	
+		public void levelFour(MouseEvent event) throws IOException {
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) < 75) {
+				return;
+			}
 			try {
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level4A.fxml");
@@ -139,7 +162,10 @@ public class roadmapController  implements Initializable{
 			}		
 		}
 		
-		public void levelFive(MouseEvent event) throws IOException {	
+		public void levelFive(MouseEvent event) throws IOException {
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) < 75) {
+				return;
+			}
 			try {
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level5A.fxml");
@@ -150,6 +176,9 @@ public class roadmapController  implements Initializable{
 		}
 		
 		public void levelSix(MouseEvent event) throws IOException {	
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(5)) < 75) {
+				return;
+			}
 			try {	
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level6A.fxml");
@@ -160,6 +189,9 @@ public class roadmapController  implements Initializable{
 		}
 		
 		public void levelSeven(MouseEvent event) throws IOException {	
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) < 75) {
+				return;
+			}
 			try {	
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level7A.fxml");
@@ -170,6 +202,9 @@ public class roadmapController  implements Initializable{
 		}
 		
 		public void levelEight(MouseEvent event) throws IOException {	
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(7)) < 75) {
+				return;
+			}
 			try {	
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/Level8.fxml");
@@ -192,6 +227,42 @@ public class roadmapController  implements Initializable{
 
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 75) {
+				BoxBlur bb2 = new BoxBlur();
+				bb2.setWidth(30);
+		        bb2.setHeight(30);
+		        bb2.setIterations(25);
+			    levelTwo.setEffect(bb2);
+			}
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(2)) < 75) {
+				BoxBlur bb3 = new BoxBlur();
+				bb3.setWidth(30);
+		        bb3.setHeight(30);
+		        bb3.setIterations(25);
+			    levelThree.setEffect(bb3);
+			}
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) < 75) {
+				BoxBlur bb4 = new BoxBlur();
+				bb4.setWidth(30);
+		        bb4.setHeight(30);
+		        bb4.setIterations(25);
+			    levelFour.setEffect(bb4);
+			}
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) < 75) {
+				BoxBlur bb5 = new BoxBlur();
+				bb5.setWidth(30);
+		        bb5.setHeight(30);
+		        bb5.setIterations(25);
+			    levelFive.setEffect(bb5);
+			}
+			if(AccountManager.getLevelScore(AccountManager.getLevelID(5)) < 75) {
+				BoxBlur bb6 = new BoxBlur();
+				bb6.setWidth(30);
+		        bb6.setHeight(30);
+		        bb6.setIterations(25);
+			    levelSix.setEffect(bb6);
+			}
+		    
 			
 			if(!isTeacher) {
 				instructorDashboard.setVisible(false);

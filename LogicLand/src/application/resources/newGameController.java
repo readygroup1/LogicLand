@@ -111,8 +111,10 @@ public class newGameController implements Initializable{
 					className = "";
 				}
 				int classID = AccountManager.getClassID(className);
-				
-				
+				if(userName.contains("'") || userInitials.contains("'") || userPassword.contains("'") || userEmail.contains("'")) {
+					status.setText("Names cannot have ' in them");
+					return;
+				}
 				// Error handling cases for text input
 				if(userName.trim().isEmpty() || userPassword.trim().isEmpty() || userConfirmPassword.trim().isEmpty() || userEmail.trim().isEmpty() || userInitials.trim().isEmpty() || className.trim().isEmpty() || classID == -1) {
 					audio.errorPlay();
@@ -139,11 +141,13 @@ public class newGameController implements Initializable{
 					status.setText("Password confirmation does not match!");
 					return;
 				}
-				
 				AccountManager.newPlayerAccount(userName, userInitials, userPassword, userEmail, classID);
 			} else {
 				String className = enterClassName.getText();
-				
+				if(className.contains("'") || userName.contains("'") || userInitials.contains("'") || userPassword.contains("'") || userEmail.contains("'")) {
+					status.setText("Names cannot have ' in them");
+					return;
+				}
 				// Error handling cases for text input
 				if(userName.trim().isEmpty() || userPassword.trim().isEmpty() || userConfirmPassword.trim().isEmpty() || userEmail.trim().isEmpty() || userInitials.trim().isEmpty() || className.trim().isEmpty()) {
 					audio.errorPlay();
