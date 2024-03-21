@@ -221,6 +221,22 @@ public class AccountManager {
 	}
 
 	/**
+	 * This method returns a list of all the players in the database.
+	 * @return String
+	 */
+	public static ArrayList<String> getAllPlayers() {
+		return db.getAllStudentNames();
+	}
+
+	/**
+	 * This method returns a list of all the players in the database except those in the class of the current user.
+	 * @return
+	 */
+	public static ArrayList<String> getAllPlayersExceptInClass() {
+		return db.getAllStudentsExceptInClass(currentUserID);
+	}
+
+	/**
 	 * This method checks if the current user is an admin or not.
 	 * @return boolean
 	 */
@@ -269,6 +285,22 @@ public class AccountManager {
 	 */
 	public static void setInSandbox(boolean inSandbox) {
 		AccountManager.inSandbox = inSandbox;
+	}
+
+	/**
+	 * This method is used to move a player to a different class.
+	 * @param playerID
+	 */
+	public static void movePlayerToPublicClass(int playerID) {
+		db.movePlayerClass(playerID, 1);
+	}
+
+	/**
+	 * This method is used to move a player to the current class.
+	 * @param playerID
+	 */
+	public static void addPlayerToMyClass(int playerID) {
+		db.movePlayerClass(playerID, AccountManager.getCurrentClassID());
 	}
 	
 	/**

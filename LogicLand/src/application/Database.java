@@ -526,6 +526,42 @@ public class Database {
         return executeQueryGetInt("SELECT UserScore FROM HIGHSCORE WHERE PlayerID = " + userID);
     }
 
+    /**
+     * This method returns a list of all the players in the database.
+     * @return
+     */
+    public ArrayList<String> getAllStudentNames() {
+        ArrayList<String> studentNames = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT Name FROM PLAYER")) {
+            while (rs.next()) {
+                studentNames.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return studentNames;
+    }
+
+    /**
+     * This method returns a list of all the students in the database except for the ones in the class of the admin.
+     * @param adminID
+     * @return
+     */
+    public ArrayList<String> getAllStudentsExceptInClass(int adminID) {
+        ArrayList<String> studentNames = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(dbURL);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT Name FROM PLAYER WHERE ClassID != (SELECT ClassID FROM CLASSROOM WHERE AdminID = " + adminID + ")")) {
+            while (rs.next()) {
+                studentNames.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return studentNames;
+    }
 
     /** 
      * This method verifies the admin's credentials. Used for login
@@ -591,6 +627,10 @@ public class Database {
         }
         executeSQL("INSERT INTO HIGHSCORE VALUES (" + primaryKey + ", '" + initials + "', 0)");
         return primaryKey;
+    }
+
+    public void movePlayerClass(int PlayerID, int ClassID) {
+        executeSQL("UPDATE PLAYER SET ClassID = " + ClassID + " WHERE PlayerID = " + PlayerID);
     }
     
     /** 
