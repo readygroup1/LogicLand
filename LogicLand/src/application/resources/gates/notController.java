@@ -18,7 +18,7 @@ import javafx.scene.shape.Rectangle;
 public class notController extends gateObject implements Initializable {
 	
 	//----------------Variables---------------------------
-		boolean state = false;
+		boolean state = true;
 		sandboxController sboxController;
 		Pane circuitBoardPane;
 		Type type = Type.not;
