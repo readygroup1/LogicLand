@@ -159,35 +159,7 @@ public class Level1AController extends sandboxController implements Initializabl
 			}
 		}
 		
-		public void callChecktype(Rectangle node) {
-			switch( (String)(node.getProperties().get("ClassType")) ) {
-			case "AND":
-				((andController)(node.getProperties().get("parentGate"))).checktype();			//Andres
-				break;
-			case "BATTERY":
-				((batteryController)node.getProperties().get("parentGate")).checktype();			//Andres
-				break;
-			case "BULB":
-				((bulbController)node.getProperties().get("parentGate")).checktype();
-				break;
-			case "NAND":
-				((nandController)node.getProperties().get("parentGate")).checktype();
-				break;
-			case "NOR":
-				((norController)node.getProperties().get("parentGate")).checktype();
-				break;
-			case "XOR":
-				((xorController)node.getProperties().get("parentGate")).checktype();
-				break;
-			case "NOT":
-				((notController)node.getProperties().get("parentGate")).checktype();
-				break;
-			case "OR":
-				((orController)node.getProperties().get("parentGate")).checktype();
-				break;
-
-			}
-		}
+		
 
 		
 		

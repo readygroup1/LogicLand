@@ -168,9 +168,9 @@ public class norController extends gateObject implements Initializable{
 		public void checktype() {
 			
 			//check if both inputs are null
-			if(  
-					((Rectangle)input1.getProperties().get("put") != null && !((boolean)((Rectangle)input1.getProperties().get("put")).getProperties().get("state")) ) 
-				||  ((Rectangle)input2.getProperties().get("put") != null && !((boolean)((Rectangle)input2.getProperties().get("put")).getProperties().get("state")))
+			if( !( 
+					((Rectangle)input1.getProperties().get("put") != null && ((boolean)((Rectangle)input1.getProperties().get("put")).getProperties().get("state")) ) 
+				||  ((Rectangle)input2.getProperties().get("put") != null && ((boolean)((Rectangle)input2.getProperties().get("put")).getProperties().get("state"))))
 					
 				) {
 				
