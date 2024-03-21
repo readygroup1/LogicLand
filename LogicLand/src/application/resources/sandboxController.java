@@ -726,17 +726,96 @@ public class sandboxController implements Initializable{
 		}		
 	}
 	
-	/*public void instructorDashboard(ActionEvent event) throws IOException {	
-		
-		try {	
-			audio.boopPlay();
-			sceneSwitcher.switchScene(event, "/application/resources/instructorDashboard.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
-	}*/
-
 	
+	/*---SANDBOX OPTIONS HOVER EFFECTS---*/
+	
+	// BATTERY HOVER
+	public void onBatteryHover() {
+		batteryGen.setScaleX(1.1);
+		batteryGen.setScaleY(1.1);
+	}
+	public void offBatteryHover() {
+		batteryGen.setScaleX(0.9);
+		batteryGen.setScaleY(0.9);
+	}
 
+	// AND HOVER
+	public void onANDHover() {
+		andGen.setScaleX(1.1);
+		andGen.setScaleY(1.1);
+	}
+	public void offANDHover() {
+		andGen.setScaleX(0.9);
+		andGen.setScaleY(0.9);
+	}
+
+	// OR HOVER
+	public void onORHover() {
+		orGen.setScaleX(1.1);
+		orGen.setScaleY(1.1);
+	}
+	public void offORHover() {
+		orGen.setScaleX(0.9);
+		orGen.setScaleY(0.9);
+	}
+
+	// NOT HOVER
+	public void onNOTHover() {
+		notGen.setScaleX(1.1);
+		notGen.setScaleY(1.1);
+	}
+	public void offNOTHover() {
+		notGen.setScaleX(0.9);
+		notGen.setScaleY(0.9);
+	}
+
+	// NAND HOVER
+	public void onNANDHover() {
+		nandGen.setScaleX(1.1);
+		nandGen.setScaleY(1.1);
+	}
+	public void offNANDHover() {
+		nandGen.setScaleX(0.9);
+		nandGen.setScaleY(0.9);
+	}
+
+	// NOR HOVER
+	public void onNORHover() {
+		norGen.setScaleX(1.1);
+		norGen.setScaleY(1.1);
+	}
+	public void offNORHover() {
+		norGen.setScaleX(0.9);
+		norGen.setScaleY(0.9);
+	}
+
+	// XOR HOVER
+	public void onXORHover() {
+		xorGen.setScaleX(1.1);
+		xorGen.setScaleY(1.1);
+	}
+	public void offXORHover() {
+		xorGen.setScaleX(0.9);
+		xorGen.setScaleY(0.9);
+	}
+
+	// BULB HOVER
+	public void onBULBHover() {
+		bulbGen.setScaleX(1.1);
+		bulbGen.setScaleY(1.1);
+	}
+	public void offBULBHover() {
+		bulbGen.setScaleX(0.9);
+		bulbGen.setScaleY(0.9);
+	}
+	
+	// TRASH HOVER
+	public void onTRASHHover() {
+		deleteImage.setScaleX(1.1);
+		deleteImage.setScaleY(1.1);
+	}
+	public void offTRASHHover() {
+		deleteImage.setScaleX(0.9);
+		deleteImage.setScaleY(0.9);
+	}
 }
