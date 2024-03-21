@@ -82,14 +82,9 @@
             <Font name="Vermin Vibes Regular" size="38.0" />
          </font>
       </Text>
-      <Button layoutX="1104.0" layoutY="590.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="49.0" prefWidth="142.0" style="-fx-background-color: #000;" text="Clear" textFill="WHITE">
+      <Button layoutX="1104.0" layoutY="585.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="55.0" prefWidth="142.0" styleClass="menuButton" stylesheets="@../application.css" text="Clear" textFill="WHITE">
          <font>
-            <Font name="Vermin Vibes Regular" size="22.0" />
-         </font>
-      </Button>
-      <Button fx:id="instructorDashboard" layoutX="1066.0" layoutY="509.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="192.0" text="Instructor Dashboard">
-         <font>
-            <Font name="Tahoma" size="16.0" />
+            <Font name="Vermin Vibes Regular" size="36.0" />
          </font>
       </Button>
    </children>

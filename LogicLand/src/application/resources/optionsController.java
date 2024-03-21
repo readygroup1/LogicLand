@@ -120,8 +120,8 @@ public class optionsController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		if(!isTeacher) {
-			instructorDashboard.setVisible(false);
-			
+			instructorDashboard.setOpacity(0.25);
+			instructorDashboard.setDisable(true);
 		}
 		
 	}
