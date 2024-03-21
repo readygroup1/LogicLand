@@ -191,9 +191,9 @@ public class sandboxController implements Initializable{
 				}
 			});
 			
-			if(!isTeacher) {
+			/*if(!isTeacher) {
 				instructorDashboard.setVisible(false);
-			}
+			}*/
 			
 		}
 		
@@ -726,7 +726,7 @@ public class sandboxController implements Initializable{
 		}		
 	}
 	
-	public void instructorDashboard(ActionEvent event) throws IOException {	
+	/*public void instructorDashboard(ActionEvent event) throws IOException {	
 		
 		try {	
 			audio.boopPlay();
@@ -735,7 +735,7 @@ public class sandboxController implements Initializable{
 		catch(IOException exception) {				
 			exception.printStackTrace();				
 		}		
-	}
+	}*/
 
 	
 
