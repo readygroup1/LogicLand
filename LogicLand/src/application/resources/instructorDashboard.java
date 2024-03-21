@@ -98,10 +98,8 @@ public class instructorDashboard implements Initializable{
 	public void removeButton(ActionEvent event) {
 		String studentName = removeBox.getSelectionModel().getSelectedItem();
 		if(studentName == null) {
-			System.out.println("Student name null");
 			return;
 		} else {
-			System.out.println("Student name not null");
 			int studentID = AccountManager.getPlayerID(studentName);
 			AccountManager.movePlayerToPublicClass(studentID);
 			audio.boopPlay();
