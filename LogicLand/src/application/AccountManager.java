@@ -107,6 +107,9 @@ public class AccountManager {
 	 * @return int
 	 */
 	public static int getLevelScore(int levelID) {
+		if(AccountManager.isAdmin()) {
+			return 1000;
+		}
 		return db.getLevelScore(levelID);
 	}
 
@@ -117,6 +120,9 @@ public class AccountManager {
 	 * @return int
 	 */
 	public static int getLevelID(int level) {
+		if(AccountManager.isAdmin()) {
+			return 0;
+		}
 		return db.getLevelID(AccountManager.currentUserID, level);
 	}
 	
@@ -309,6 +315,9 @@ public class AccountManager {
 	 * @param score
 	 */
 	public static void setLevelScore(int levelID, int score) {
+		if(AccountManager.isAdmin()) {
+			return;
+		}
 		if(AccountManager.getLevelScore(levelID) <= score) {
 			AccountManager.setHighScore(AccountManager.getHighscore(AccountManager.currentUserID) + score);
 			db.updateLevelScore(levelID, db.getLevelScore(levelID) + score); 

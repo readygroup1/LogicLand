@@ -46,9 +46,13 @@ public class developerLoginController {
 				status.setText("Incorrect username or password");
 				return;
 			}
+			
+			if(AccountManager.getCurrentUser() > 6) {
+				status.setText("You arent a developer!");
+				return;
+			}
 		
 			try {
-			
 				lightning.setImage(lightningOn);
 				audio.boopPlay();
 				sceneSwitcher.fadeSwitchScene(event, "roadmap.fxml");

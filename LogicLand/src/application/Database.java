@@ -74,8 +74,14 @@ public class Database {
         executeSQL(
                 "CREATE TABLE HIGHSCORE (PlayerID INT, Initials VARCHAR(255), UserScore INT, FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID))");
 
-        addAdmin("default", "df", "password", "default@email.com");
+        addAdmin("default", "dfa", "password", "default@email.com");
         addClassroom("<public>", 1);
+        //
+        addAdmin("Andres", "max", "1234", "andres@uwo.ca");
+        addAdmin("Callum", "cal", "1234", "cthom226@uwo.ca");
+        addAdmin("Thomas", "tll", "tll123", "thomas@uwo.ca");
+        addAdmin("Kalundi", "kal", "1234", "kalundi@uwo.ca");
+        addAdmin("Nicholas", "   ", "brianstorm", "nick@uwo.ca");
     }
 
     /** 
