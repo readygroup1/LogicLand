@@ -188,18 +188,44 @@ public class Level1BController extends sandboxController implements Initializabl
 		///----------------Check For Win -----------------------------------
 		
 		public void CheckToWin() {
-			
-			System.out.println(Textoutput1.getText());
-			System.out.println(Textoutput2.getText());
-			System.out.println(Textoutput3.getText());
-			System.out.println(Textoutput4.getText());
-			
+		
 			
 			if(Textoutput1.getText().equals("0") && Textoutput2.getText().equals("0") && Textoutput3.getText().equals("0") && Textoutput4.getText().equals("1")) {
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) != 75) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(1), 75);
 				}
 				title.setText("Great Job! Head to the next Level!");
+			}
+		}
+		
+		
+		public void callChecktype(Rectangle node) {
+			switch( (String)(node.getProperties().get("ClassType")) ) {
+			case "AND":
+				((andController)(node.getProperties().get("parentGate"))).checktype();			//Andres
+				break;
+			case "BATTERY":
+				((batteryController)node.getProperties().get("parentGate")).checktype();			//Andres
+				break;
+			case "BULB":
+				((bulbController)node.getProperties().get("parentGate")).checktype();
+				break;
+			case "NAND":
+				((nandController)node.getProperties().get("parentGate")).checktype();
+				break;
+			case "NOR":
+				((norController)node.getProperties().get("parentGate")).checktype();
+				break;
+			case "XOR":
+				((xorController)node.getProperties().get("parentGate")).checktype();
+				break;
+			case "NOT":
+				((notController)node.getProperties().get("parentGate")).checktype();
+				break;
+			case "OR":
+				((orController)node.getProperties().get("parentGate")).checktype();
+				break;
+
 			}
 		}
 		
@@ -407,37 +433,7 @@ public class Level1BController extends sandboxController implements Initializabl
 							endNode.getProperties().put("put", startNode);	//Andres
 							startNode.getProperties().put("put", endNode);
 							
-							switch( (String)(startNode.getProperties().get("ClassType")) ) {
-							case "AND":
-								((andController)(startNode.getProperties().get("parentGate"))).checktype();			//Andres
-								break;
-							case "BATTERY":
-								((batteryController)startNode.getProperties().get("parentGate")).checktype();			//Andres
-								break;
-							case "BULB":
-								((bulbController)startNode.getProperties().get("parentGate")).checktype();
-								break;
-							case "NAND":
-								((nandController)startNode.getProperties().get("parentGate")).checktype();
-								break;
-							case "NOR":
-								((norController)startNode.getProperties().get("parentGate")).checktype();
-								break;
-							case "XOR":
-								((xorController)startNode.getProperties().get("parentGate")).checktype();
-								break;
-							case "NOT":
-								((notController)startNode.getProperties().get("parentGate")).checktype();
-								break;
-							case "OR":
-								((orController)startNode.getProperties().get("parentGate")).checktype();
-								break;
-								
-				
-						
-							
-							
-							}
+							callChecktype(startNode);
 							
 							
 							this.makeWire(startNode, endNode);
@@ -451,32 +447,7 @@ public class Level1BController extends sandboxController implements Initializabl
 							endNode.getProperties().put("put", startNode);	//Andres
 							startNode.getProperties().put("put", endNode);
 							
-							switch( (String)(endNode.getProperties().get("ClassType")) ) {
-							case "AND":
-								((andController)(endNode.getProperties().get("parentGate"))).checktype();			//Andres
-								break;
-							case "BATTERY":
-								((batteryController)endNode.getProperties().get("parentGate")).checktype();			//Andres
-								break;
-							case "BULB":
-								((bulbController)endNode.getProperties().get("parentGate")).checktype();
-								break;
-							case "NAND":
-								((nandController)endNode.getProperties().get("parentGate")).checktype();
-								break;
-							case "NOR":
-								((norController)endNode.getProperties().get("parentGate")).checktype();
-								break;
-							case "XOR":
-								((xorController)endNode.getProperties().get("parentGate")).checktype();
-								break;
-							case "NOT":
-								((notController)endNode.getProperties().get("parentGate")).checktype();
-								break;
-							case "OR":
-								((orController)endNode.getProperties().get("parentGate")).checktype();
-								break;
-							}
+							callChecktype(endNode);
 							
 							this.makeWire(endNode, startNode);
 						}

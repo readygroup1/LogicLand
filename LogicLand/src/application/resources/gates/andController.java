@@ -138,6 +138,37 @@ public class andController extends gateObject implements Initializable {
 		this.secondInput = state;		
 	}
 	
+	
+	public void callChecktype(Rectangle node) {
+		switch( (String)(node.getProperties().get("ClassType")) ) {
+		case "AND":
+			((andController)(node.getProperties().get("parentGate"))).checktype();			//Andres
+			break;
+		case "BATTERY":
+			((batteryController)node.getProperties().get("parentGate")).checktype();			//Andres
+			break;
+		case "BULB":
+			((bulbController)node.getProperties().get("parentGate")).checktype();
+			break;
+		case "NAND":
+			((nandController)node.getProperties().get("parentGate")).checktype();
+			break;
+		case "NOR":
+			((norController)node.getProperties().get("parentGate")).checktype();
+			break;
+		case "XOR":
+			((xorController)node.getProperties().get("parentGate")).checktype();
+			break;
+		case "NOT":
+			((notController)node.getProperties().get("parentGate")).checktype();
+			break;
+		case "OR":
+			((orController)node.getProperties().get("parentGate")).checktype();
+			break;
+
+		}
+	}
+	
 	public void checktype() {
 		
 		if((( (Rectangle)input1.getProperties().get("put") != null) && ((Rectangle)input2.getProperties().get("put")) != null)) {
@@ -148,33 +179,7 @@ public class andController extends gateObject implements Initializable {
 					((Rectangle)output.getProperties().get("put")).getProperties().put("state", true);
 					
 					
-					switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
-					case "AND":
-						((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "BATTERY":
-						((batteryController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "BULB":
-						((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "NAND":
-						((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "NOR":
-						((norController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "XOR":
-						((xorController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "NOT":
-						((notController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "OR":
-						((orController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-							
-					}				
+					callChecktype((Rectangle)output.getProperties().get("put"));				
 				}
 				
 				
@@ -187,34 +192,7 @@ public class andController extends gateObject implements Initializable {
 					((Rectangle)output.getProperties().get("put")).getProperties().put("state", false);
 					
 
-					switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
-					case "AND":
-						((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "BATTERY":
-						((batteryController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "BULB":
-						((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "NAND":
-						((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "NOR":
-						((norController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "XOR":
-						((xorController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "NOT":
-						((notController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-					case "OR":
-						((orController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-						break;
-						
-						
-					}
+					callChecktype((Rectangle)output.getProperties().get("put"));
 					
 					
 					
@@ -230,34 +208,7 @@ public class andController extends gateObject implements Initializable {
 				
 				
 				
-				switch(   ((String)((Rectangle)output.getProperties().get("put")).getProperties().get("ClassType")))  {
-				case "AND":
-					((andController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-					break;
-				case "BATTERY":
-					((batteryController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-					break;
-				case "BULB":
-					((bulbController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-					break;
-				case "NAND":
-					((nandController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-					break;
-				case "NOR":
-					((norController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-					break;
-				case "XOR":
-					((xorController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-					break;
-				case "NOT":
-					((notController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-					break;
-				case "OR":
-					((orController)((Rectangle)output.getProperties().get("put")).getProperties().get("parentGate")).checktype();
-					break;
-					
-					
-				}			
+				callChecktype((Rectangle)output.getProperties().get("put"));			
 			
 			
 			}
