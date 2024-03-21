@@ -575,7 +575,7 @@ public class Level1BController extends sandboxController implements Initializabl
 	    public void nextLevel(ActionEvent event) throws IOException {
 	    	if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 75) {
 				return;
-			}
+	    	}
 	    	audio.boopPlay();
 	    	try {
 	            String nextLevelFXML = "/application/resources/levels/level2A.fxml";
