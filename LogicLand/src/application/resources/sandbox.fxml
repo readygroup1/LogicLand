@@ -29,52 +29,52 @@
          <font>
             <Font name="Vermin Vibes Regular" size="24.0" />
          </font></Button>
-      <ImageView fx:id="batteryGen" fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="571.0" onMouseClicked="#batteryGenerator" onMouseEntered="#onBatteryHover" onMouseExited="#offBatteryHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="batteryGen" fitHeight="75.0" fitWidth="75.0" layoutX="159.0" layoutY="571.0" onMouseClicked="#batteryGenerator" onMouseEntered="#onBatteryHover" onMouseExited="#offBatteryHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/batteryOff.png" />
          </image></ImageView>
-      <ImageView fx:id="andGen" fitHeight="100.0" fitWidth="100.0" layoutX="113.0" layoutY="561.0" onMouseClicked="#andGenerator" onMouseEntered="#onANDHover" onMouseExited="#offANDHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="andGen" fitHeight="100.0" fitWidth="100.0" layoutX="258.0" layoutY="561.0" onMouseClicked="#andGenerator" onMouseEntered="#onANDHover" onMouseExited="#offANDHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/and.png" />
          </image></ImageView>
-      <ImageView fx:id="orGen" fitHeight="100.0" fitWidth="100.0" layoutX="213.0" layoutY="559.0" onMouseClicked="#orGenerator" onMouseEntered="#onORHover" onMouseExited="#offORHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="orGen" fitHeight="100.0" fitWidth="100.0" layoutX="358.0" layoutY="559.0" onMouseClicked="#orGenerator" onMouseEntered="#onORHover" onMouseExited="#offORHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/or.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="notGen" fitHeight="100.0" fitWidth="100.0" layoutX="313.0" layoutY="559.0" onMouseClicked="#notGenerator" onMouseEntered="#onNOTHover" onMouseExited="#offNOTHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="notGen" fitHeight="100.0" fitWidth="100.0" layoutX="458.0" layoutY="559.0" onMouseClicked="#notGenerator" onMouseEntered="#onNOTHover" onMouseExited="#offNOTHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/not.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bulbGen" fitHeight="75.0" fitWidth="75.0" layoutX="721.0" layoutY="571.0" onMouseClicked="#bulbGenerator" onMouseEntered="#onBULBHover" onMouseExited="#offBULBHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bulbGen" fitHeight="75.0" fitWidth="75.0" layoutX="866.0" layoutY="570.0" onMouseClicked="#bulbGenerator" onMouseEntered="#onBULBHover" onMouseExited="#offBULBHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/bulbOff.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deleteImage" fitHeight="55.0" fitWidth="55.0" layoutX="810.0" layoutY="583.0" onMouseClicked="#deleteButton" onMouseEntered="#onTRASHHover" onMouseExited="#offTRASHHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="deleteImage" fitHeight="55.0" fitWidth="55.0" layoutX="955.0" layoutY="582.0" onMouseClicked="#deleteButton" onMouseEntered="#onTRASHHover" onMouseExited="#offTRASHHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/deleteOff.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="nandGen" fitHeight="100.0" fitWidth="100.0" layoutX="419.0" layoutY="559.0" onMouseClicked="#nandGenerator" onMouseEntered="#onNANDHover" onMouseExited="#offNANDHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="nandGen" fitHeight="100.0" fitWidth="100.0" layoutX="564.0" layoutY="559.0" onMouseClicked="#nandGenerator" onMouseEntered="#onNANDHover" onMouseExited="#offNANDHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/nand.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="norGen" fitHeight="100.0" fitWidth="100.0" layoutX="519.0" layoutY="559.0" onMouseClicked="#norGenerator" onMouseEntered="#onNORHover" onMouseExited="#offNORHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="norGen" fitHeight="100.0" fitWidth="100.0" layoutX="664.0" layoutY="559.0" onMouseClicked="#norGenerator" onMouseEntered="#onNORHover" onMouseExited="#offNORHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/nor.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="615.0" layoutY="559.0" onMouseClicked="#xorGenerator" onMouseEntered="#onXORHover" onMouseExited="#offXORHover" pickOnBounds="true" preserveRatio="true" fx:id="xorGen">
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="760.0" layoutY="558.0" onMouseClicked="#xorGenerator" onMouseEntered="#onXORHover" onMouseExited="#offXORHover" pickOnBounds="true" preserveRatio="true" fx:id="xorGen">
          <image>
             <Image url="@images/xor.png" />
          </image>
       </ImageView>
-      <Text layoutX="45.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Sandbox">
+      <Text layoutX="27.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Sandbox">
          <font>
-            <Font name="Vermin Vibes Regular" size="64.0" />
+            <Font name="Vermin Vibes Regular" size="86.0" />
          </font>
       </Text>
       <Text fx:id="name" layoutX="661.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" textAlignment="RIGHT" wrappingWidth="546.6499633789062">
@@ -82,14 +82,9 @@
             <Font name="Vermin Vibes Regular" size="38.0" />
          </font>
       </Text>
-      <Button layoutX="877.0" layoutY="581.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="55.0" prefWidth="142.0" styleClass="menuButton" stylesheets="@../application.css" text="Clear" textFill="WHITE">
+      <Button layoutX="1022.0" layoutY="580.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="55.0" prefWidth="142.0" styleClass="menuButton" stylesheets="@../application.css" text="Clear" textFill="WHITE">
          <font>
             <Font name="Vermin Vibes Regular" size="36.0" />
-         </font>
-      </Button>
-      <Button fx:id="instructorDashboard" layoutX="1025.0" layoutY="580.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="55.0" prefWidth="245.0" styleClass="instructorDashboard" stylesheets="@../application.css" text="Instructor Dashboard">
-         <font>
-            <Font name="Vermin Vibes Regular" size="18.0" />
          </font>
       </Button>
    </children>

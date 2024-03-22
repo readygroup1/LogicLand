@@ -16,28 +16,32 @@
 }
 
 .backbutton {
-  -fx-font-size: 30px;
-  -fx-font-family: Tahoma;
-  -fx-background-color: #F38307; /* Ensure the hex color starts with '#' */
-  -fx-font-weight: Bold
+  -fx-background-color: #F38307; 
+  -fx-text-fill: #FFFFFF; 
+}
+
+.backbutton:hover {
+  -fx-background-color: #FFD700;
+  -fx-text-fill: #FFFFFF; 
 }
 
 
 .instructorDashboard {
-  -fx-background-color: #000080;
+  -fx-background-color: #0022CC;
   -fx-text-fill: #FFFFFF; 
 }
 
 .instructorDashboard:hover {
-  -fx-background-color: #0022CC;
+  -fx-background-color: #04D9FF;
+  -fx-text-fill: #FFFFFF; 
 }
 
 .menuBarButton {
-  -fx-background-color: #26144C;
+  -fx-background-color: #5800DB;
   -fx-text-fill: #FFFFFF; 
 }
 
 .menuBarButton:hover {
-  -fx-background-color: #8A00FF;
+  -fx-background-color: #F500FF;
   -fx-text-fill: #FFFFFF; 
 }

@@ -80,6 +80,9 @@ public class Level1BController extends sandboxController implements Initializabl
 		@FXML
 		Pane bulb;
 		
+		@FXML
+		Pane col1Pane;
+		
 		// Elements from the table
 		@FXML
 		Button checkOutput;
@@ -179,7 +182,7 @@ public class Level1BController extends sandboxController implements Initializabl
 			
 			((batteryController)battery1.getProperties().get("controller")).checktype();
 			((batteryController)battery2.getProperties().get("controller")).checktype();
-
+			
 		}
 		
 		///----------------Check For Win -----------------------------------

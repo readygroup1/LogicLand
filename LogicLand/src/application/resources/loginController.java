@@ -5,6 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import application.AccountManager;
+import application.GameSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -61,9 +62,8 @@ public class loginController {
 		
 			bulb.setImage(bulbOn);	
 			audio.boopPlay();
-			
-			
-			//timer.scheduleAtFixedRate(task, 0, 1000);	// this starts the timer
+			GameSession game = new GameSession(AccountManager.getCurrentUser());
+			game.startTracking();
 			
 			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
 			

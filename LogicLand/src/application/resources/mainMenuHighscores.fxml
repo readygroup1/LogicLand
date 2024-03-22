@@ -5,10 +5,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0AB9FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.mainMenuHighscoresController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.mainMenuHighscoresController">
    <children>
-      <Button fx:id="backButton" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" text="Back" />
-      <Text layoutX="461.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscores">
+      <Button fx:id="backButton" layoutX="50.0" layoutY="625.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Back">
+      	<font>
+            <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="461.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscores">
          <font>
             <Font name="Vermin Vibes Regular" size="62.0" />
          </font>
