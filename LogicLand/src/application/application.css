@@ -38,6 +38,6 @@
 }
 
 .menuBarButton:hover {
-  -fx-background-color: #8A00FF;
+  -fx-background-color: #F500FF;
   -fx-text-fill: #FFFFFF; 
 }
