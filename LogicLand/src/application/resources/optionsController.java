@@ -119,10 +119,22 @@ public class optionsController implements Initializable {
 		}		
 	}
 
+   public void tutorial(ActionEvent event) throws IOException {	
+		
+		try {	
+			audio.boopPlay();
+			sceneSwitcher.switchScene(event, "/application/resources/tutorial.fxml");
+		}			
+		catch(IOException exception) {				
+			exception.printStackTrace();				
+		}		
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		if(!isTeacher) {
+<<<<<<< HEAD
 			instructorDashboard.setOpacity(0.25);
 			instructorDashboard.setDisable(true);
 			timePlayed.setText("Time played: " + AccountManager.getTimePlayed() + " minutes");
@@ -130,6 +142,9 @@ public class optionsController implements Initializable {
 		} else {
 			timePlayed.setVisible(false);
 			timePlayed.setDisable(true);
+=======
+			instructorDashboard.setVisible(false);
+>>>>>>> bbd8293f0be25c8d3ca793efd2f2081d9c0215b2
 		}
 		
 	}

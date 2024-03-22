@@ -242,9 +242,9 @@ public class sandboxController implements Initializable{
 				}
 			});
 			
-			/*if(!isTeacher) {
+			if(!isTeacher) {
 				instructorDashboard.setVisible(false);
-			}*/
+			}
 			
 		}
 		
@@ -771,6 +771,16 @@ public class sandboxController implements Initializable{
 		try {	
 			audio.boopPlay();
 			sceneSwitcher.switchScene(event, "/application/resources/options.fxml");
+		}			
+		catch(IOException exception) {				
+			exception.printStackTrace();				
+		}		
+	}
+	
+	public void instructorDashboard(ActionEvent event) throws IOException {			
+		try {	
+			audio.boopPlay();
+			sceneSwitcher.switchScene(event, "/application/resources/instructorDashboard.fxml");
 		}			
 		catch(IOException exception) {				
 			exception.printStackTrace();				
