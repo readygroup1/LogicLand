@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
-import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -178,7 +177,6 @@ public class newGameController implements Initializable{
 					status.setText("Password confirmation does not match!");
 					return;
 				}
-				//loginController.timer.scheduleAtFixedRate(loginController.task, 0, 1000);	// this starts timer for elapsed game time
 				AccountManager.newAdminAccount(userName, userInitials, userPassword, userEmail, className);
 			}
 			

@@ -40,27 +40,6 @@ public class loginController {
 	
 	audioPlayer audio = new audioPlayer();
 	
-	// ------------ Timer for game loop ------------------------
-//	static public Timer timer = new Timer();
-//	
-//	public static TimerTask task = new TimerTask() {
-//		int update = 0;
-//		public void run() {
-//			System.out.println(update);
-//			update+= 1;
-//		}
-//	};
-	
-	
-//	public static void restartTask() {
-//		task = new TimerTask() {
-//			int update = 0;
-//			public void run() {
-//				System.out.println(update);
-//				update+= 1;
-//			}
-//		};
-//	}
 	
 	// ----------------Button Functions -----------------------
 	public void login(ActionEvent event) throws Exception {
