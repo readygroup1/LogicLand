@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0AB9FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.optionsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.optionsController">
    <children>
-      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: F38307; -fx-border-color: #607d8b; -fx-border-radius: 2;" text="Options">
+      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: F38307; -fx-border-color: #607d8b; -fx-border-radius: 2;" styleClass="menuBarButton" stylesheets="@../application.css" text="Options">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" text="High Scores" textOverrun="CLIP" wrapText="true">
+      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="High Scores" textOverrun="CLIP" wrapText="true">
          <font>
-            <Font size="21.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" text="Discoveries">
+      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Discoveries">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="sandbox" layoutX="256.0" layoutY="661.0" mnemonicParsing="false" onAction="#sandbox" prefHeight="59.0" prefWidth="256.0" text="Sand Box">
+      <Button fx:id="sandbox" layoutX="256.0" layoutY="661.0" mnemonicParsing="false" onAction="#sandbox" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Sand Box">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" text="RoadMap">
+      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="RoadMap">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
       <Button fx:id="quit" alignment="CENTER" contentDisplay="CENTER" layoutX="497.0" layoutY="528.0" mnemonicParsing="false" onAction="#quit" prefHeight="83.0" prefWidth="300.0" styleClass="menuButton" stylesheets="@../application.css" text="Quit" textAlignment="CENTER">
@@ -40,9 +41,9 @@
          <font>
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font></Button>
-      <Button fx:id="instructorDashboard" alignment="CENTER" contentDisplay="CENTER" layoutX="447.0" layoutY="320.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="Instructor Dashboard" textAlignment="CENTER">
+      <Button fx:id="instructorDashboard" alignment="CENTER" contentDisplay="CENTER" layoutX="1025.0" layoutY="580.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="55.0" prefWidth="245.0" styleClass="instructorDashboard" stylesheets="@../application.css" text="Instructor Dashboard" textAlignment="CENTER">
          <font>
-            <Font name="Vermin Vibes Regular" size="36.0" />
+            <Font name="Vermin Vibes Regular" size="18.0" />
          </font>
       </Button>
       <Text layoutX="542.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OPTIONS" textAlignment="CENTER">
@@ -50,20 +51,20 @@
             <Font name="Vermin Vibes Regular" size="64.0" />
          </font>
       </Text>
-      <Button layoutX="504.0" layoutY="120.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" styleClass="menuButton" stylesheets="@../application.css" text="AUDIO" textAlignment="CENTER">
+      <Button layoutX="447.0" layoutY="251.0" mnemonicParsing="false" onAction="#tutorial" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="TUTORIAL" textAlignment="CENTER">
          <font>
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font>
       </Button>
-      <Button layoutX="253.0" layoutY="215.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="TUTORIAL" textAlignment="CENTER">
+      <Button layoutX="447.0" layoutY="331.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="GLOBAL HIGH SCORES" textAlignment="CENTER">
          <font>
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font>
       </Button>
-      <Button layoutX="656.0" layoutY="215.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="GLOBAL HIGH SCORES" textAlignment="CENTER">
+      <CheckBox layoutX="557.0" layoutY="177.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="240.0" text="AUDIO" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font>
-      </Button>
+      </CheckBox>
    </children>
 </AnchorPane>

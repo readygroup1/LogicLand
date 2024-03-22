@@ -116,12 +116,22 @@ public class optionsController implements Initializable {
 		}		
 	}
 
+   public void tutorial(ActionEvent event) throws IOException {	
+		
+		try {	
+			audio.boopPlay();
+			sceneSwitcher.switchScene(event, "/application/resources/tutorial.fxml");
+		}			
+		catch(IOException exception) {				
+			exception.printStackTrace();				
+		}		
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		if(!isTeacher) {
-			instructorDashboard.setOpacity(0.25);
-			instructorDashboard.setDisable(true);
+			instructorDashboard.setVisible(false);
 		}
 		
 	}

@@ -7,67 +7,67 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="circuitBoardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0AB9FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.sandboxController">
+<Pane fx:id="circuitBoardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.sandboxController">
    <children>
-   <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" text="Options">
+   <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Options">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font></Button>
-      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" text="High Scores">
+      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="High Scores">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font></Button>
-      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" text="Discoveries">
+      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Discoveries">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font></Button>
-      <Button fx:id="sandbox" layoutX="256.0" layoutY="661.0" mnemonicParsing="false" onAction="#sandbox" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: #F38307; -fx-border-color: #607D8B; -fx-border-radius: 2;" text="Sand Box">
+      <Button fx:id="sandbox" layoutX="256.0" layoutY="661.0" mnemonicParsing="false" onAction="#sandbox" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: #F38307; -fx-border-color: #607D8B; -fx-border-radius: 2;" styleClass="menuBarButton" stylesheets="@../application.css" text="Sand Box">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font></Button>
-      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" text="RoadMap">
+      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="RoadMap">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font></Button>
-      <ImageView fx:id="batteryGen" fitHeight="75.0" fitWidth="75.0" layoutX="213.0" layoutY="576.0" onMouseClicked="#batteryGenerator" onMouseEntered="#onBatteryHover" onMouseExited="#offBatteryHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="batteryGen" fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="571.0" onMouseClicked="#batteryGenerator" onMouseEntered="#onBatteryHover" onMouseExited="#offBatteryHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/batteryOff.png" />
          </image></ImageView>
-      <ImageView fx:id="andGen" fitHeight="100.0" fitWidth="100.0" layoutX="312.0" layoutY="566.0" onMouseClicked="#andGenerator" onMouseEntered="#onANDHover" onMouseExited="#offANDHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="andGen" fitHeight="100.0" fitWidth="100.0" layoutX="113.0" layoutY="561.0" onMouseClicked="#andGenerator" onMouseEntered="#onANDHover" onMouseExited="#offANDHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/and.png" />
          </image></ImageView>
-      <ImageView fx:id="orGen" fitHeight="100.0" fitWidth="100.0" layoutX="412.0" layoutY="564.0" onMouseClicked="#orGenerator" onMouseEntered="#onORHover" onMouseExited="#offORHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="orGen" fitHeight="100.0" fitWidth="100.0" layoutX="213.0" layoutY="559.0" onMouseClicked="#orGenerator" onMouseEntered="#onORHover" onMouseExited="#offORHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/or.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="notGen" fitHeight="100.0" fitWidth="100.0" layoutX="512.0" layoutY="564.0" onMouseClicked="#notGenerator" onMouseEntered="#onNOTHover" onMouseExited="#offNOTHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="notGen" fitHeight="100.0" fitWidth="100.0" layoutX="313.0" layoutY="559.0" onMouseClicked="#notGenerator" onMouseEntered="#onNOTHover" onMouseExited="#offNOTHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/not.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bulbGen" fitHeight="75.0" fitWidth="75.0" layoutX="920.0" layoutY="576.0" onMouseClicked="#bulbGenerator" onMouseEntered="#onBULBHover" onMouseExited="#offBULBHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bulbGen" fitHeight="75.0" fitWidth="75.0" layoutX="721.0" layoutY="571.0" onMouseClicked="#bulbGenerator" onMouseEntered="#onBULBHover" onMouseExited="#offBULBHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/bulbOff.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deleteImage" fitHeight="55.0" fitWidth="55.0" layoutX="1009.0" layoutY="588.0" onMouseClicked="#deleteButton" onMouseEntered="#onTRASHHover" onMouseExited="#offTRASHHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="deleteImage" fitHeight="55.0" fitWidth="55.0" layoutX="810.0" layoutY="583.0" onMouseClicked="#deleteButton" onMouseEntered="#onTRASHHover" onMouseExited="#offTRASHHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/deleteOff.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="nandGen" fitHeight="100.0" fitWidth="100.0" layoutX="618.0" layoutY="564.0" onMouseClicked="#nandGenerator" onMouseEntered="#onNANDHover" onMouseExited="#offNANDHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="nandGen" fitHeight="100.0" fitWidth="100.0" layoutX="419.0" layoutY="559.0" onMouseClicked="#nandGenerator" onMouseEntered="#onNANDHover" onMouseExited="#offNANDHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/nand.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="norGen" fitHeight="100.0" fitWidth="100.0" layoutX="718.0" layoutY="564.0" onMouseClicked="#norGenerator" onMouseEntered="#onNORHover" onMouseExited="#offNORHover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="norGen" fitHeight="100.0" fitWidth="100.0" layoutX="519.0" layoutY="559.0" onMouseClicked="#norGenerator" onMouseEntered="#onNORHover" onMouseExited="#offNORHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/nor.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="814.0" layoutY="564.0" onMouseClicked="#xorGenerator" onMouseEntered="#onXORHover" onMouseExited="#offXORHover" pickOnBounds="true" preserveRatio="true" fx:id="xorGen">
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="615.0" layoutY="559.0" onMouseClicked="#xorGenerator" onMouseEntered="#onXORHover" onMouseExited="#offXORHover" pickOnBounds="true" preserveRatio="true" fx:id="xorGen">
          <image>
             <Image url="@images/xor.png" />
          </image>
@@ -82,9 +82,14 @@
             <Font name="Vermin Vibes Regular" size="38.0" />
          </font>
       </Text>
-      <Button layoutX="1104.0" layoutY="585.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="55.0" prefWidth="142.0" styleClass="menuButton" stylesheets="@../application.css" text="Clear" textFill="WHITE">
+      <Button layoutX="877.0" layoutY="581.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="55.0" prefWidth="142.0" styleClass="menuButton" stylesheets="@../application.css" text="Clear" textFill="WHITE">
          <font>
             <Font name="Vermin Vibes Regular" size="36.0" />
+         </font>
+      </Button>
+      <Button fx:id="instructorDashboard" layoutX="1025.0" layoutY="580.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="55.0" prefWidth="245.0" styleClass="instructorDashboard" stylesheets="@../application.css" text="Instructor Dashboard">
+         <font>
+            <Font name="Vermin Vibes Regular" size="18.0" />
          </font>
       </Button>
    </children>
