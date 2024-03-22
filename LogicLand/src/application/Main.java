@@ -1,5 +1,9 @@
 package application;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import application.resources.loginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -79,7 +83,12 @@ public class Main extends Application {
 	 * To open window for game.
 	 * @param args
 	 */
-	public static void main(String[] args) {		
+	public static void main(String[] args) {	
+		
 		launch(args);
+		//loginController.task.cancel(); // ends time elapse timer
+		
+		
+		
 	}
 }

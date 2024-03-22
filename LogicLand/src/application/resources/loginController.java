@@ -1,6 +1,8 @@
 package application.resources;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import application.AccountManager;
 import javafx.event.ActionEvent;
@@ -38,6 +40,7 @@ public class loginController {
 	
 	audioPlayer audio = new audioPlayer();
 	
+	
 	// ----------------Button Functions -----------------------
 	public void login(ActionEvent event) throws Exception {
 		String userName = username.getText();
@@ -58,12 +61,22 @@ public class loginController {
 		
 			bulb.setImage(bulbOn);	
 			audio.boopPlay();
+			
+			
+			//timer.scheduleAtFixedRate(task, 0, 1000);	// this starts the timer
+			
 			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
+			
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
 	
 	public void back(ActionEvent event) throws IOException {			
 		try {	
