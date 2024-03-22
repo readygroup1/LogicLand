@@ -5,11 +5,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class optionsController implements Initializable {
@@ -18,6 +20,8 @@ public class optionsController implements Initializable {
 	//-----------Constants/Resources---------
 		@FXML
 		Button instructorDashboard;
+		@FXML 
+		Text timePlayed;
 		
 		Boolean isTeacher = AccountManager.isAdmin();
 	
@@ -33,6 +37,8 @@ public class optionsController implements Initializable {
 			audio.boopPlay();
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			stage.close();
+			Platform.exit();
+	        System.exit(0);
 		}
 		
 		@FXML
@@ -116,13 +122,34 @@ public class optionsController implements Initializable {
 		}		
 	}
 
+   public void tutorial(ActionEvent event) throws IOException {	
+		
+		try {	
+			audio.boopPlay();
+			sceneSwitcher.switchScene(event, "/application/resources/tutorial.fxml");
+		}			
+		catch(IOException exception) {				
+			exception.printStackTrace();				
+		}		
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		if(!isTeacher) {
-			instructorDashboard.setOpacity(0.25);
-			instructorDashboard.setDisable(true);
+			instructorDashboard.setVisible(false);
+			timePlayed.setVisible(true);
+			timePlayed.setDisable(false);
+			timePlayed.setText("Time played: " + AccountManager.getTimePlayed() + " minutes");
+			
+		} else {
+			instructorDashboard.setVisible(true);
+			timePlayed.setVisible(false);
+			timePlayed.setDisable(true);
 		}
 		
+		/* I feel like this code makes more sense? We can clear it up later. -Thomas */
+			
+
 	}
 }

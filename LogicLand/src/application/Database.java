@@ -66,6 +66,7 @@ public class Database {
                 "SandboxID INT, " +
                 "inTutorial BOOLEAN, " +
                 "ClassID INT, " +
+                "Minutes INT, " +
                 "FOREIGN KEY (SandboxID) REFERENCES SANDBOX(SandboxID), " +
                 "FOREIGN KEY (ClassID) REFERENCES CLASSROOM(ClassID) " +
                 ")");
@@ -76,7 +77,7 @@ public class Database {
 
         addAdmin("default", "dfa", "password", "default@email.com");
         addClassroom("<public>", 1);
-        //
+        
         addAdmin("Andres", "max", "1234", "andres@uwo.ca");
         addAdmin("Callum", "cal", "1234", "cthom226@uwo.ca");
         addAdmin("Thomas", "tll", "tll123", "thomas@uwo.ca");
@@ -325,6 +326,15 @@ public class Database {
      */
     public int getHighScore(int PlayerID) {
         return executeQueryGetInt("SELECT UserScore FROM HIGHSCORE WHERE PlayerID = " + PlayerID);
+    }
+
+    /**
+     * This method gets the time played in minutes of a specific player given their ID.
+     * @param PlayerID
+     * @return
+     */
+    public int getTimePlayed(int PlayerID) {
+        return executeQueryGetInt("SELECT Minutes FROM PLAYER WHERE PlayerID = " + PlayerID);
     }
 
     /**
@@ -625,7 +635,7 @@ public class Database {
 
         executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
                 + "', '" + email
-                + "', " + sandboxID + ", " + false + ", " + ClassID + ")");
+                + "', " + sandboxID + ", " + false + ", " + ClassID + ", " + 0 + ")");
         for (int i = 1; i <= numLevels; i++) {
             int levelPrimaryKey = executeQueryGetInt("SELECT COUNT(*) FROM LEVELS") + 1;
             executeSQL("INSERT INTO LEVELS VALUES (" + levelPrimaryKey + ", " + i + ", 0, '0000', " + primaryKey
@@ -704,6 +714,15 @@ public class Database {
         // First get the sandbox ID from playerID
         int sandboxID = getSandboxIDAdmin(AdminID);
         executeSQL("UPDATE SANDBOX SET SaveState = '" + saveState + "' WHERE SandboxID = " + sandboxID);
+    }
+
+    /**
+     * This method updates the amount of time the player has played.
+     * @param PlayerID
+     * @param time
+     */
+    public void updateTimePlayed(int PlayerID, int time) {
+        executeSQL("UPDATE PLAYER SET Minutes = " + time + " WHERE PlayerID = " + PlayerID);
     }
     
     /** 

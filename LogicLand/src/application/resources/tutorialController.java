@@ -59,7 +59,10 @@ public class tutorialController extends sandboxController implements Initializab
 	public void back(ActionEvent event) throws IOException {			
 		try {			
 			audio.boopPlay();
+			/* Determine if user is logged in or not */
+			/* If not, go to mainMenu.fxml */
 			sceneSwitcher.switchScene(event, "mainMenu.fxml");
+			/* Otherwise, go to options.fxml */
 		}			
 		catch(IOException exception) {				
 			exception.printStackTrace();				

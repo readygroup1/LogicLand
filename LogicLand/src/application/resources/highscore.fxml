@@ -5,31 +5,31 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0AB9FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.highscoreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.highscoreController">
    <children>
-      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" text="Options">
+      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Options">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: F38307; -fx-border-color: #607d8b; -fx-border-radius: 2;" text="High Scores">
+      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: F38307; -fx-border-color: #607d8b; -fx-border-radius: 2;" styleClass="menuBarButton" stylesheets="@../application.css" text="High Scores">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" text="Discoveries">
+      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Discoveries">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="sandbox" layoutX="256.0" layoutY="661.0" mnemonicParsing="false" onAction="#sandbox" prefHeight="59.0" prefWidth="256.0" text="Sand Box">
+      <Button fx:id="sandbox" layoutX="256.0" layoutY="661.0" mnemonicParsing="false" onAction="#sandbox" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Sand Box">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" text="RoadMap">
+      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="RoadMap">
          <font>
-            <Font size="24.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
       <Text layoutX="451.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscores">
@@ -131,9 +131,9 @@
             <Font name="Vermin Vibes Regular" size="42.0" />
          </font>
       </Text>
-      <Button fx:id="instructorDashboard" layoutX="1060.0" layoutY="561.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="50.0" prefWidth="200.0" text="Instructor Dashboard">
+      <Button fx:id="instructorDashboard" layoutX="1025.0" layoutY="580.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="55.0" prefWidth="245.0" styleClass="instructorDashboard" stylesheets="@../application.css" text="Instructor Dashboard">
          <font>
-            <Font name="Tahoma" size="16.0" />
+            <Font name="Vermin Vibes Regular" size="18.0" />
          </font>
       </Button>
    </children>

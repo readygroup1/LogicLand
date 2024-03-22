@@ -23,3 +23,21 @@
 }
 
 
+.instructorDashboard {
+  -fx-background-color: #000080;
+  -fx-text-fill: #FFFFFF; 
+}
+
+.instructorDashboard:hover {
+  -fx-background-color: #0022CC;
+}
+
+.menuBarButton {
+  -fx-background-color: #26144C;
+  -fx-text-fill: #FFFFFF; 
+}
+
+.menuBarButton:hover {
+  -fx-background-color: #F500FF;
+  -fx-text-fill: #FFFFFF; 
+}

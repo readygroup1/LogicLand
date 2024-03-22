@@ -1,8 +1,11 @@
 package application.resources;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import application.AccountManager;
+import application.GameSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,6 +41,7 @@ public class loginController {
 	
 	audioPlayer audio = new audioPlayer();
 	
+	
 	// ----------------Button Functions -----------------------
 	public void login(ActionEvent event) throws Exception {
 		String userName = username.getText();
@@ -58,12 +62,21 @@ public class loginController {
 		
 			bulb.setImage(bulbOn);	
 			audio.boopPlay();
+			GameSession game = new GameSession(AccountManager.getCurrentUser());
+			game.startTracking();
+			
 			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
+			
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
 	
 	public void back(ActionEvent event) throws IOException {			
 		try {	

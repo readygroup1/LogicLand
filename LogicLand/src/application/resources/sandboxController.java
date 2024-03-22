@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -86,6 +87,56 @@ public class sandboxController implements Initializable{
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			try {
+				if(!AccountManager.isAdmin()) {
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 75) {
+						BoxBlur bb1 = new BoxBlur();
+						bb1.setWidth(30);
+				        bb1.setHeight(30);
+				        bb1.setIterations(25);
+					    andGen.setEffect(bb1);
+					    andGen.setDisable(true);
+					}
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(2)) < 75) {
+						BoxBlur bb2 = new BoxBlur();
+						bb2.setWidth(30);
+				        bb2.setHeight(30);
+				        bb2.setIterations(25);
+					    orGen.setEffect(bb2);
+					    orGen.setDisable(true);
+					}
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) < 75) {
+						BoxBlur bb3 = new BoxBlur();
+						bb3.setWidth(30);
+				        bb3.setHeight(30);
+				        bb3.setIterations(25);
+					    notGen.setEffect(bb3);
+					    notGen.setDisable(true);
+					}
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) < 75) {
+						BoxBlur bb4 = new BoxBlur();
+						bb4.setWidth(30);
+				        bb4.setHeight(30);
+				        bb4.setIterations(25);
+					    nandGen.setEffect(bb4);
+					    nandGen.setDisable(true);
+					}
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(5)) < 75) {
+						BoxBlur bb5 = new BoxBlur();
+						bb5.setWidth(30);
+				        bb5.setHeight(30);
+				        bb5.setIterations(25);
+					    norGen.setEffect(bb5);
+					    norGen.setDisable(true);
+					}
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) < 75) {
+						BoxBlur bb6 = new BoxBlur();
+						bb6.setWidth(30);
+				        bb6.setHeight(30);
+				        bb6.setIterations(25);
+					    xorGen.setEffect(bb6);
+					    xorGen.setDisable(true);
+					}
+				}
 				generateFromSave();
 				if(AccountManager.isAdmin()) {
 					  Instructor teacher = new Instructor(AccountManager.getCurrentUser());
@@ -190,10 +241,6 @@ public class sandboxController implements Initializable{
 					break;
 				}
 			});
-			
-			/*if(!isTeacher) {
-				instructorDashboard.setVisible(false);
-			}*/
 			
 		}
 		
@@ -726,17 +773,96 @@ public class sandboxController implements Initializable{
 		}		
 	}
 	
-	/*public void instructorDashboard(ActionEvent event) throws IOException {	
-		
-		try {	
-			audio.boopPlay();
-			sceneSwitcher.switchScene(event, "/application/resources/instructorDashboard.fxml");
-		}			
-		catch(IOException exception) {				
-			exception.printStackTrace();				
-		}		
-	}*/
-
 	
+	/*---SANDBOX OPTIONS HOVER EFFECTS---*/
+	
+	// BATTERY HOVER
+	public void onBatteryHover() {
+		batteryGen.setScaleX(1.1);
+		batteryGen.setScaleY(1.1);
+	}
+	public void offBatteryHover() {
+		batteryGen.setScaleX(0.9);
+		batteryGen.setScaleY(0.9);
+	}
 
+	// AND HOVER
+	public void onANDHover() {
+		andGen.setScaleX(1.1);
+		andGen.setScaleY(1.1);
+	}
+	public void offANDHover() {
+		andGen.setScaleX(0.9);
+		andGen.setScaleY(0.9);
+	}
+
+	// OR HOVER
+	public void onORHover() {
+		orGen.setScaleX(1.1);
+		orGen.setScaleY(1.1);
+	}
+	public void offORHover() {
+		orGen.setScaleX(0.9);
+		orGen.setScaleY(0.9);
+	}
+
+	// NOT HOVER
+	public void onNOTHover() {
+		notGen.setScaleX(1.1);
+		notGen.setScaleY(1.1);
+	}
+	public void offNOTHover() {
+		notGen.setScaleX(0.9);
+		notGen.setScaleY(0.9);
+	}
+
+	// NAND HOVER
+	public void onNANDHover() {
+		nandGen.setScaleX(1.1);
+		nandGen.setScaleY(1.1);
+	}
+	public void offNANDHover() {
+		nandGen.setScaleX(0.9);
+		nandGen.setScaleY(0.9);
+	}
+
+	// NOR HOVER
+	public void onNORHover() {
+		norGen.setScaleX(1.1);
+		norGen.setScaleY(1.1);
+	}
+	public void offNORHover() {
+		norGen.setScaleX(0.9);
+		norGen.setScaleY(0.9);
+	}
+
+	// XOR HOVER
+	public void onXORHover() {
+		xorGen.setScaleX(1.1);
+		xorGen.setScaleY(1.1);
+	}
+	public void offXORHover() {
+		xorGen.setScaleX(0.9);
+		xorGen.setScaleY(0.9);
+	}
+
+	// BULB HOVER
+	public void onBULBHover() {
+		bulbGen.setScaleX(1.1);
+		bulbGen.setScaleY(1.1);
+	}
+	public void offBULBHover() {
+		bulbGen.setScaleX(0.9);
+		bulbGen.setScaleY(0.9);
+	}
+	
+	// TRASH HOVER
+	public void onTRASHHover() {
+		deleteImage.setScaleX(1.1);
+		deleteImage.setScaleY(1.1);
+	}
+	public void offTRASHHover() {
+		deleteImage.setScaleX(0.9);
+		deleteImage.setScaleY(0.9);
+	}
 }
