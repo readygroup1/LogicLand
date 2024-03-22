@@ -26,6 +26,8 @@ public class instructorDashboard implements Initializable{
 	//FX variables
 	@FXML
 	Text className;
+	@FXML
+	Text deleteText;
 	@FXML 
 	ScrollPane pane;
 	@FXML
@@ -33,9 +35,13 @@ public class instructorDashboard implements Initializable{
 	@FXML 
 	ChoiceBox<String> removeBox;
 	@FXML
+	ChoiceBox<String> deleteBox;
+	@FXML
 	Button addButton;
 	@FXML
 	Button removeButton;
+	@FXML
+	Button deletePlayer;
 	
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		className.setText("Class: "+ AccountManager.getClassName(AccountManager.getCurrentClassID()));
@@ -64,6 +70,16 @@ public class instructorDashboard implements Initializable{
 	    
 	    addBox.getItems().addAll(AccountManager.getAllPlayersExceptInClass());
 	    removeBox.getItems().addAll(AccountManager.getClassList());
+	    if(AccountManager.isAdmin() && AccountManager.getCurrentUser() <= 6) {
+	    	deleteBox.getItems().addAll(AccountManager.getAllPlayers());
+		} else {
+			deleteBox.setVisible(false);
+			deleteBox.setDisable(true);
+			deletePlayer.setVisible(false);
+			deletePlayer.setDisable(true);
+			deleteText.setVisible(false);
+			deleteText.setDisable(true);
+		}
 	}
 	
 	
@@ -102,6 +118,23 @@ public class instructorDashboard implements Initializable{
 		} else {
 			int studentID = AccountManager.getPlayerID(studentName);
 			AccountManager.movePlayerToPublicClass(studentID);
+			audio.boopPlay();
+			// Refresh the page
+			try {
+				sceneSwitcher.switchScene(event, "/application/resources/instructorDashboard.fxml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void deletePlayer(ActionEvent event) {
+		String studentName = deleteBox.getSelectionModel().getSelectedItem();
+		if(studentName == null) {
+			return;
+		} else {
+			int studentID = AccountManager.getPlayerID(studentName);
+			AccountManager.deletePlayer(studentID);
 			audio.boopPlay();
 			// Refresh the page
 			try {

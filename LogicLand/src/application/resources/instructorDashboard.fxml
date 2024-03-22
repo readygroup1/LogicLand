@@ -56,5 +56,16 @@
             <Font name="Tahoma" size="24.0" />
          </font>
       </Button>
+      <Text fx:id="deleteText" layoutX="685.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delete Player From Game" textAlignment="CENTER" wrappingWidth="587.9308013916016">
+         <font>
+            <Font name="Vermin Vibes Regular" size="30.0" />
+         </font>
+      </Text>
+      <Button fx:id="deletePlayer" layoutX="856.0" layoutY="620.0" mnemonicParsing="false" onAction="#deletePlayer" prefHeight="46.0" prefWidth="123.0" text="Delete">
+         <font>
+            <Font name="Tahoma" size="24.0" />
+         </font>
+      </Button>
+      <ChoiceBox fx:id="deleteBox" layoutX="1044.0" layoutY="631.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
