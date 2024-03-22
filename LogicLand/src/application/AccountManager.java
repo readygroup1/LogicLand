@@ -300,6 +300,14 @@ public class AccountManager {
 	public static void movePlayerToPublicClass(int playerID) {
 		db.movePlayerClass(playerID, 1);
 	}
+	
+	/**
+	 * This method deletes a player from the database
+	 * @param playerID
+	 */
+	public static void deletePlayer(int playerID) {
+		db.deletePlayer(playerID);
+	}
 
 	/**
 	 * This method is used to move a player to the current class.
