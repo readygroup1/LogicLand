@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -86,6 +87,56 @@ public class sandboxController implements Initializable{
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			try {
+				if(!AccountManager.isAdmin()) {
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 75) {
+						BoxBlur bb1 = new BoxBlur();
+						bb1.setWidth(30);
+				        bb1.setHeight(30);
+				        bb1.setIterations(25);
+					    andGen.setEffect(bb1);
+					    andGen.setDisable(true);
+					}
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(2)) < 75) {
+						BoxBlur bb2 = new BoxBlur();
+						bb2.setWidth(30);
+				        bb2.setHeight(30);
+				        bb2.setIterations(25);
+					    orGen.setEffect(bb2);
+					    orGen.setDisable(true);
+					}
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) < 75) {
+						BoxBlur bb3 = new BoxBlur();
+						bb3.setWidth(30);
+				        bb3.setHeight(30);
+				        bb3.setIterations(25);
+					    notGen.setEffect(bb3);
+					    notGen.setDisable(true);
+					}
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) < 75) {
+						BoxBlur bb4 = new BoxBlur();
+						bb4.setWidth(30);
+				        bb4.setHeight(30);
+				        bb4.setIterations(25);
+					    nandGen.setEffect(bb4);
+					    nandGen.setDisable(true);
+					}
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(5)) < 75) {
+						BoxBlur bb5 = new BoxBlur();
+						bb5.setWidth(30);
+				        bb5.setHeight(30);
+				        bb5.setIterations(25);
+					    norGen.setEffect(bb5);
+					    norGen.setDisable(true);
+					}
+					if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) < 75) {
+						BoxBlur bb6 = new BoxBlur();
+						bb6.setWidth(30);
+				        bb6.setHeight(30);
+				        bb6.setIterations(25);
+					    xorGen.setEffect(bb6);
+					    xorGen.setDisable(true);
+					}
+				}
 				generateFromSave();
 				if(AccountManager.isAdmin()) {
 					  Instructor teacher = new Instructor(AccountManager.getCurrentUser());
