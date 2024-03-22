@@ -46,7 +46,7 @@
          </font></Text>
 
       <ButtonBar layoutX="375.0" layoutY="158.0" prefHeight="40.0" prefWidth="200.0" />
-      <ImageView fx:id="levelOne" fitHeight="150.0" fitWidth="150.0" layoutX="187.0" layoutY="439.0" onMouseClicked="#levelOne" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="levelOne" fitHeight="150.0" fitWidth="150.0" layoutX="187.0" layoutY="439.0" onMouseClicked="#levelOne" onMouseEntered="#onLevelOneHover" onMouseExited="#offLevelOneHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/and.png" />
          </image>
@@ -61,28 +61,28 @@
             <Font name="Vermin Vibes Regular" size="26.0" />
          </font>
       </Text>
-      <ImageView fx:id="levelThree" fitHeight="150.0" fitWidth="150.0" layoutX="393.0" layoutY="252.0" onMouseClicked="#levelThree" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="levelThree" fitHeight="150.0" fitWidth="150.0" layoutX="393.0" layoutY="252.0" onMouseClicked="#levelThree" onMouseEntered="#onLevelThreeHover" onMouseExited="#offLevelThreeHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/not.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="levelFour" fitHeight="150.0" fitWidth="150.0" layoutX="664.0" layoutY="439.0" onMouseClicked="#levelFour" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="levelFour" fitHeight="150.0" fitWidth="150.0" layoutX="664.0" layoutY="439.0" onMouseClicked="#levelFour" onMouseEntered="#onLevelFourHover" onMouseExited="#offLevelFourHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/nand.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="levelFive" fitHeight="150.0" fitWidth="150.0" layoutX="664.0" layoutY="96.0" onMouseClicked="#levelFive" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="levelFive" fitHeight="150.0" fitWidth="150.0" layoutX="664.0" layoutY="96.0" onMouseClicked="#levelFive" onMouseEntered="#onLevelFiveHover" onMouseExited="#offLevelFiveHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/nor.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="levelSix" fitHeight="150.0" fitWidth="150.0" layoutX="878.0" layoutY="252.0" onMouseClicked="#levelSix" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="levelSix" fitHeight="150.0" fitWidth="150.0" layoutX="878.0" layoutY="252.0" onMouseClicked="#levelSix" onMouseEntered="#onLevelSixHover" onMouseExited="#offLevelSixHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/xor.png" />
          </image>
       </ImageView>
       <Line endX="-100.0" endY="-181.5" layoutX="422.0" layoutY="520.0" startX="-100.0" startY="-6.0" strokeWidth="6.0" />
-      <ImageView fx:id="levelTwo" fitHeight="150.0" fitWidth="150.0" layoutX="187.0" layoutY="96.0" onMouseClicked="#levelTwo" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="levelTwo" fitHeight="150.0" fitWidth="150.0" layoutX="187.0" layoutY="96.0" onMouseClicked="#levelTwo" onMouseEntered="#onLevelTwoHover" onMouseExited="#offLevelTwoHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/or.png" />
          </image>

@@ -282,7 +282,83 @@ public class roadmapController  implements Initializable{
 			  }
 			  
 			  levelOne.setPickOnBounds(true);
+			  
+			  
 			
 		}
+		/*---SANDBOX OPTIONS HOVER EFFECTS---*/
+		
+		
+		
+		
+		
+		// Level1 HOVER
+		public void onLevelOneHover() {
+			levelOne.setScaleX(1.1);
+			levelOne.setScaleY(1.1);
+		}
+		
+		public void offLevelOneHover() {
+			levelOne.setScaleX(0.9);
+			levelOne.setScaleY(0.9);
+		}
+		
+		
+		// Level2 HOVER
+		public void onLevelTwoHover() {
+			levelTwo.setScaleX(1.1);
+			levelTwo.setScaleY(1.1);
+		}
+		
+		public void offLevelTwoHover() {
+			levelTwo.setScaleX(0.9);
+			levelTwo.setScaleY(0.9);
+		}
+		
+		
+		// Level3 HOVER
+		public void onLevelThreeHover() {
+			levelThree.setScaleX(1.1);
+			levelThree.setScaleY(1.1);
+		}
+		
+		public void offLevelThreeHover() {
+			levelThree.setScaleX(0.9);
+			levelThree.setScaleY(0.9);
+		}
+		
+		// Level4 HOVER
+		public void onLevelFourHover() {
+			levelFour.setScaleX(1.1);
+			levelFour.setScaleY(1.1);
+		}
+		
+		public void offLevelFourHover() {
+			levelFour.setScaleX(0.9);
+			levelFour.setScaleY(0.9);
+		}
+		
+		// Level5 HOVER
+		public void onLevelFiveHover() {
+			levelFive.setScaleX(1.1);
+			levelFive.setScaleY(1.1);
+		}
+		
+		public void offLevelFiveHover() {
+			levelFive.setScaleX(0.9);
+			levelFive.setScaleY(0.9);
+		}
+
+		// Level6 HOVER
+		public void onLevelSixHover() {
+			levelSix.setScaleX(1.1);
+			levelSix.setScaleY(1.1);
+		}
+		
+		public void offLevelSixHover() {
+			levelSix.setScaleX(0.9);
+			levelSix.setScaleY(0.9);
+		}
+		
 
 }
