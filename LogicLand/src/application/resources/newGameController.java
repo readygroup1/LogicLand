@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
+import application.GameSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -141,6 +142,8 @@ public class newGameController implements Initializable{
 					return;
 				}
 				AccountManager.newPlayerAccount(userName, userInitials, userPassword, userEmail, classID);
+				GameSession game = new GameSession(AccountManager.getCurrentUser());
+				game.startTracking();
 			} else {
 				String className = enterClassName.getText();
 				if(className.contains("'") || userName.contains("'") || userInitials.contains("'") || userPassword.contains("'") || userEmail.contains("'")) {
