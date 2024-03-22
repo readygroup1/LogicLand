@@ -48,22 +48,22 @@
             <Image url="@images/bulbOff.png" />
          </image>
       </ImageView>
-      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="336.0" layoutY="465.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="336.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/batteryOff.png" />
          </image>
       </ImageView>
-      <Text layoutX="271.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observe what happens when you turn the battery on/off when its signal is sent through an example gate.">
+      <Text layoutX="271.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observe what happens when you turn the battery on/off when its signal is sent through an example gate.">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
       </Text>
-      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="875.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="875.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/bulbOff.png" />
          </image>
       </ImageView>
-      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="612.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="612.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/not.png" />
          </image>
@@ -71,6 +71,11 @@
       <Text layoutX="324.0" layoutY="656.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tutorial complete!" textAlignment="CENTER" wrappingWidth="708.0980224609375">
          <font>
             <Font name="Vermin Vibes Regular" size="64.0" />
+         </font>
+      </Text>
+      <Text layoutX="286.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In the game, you can click a gate to add it to the frame, and then drag and drop it to move it around." textAlignment="CENTER">
+         <font>
+            <Font name="Tahoma" size="18.0" />
          </font>
       </Text>
    </children>

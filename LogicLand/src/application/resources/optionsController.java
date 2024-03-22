@@ -137,15 +137,19 @@ public class optionsController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		if(!isTeacher) {
-			instructorDashboard.setOpacity(0.25);
-			instructorDashboard.setDisable(true);
+			instructorDashboard.setVisible(false);
+			timePlayed.setVisible(true);
+			timePlayed.setDisable(false);
 			timePlayed.setText("Time played: " + AccountManager.getTimePlayed() + " minutes");
 			
 		} else {
+			instructorDashboard.setVisible(true);
 			timePlayed.setVisible(false);
 			timePlayed.setDisable(true);
-			instructorDashboard.setVisible(false);
 		}
 		
+		/* I feel like this code makes more sense? We can clear it up later. -Thomas */
+			
+
 	}
 }
