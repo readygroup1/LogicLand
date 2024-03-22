@@ -5,8 +5,11 @@ import java.util.TimerTask;
 
 import application.resources.loginController;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -70,7 +73,14 @@ public class Main extends Application {
 			// This removes the default highlighting of a single button. Comment it out to see what I mean. 
 			scene.getRoot().requestFocus();
 			
-			stage.show();		
+			stage.show();	
+			stage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+			    @Override
+			    public void handle(WindowEvent t) {
+			        Platform.exit();
+			        System.exit(0);
+			    }
+			});
 			
 		}
 		
@@ -86,9 +96,6 @@ public class Main extends Application {
 	public static void main(String[] args) {	
 		
 		launch(args);
-		//loginController.task.cancel(); // ends time elapse timer
-		
-		
 		
 	}
 }

@@ -218,6 +218,15 @@ public class AccountManager {
 	}
 
 	/**
+	 * This method returns the time played of a user.
+	 * @return
+	 */
+	public static int getTimePlayed() {
+		return db.getTimePlayed(AccountManager.currentUserID);
+	
+	}
+
+	/**
 	 * Gets the played ID given their name
 	 * @param name
 	 * @return
@@ -307,6 +316,14 @@ public class AccountManager {
 	 */
 	public static void deletePlayer(int playerID) {
 		db.deletePlayer(playerID);
+	}
+
+	/**
+	 * This method is used to increment the time played of a user.
+	 * @param timePlayed
+	 */
+	public static void incrementTimePlayed(int timePlayed) {
+		db.updateTimePlayed(AccountManager.currentUserID, timePlayed + AccountManager.getTimePlayed());
 	}
 
 	/**

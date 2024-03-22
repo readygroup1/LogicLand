@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class optionsController implements Initializable {
@@ -18,6 +19,8 @@ public class optionsController implements Initializable {
 	//-----------Constants/Resources---------
 		@FXML
 		Button instructorDashboard;
+		@FXML 
+		Text timePlayed;
 		
 		Boolean isTeacher = AccountManager.isAdmin();
 	
@@ -122,6 +125,11 @@ public class optionsController implements Initializable {
 		if(!isTeacher) {
 			instructorDashboard.setOpacity(0.25);
 			instructorDashboard.setDisable(true);
+			timePlayed.setText("Time played: " + AccountManager.getTimePlayed() + " minutes");
+			
+		} else {
+			timePlayed.setVisible(false);
+			timePlayed.setDisable(true);
 		}
 		
 	}

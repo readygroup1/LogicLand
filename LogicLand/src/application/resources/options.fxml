@@ -65,5 +65,10 @@
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font>
       </Button>
+      <Text fx:id="timePlayed" layoutX="822.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Played: &lt;&gt; Minutes" textAlignment="RIGHT" wrappingWidth="428.3416748046875">
+         <font>
+            <Font name="Vermin Vibes Regular" size="34.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
