@@ -3,6 +3,7 @@ package application.resources;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.TimerTask;
 
 import application.AccountManager;
 import javafx.event.ActionEvent;
@@ -41,6 +42,10 @@ public class optionsController implements Initializable {
 			try {		
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "mainMenu.fxml");
+				
+				
+				//loginController.task.cancel(); // ends time elapse timer
+				//loginController.restartTask();
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				
