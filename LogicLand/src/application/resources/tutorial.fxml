@@ -5,49 +5,56 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-
-<Pane fx:id="circuitBoardPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0AB9FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.tutorialController">
+<Pane fx:id="circuitBoardPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.tutorialController">
    <children>
-      <Button fx:id="backButton" layoutX="34.0" layoutY="634.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" text="Back" />
-      <Text layoutX="286.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO LOGIC LAND!" textAlignment="CENTER" wrappingWidth="708.0980224609375">
+      <Button fx:id="backButton" layoutX="50.0" layoutY="625.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Back">
+      	<font>
+            <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="286.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO LOGIC LAND!" textAlignment="CENTER" wrappingWidth="708.0980224609375">
          <font>
             <Font name="Vermin Vibes Regular" size="64.0" />
          </font>
       </Text>
-      <Text layoutX="141.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This game will teach you the fundamentals of Logic Gates, which are commonly used in the world of Computer Science.">
+      <Text layoutX="162.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This game will teach you the fundamentals of Logic Gates, which are commonly used in the world of Computer Science.">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="489.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click this BATTERY to turn it on.">
+      <Text layoutX="522.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click this BATTERY to turn it on.">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="155.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click and drag your cursor from one of the battery terminals to the base of the lightbulb to turn the lightbulb on.">
-         <font>
-            <Font name="Tahoma" size="18.0" />
-         </font>
-      </Text>
-
-      <Text layoutX="194.0" layoutY="651.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observe what happens when you turn the battery on/off when its signal is sent through an example gate.">
+      <Text layoutX="193.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click and drag your cursor from one of the battery terminals to the base of the lightbulb to turn the lightbulb on.">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
       </Text>
 
-      <Text layoutX="302.0" layoutY="522.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tutorial complete!" textAlignment="CENTER" wrappingWidth="708.0980224609375">
+      <Text layoutX="222.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observe what happens when you turn the battery on/off when its signal is sent through an example gate.">
+         <font>
+            <Font name="Tahoma" size="18.0" />
+         </font>
+      </Text>
+
+      <Text layoutX="309.0" layoutY="671.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tutorial complete!" textAlignment="CENTER" wrappingWidth="708.0980224609375">
          <font>
             <Font name="Vermin Vibes Regular" size="64.0" />
          </font>
       </Text>
 
-      <Pane fx:id="battery3" layoutX="141.0" layoutY="524.0" prefHeight="100.0" prefWidth="100.0" />
-      <Pane fx:id="bulb1" layoutX="1001.0" layoutY="342.0" prefHeight="100.0" prefWidth="100.0" />
-      <Pane fx:id="not1" layoutX="583.0" layoutY="524.0" prefHeight="100.0" prefWidth="100.0" />
-      <Pane fx:id="bulb2" layoutX="1026.0" layoutY="524.0" prefHeight="100.0" prefWidth="100.0" />
-      <Pane fx:id="battery1" layoutX="583.0" layoutY="212.0" prefHeight="100.0" prefWidth="100.0" />
-      <Pane fx:id="battery2" layoutX="236.0" layoutY="342.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="battery3" layoutX="271.0" layoutY="455.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="bulb1" layoutX="851.0" layoutY="278.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="not1" layoutX="593.0" layoutY="451.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="bulb2" layoutX="987.0" layoutY="456.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="battery1" layoutX="592.0" layoutY="143.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="battery2" layoutX="350.0" layoutY="278.0" prefHeight="100.0" prefWidth="100.0" />
+      <Text layoutX="187.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In the levels of the game, you can click on a gate to add it to the frame, then drag and drop it to move it around.">
+         <font>
+            <Font name="Tahoma" size="18.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
