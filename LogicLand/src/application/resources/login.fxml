@@ -11,19 +11,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0AB9FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.loginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.loginController">
    <children>
-      <Button fx:id="backButton" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="59.0" prefWidth="117.0" styleClass="backbutton" stylesheets="@../application.css" text="Back" />
+      <Button fx:id="backButton" layoutX="50.0" layoutY="625.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Back">
+      	<font>
+            <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
+      </Button>
       <TextField fx:id="username" layoutX="501.0" layoutY="343.0" prefHeight="34.0" prefWidth="198.0" />
       <PasswordField fx:id="password" layoutX="503.0" layoutY="416.0" prefHeight="34.0" prefWidth="198.0" />
       <Label layoutX="502.0" layoutY="312.0" prefHeight="23.0" prefWidth="100.0" styleClass="loginText" stylesheets="@../application.css" text="Username" />
       <Label layoutX="502.0" layoutY="391.0" styleClass="loginText" stylesheets="@../application.css" text="Password" />
       <CheckBox fx:id="imATeacher" contentDisplay="RIGHT" layoutX="523.0" layoutY="473.0" mnemonicParsing="false" onAction="#imATeacher" styleClass="loginText" stylesheets="@../application.css" text="I am a Teacher" />
-      <Button fx:id="login" layoutX="523.0" layoutY="552.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="59.0" prefWidth="154.0" style="-fx-background-color: F38307;" text="START">
+      <Button fx:id="login" layoutX="523.0" layoutY="520.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="59.0" prefWidth="154.0" styleClass="backbutton" stylesheets="@../application.css" text="START">
          <font>
-            <Font name="System Bold Italic" size="31.0" />
+            <Font name="Vermin Vibes Regular" size="24.0" />
          </font></Button>
-      <Label layoutX="411.0" layoutY="48.0" text="Login To Logic Land">
+      <Label layoutX="411.0" layoutY="48.0" text="Login To Logic Land" textFill="WHITE">
          <font>
                   <Font name="Vermin Vibes Regular" size="43.0" />
                </font>
@@ -33,7 +37,7 @@
             <Image url="@images/bulbOff.png" />
          </image>
       </ImageView>
-      <Text fx:id="status" layoutX="388.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="428.8000488281249">
+      <Text fx:id="status" layoutX="388.0" layoutY="612.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="428.8000488281249">
          <font>
             <Font size="18.0" />
          </font>

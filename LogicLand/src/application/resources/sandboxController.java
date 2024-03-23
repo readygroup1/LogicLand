@@ -199,12 +199,14 @@ public class sandboxController implements Initializable{
 				}
 			});
 			
+
 		
 			
-			/*if(!isTeacher) {
+			if(!isTeacher) {
 				instructorDashboard.setVisible(false);
-			}*/
+			}
 			
+
 		}
 		
 		

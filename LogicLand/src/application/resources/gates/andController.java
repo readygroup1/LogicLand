@@ -16,6 +16,17 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
+
+/**
+ * This class controls functionality of the AND gates throughout the game. It handles dragging and logic cases.
+ * 
+ * <b>Example use:</b>
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @author Group 1
+ */
+
 public class andController extends gateObject implements Initializable {
 	
 	//----------------Variables-------------------
@@ -52,10 +63,16 @@ public class andController extends gateObject implements Initializable {
  	Image andOn = new Image(getClass().getResourceAsStream("/application/resources/images/andOn.png")); 
 	
 	//----------------Initializer---------------------------
-	/**The first two blocks initialized the gate to be draggable. 
-	 * The third block initialized node properties on the terminals.
-	 * Every gate and terminal will have properties such as type that can be accessed using
-	 * (*Any Node*).getProperties().get("type"). */
+	
+ 	/**
+ 	 * Initializes the gate to be draggable and sets node properties on the terminals.
+ 	 * Every gate and terminal will have properties such as type that can be accessed using
+ 	 * (*Any Node*).getProperties().get("type").
+ 	 *
+ 	 * @param arg0 The URL used for initialization.
+ 	 * @param arg1 The ResourceBundle used for initialization.
+ 	 * 
+ 	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		super.setBody(body);
@@ -98,7 +115,16 @@ public class andController extends gateObject implements Initializable {
 	}
 	
 	//----------------Terminal Buttons------------
-	/** This just passes the event to the sandboxController */
+	
+	/**
+	 * Initiates a connection by passing the MouseEvent event to the sandboxController's
+	 * {@link sandboxController#beginConnection(MouseEvent)} method.
+	 * This method is designed to be used as a button action for starting a connection
+	 * process from a user interaction.
+	 *
+	 * @param event The MouseEvent that triggers the start of the connection process.
+	 *              
+	 */
 	public void startConnection(MouseEvent event) {
 		
 		sboxController.beginConnection(event);
@@ -108,37 +134,65 @@ public class andController extends gateObject implements Initializable {
 	
 	
 	//----------------Getters & Setters-----------
-	/** This function is used by sandbox Controller to set instance variables of the sandboxPane and sandboxController
-	 * in every gate that is created. It is helpful for communicating events back to a central source.
-	 * You can call any function in sandbox controller on this instance.
-	 * The board instance can be used to draw things on the screen from a gate if needed.  */
 	
+	
+	/**
+	 * Sets the image of the AND gate to the "on" state.
+	 */
 	public void setImageOn() {
-		andImage.setImage(andOn);
+	    andImage.setImage(andOn);
 	}
-	
+
+	/**
+	 * Sets the image of the AND gate to the "off" state.
+	 */
 	public void setImageOff() {
-		andImage.setImage(andOff);
+	    andImage.setImage(andOff);
 	}
-	
-	public void setBoard (sandboxController board) {
-		sboxController = board;
-		circuitBoardPane = sboxController.getCircuitBoardPane();
+
+	/**
+	 * Sets the sandbox controller for communication.
+	 *
+	 * @param board The sandbox controller instance.
+	 */
+	public void setBoard(sandboxController board) {
+	    sboxController = board;
+	    circuitBoardPane = sboxController.getCircuitBoardPane();
 	}
-	
+
+	/**
+	 * Gets the state of the AND gate.
+	 *
+	 * @return The state of the AND gate.
+	 */
 	public Boolean getState() {
-		return state;
+	    return state;
 	}
-	
-	public void setfirstInput(Boolean state) {
-		this.firstInput = state;		
+
+	/**
+	 * Sets the state of the first input of the AND gate.
+	 *
+	 * @param state The state to set.
+	 */
+	public void setFirstInput(Boolean state) {
+	    this.firstInput = state;
 	}
-	
+
+	/**
+	 * Sets the state of the second input of the AND gate.
+	 *
+	 * @param state The state to set.
+	 */
 	public void setSecondInput(Boolean state) {
-		this.secondInput = state;		
+	    this.secondInput = state;
 	}
+
 	
-	
+	/**
+	 * Calls the checktype method based on the node's class type.
+	 *
+	 * @param node The rectangle node to check.
+	 */
 	public void callChecktype(Rectangle node) {
 		switch( (String)(node.getProperties().get("ClassType")) ) {
 		case "AND":
@@ -169,6 +223,17 @@ public class andController extends gateObject implements Initializable {
 		}
 	}
 	
+	
+	
+	/**
+	 * Checks the type of the AND gate based on its inputs.
+	 * If both inputs are connected and active, the output is set to true.
+	 * If either input is not connected or inactive, the output is set to false.
+	 * Updates the output state and calls {@link #callCheckType(Rectangle)} on the connected node.
+	 *
+	 *
+	 *
+	 */
 	public void checktype() {
 		
 		if((( (Rectangle)input1.getProperties().get("put") != null) && ((Rectangle)input2.getProperties().get("put")) != null)) {
@@ -217,18 +282,40 @@ public class andController extends gateObject implements Initializable {
 		}
 	}
 	
+	/**
+	 * Gets the type of the gate.
+	 *
+	 * @return The Type of the gate.
+	 */
 	public Type getType() {
-		return type;
+	    return type;
 	}
-	
+
+	/**
+	 * Gets the first input rectangle of the gate.
+	 *
+	 * @return The first input rectangle.
+	 */
 	public Rectangle getInput1() {
-		return input1;		
+	    return input1;
 	}
+
+	/**
+	 * Gets the second input rectangle of the gate.
+	 *
+	 * @return The second input rectangle.
+	 */
 	public Rectangle getInput2() {
-		return input2;		
+	    return input2;
 	}
+
+	/**
+	 * Gets the output rectangle of the gate.
+	 *
+	 * @return The output rectangle.
+	 */
 	public Rectangle getOutput() {
-		return output;		
+	    return output;
 	}
 
 

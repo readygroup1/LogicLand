@@ -1,10 +1,10 @@
 package application.resources;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 import application.AccountManager;
+import application.GameSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -40,27 +40,6 @@ public class loginController {
 	
 	audioPlayer audio = new audioPlayer();
 	
-	// ------------ Timer for game loop ------------------------
-//	static public Timer timer = new Timer();
-//	
-//	public static TimerTask task = new TimerTask() {
-//		int update = 0;
-//		public void run() {
-//			System.out.println(update);
-//			update+= 1;
-//		}
-//	};
-	
-	
-//	public static void restartTask() {
-//		task = new TimerTask() {
-//			int update = 0;
-//			public void run() {
-//				System.out.println(update);
-//				update+= 1;
-//			}
-//		};
-//	}
 	
 	// ----------------Button Functions -----------------------
 	public void login(ActionEvent event) throws Exception {
@@ -82,9 +61,8 @@ public class loginController {
 		
 			bulb.setImage(bulbOn);	
 			audio.boopPlay();
-			
-			
-			//timer.scheduleAtFixedRate(task, 0, 1000);	// this starts the timer
+			GameSession game = new GameSession(AccountManager.getCurrentUser());
+			game.startTracking();
 			
 			sceneSwitcher.fadeSwitchScene(event, "/application/resources/roadmap.fxml");
 			
