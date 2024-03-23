@@ -56,7 +56,7 @@
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font>
       </Button>
-      <Button layoutX="447.0" layoutY="331.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="GLOBAL HIGH SCORES" textAlignment="CENTER">
+      <Button layoutX="447.0" layoutY="331.0" mnemonicParsing="false" onAction="#gblHighscores" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="GLOBAL HIGH SCORES" textAlignment="CENTER">
          <font>
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font>

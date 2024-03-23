@@ -47,7 +47,7 @@
             <Image url="@images/bulbOff.png" />
          </image>
       </ImageView>
-      <Text fx:id="status" layoutX="406.0" layoutY="654.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="428.8000488281249">
+      <Text fx:id="status" layoutX="406.0" layoutY="664.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="428.8000488281249">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>

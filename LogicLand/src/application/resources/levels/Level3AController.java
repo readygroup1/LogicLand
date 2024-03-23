@@ -131,12 +131,12 @@ public class Level3AController extends sandboxController implements Initializabl
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			 try {
-				battery2 = this.load(battery2, Type.BATTERY);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			 try {
+//				battery2 = this.load(battery2, Type.BATTERY);
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			 try {
 				bulb = this.load(bulb, Type.BULB);
 			} catch (IOException e) {

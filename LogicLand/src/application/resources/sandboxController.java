@@ -65,8 +65,6 @@ public class sandboxController implements Initializable{
 	
 	@FXML
 	Text name;
-	@FXML
-	Button instructorDashboard;
 		
 	Boolean isTeacher = AccountManager.isAdmin();
 	
@@ -199,14 +197,6 @@ public class sandboxController implements Initializable{
 				}
 			});
 			
-
-		
-			
-			if(!isTeacher) {
-				instructorDashboard.setVisible(false);
-			}
-			
-
 		}
 		
 		
