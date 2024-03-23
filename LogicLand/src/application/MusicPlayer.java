@@ -10,7 +10,9 @@ import java.io.File;
 public class MusicPlayer {
     private static MediaPlayer mediaPlayer;
     private static double defaultVolume = 0.3; // Default volume level
-
+    
+    
+    // link to copyright free music https://uppbeat.io/track/sulyya/mirthaflare
     // Path to the default background music
     private static final String DEFAULT_BACKGROUND_MUSIC = "src/application/resources/sounds/backgroundmusic.wav";
     // Path to the default level music
