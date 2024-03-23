@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import application.AccountManager;
 import application.Instructor;
 import application.Main;
+import application.MusicPlayer;
 import application.User;
 import javafx.event.ActionEvent;
 
@@ -114,7 +115,8 @@ public class roadmapController  implements Initializable{
 		
 		
 		public void levelOne(MouseEvent event) throws IOException {	
-			 try {		
+			 try {	
+				  
 				  audio.boopPlay();
 				  sceneSwitcher.switchScene(event, "/application/resources/levels/level1A.fxml");
 				}			
@@ -127,7 +129,8 @@ public class roadmapController  implements Initializable{
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 75) {
 				return;
 			}
-			try {	
+			try {
+				
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level2A.fxml");
 			}			
@@ -141,6 +144,7 @@ public class roadmapController  implements Initializable{
 				return;
 			}
 			try {	
+				
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level3A.fxml");
 			}			
@@ -154,6 +158,7 @@ public class roadmapController  implements Initializable{
 				return;
 			}
 			try {
+				
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level4A.fxml");
 			}			
@@ -167,6 +172,7 @@ public class roadmapController  implements Initializable{
 				return;
 			}
 			try {
+				
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level5A.fxml");
 			}			
@@ -180,6 +186,7 @@ public class roadmapController  implements Initializable{
 				return;
 			}
 			try {	
+				
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level6A.fxml");
 			}			
@@ -193,6 +200,7 @@ public class roadmapController  implements Initializable{
 				return;
 			}
 			try {	
+				
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level7A.fxml");
 			}			
@@ -206,6 +214,7 @@ public class roadmapController  implements Initializable{
 				return;
 			}
 			try {	
+				
 				audio.boopPlay();
 				sceneSwitcher.switchScene(event, "/application/resources/levels/Level8.fxml");
 			}			
