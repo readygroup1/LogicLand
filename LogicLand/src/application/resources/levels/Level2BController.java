@@ -559,7 +559,7 @@ public class Level2BController extends sandboxController implements Initializabl
 	    public void previousLevel(ActionEvent event) throws IOException {
 	    	audio.boopPlay();
 	    	try {
-	            String previousLevelFXML = "/application/resources/levels/level3A.fxml";
+	            String previousLevelFXML = "/application/resources/levels/level2A.fxml";
 	            sceneSwitcher.switchScene(event, previousLevelFXML);
 	            audio.boopPlay();
 	        } catch (IOException exception) {

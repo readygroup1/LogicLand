@@ -541,6 +541,7 @@ public class Level1BController extends sandboxController implements Initializabl
 			}		
 		}
 		
+		/*MARKED FOR DELETION - DUPLICATE METHOD*/
 		public void backPart(ActionEvent event) throws IOException {			
 			audio.boopPlay();
 			try {			
