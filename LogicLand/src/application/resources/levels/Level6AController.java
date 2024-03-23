@@ -558,4 +558,14 @@ public class Level6AController extends sandboxController implements Initializabl
 				exception.printStackTrace();				
 			}		
 		}
+		
+		public void prev(ActionEvent event) throws IOException {
+			audio.boopPlay();
+			try {			
+				sceneSwitcher.switchScene(event, "/application/resources/levels/level5B.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
+		}
 }		
