@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
+import application.MusicPlayer;
 import application.resources.SceneSwitcher;
 import application.resources.audioPlayer;
 import application.resources.sandboxController;
@@ -558,6 +559,9 @@ public class Level4BController extends sandboxController implements Initializabl
 	     */
 	    public void previousLevel(ActionEvent event) throws IOException {
 	    	audio.boopPlay();
+	    	//play level music
+			MusicPlayer.stopMusic();
+			MusicPlayer.playBackgroundMusic();
 	    	try {
 	            String previousLevelFXML = "/application/resources/levels/level4A.fxml";
 	            sceneSwitcher.switchScene(event, previousLevelFXML);

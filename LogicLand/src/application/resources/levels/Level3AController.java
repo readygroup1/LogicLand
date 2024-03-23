@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
+import application.MusicPlayer;
 import application.resources.SceneSwitcher;
 import application.resources.audioPlayer;
 import application.resources.sandboxController;
@@ -102,6 +103,11 @@ public class Level3AController extends sandboxController implements Initializabl
 		// --------------------Initializer-----------------------------------------
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
+			
+			
+			//play level music
+			MusicPlayer.stopMusic();
+			MusicPlayer.playLevelMusic();
 			
 			// Create Enum Map to file locations. This is used in the parameters for load. There is probably somewhere better I could put this initialization.
 			
@@ -529,6 +535,9 @@ public class Level3AController extends sandboxController implements Initializabl
 		
 		public void back(ActionEvent event) throws IOException {			
 			audio.boopPlay();
+			//play level music
+			MusicPlayer.stopMusic();
+			MusicPlayer.playBackgroundMusic();
 			try {			
 				sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
 			}			

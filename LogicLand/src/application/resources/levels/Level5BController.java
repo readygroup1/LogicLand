@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
+import application.MusicPlayer;
 import application.resources.SceneSwitcher;
 import application.resources.audioPlayer;
 import application.resources.sandboxController;
@@ -581,6 +582,9 @@ public class Level5BController extends sandboxController implements Initializabl
 				return;
 			}
 	    	audio.boopPlay();
+	    	//play level music
+			MusicPlayer.stopMusic();
+			MusicPlayer.playBackgroundMusic();
 	    	try {
 	            String nextLevelFXML = "/application/resources/levels/level6A.fxml";
 	            sceneSwitcher.switchScene(event, nextLevelFXML);
