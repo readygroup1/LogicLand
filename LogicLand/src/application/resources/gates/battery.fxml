@@ -14,7 +14,7 @@
          </image>
       </ImageView>
       <Ellipse fx:id="body" fill="DODGERBLUE" layoutX="37.0" layoutY="41.0" onMouseReleased="#batteryClick" opacity="0.0" radiusX="33.0" radiusY="30.0" stroke="BLACK" strokeType="INSIDE" />
-      <Rectangle fx:id="output" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="19.0" layoutX="11.0" layoutY="2.0" onDragDetected="#startConnection" onMouseClicked="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="12.0" />
-      <Rectangle fx:id="output1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="19.0" layoutX="52.0" onDragDetected="#startConnection" onMouseClicked="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="18.0" />
+      <Rectangle fx:id="output" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="-1.0" layoutY="-5.0" onDragDetected="#startConnection" onMouseClicked="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="34.0" />
+      <Rectangle fx:id="output1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="34.0" layoutX="42.0" layoutY="-7.0" onDragDetected="#startConnection" onMouseClicked="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="34.0" />
    </children>
 </Pane>
