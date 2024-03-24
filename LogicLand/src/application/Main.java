@@ -52,6 +52,7 @@ public class Main extends Application {
 			else {
 			    System.out.println("Font loaded: " + vermin.getName());
 			    System.out.println("Font loaded: " + tahoma.getName());
+			 
 			}
 	        
 			Parent root;
@@ -94,6 +95,7 @@ public class Main extends Application {
 	 * @param args
 	 */
 	public static void main(String[] args) {	
+		MusicPlayer.playBackgroundMusic();
 		
 		launch(args);
 		

@@ -8,30 +8,56 @@
 
 <Pane fx:id="circuitBoardPane" style="-fx-background-color: #0088FF" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.levels.Level3BController">
    <children>
-      <Pane fx:id="battery1" layoutX="37.0" layoutY="360.0" prefHeight="100.0" prefWidth="100.0" />
+   
+   
+      <!-- Title -->
+      <Label fx:id="currentLevelLabel" layoutX="260.0" layoutY="4.0" text="Level 3" textFill="WHITE">
+         <font><Font name="Vermin Vibes Regular" size="64.0" /></font></Label>
+   	  <Label fx:id="title" layoutX="260.0" layoutY="80.0" prefHeight="50.0" prefWidth="700.0" text="Fill in the truth table" textAlignment="CENTER">
+      		<font><Font size="34.0" /></font></Label>
+      		
+      <Label layoutX="40.0" layoutY="255.0" text="Input 1" textFill="BLACK">
+      	<font><Font name="Vermin Vibes Regular" size="24.0" /></font>
+      </Label>
+      		
+      		
+      <!-- Images -->
+      <Pane fx:id="battery1" layoutX="37.0" layoutY="285.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="not1" layoutX="554.0" layoutY="285.0" prefHeight="100.0" prefWidth="100.0" />
       <Pane fx:id="bulb" layoutX="1124.0" layoutY="285.0" prefHeight="100.0" prefWidth="100.0" />
-      <Button fx:id="back" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" text="Road Map" />
-      <Label fx:id="title" layoutX="334.0" layoutY="89.0" prefHeight="50.0" prefWidth="611.0" text="Fill in the truth table" textAlignment="CENTER">
-         <font>
-            <Font size="34.0" />
-         </font>
-      </Label>
-      <Pane fx:id="not1" layoutX="554.0" layoutY="295.0" prefHeight="100.0" prefWidth="100.0" />
-      <TextField fx:id="Textoutput1" layoutX="1045.0" layoutY="516.0" prefHeight="25.0" prefWidth="37.0" />
-      <TextField fx:id="Textoutput2" layoutX="1045.0" layoutY="552.0" prefHeight="25.0" prefWidth="37.0" />
-      <Button fx:id="checkOutput" layoutX="965.0" layoutY="672.0" mnemonicParsing="false" onMouseClicked="#CheckToWin" text="Check" />
-      <Label layoutX="963.0" layoutY="496.0" text="Input 1" />
-      <Label layoutX="64.0" layoutY="318.0" text="Input 1" />
-      <Label layoutX="1041.0" layoutY="496.0" text="Output" />
-      <Label layoutX="982.0" layoutY="520.0" prefHeight="16.0" prefWidth="14.0" text="0" />
-      <Label layoutX="982.0" layoutY="556.0" prefHeight="16.0" prefWidth="14.0" text="1" />
-      <Button layoutX="1098.0" layoutY="39.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="50.0" prefWidth="100.0" text="Next Level" />
-      <Button layoutX="936.0" layoutY="39.0" mnemonicParsing="false" onAction="#previousLevel" prefHeight="50.0" prefWidth="100.0" text="Previous Level" />
-      <Label fx:id="currentLevelLabel" layoutX="485.0" layoutY="14.0" text="Level3">
-         <font>
-            <Font size="50.0" />
-         </font>
-      </Label>
-      <Button fx:id="back1" layoutX="33.0" layoutY="568.0" mnemonicParsing="false" onAction="#backPart" prefHeight="50.0" prefWidth="100.0" text="Back" />
+      
+      
+      <!-- Buttons -->
+      <Button fx:id="back" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="160.0" styleClass="menuBarButton" stylesheets="@../../application.css" text="Road Map">
+      	<font><Font name="Vermin Vibes Regular" size="24.0" /></font></Button>
+      <Button fx:id="checkOutput" layoutX="800.0" layoutY="563.0" mnemonicParsing="false" onMouseClicked="#CheckToWin" prefHeight="53.0" prefWidth="122.0" styleClass="menuBarButton" stylesheets="@../../application.css" text="Check">
+         <font><Font name="Vermin Vibes Regular" size="24.0" /></font></Button>
+      <Button layoutX="1096.0" layoutY="52.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="50.0" prefWidth="100.0" styleClass="backbutton" stylesheets="@../../application.css" text="Next">
+         <font><Font name="Vermin Vibes Regular" size="24.0" /></font></Button>
+      <Button layoutX="972.0" layoutY="52.0" mnemonicParsing="false" onAction="#previousLevel" prefHeight="50.0" prefWidth="100.0" styleClass="instructorDashboard" stylesheets="@../../application.css" text="PREV">
+         <font><Font name="Vermin Vibes Regular" size="24.0" /></font></Button>
+         
+      
+      <Pane layoutX="502.0" layoutY="533.0" prefHeight="110.0" prefWidth="100.0" style="-fx-background-color: #0073D8;">
+        <children>
+      		<Label layoutX="10.0" layoutY="-5.0" text="Input 1">
+         		<font><Font name="Vermin Vibes Regular" size="24.0" /></font></Label>
+         	<Label layoutX="40" layoutY="20" prefHeight="16.0" prefWidth="14.0" text="0">
+         		<font><Font name="Vermin Vibes Regular" size="24.0" /></font></Label>
+         	<Label layoutX="40" layoutY="59" prefHeight="16.0" prefWidth="14.0" text="1">
+         		<font><Font name="Vermin Vibes Regular" size="24.0" /></font></Label>
+      	</children>
+      </Pane>
+      
+      <Pane layoutX="602.0" layoutY="533.0" prefHeight="110.0" prefWidth="100.0" style="-fx-background-color: #FFD700;">
+      	<children>
+      	  <Label layoutX="10.0" layoutY="-5.0" text="Output">
+      	    <font><Font name="Vermin Vibes Regular" size="24.0" /></font></Label>
+	      <TextField fx:id="Textoutput1" layoutX="27.0" layoutY="35.0" prefHeight="25.0" prefWidth="37.0" />
+	      <TextField fx:id="Textoutput2" layoutX="27.0" layoutY="71.0" prefHeight="25.0" prefWidth="37.0" />
+      	</children>
+      </Pane>
+         
+         
    </children>
 </Pane>

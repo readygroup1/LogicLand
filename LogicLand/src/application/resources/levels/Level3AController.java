@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
+import application.MusicPlayer;
 import application.resources.SceneSwitcher;
 import application.resources.audioPlayer;
 import application.resources.sandboxController;
@@ -103,6 +104,11 @@ public class Level3AController extends sandboxController implements Initializabl
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			
+			
+			//play level music
+			MusicPlayer.stopMusic();
+			MusicPlayer.playLevelMusic();
+			
 			// Create Enum Map to file locations. This is used in the parameters for load. There is probably somewhere better I could put this initialization.
 			
 			fxmlPath.put(Type.BATTERY, "/application/resources/gates/battery.fxml");
@@ -125,12 +131,12 @@ public class Level3AController extends sandboxController implements Initializabl
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			 try {
-				battery2 = this.load(battery2, Type.BATTERY);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			 try {
+//				battery2 = this.load(battery2, Type.BATTERY);
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			 try {
 				bulb = this.load(bulb, Type.BULB);
 			} catch (IOException e) {
@@ -529,6 +535,9 @@ public class Level3AController extends sandboxController implements Initializabl
 		
 		public void back(ActionEvent event) throws IOException {			
 			audio.boopPlay();
+			//play level music
+			MusicPlayer.stopMusic();
+			MusicPlayer.playBackgroundMusic();
 			try {			
 				sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
 			}			
@@ -544,6 +553,16 @@ public class Level3AController extends sandboxController implements Initializabl
 			audio.boopPlay();
 			try {			
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level3B.fxml");
+			}			
+			catch(IOException exception) {				
+				exception.printStackTrace();				
+			}		
+		}
+		
+		public void prev(ActionEvent event) throws IOException {
+			audio.boopPlay();
+			try {			
+				sceneSwitcher.switchScene(event, "/application/resources/levels/level2B.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				

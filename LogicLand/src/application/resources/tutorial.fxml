@@ -3,80 +3,70 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.tutorialController">
+<Pane fx:id="circuitBoardPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.tutorialController">
    <children>
-      <Button fx:id="backButton" layoutX="49.0" layoutY="621.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" styleClass="instructorDashboard" stylesheets="@../application.css" text="Back">
-         <font>
+      <Button fx:id="backButton" layoutX="50.0" layoutY="625.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Back">
+      	<font>
             <Font name="Vermin Vibes Regular" size="24.0" />
-         </font></Button>
-      <Text layoutX="289.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO LOGIC LAND!" textAlignment="CENTER" wrappingWidth="708.0980224609375">
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="286.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO LOGIC LAND!" textAlignment="CENTER" wrappingWidth="708.0980224609375">
          <font>
             <Font name="Vermin Vibes Regular" size="64.0" />
          </font>
       </Text>
-      <Text layoutX="172.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This game will teach you the fundamentals of Logic Gates, which are commonly used in the world of Computer Science.">
+      <Text layoutX="162.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This game will teach you the fundamentals of Logic Gates, which are commonly used in the world of Computer Science.">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
       </Text>
-      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="605.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/batteryOff.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="522.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click this BATTERY to turn it on.">
+      <Text layoutX="522.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click this BATTERY to turn it on.">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
       </Text>
-      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="484.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/batteryOn.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="206.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click and drag your cursor from one of the battery terminals to the base of the lightbulb to turn the lightbulb on.">
+      <Text layoutX="193.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click and drag your cursor from one of the battery terminals to the base of the lightbulb to turn the lightbulb on.">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
       </Text>
-      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="745.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/bulbOff.png" />
-         </image>
-      </ImageView>
-      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="336.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/batteryOff.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="271.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observe what happens when you turn the battery on/off when its signal is sent through an example gate.">
+
+      <Text layoutX="222.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observe what happens when you turn the battery on/off when its signal is sent through an example gate.">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
       </Text>
-      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="875.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/bulbOff.png" />
-         </image>
-      </ImageView>
-      <ImageView accessibleRole="BUTTON" fitHeight="74.0" fitWidth="85.0" layoutX="612.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/not.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="324.0" layoutY="656.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tutorial complete!" textAlignment="CENTER" wrappingWidth="708.0980224609375">
+
+      <Text layoutX="309.0" layoutY="671.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tutorial complete!" textAlignment="CENTER" wrappingWidth="708.0980224609375">
          <font>
             <Font name="Vermin Vibes Regular" size="64.0" />
          </font>
       </Text>
-      <Text layoutX="286.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In the game, you can click a gate to add it to the frame, and then drag and drop it to move it around." textAlignment="CENTER">
+
+      <Pane fx:id="battery3" layoutX="271.0" layoutY="455.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="bulb1" layoutX="851.0" layoutY="278.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="not1" layoutX="593.0" layoutY="451.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="bulb2" layoutX="987.0" layoutY="456.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="battery1" layoutX="592.0" layoutY="143.0" prefHeight="100.0" prefWidth="100.0" />
+      <Pane fx:id="battery2" layoutX="350.0" layoutY="278.0" prefHeight="100.0" prefWidth="100.0" />
+      <Text layoutX="187.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In the levels of the game, you can click on a gate to add it to the frame, then drag and drop it to move it around.">
+         <font>
+            <Font name="Tahoma" size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="281.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" rotate="-6.3" scaleX="-0.5" scaleY="0.5">
+         <image>
+            <Image url="@images/arrow.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="433.0" layoutY="449.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="This is a terminal">
          <font>
             <Font name="Tahoma" size="18.0" />
          </font>
       </Text>
    </children>
-</AnchorPane>
+</Pane>

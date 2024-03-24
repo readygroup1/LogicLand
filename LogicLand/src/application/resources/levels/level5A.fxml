@@ -13,7 +13,8 @@
       <Pane fx:id="battery1" layoutX="31.0" layoutY="422.0" prefHeight="100.0" prefWidth="100.0" />
       <Pane fx:id="battery2" layoutX="40.0" layoutY="212.0" prefHeight="100.0" prefWidth="100.0" />
       <Pane fx:id="bulb" layoutX="1109.0" layoutY="251.0" prefHeight="100.0" prefWidth="100.0" />
-      <Button fx:id="back" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" text="Road Map" />
+      <Button fx:id="back" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="160.0" styleClass="menuBarButton" stylesheets="@../../application.css" text="Road Map">
+      	<font><Font name="Vermin Vibes Regular" size="24.0" /></font></Button>
       <ImageView fx:id="norGen" fitHeight="100.0" fitWidth="100.0" layoutX="489.0" layoutY="556.0" onMouseClicked="#norGenerator" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/nor.png" />
@@ -24,7 +25,7 @@
             <Image url="@../images/deleteOff.png" />
          </image>
       </ImageView>
-      <Label fx:id="title" layoutX="405.0" layoutY="92.0" text="Turn the bulb on with the gate below.">
+      <Label fx:id="title" layoutX="260.0" layoutY="80.0" text="Turn the bulb on with the gate below.">
          <font>
             <Font size="28.0" />
          </font>
@@ -33,16 +34,13 @@
       <Line endX="134.0" endY="-22.5" layoutX="121.0" layoutY="173.0" startX="135.0" startY="390.0" />
       <Line endX="143.5" endY="-171.0" layoutX="878.0" layoutY="322.0" startX="146.5" startY="241.0" />
       <Line endX="696.0" endY="4.5" layoutX="328.0" layoutY="559.0" startX="-71.5" startY="4.5" />
-      <Button layoutX="1139.0" layoutY="50.0" mnemonicParsing="false" onAction="#next" prefHeight="50.0" prefWidth="100.0" text="Next" />
-      <Button fx:id="checkWin" layoutX="758.0" layoutY="581.0" mnemonicParsing="false" onAction="#CheckWin" prefHeight="50.0" prefWidth="100.0" text="Check">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Button>
-      <Label layoutX="539.0" layoutY="19.0" text="Level5">
-         <font>
-            <Font size="50.0" />
-         </font>
-      </Label>
+      <Button layoutX="1096.0" layoutY="52.0" mnemonicParsing="false" onAction="#next" prefHeight="50.0" prefWidth="100.0" styleClass="backbutton" stylesheets="@../../application.css" text="Next">
+         <font><Font name="Vermin Vibes Regular" size="24.0" /></font></Button>
+      <Button layoutX="972.0" layoutY="52.0" mnemonicParsing="false" onAction="#prev" prefHeight="50.0" prefWidth="100.0" styleClass="instructorDashboard" stylesheets="@../../application.css" text="PREV">
+         <font><Font name="Vermin Vibes Regular" size="24.0" /></font></Button>
+      <Button fx:id="checkWin" layoutX="758.0" layoutY="581.0" mnemonicParsing="false" onAction="#CheckWin" prefHeight="50.0" prefWidth="100.0" styleClass="backbutton" stylesheets="@../../application.css" text="Check">
+         <font><Font name="Vermin Vibes Regular" size="24.0" /></font></Button>
+      <Label fx:id="currentLevelLabel" layoutX="260.0" layoutY="4.0" text="Level 5" textFill="WHITE">
+         <font><Font name="Vermin Vibes Regular" size="64.0" /></font></Label>
    </children>
 </Pane>

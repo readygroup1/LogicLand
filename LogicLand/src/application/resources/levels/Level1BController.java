@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
+import application.MusicPlayer;
 import application.resources.SceneSwitcher;
 import application.resources.audioPlayer;
 import application.resources.sandboxController;
@@ -79,6 +80,9 @@ public class Level1BController extends sandboxController implements Initializabl
 		
 		@FXML
 		Pane bulb;
+		
+		@FXML
+		Pane col1Pane;
 		
 		// Elements from the table
 		@FXML
@@ -179,7 +183,7 @@ public class Level1BController extends sandboxController implements Initializabl
 			
 			((batteryController)battery1.getProperties().get("controller")).checktype();
 			((batteryController)battery2.getProperties().get("controller")).checktype();
-
+			
 		}
 		
 		///----------------Check For Win -----------------------------------
@@ -538,6 +542,7 @@ public class Level1BController extends sandboxController implements Initializabl
 			}		
 		}
 		
+		/*MARKED FOR DELETION - DUPLICATE METHOD*/
 		public void backPart(ActionEvent event) throws IOException {			
 			audio.boopPlay();
 			try {			
@@ -577,6 +582,9 @@ public class Level1BController extends sandboxController implements Initializabl
 				return;
 	    	}
 	    	audio.boopPlay();
+	    	//play level music
+			MusicPlayer.stopMusic();
+			MusicPlayer.playBackgroundMusic();
 	    	try {
 	            String nextLevelFXML = "/application/resources/levels/level2A.fxml";
 	            sceneSwitcher.switchScene(event, nextLevelFXML);

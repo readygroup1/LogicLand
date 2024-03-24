@@ -121,6 +121,17 @@ public class optionsController implements Initializable {
 			exception.printStackTrace();				
 		}		
 	}
+	
+   public void gblHighscores(ActionEvent event) throws IOException {	
+		
+		try {	
+			audio.boopPlay();
+			sceneSwitcher.switchScene(event, "/application/resources/mainMenuHighscores.fxml");
+		}			
+		catch(IOException exception) {				
+			exception.printStackTrace();				
+		}		
+	}
 
    public void tutorial(ActionEvent event) throws IOException {	
 		
