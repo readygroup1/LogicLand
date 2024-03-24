@@ -46,6 +46,7 @@ public class optionsController implements Initializable {
 		public void logout(ActionEvent event) {
 			try {		
 				audio.boopPlay();
+				AccountManager.logout();
 				sceneSwitcher.switchScene(event, "mainMenu.fxml");
 			}			
 			catch(IOException exception) {				
