@@ -452,7 +452,7 @@ public class sandboxController implements Initializable{
 		String startType =((String)((Rectangle) event.getSource()).getProperties().get("type"));
 		
 		// Calculate the center of the Rectangle relative to the scene.
-		double startX = startNode.localToScene(startNode.getBoundsInLocal()).getMinX() + startNode.getWidth() / 2;
+		double startX = startNode.localToScene(startNode.getBoundsInLocal()).getMinX() + startNode.getWidth() / 1.5;
 		double startY = startNode.localToScene(startNode.getBoundsInLocal()).getMinY() + startNode.getHeight() / 2;
 
 		
