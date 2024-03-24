@@ -14,7 +14,7 @@ public class MusicPlayer {
     
     // link to copyright free music https://uppbeat.io/track/sulyya/mirthaflare
     // Path to the default background music
-    private static final String DEFAULT_BACKGROUND_MUSIC = "src/application/resources/sounds/backgroundmusic.wav";
+    private static final String DEFAULT_BACKGROUND_MUSIC = "src/application/resources/sounds/backgroundMusic.wav";
     // Path to the default level music
     private static final String DEFAULT_LEVEL_MUSIC = "src/application/resources/sounds/levelMusic.wav";
 
