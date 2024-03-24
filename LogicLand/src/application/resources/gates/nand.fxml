@@ -14,8 +14,8 @@
          </image>
       </ImageView>
       <Ellipse fx:id="body" fill="DODGERBLUE" layoutX="48.0" layoutY="49.0" opacity="0.0" radiusX="31.0" radiusY="34.0" stroke="BLACK" strokeType="INSIDE" />
-      <Rectangle fx:id="input1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="16.0" layoutX="2.0" layoutY="24.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
-      <Rectangle fx:id="input2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="16.0" layoutX="4.0" layoutY="61.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
-      <Rectangle fx:id="output" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="16.0" layoutX="76.0" layoutY="41.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+      <Rectangle fx:id="input1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="29.0" layoutX="-5.0" layoutY="18.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="33.0" />
+      <Rectangle fx:id="input2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="23.0" layoutX="-3.0" layoutY="54.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="27.0" />
+      <Rectangle fx:id="output" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="29.0" layoutX="76.0" layoutY="35.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="27.0" />
    </children>
 </Pane>

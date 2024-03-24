@@ -14,6 +14,6 @@
          </image>
       </ImageView>
       <Ellipse fx:id="body" fill="DODGERBLUE" layoutX="36.0" layoutY="32.0" opacity="0.0" radiusX="31.0" radiusY="34.0" stroke="BLACK" strokeType="INSIDE" />
-      <Rectangle fx:id="input1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="12.0" layoutX="28.0" layoutY="64.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="19.0" />
+      <Rectangle fx:id="input1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="22.0" layoutX="20.0" layoutY="58.0" onDragDetected="#startConnection" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="35.0" />
    </children>
 </Pane>
