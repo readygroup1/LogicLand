@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class AccountManager {
 	/** Stores the ID of the current user who is logged into the game */
-	private static int currentUserID;
+	private static int currentUserID = -1;
 	/** Stores whether the current user is an admin or not */
 	private static boolean isAdmin;
 	/** The database object that is used to interact with the database */
@@ -234,7 +234,7 @@ public class AccountManager {
 	public static int getPlayerID(String name) {
 		return db.getPlayerID(name);
 	}
-
+	
 	/**
 	 * This method returns a list of all the players in the database.
 	 * @return String
@@ -309,6 +309,14 @@ public class AccountManager {
 	public static void movePlayerToPublicClass(int playerID) {
 		db.movePlayerClass(playerID, 1);
 	}
+	
+	/**
+	 * This method is called when a player is logged out. Sets the current user back to -1
+	 */
+	public static void logout() {
+		AccountManager.currentUserID = -1;
+	}
+
 	
 	/**
 	 * This method deletes a player from the database
