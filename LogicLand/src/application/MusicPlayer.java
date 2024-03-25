@@ -14,9 +14,9 @@ public class MusicPlayer {
     
     // link to copyright free music https://uppbeat.io/track/sulyya/mirthaflare
     // Path to the default background music
-    private static final String DEFAULT_BACKGROUND_MUSIC = "src/application/resources/sounds/backgroundMusic.wav";
+    private static final String DEFAULT_BACKGROUND_MUSIC = "/application/resources/sounds/backgroundMusic.wav";
     // Path to the default level music
-    private static final String DEFAULT_LEVEL_MUSIC = "src/application/resources/sounds/levelMusic.wav";
+    private static final String DEFAULT_LEVEL_MUSIC = "/application/resources/sounds/levelMusic.wav";
 
     // Play the default background music
     public static void playBackgroundMusic() {
@@ -30,7 +30,7 @@ public class MusicPlayer {
 
     // Play music from the given path
     private static void playMusic(String musicPath) {
-        Media media = new Media(new File(musicPath).toURI().toString());
+        Media media = new Media(MusicPlayer.class.getResource(musicPath).toExternalForm());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // loop indefinitely
         mediaPlayer.play();
