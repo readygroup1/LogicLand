@@ -444,9 +444,6 @@ public class sandboxController implements Initializable{
 	public void beginConnection(MouseEvent event) {
 		
 		
-		
-		
-		
 		// Store the start node information while the line is being drawn.
 		Rectangle startNode = (Rectangle) event.getSource();
 		String startType =((String)((Rectangle) event.getSource()).getProperties().get("type"));
