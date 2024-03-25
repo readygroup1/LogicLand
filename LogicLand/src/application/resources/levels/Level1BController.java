@@ -1,6 +1,7 @@
 package application.resources.levels;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.util.EnumMap;
 import java.util.Map;
