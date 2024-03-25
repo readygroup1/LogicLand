@@ -20,7 +20,6 @@ import application.resources.gates.norController;
 import application.resources.gates.notController;
 import application.resources.gates.orController;
 import application.resources.gates.xorController;
-import application.resources.levels.LevelControllerTemplate.Type;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
