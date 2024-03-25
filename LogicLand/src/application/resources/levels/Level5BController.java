@@ -507,6 +507,41 @@ public class Level5BController extends sandboxController implements Initializabl
 			// Release the mouse binding from beginConnection so the line isn't created again.
 			circuitBoardPane.setOnMouseReleased(null);
 			
+			// replaces old wire when a new one is made
+			if(outputTerminal.getProperties().get("wire")!= null && inputTerminal.getProperties().get("wire")!= null && outputTerminal.getProperties().get("wire")== inputTerminal.getProperties().get("wire")) {
+				circuitBoardPane.getChildren().remove(outputTerminal.getProperties().get("wire"));
+				outputTerminal.getProperties().put("wire", null);
+				inputTerminal.getProperties().put("wire", null);
+			}
+			
+			if(outputTerminal.getProperties().get("wire")!= null) {
+				circuitBoardPane.getChildren().remove(outputTerminal.getProperties().get("wire"));
+				outputTerminal.getProperties().put("wire", null);
+
+			}
+			
+			if(inputTerminal.getProperties().get("wire")!= null) {
+				circuitBoardPane.getChildren().remove(inputTerminal.getProperties().get("wire"));
+				inputTerminal.getProperties().put("wire", null);
+
+			}
+			
+			if(outputTerminal.getProperties().get("put") != null) {
+				((Rectangle)outputTerminal.getProperties().get("put")).getProperties().put("put", null);
+			}
+			if(inputTerminal.getProperties().get("put") != null) {
+				((Rectangle)inputTerminal.getProperties().get("put")).getProperties().put("put", null);
+
+			}
+			
+			
+			outputTerminal.getProperties().put("wire", connectLine);
+			outputTerminal.getProperties().put("put", inputTerminal);	//Andres
+			
+			inputTerminal.getProperties().put("wire", connectLine);
+			inputTerminal.getProperties().put("put", outputTerminal);
+			
+			
 		}
 		
 		public void deleteButton(MouseEvent event) {
@@ -530,6 +565,17 @@ public class Level5BController extends sandboxController implements Initializabl
 			if(deleteState && event.getY() < 570 && event.getY() > 155 && event.getX() < 1000 && event.getX() > 260 ){
 				//If it is wire
 				if(event.getPickResult().getIntersectedNode() instanceof Line) {
+					//deletes connection between wires
+					
+					Rectangle input = ((Rectangle)(event.getPickResult().getIntersectedNode().getProperties().get("connection1")));
+					Rectangle output = ((Rectangle)(event.getPickResult().getIntersectedNode().getProperties().get("connection2")));
+					input.getProperties().put("put", null);
+					output.getProperties().put("put", null);
+					
+					callChecktype(input);
+					callChecktype(output);
+					
+					//removes wire from screen
 					circuitBoardPane.getChildren().remove(event.getPickResult().getIntersectedNode());
 				}
 				

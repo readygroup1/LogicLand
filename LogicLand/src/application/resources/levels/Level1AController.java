@@ -532,10 +532,6 @@ public class Level1AController extends sandboxController implements Initializabl
 					
 					callChecktype(input);
 					callChecktype(output);
-						
-					
-					
-					
 					
 					//removes wire from screen 
 					circuitBoardPane.getChildren().remove(event.getPickResult().getIntersectedNode());
