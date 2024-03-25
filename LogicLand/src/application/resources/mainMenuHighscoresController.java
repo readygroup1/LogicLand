@@ -63,7 +63,7 @@ public class mainMenuHighscoresController implements Initializable{
 		try {		
 			audio.boopPlay();
 			/* Determine if user is logged in or not */
-			if (AccountManager.getCurrentUser() == 0) {
+			if (AccountManager.getCurrentUser() == -1) {
 				/* If not, go to mainMenu.fxml */
 				sceneSwitcher.switchScene(event, "mainMenu.fxml");
 			} else {

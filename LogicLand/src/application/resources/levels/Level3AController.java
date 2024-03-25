@@ -20,15 +20,17 @@ import application.resources.gates.norController;
 import application.resources.gates.notController;
 import application.resources.gates.orController;
 import application.resources.gates.xorController;
-import application.resources.levels.LevelControllerTemplate.Type;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -74,7 +76,7 @@ public class Level3AController extends sandboxController implements Initializabl
 		@FXML
 		Button checkWin;
 		
-		 audioPlayer audio = new audioPlayer();
+		audioPlayer audio = new audioPlayer();
 		
 		// I used these panes a way to store the coordinates of where I wanted the preloaded objects.
 		@FXML
@@ -159,6 +161,17 @@ public class Level3AController extends sandboxController implements Initializabl
 			//if bulb is on win
 			if(endBulb.getState()) {
 				title.setText("Great Job! Head to the next part!");
+				Alert alert = new Alert(AlertType.INFORMATION);
+			 	// Apply inline styling
+		        alert.getDialogPane().setStyle("-fx-background-color: #F38307;");
+		        alert.getDialogPane().lookupButton(ButtonType.OK).setStyle("-fx-background-color: #2a80b9; -fx-text-fill: #ffffff;");
+		        
+		        alert.setTitle("Level Completed");
+		        alert.setHeaderText(null);
+		        alert.setContentText("Great Job! Level 3A Completed!");
+
+		        // This will block the user input until the modal dialog is dismissed
+		        alert.showAndWait();
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) != 50) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(3), 50);
 				}
@@ -456,10 +469,10 @@ public class Level3AController extends sandboxController implements Initializabl
 			connectLine.setStrokeWidth(5);
 			
 			// Set the bindings. These four lines are Kinda copied code. Need to document or change.
-			connectLine.startXProperty().bind(outputTerminal.layoutXProperty().add(outputPane.layoutXProperty().add(outputTerminal.getBoundsInParent().getWidth() / 2)));
+			connectLine.startXProperty().bind(outputTerminal.layoutXProperty().add(outputPane.layoutXProperty().add(outputTerminal.getBoundsInParent().getWidth() / 1.5)));
 			connectLine.startYProperty().bind(outputTerminal.layoutYProperty().add(outputPane.layoutYProperty().add(outputTerminal.getBoundsInParent().getHeight() / 2)));
 
-			connectLine.endXProperty().bind(inputTerminal.layoutXProperty().add(inputPane.layoutXProperty().add(inputTerminal.getBoundsInParent().getWidth() / 2)));
+			connectLine.endXProperty().bind(inputTerminal.layoutXProperty().add(inputPane.layoutXProperty().add(inputTerminal.getBoundsInParent().getWidth() / 4)));
 			connectLine.endYProperty().bind(inputTerminal.layoutYProperty().add(inputPane.layoutYProperty().add(inputTerminal.getBoundsInParent().getHeight() / 2)));
 			
 			connectLine.getProperties().put("connection1",outputTerminal);
@@ -471,6 +484,41 @@ public class Level3AController extends sandboxController implements Initializabl
 			
 			// Release the mouse binding from beginConnection so the line isn't created again.
 			circuitBoardPane.setOnMouseReleased(null);
+			
+			// replaces old wire when a new one is made
+						if(outputTerminal.getProperties().get("wire")!= null && inputTerminal.getProperties().get("wire")!= null && outputTerminal.getProperties().get("wire")== inputTerminal.getProperties().get("wire")) {
+							circuitBoardPane.getChildren().remove(outputTerminal.getProperties().get("wire"));
+							outputTerminal.getProperties().put("wire", null);
+							inputTerminal.getProperties().put("wire", null);
+						}
+						
+						if(outputTerminal.getProperties().get("wire")!= null) {
+							circuitBoardPane.getChildren().remove(outputTerminal.getProperties().get("wire"));
+							outputTerminal.getProperties().put("wire", null);
+
+						}
+						
+						if(inputTerminal.getProperties().get("wire")!= null) {
+							circuitBoardPane.getChildren().remove(inputTerminal.getProperties().get("wire"));
+							inputTerminal.getProperties().put("wire", null);
+
+						}
+						
+						if(outputTerminal.getProperties().get("put") != null) {
+							((Rectangle)outputTerminal.getProperties().get("put")).getProperties().put("put", null);
+						}
+						if(inputTerminal.getProperties().get("put") != null) {
+							((Rectangle)inputTerminal.getProperties().get("put")).getProperties().put("put", null);
+
+						}
+						
+						
+						outputTerminal.getProperties().put("wire", connectLine);
+						outputTerminal.getProperties().put("put", inputTerminal);	//Andres
+						
+						inputTerminal.getProperties().put("wire", connectLine);
+						inputTerminal.getProperties().put("put", outputTerminal);
+						
 			
 		}
 		

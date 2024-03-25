@@ -88,6 +88,7 @@ public class bulbController extends gateObject implements Initializable {
 		input1.getProperties().put("parentGate", this);//Andres
 		input1.getProperties().put("put", null);
 		input1.getProperties().put("ClassType", "BULB");
+		input1.getProperties().put("wire", null);
 		
 	}
 	
