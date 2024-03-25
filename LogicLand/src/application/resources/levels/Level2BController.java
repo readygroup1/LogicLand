@@ -27,9 +27,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -192,6 +195,17 @@ public class Level2BController extends sandboxController implements Initializabl
 			
 			if(Textoutput1.getText().equals("0") && Textoutput2.getText().equals("1") && Textoutput3.getText().equals("1") && Textoutput4.getText().equals("1")) {
 				title.setText("Great Job! Head to the next Level!");
+				Alert alert = new Alert(AlertType.INFORMATION);
+			 	// Apply inline styling
+		        alert.getDialogPane().setStyle("-fx-background-color: #F38307;");
+		        alert.getDialogPane().lookupButton(ButtonType.OK).setStyle("-fx-background-color: #2a80b9; -fx-text-fill: #ffffff;");
+		        
+		        alert.setTitle("Level Completed");
+		        alert.setHeaderText(null);
+		        alert.setContentText("Great Job! Level 2B Completed!");
+
+		        // This will block the user input until the modal dialog is dismissed
+		        alert.showAndWait();
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(2)) != 75) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(2), 75);
 				}

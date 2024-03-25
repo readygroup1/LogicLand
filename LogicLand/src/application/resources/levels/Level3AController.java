@@ -27,8 +27,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -159,6 +162,17 @@ public class Level3AController extends sandboxController implements Initializabl
 			//if bulb is on win
 			if(endBulb.getState()) {
 				title.setText("Great Job! Head to the next part!");
+				Alert alert = new Alert(AlertType.INFORMATION);
+			 	// Apply inline styling
+		        alert.getDialogPane().setStyle("-fx-background-color: #F38307;");
+		        alert.getDialogPane().lookupButton(ButtonType.OK).setStyle("-fx-background-color: #2a80b9; -fx-text-fill: #ffffff;");
+		        
+		        alert.setTitle("Level Completed");
+		        alert.setHeaderText(null);
+		        alert.setContentText("Great Job! Level 3A Completed!");
+
+		        // This will block the user input until the modal dialog is dismissed
+		        alert.showAndWait();
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) != 50) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(3), 50);
 				}
