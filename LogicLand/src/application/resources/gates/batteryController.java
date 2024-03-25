@@ -80,13 +80,14 @@ public class batteryController extends gateObject implements Initializable{
 			output1.getProperties().put("parentGate", this);//Andres
 			output1.getProperties().put("put", null);
 			output1.getProperties().put("ClassType", "BATTERY");
+			output1.getProperties().put("wire", null);
 			
 			output.getProperties().put("type", "output");
 			output.getProperties().put("state", false);
 			output.getProperties().put("parentGate", this);//Andres
 			output.getProperties().put("put", null);
 			output.getProperties().put("ClassType", "BATTERY");
-			
+			output.getProperties().put("wire", null);
 			
 			body.getProperties().put("type", "body");
 		}

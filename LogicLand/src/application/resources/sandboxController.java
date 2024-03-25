@@ -485,9 +485,8 @@ public class sandboxController implements Initializable{
 					
 					// Check which is the output to match the parameter order of makeWire.
 					if (startType == "output") {
-						endNode.getProperties().put("put", startNode);	//Andres
-						startNode.getProperties().put("put", endNode);
 						
+						this.makeWire(startNode, endNode);
 						
 						switch( (String)(startNode.getProperties().get("ClassType")) ) {
 						case "AND":
@@ -522,17 +521,15 @@ public class sandboxController implements Initializable{
 						}
 						
 						
-						this.makeWire(startNode, endNode);
+						
 					
 					}
 					
 					else {
 						
+						this.makeWire(endNode, startNode);
 						
-						
-						endNode.getProperties().put("put", startNode);	//Andres
-						startNode.getProperties().put("put", endNode);
-						
+				
 						switch( (String)(endNode.getProperties().get("ClassType")) ) {
 						case "AND":
 							((andController)(endNode.getProperties().get("parentGate"))).checktype();			//Andres
@@ -560,7 +557,7 @@ public class sandboxController implements Initializable{
 							break;
 						}
 						
-						this.makeWire(endNode, startNode);
+						
 					}
 				}
 			}
@@ -604,6 +601,40 @@ public class sandboxController implements Initializable{
 		// Release the mouse binding from beginConnection so the line isn't created again.
 		circuitBoardPane.setOnMouseReleased(null);
 		
+		
+		// replaces old wire when a new one is made
+		if(outputTerminal.getProperties().get("wire")!= null && inputTerminal.getProperties().get("wire")!= null && outputTerminal.getProperties().get("wire")== inputTerminal.getProperties().get("wire")) {
+			circuitBoardPane.getChildren().remove(outputTerminal.getProperties().get("wire"));
+			outputTerminal.getProperties().put("wire", null);
+			inputTerminal.getProperties().put("wire", null);
+		}
+		
+		if(outputTerminal.getProperties().get("wire")!= null) {
+			circuitBoardPane.getChildren().remove(outputTerminal.getProperties().get("wire"));
+			outputTerminal.getProperties().put("wire", null);
+
+		}
+		
+		if(inputTerminal.getProperties().get("wire")!= null) {
+			circuitBoardPane.getChildren().remove(inputTerminal.getProperties().get("wire"));
+			inputTerminal.getProperties().put("wire", null);
+
+		}
+		
+		if(outputTerminal.getProperties().get("put") != null) {
+			((Rectangle)outputTerminal.getProperties().get("put")).getProperties().put("put", null);
+		}
+		if(inputTerminal.getProperties().get("put") != null) {
+			((Rectangle)inputTerminal.getProperties().get("put")).getProperties().put("put", null);
+
+		}
+		
+		
+		outputTerminal.getProperties().put("wire", connectLine);
+		outputTerminal.getProperties().put("put", inputTerminal);	//Andres
+		
+		inputTerminal.getProperties().put("wire", connectLine);
+		inputTerminal.getProperties().put("put", outputTerminal);
 	}
 	
 	

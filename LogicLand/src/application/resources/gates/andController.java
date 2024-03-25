@@ -96,6 +96,7 @@ public class andController extends gateObject implements Initializable {
 		input1.getProperties().put("parentGate", this);//Andres
 		input1.getProperties().put("put", null);
 		input1.getProperties().put("ClassType", "AND");
+		input1.getProperties().put("wire", null);
 
 		
 		input2.getProperties().put("type", "input");
@@ -103,12 +104,14 @@ public class andController extends gateObject implements Initializable {
 		input2.getProperties().put("parentGate", this);//Andres
 		input2.getProperties().put("put", null);
 		input2.getProperties().put("ClassType", "AND");
+		input2.getProperties().put("wire", null);
 		
 		output.getProperties().put("type", "output");
 		output.getProperties().put("state", false);//Andres
 		output.getProperties().put("parentGate", this);//Andres
 		output.getProperties().put("put", null);	//Andres
 		output.getProperties().put("ClassType", "AND");
+		output.getProperties().put("wire", null);
 		
 		
 		body.getProperties().put("type", "body");
