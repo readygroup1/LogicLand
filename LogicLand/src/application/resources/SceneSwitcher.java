@@ -1,3 +1,16 @@
+/** This class was created to switch between difference scenes within the same window.
+ * 
+ * @author Nicholas Howard
+ * @category 
+ * @version 1.0
+ *
+ * Parts of this code, especially pertaining to the function chains used to retrieve an open window from an event object,
+ * were inspired by / borrowed from a tutorial "JavaFX Switch Scenes" found here https://www.youtube.com/watch?v=hcM-R-YOKkQ */
+
+
+
+
+
 package application.resources;
 
 
@@ -23,7 +36,15 @@ public class SceneSwitcher {
 		public SceneSwitcher() {
 			
 		}		
-		// Kinda copied code. I change it a bit. Might Need to document.
+		/** This is a function used to switch the current scene in a window.
+		 * It takes an event as a parameter, which is generated when a user click a button to move to a new screen.
+		 * It also takes a string which is a location of the fxml file of the new screen.
+		 * It switches the current window that is open to the new screen and returns nothing 
+		 * 
+		 * @param EventObject An event of the current scene.
+		 * @param String The file location of the next scene.
+		 * @throws IOException if file of next scene, or any of its dependencies, cannot be found. 
+		 * */
 		public void switchScene(EventObject event, String fxml) throws IOException {
 			try {
 				if(fxml.equals("/application/resources/sandbox.fxml")) {
@@ -56,10 +77,18 @@ public class SceneSwitcher {
 			}
 				
 		}
-		// Copied Code
+		/** This is a function very similar to sceneSwitch, which is used to switch the current scene in a window, but with a transition effect.
+		 * It takes an event as a parameter, which is generated when a user click a button to move to a new screen.
+		 * It also takes a string which is a location of the fxml file of the new screen.
+		 * It switches the current window that is open to the new screen and returns nothing 
+		 * 
+		 * @param EventObject An event of the current scene.
+		 * @param String The file location of the next scene.
+		 * @throws IOException if file of next scene, or any of its dependencies, cannot be found. 
+		 * */
 		public void fadeSwitchScene(ActionEvent event, String fxml) {
 			try {
-				  //kinda copied code. Might Need to document.
+				  
 				  root = FXMLLoader.load(getClass().getResource(fxml));
 				  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		    } 
