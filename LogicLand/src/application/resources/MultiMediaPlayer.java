@@ -42,8 +42,8 @@ public class MultiMediaPlayer {
     String videoDemo1B = getClass().getResource("/application/resources/1Bclip.mp4").toExternalForm();
     Media video1B = new Media(videoDemo1B);
    
-    double defaultBoop = 0.2;
-    double defaultVolume = 0.9;
+    static public double defaultBoop = 0.2;
+    static public double defaultVolume = 0.9;
     
     /**
      * Play "boop" sound.
@@ -57,6 +57,7 @@ public class MultiMediaPlayer {
     public void errorPlay() {
     	MediaPlayer error = new MediaPlayer(errorSound);
     	error.play();
+    	error.setVolume(defaultBoop);
     }
     
     public void gatePlay() {
@@ -133,6 +134,16 @@ public class MultiMediaPlayer {
     
     
     public void setDefaultVolume(double volume) {
+        if (volume < 0.0) {
+            volume = 0.0;
+        } else if (volume > 1.0) {
+            volume = 1.0;
+        }
+        
+        defaultVolume = volume;
+    }
+    
+    public void setBoopVolume(double volume) {
         if (volume < 0.0) {
             volume = 0.0;
         } else if (volume > 1.0) {

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.AccountManager;
+import application.MusicPlayer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -163,5 +164,29 @@ public class optionsController implements Initializable {
 		/* I feel like this code makes more sense? We can clear it up later. -Thomas */
 			
 
+	}
+	
+	
+	public void mute() {
+		
+		if(MultiMediaPlayer.defaultBoop == 0) {
+			MultiMediaPlayer.defaultBoop = 0.2;
+			MultiMediaPlayer.defaultVolume = 0.6;
+			MusicPlayer.defaultVolume = 0.3;
+			MusicPlayer.playBackgroundMusic();
+			
+			System.out.print("music on");
+			
+		}
+		else{
+			MultiMediaPlayer.defaultBoop = 0;
+			MultiMediaPlayer.defaultVolume = 0;
+			MusicPlayer.defaultVolume = 0;
+			MusicPlayer.stopMusic();
+			System.out.print("music off");
+		}
+		
+		
+		
 	}
 }

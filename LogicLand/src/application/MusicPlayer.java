@@ -9,7 +9,7 @@ import java.io.File;
 
 public class MusicPlayer {
     private static MediaPlayer mediaPlayer;
-    private static double defaultVolume = 0.3; // Default volume level
+    public static double defaultVolume = 0.3; // Default volume level
     
     
     // link to copyright free music https://uppbeat.io/track/sulyya/mirthaflare
@@ -61,7 +61,7 @@ public class MusicPlayer {
     // Reset the volume to the default level
     public static void resetVolume() {
         if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
-            mediaPlayer.setVolume(defaultVolume);
+            mediaPlayer.setVolume(0.3);
         }
     }
 }
