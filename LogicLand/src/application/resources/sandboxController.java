@@ -169,7 +169,7 @@ public class sandboxController implements Initializable{
 			// Delete is always bound to the click function but only works when deleteState is set to true by the delete button.
 			circuitBoardPane.setOnMousePressed(event ->{this.delete(event);});
 			
-			circuitBoardPane.setOnKeyPressed(event ->{
+			circuitBoardPane.setOnKeyReleased(event ->{
 				
 				try {
 					
