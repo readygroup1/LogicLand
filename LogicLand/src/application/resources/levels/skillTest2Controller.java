@@ -60,7 +60,7 @@ public class skillTest2Controller extends sandboxController implements Initializ
 		ImageView orGen;
 		//@FXML
 		ImageView bulbGen;
-		//@FXML
+		@FXML
 		ImageView deleteImage;
 		@FXML
 		ImageView nandGen;
