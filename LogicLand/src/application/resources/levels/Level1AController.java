@@ -186,6 +186,8 @@ public class Level1AController extends sandboxController implements Initializabl
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) != 50) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(1), 50);
 				}
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		
@@ -259,6 +261,7 @@ public class Level1AController extends sandboxController implements Initializabl
 				
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
+				audio.gatePlay();
 				object.setViewOrder(-1);
 				object.setLayoutY(origin.getLayoutY() - 100);
 				object.setLayoutX(origin.getLayoutX());
@@ -402,7 +405,9 @@ public class Level1AController extends sandboxController implements Initializabl
 						if (startType == "output") {
 							
 							this.makeWire(startNode, endNode);
+							audio.wirePlay();
 							callChecktype(startNode);
+							
 							
 							
 						
@@ -412,6 +417,7 @@ public class Level1AController extends sandboxController implements Initializabl
 							
 							
 							this.makeWire(endNode, startNode);
+							audio.wirePlay();
 							callChecktype(endNode);
 							
 							

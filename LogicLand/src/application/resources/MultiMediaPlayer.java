@@ -21,17 +21,29 @@ public class MultiMediaPlayer {
 	// Correct way to format the local file path as a URI
     String audioFile = getClass().getResource("/application/resources/sounds/boop.wav").toExternalForm();
     String errorSoundFile = getClass().getResource("/application/resources/sounds/error.wav").toExternalForm();
+    String newGate = getClass().getResource("/application/resources/sounds/newGate2.wav").toExternalForm();
+    String newWire = getClass().getResource("/application/resources/sounds/newWire.wav").toExternalForm();
+    
+    
     // Creating a media object for the audio
     Media sound = new Media(audioFile);
     Media errorSound = new Media(errorSoundFile);
+    
+    // Creating media object for gate audio
+    Media gateSound = new Media(newGate);
+    Media wireSound = new Media(newWire);
+    
     // Creating a MediaPlayer with the media
     MediaPlayer boop = new MediaPlayer(sound);
+    
     
     String videoDemo1A = getClass().getResource("/application/resources/1Aclip.mp4").toExternalForm();
     Media video1A = new Media(videoDemo1A);
     String videoDemo1B = getClass().getResource("/application/resources/1Bclip.mp4").toExternalForm();
     Media video1B = new Media(videoDemo1B);
    
+    double defaultBoop = 0.2;
+    double defaultVolume = 0.9;
     
     /**
      * Play "boop" sound.
@@ -39,6 +51,7 @@ public class MultiMediaPlayer {
     public void boopPlay() {
     	// Playing the audio
         boop.play();
+        boop.setVolume(defaultBoop);
     }
    
     public void errorPlay() {
@@ -46,6 +59,17 @@ public class MultiMediaPlayer {
     	error.play();
     }
     
+    public void gatePlay() {
+    	MediaPlayer gate = new MediaPlayer(gateSound);
+    	gate.play();
+    	gate.setVolume(defaultVolume);
+    }
+    
+    public void wirePlay() {
+    	MediaPlayer wire = new MediaPlayer(wireSound);
+    	wire.play();
+    	wire.setVolume(defaultVolume);
+    }
     public void videoDemoPlay(int mode) {
     	MediaPlayer mediaPlayer;
 		MediaView mediaView;
@@ -106,6 +130,23 @@ public class MultiMediaPlayer {
         // Show the dialog and wait for it to be closed
         Platform.runLater(dialog::showAndWait);
     }
+    
+    
+    public void setDefaultVolume(double volume) {
+        if (volume < 0.0) {
+            volume = 0.0;
+        } else if (volume > 1.0) {
+            volume = 1.0;
+        }
+        
+        defaultVolume = volume;
+    }
+    
+        
+        
+    
+    
+    
 
     
     

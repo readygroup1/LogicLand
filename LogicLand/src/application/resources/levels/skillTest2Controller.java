@@ -170,11 +170,13 @@ public class skillTest2Controller extends sandboxController implements Initializ
 			        
 			        alert.setTitle("Level Completed");
 			        alert.setHeaderText(null);
-			        alert.setContentText("Great Job! Move on to Level5");
+			        alert.setContentText("Great Job! Move on to Level 5");
 
 			        // This will block the user input until the modal dialog is dismissed
 			        alert.showAndWait();
 			        
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		
@@ -249,6 +251,7 @@ public class skillTest2Controller extends sandboxController implements Initializ
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
 				object.setViewOrder(-1);
+				audio.gatePlay();
 				object.setLayoutY(origin.getLayoutY() - 100);
 				object.setLayoutX(origin.getLayoutX());
 			}		
@@ -391,6 +394,8 @@ public class skillTest2Controller extends sandboxController implements Initializ
 						if (startType == "output") {
 							
 							this.makeWire(startNode, endNode);
+							audio.wirePlay();
+
 							callChecktype(startNode);
 							
 							
@@ -401,6 +406,8 @@ public class skillTest2Controller extends sandboxController implements Initializ
 							
 							
 							this.makeWire(endNode, startNode);
+							audio.wirePlay();
+
 							callChecktype(endNode);
 							
 							
