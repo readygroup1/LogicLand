@@ -308,6 +308,8 @@ public class Level4BController extends sandboxController implements Initializabl
 				
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
+				audio.gatePlay();
+
 				object.setViewOrder(-1);
 				object.setLayoutY(origin.getLayoutY() - 100);
 				object.setLayoutX(origin.getLayoutX());
@@ -444,6 +446,8 @@ public class Level4BController extends sandboxController implements Initializabl
 						// Check which is the output to match the parameter order of makeWire.
 						if (startType == "output") {
 							this.makeWire(startNode, endNode);
+							audio.wirePlay();
+
 							callChecktype(startNode);
 							
 							
@@ -453,6 +457,8 @@ public class Level4BController extends sandboxController implements Initializabl
 						
 						else {
 							this.makeWire(endNode, startNode);
+							audio.wirePlay();
+
 							callChecktype(endNode);
 							
 							

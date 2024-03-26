@@ -157,38 +157,42 @@ public class sandboxController implements Initializable{
 			circuitBoardPane.setOnKeyPressed(event ->{
 				
 				try {
-				switch(event.getCode()) {
-				
-				case Q:
-						this.batteryGenerator();
-					break;
-				case W:
-						this.andGenerator();
-					break;
-				case E:
-						this.orGenerator();
-					break;
-				case R:
-						this.notGenerator();
-					break;
-				case T:
-						this.nandGenerator();
-					break;
-				case Y:
-						this.norGenerator();
-					break;
-				case U:
-						this.xorGenerator();
-					break;
-				case I:
-						this.bulbGenerator();
-					break;
-
-				case O:
-
-						this.deleteButton(null);
 					
-					break;
+					
+					
+					switch(event.getCode()) {
+					
+					case Q:
+							this.batteryGenerator();
+						break;
+					case W:
+							this.andGenerator();
+						break;
+					case E:
+							this.orGenerator();
+						break;
+					case R:
+							this.notGenerator();
+						break;
+					case T:
+							this.nandGenerator();
+						break;
+					case Y:
+							this.norGenerator();
+						break;
+					case U:
+							this.xorGenerator();
+						break;
+					case I:
+							this.bulbGenerator();
+						break;
+	
+					case O:
+	
+							this.deleteButton(null);
+						
+						break;
+					
 				}
 			}
 				catch (Exception e) {
@@ -266,6 +270,7 @@ public class sandboxController implements Initializable{
 			
 			// Display the object
 			circuitBoardPane.getChildren().add(object);
+			audio.gatePlay();
 			object.setLayoutY(origin.getLayoutY() - 100);
 			object.setLayoutX(origin.getLayoutX());
 		}		
@@ -484,6 +489,7 @@ public class sandboxController implements Initializable{
 					if (startType == "output") {
 						
 						this.makeWire(startNode, endNode);
+						audio.wirePlay();
 						
 						switch( (String)(startNode.getProperties().get("ClassType")) ) {
 						case "AND":
@@ -525,7 +531,7 @@ public class sandboxController implements Initializable{
 					else {
 						
 						this.makeWire(endNode, startNode);
-						
+						audio.wirePlay();
 				
 						switch( (String)(endNode.getProperties().get("ClassType")) ) {
 						case "AND":

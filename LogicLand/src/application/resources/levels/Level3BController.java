@@ -300,6 +300,8 @@ public class Level3BController extends sandboxController implements Initializabl
 				
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
+				audio.gatePlay();
+
 				object.setViewOrder(-1);
 				object.setLayoutY(origin.getLayoutY() - 100);
 				object.setLayoutX(origin.getLayoutX());
@@ -435,26 +437,23 @@ public class Level3BController extends sandboxController implements Initializabl
 						
 						// Check which is the output to match the parameter order of makeWire.
 						if (startType == "output") {
-							endNode.getProperties().put("put", startNode);	//Andres
-							startNode.getProperties().put("put", endNode);
 							
+							this.makeWire(startNode, endNode);
+							audio.wirePlay();
 							callChecktype(startNode);
 							
 							
-							this.makeWire(startNode, endNode);
+							
 						
 						}
 						
 						else {
 							
-							
-							
-							endNode.getProperties().put("put", startNode);	//Andres
-							startNode.getProperties().put("put", endNode);
-							
+							this.makeWire(endNode, startNode);
+							audio.wirePlay();
 							callChecktype(endNode);
 							
-							this.makeWire(endNode, startNode);
+							
 						}
 					}
 				}
