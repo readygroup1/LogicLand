@@ -27,7 +27,7 @@ public class optionsController implements Initializable {
 	
 		SceneSwitcher sceneSwitcher = new SceneSwitcher();
 		
-		audioPlayer audio = new audioPlayer();
+		MultiMediaPlayer audio = new MultiMediaPlayer();
 		
 	//-------------Button Functions------------------------
 		

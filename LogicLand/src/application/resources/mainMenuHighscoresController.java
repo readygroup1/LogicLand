@@ -42,7 +42,7 @@ public class mainMenuHighscoresController implements Initializable{
 	@FXML
 	Text fifthScore;
 	
-	audioPlayer audio = new audioPlayer();
+	MultiMediaPlayer audio = new MultiMediaPlayer();
 	
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		ArrayList<String> top5Names = AccountManager.getTopFiveNames();

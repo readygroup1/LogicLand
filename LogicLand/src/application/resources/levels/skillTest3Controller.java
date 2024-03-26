@@ -6,7 +6,6 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import application.AccountManager;
 import application.MusicPlayer;
 import application.resources.SceneSwitcher;
 import application.resources.MultiMediaPlayer;
@@ -27,11 +26,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -39,8 +37,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
-public class Level6BController extends sandboxController implements Initializable {
+public class skillTest3Controller extends sandboxController implements Initializable {
 
 	// ----------------Variables ---------------------------------------
 		public Boolean deleteState = false;
@@ -65,46 +64,30 @@ public class Level6BController extends sandboxController implements Initializabl
 		ImageView deleteImage;
 		//@FXML
 		ImageView nandGen;
-		//@FXML
+		@FXML
 		ImageView norGen;
 		@FXML
 		ImageView xorGen;
 		
+		@FXML
+		Label title;
 		
+		@FXML
+		Button checkWin;
 		
-		// I used these panes a way to store the coordinates of where I wanted the objects.
+		MultiMediaPlayer audio = new MultiMediaPlayer();
+		
+		// I used these panes a way to store the coordinates of where I wanted the preloaded objects.
 		@FXML
 		Pane battery1;
 		@FXML
 		Pane battery2;
-		@FXML 
-		Pane xor1;
 		
 		@FXML
 		Pane bulb;
 		
-		// Elements from the table
-		@FXML
-		Button checkOutput;
-		@FXML
-        TextField Textoutput1;
-		@FXML
-        TextField Textoutput2;
-		@FXML
-        TextField Textoutput3;
-		@FXML
-        TextField Textoutput4;
 		
-		@FXML
-		Label title;
-		
-		// Store the current level
-	    private int currentLevel; // currentLevel as its integer value
-
-	    @FXML
-	    private Label currentLevelLabel; // Inject the Label from FXML
-	    
-	    MultiMediaPlayer audio = new MultiMediaPlayer();
+		private bulbController endBulb;
 		
 		//-------------Constants / Resources--------------------------------------------
 		
@@ -121,6 +104,13 @@ public class Level6BController extends sandboxController implements Initializabl
 		// --------------------Initializer-----------------------------------------
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
+			
+			
+			//play level music
+			MusicPlayer.stopMusic();
+			MusicPlayer.playLevelMusic();
+			
+			
 			
 			// Create Enum Map to file locations. This is used in the parameters for load. There is probably somewhere better I could put this initialization.
 			
@@ -140,7 +130,6 @@ public class Level6BController extends sandboxController implements Initializabl
 			// Use Load to create the preloaded object and store them in the previous placeholders.
 			 try {
 				battery1 = this.load(battery1, Type.BATTERY);
-			
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -158,90 +147,39 @@ public class Level6BController extends sandboxController implements Initializabl
 				e.printStackTrace();
 			}
 			 
-			try {
-				xor1 = this.load(xor1, Type.XOR);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			 
+			 endBulb = ((bulbController) bulb.getProperties().get("controller"));
+			// Create function calls to make wire if you want connections
 			
-			((batteryController)battery1.getProperties().get("controller")).getOutput1().getProperties().put("put",((xorController) xor1.getProperties().get("controller")).getInput1());
-			((xorController) xor1.getProperties().get("controller")).getInput1().getProperties().put("put", ((batteryController)battery1.getProperties().get("controller")).getOutput1());
 			 
 			
-			((batteryController)battery2.getProperties().get("controller")).getOutput1().getProperties().put("put",((xorController) xor1.getProperties().get("controller")).getInput2());
-			((xorController) xor1.getProperties().get("controller")).getInput2().getProperties().put("put", ((batteryController)battery2.getProperties().get("controller")).getOutput1());
 			
-			((xorController) xor1.getProperties().get("controller")).getOutput().getProperties().put("put", ( (bulbController) bulb.getProperties().get("controller")).getInput1());
-			( (bulbController) bulb.getProperties().get("controller")).getInput1().getProperties().put("put",((xorController) xor1.getProperties().get("controller")).getOutput());
-			
-			
-			
-			// Create function calls to make wire if you want connections. There is definitely a better way to do this. I will work on it.
-			this.makeWire(((batteryController)battery1.getProperties().get("controller")).getOutput1(), ((xorController) xor1.getProperties().get("controller")).getInput1());
-			this.makeWire(((batteryController)battery2.getProperties().get("controller")).getOutput1(), ((xorController) xor1.getProperties().get("controller")).getInput2());
-			this.makeWire(((xorController) xor1.getProperties().get("controller")).getOutput(), ( (bulbController) bulb.getProperties().get("controller")).getInput1());
-			
-			
-			((batteryController)battery1.getProperties().get("controller")).checktype();
-			((batteryController)battery2.getProperties().get("controller")).checktype();
-
 		}
 		
-		///----------------Check For Win -----------------------------------
+		//----------------Check if game is won----------------------------
 		
-		public void CheckToWin() {
-			
-		
-			
-			if(Textoutput1.getText().equals("0") && Textoutput2.getText().equals("1") && Textoutput3.getText().equals("1") && Textoutput4.getText().equals("0")) {
-				title.setText("Great Job! Head to the next Level!");
-				Alert alert = new Alert(AlertType.INFORMATION);
-			 	// Apply inline styling
-		        alert.getDialogPane().setStyle("-fx-background-color: #F38307;");
-		        alert.getDialogPane().lookupButton(ButtonType.OK).setStyle("-fx-background-color: #2a80b9; -fx-text-fill: #ffffff;");
-		        
-		        alert.setTitle("Level Completed");
-		        alert.setHeaderText(null);
-		        alert.setContentText("Great Job! Level 6B Completed!");
+		public void CheckWin() {
+			//if bulb is on win
+			if(endBulb.getState()) {
+				title.setText("Excellent! You Know you stuff! ");
+				
+				 Alert alert = new Alert(AlertType.INFORMATION);
+				 	// Apply inline styling
+			        alert.getDialogPane().setStyle("-fx-background-color: #F38307;");
+			        alert.getDialogPane().lookupButton(ButtonType.OK).setStyle("-fx-background-color: #2a80b9; -fx-text-fill: #ffffff;");
+			        
+			        alert.setTitle("Level Completed");
+			        alert.setHeaderText(null);
+			        alert.setContentText("Great Job! Click Next");
 
-		        // This will block the user input until the modal dialog is dismissed
-		        alert.showAndWait();
-				if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) != 75) {
-					AccountManager.setLevelScore(AccountManager.getLevelID(6), 75);
-				}
+			        // This will block the user input until the modal dialog is dismissed
+			        alert.showAndWait();
 			}
 		}
 		
-		public void callChecktype(Rectangle node) {
-			switch( (String)(node.getProperties().get("ClassType")) ) {
-			case "AND":
-				((andController)(node.getProperties().get("parentGate"))).checktype();			//Andres
-				break;
-			case "BATTERY":
-				((batteryController)node.getProperties().get("parentGate")).checktype();			//Andres
-				break;
-			case "BULB":
-				((bulbController)node.getProperties().get("parentGate")).checktype();
-				break;
-			case "NAND":
-				((nandController)node.getProperties().get("parentGate")).checktype();
-				break;
-			case "NOR":
-				((norController)node.getProperties().get("parentGate")).checktype();
-				break;
-			case "XOR":
-				((xorController)node.getProperties().get("parentGate")).checktype();
-				break;
-			case "NOT":
-				((notController)node.getProperties().get("parentGate")).checktype();
-				break;
-			case "OR":
-				((orController)node.getProperties().get("parentGate")).checktype();
-				break;
+		
 
-			}
-		}
+		
 		
 		
 		
@@ -306,7 +244,6 @@ public class Level6BController extends sandboxController implements Initializabl
 				object.getProperties().put("controller", controller);
 				object.getProperties().put("type", type);
 				controller.setBoard(this);
-				
 				
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
@@ -441,20 +378,27 @@ public class Level6BController extends sandboxController implements Initializabl
 				if(event2.getPickResult().getIntersectedNode() instanceof Rectangle) {
 					Rectangle endNode = (Rectangle) event2.getPickResult().getIntersectedNode();
 					String endType = (String) endNode.getProperties().get("type");
+					
+					if((startNode.getProperties().get("ClassType") == "BATTERY" && endNode.getProperties().get("ClassType") == "BULB")||(startNode.getProperties().get("ClassType") == "BULB" && endNode.getProperties().get("ClassType") == "BATTERY")) {
+						return;
+					}
+
+					
 					if(startType != endType) {
 						
 						// Check which is the output to match the parameter order of makeWire.
 						if (startType == "output") {
+							
 							this.makeWire(startNode, endNode);
 							callChecktype(startNode);
-							
 							
 							
 						
 						}
 						
 						else {
-
+							
+							
 							this.makeWire(endNode, startNode);
 							callChecktype(endNode);
 							
@@ -466,7 +410,12 @@ public class Level6BController extends sandboxController implements Initializabl
 					// Release the mouse binding if the mouse was not release over a terminal.
 					circuitBoardPane.setOnMouseReleased(null);				
 				}
+				
+				
 			});
+			
+			
+			
 		}
 		
 		/**This is probably where you will want to add code to manage the connections.
@@ -491,6 +440,9 @@ public class Level6BController extends sandboxController implements Initializabl
 
 			connectLine.endXProperty().bind(inputTerminal.layoutXProperty().add(inputPane.layoutXProperty().add(inputTerminal.getBoundsInParent().getWidth() / 4)));
 			connectLine.endYProperty().bind(inputTerminal.layoutYProperty().add(inputPane.layoutYProperty().add(inputTerminal.getBoundsInParent().getHeight() / 2)));
+			
+			connectLine.getProperties().put("connection1",outputTerminal);
+			connectLine.getProperties().put("connection2", inputTerminal);
 			
 			// Add to the pane and push behind the gates so the user can click the terminal again.
 			circuitBoardPane.getChildren().add(connectLine);
@@ -533,11 +485,17 @@ public class Level6BController extends sandboxController implements Initializabl
 			inputTerminal.getProperties().put("wire", connectLine);
 			inputTerminal.getProperties().put("put", outputTerminal);
 			
-			
 		}
 		
+		
+		
+		
+		
+		
 		public void deleteButton(MouseEvent event) {
+			
 			audio.boopPlay();
+			
 			if(deleteState) {
 				deleteState = false;
 				deleteImage.setImage(deleteOff);
@@ -552,8 +510,9 @@ public class Level6BController extends sandboxController implements Initializabl
 		}
 		
 		public void delete(MouseEvent event) {
-			audio.boopPlay();
 			//System.out.println("deleteState: " + deleteState + ", X: " + event.getX() + ", Y: " +event.getY());
+			audio.boopPlay();
+			
 			if(deleteState && event.getY() < 570 && event.getY() > 155 && event.getX() < 1000 && event.getX() > 260 ){
 				//If it is wire
 				if(event.getPickResult().getIntersectedNode() instanceof Line) {
@@ -568,6 +527,7 @@ public class Level6BController extends sandboxController implements Initializabl
 					callChecktype(input);
 					callChecktype(output);
 					
+					//removes wire from screen 
 					circuitBoardPane.getChildren().remove(event.getPickResult().getIntersectedNode());
 				}
 				
@@ -587,6 +547,9 @@ public class Level6BController extends sandboxController implements Initializabl
 		
 		public void back(ActionEvent event) throws IOException {			
 			audio.boopPlay();
+			//play level music
+			MusicPlayer.stopMusic();
+			MusicPlayer.playBackgroundMusic();
 			try {			
 				sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
 			}			
@@ -595,10 +558,10 @@ public class Level6BController extends sandboxController implements Initializabl
 			}		
 		}
 		
-		public void backPart(ActionEvent event) throws IOException {			
+		public void next(ActionEvent event) throws IOException {
 			audio.boopPlay();
 			try {			
-				sceneSwitcher.switchScene(event, "/application/resources/levels/level6A.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/lastScene.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				
@@ -614,46 +577,15 @@ public class Level6BController extends sandboxController implements Initializabl
 	     */
 	    public void previousLevel(ActionEvent event) throws IOException {
 	    	audio.boopPlay();
+	    	//play level music
+			MusicPlayer.stopMusic();
+			MusicPlayer.playBackgroundMusic();
 	    	try {
-	            currentLevel = extractLevelNumber(currentLevelLabel.getText());
-	            currentLevel--;
-	            String previousLevelFXML = "/application/resources/levels/level6A.fxml";
+	            String previousLevelFXML = "/application/resources/levels/level6B.fxml";
 	            sceneSwitcher.switchScene(event, previousLevelFXML);
 	            audio.boopPlay();
 	        } catch (IOException exception) {
 	            exception.printStackTrace();
 	        }
-	    }
-
-
-	    /**
-	     * Switches the scene to the next level view when the "Next Level" button is clicked.
-	     *
-	     * @param event The ActionEvent triggered by clicking the "Next Level" button.
-	     * @throws IOException If an I/O exception occurs during scene switching.
-	     */
-	    public void nextLevel(ActionEvent event) throws IOException {
-	    	if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) < 75) {
-				return;
-			}
-	    	audio.boopPlay();
-	    	try {
-	            String nextLevelFXML = "/application/resources/levels/skillTest3.fxml";
-	            sceneSwitcher.switchScene(event, nextLevelFXML);
-	            audio.boopPlay();
-	        } catch (IOException exception) {
-	            exception.printStackTrace();
-	        }
-	    }
-
-	    /**
-	     * Extracts the level number from the given label text.
-	     * Assumes the label text is in the format "LevelX".
-	     *
-	     * @param labelText The text of the label, assumed to be in the format "LevelX".
-	     * @return The extracted level number.
-	     */
-	    private int extractLevelNumber(String labelText) {
-	        return Integer.parseInt(labelText.substring(5)); // Assuming "LevelX" format
 	    }
 }		

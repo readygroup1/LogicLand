@@ -45,7 +45,7 @@ public class highscoreController implements Initializable{
 		
 	Boolean isTeacher = AccountManager.isAdmin();
 	
-	audioPlayer audio = new audioPlayer();
+	MultiMediaPlayer audio = new MultiMediaPlayer();
 	
 	
 	public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -22,7 +22,7 @@ public class discoveriesController implements Initializable{
 	
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	
-	audioPlayer audio = new audioPlayer();
+	MultiMediaPlayer audio = new MultiMediaPlayer();
 	
 	public void roadmap(ActionEvent event) throws IOException {			
 		try {			

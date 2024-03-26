@@ -20,7 +20,7 @@ import javafx.scene.text.Text;
 
 public class instructorDashboard implements Initializable{
 
-	audioPlayer audio = new audioPlayer();
+	MultiMediaPlayer audio = new MultiMediaPlayer();
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	
 	//FX variables

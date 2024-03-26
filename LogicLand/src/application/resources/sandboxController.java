@@ -83,7 +83,7 @@ public class sandboxController implements Initializable{
 		
 	Boolean isTeacher = AccountManager.isAdmin();
 	
-	audioPlayer audio = new audioPlayer();
+	MultiMediaPlayer audio = new MultiMediaPlayer();
 	
 	static private ArrayList<Node> connectedTerminals = new ArrayList<>();
 

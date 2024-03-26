@@ -3,7 +3,7 @@ package application.resources.levels;
 import java.io.IOException;
 
 import application.resources.SceneSwitcher;
-import application.resources.audioPlayer;
+import application.resources.MultiMediaPlayer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,7 +20,7 @@ public class levelController {
     @FXML
     private Label currentLevelLabel; // Inject the Label from FXML
     
-    audioPlayer audio = new audioPlayer();
+    MultiMediaPlayer audio = new MultiMediaPlayer();
 
     
     

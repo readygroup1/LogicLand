@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 import application.AccountManager;
 import application.MusicPlayer;
 import application.resources.SceneSwitcher;
-import application.resources.audioPlayer;
+import application.resources.MultiMediaPlayer;
 import application.resources.sandboxController;
 import application.resources.gates.andController;
 import application.resources.gates.batteryController;
@@ -76,7 +76,7 @@ public class Level5AController extends sandboxController implements Initializabl
 		@FXML
 		Button checkWin;
 		
-		 audioPlayer audio = new audioPlayer();
+		 MultiMediaPlayer audio = new MultiMediaPlayer();
 		
 		// I used these panes a way to store the coordinates of where I wanted the preloaded objects.
 		@FXML
@@ -610,7 +610,7 @@ public class Level5AController extends sandboxController implements Initializabl
 		public void prev(ActionEvent event) throws IOException {
 			audio.boopPlay();
 			try {			
-				sceneSwitcher.switchScene(event, "/application/resources/levels/level4B.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/skillTest2.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				

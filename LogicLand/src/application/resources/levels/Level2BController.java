@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 import application.AccountManager;
 import application.MusicPlayer;
 import application.resources.SceneSwitcher;
-import application.resources.audioPlayer;
+import application.resources.MultiMediaPlayer;
 import application.resources.sandboxController;
 import application.resources.gates.andController;
 import application.resources.gates.batteryController;
@@ -101,7 +101,7 @@ public class Level2BController extends sandboxController implements Initializabl
 	    @FXML
 	    private Label currentLevelLabel; // Inject the Label from FXML
 	    
-	    audioPlayer audio = new audioPlayer();
+	    MultiMediaPlayer audio = new MultiMediaPlayer();
 		
 		//-------------Constants / Resources--------------------------------------------
 		
@@ -631,7 +631,7 @@ public class Level2BController extends sandboxController implements Initializabl
 			MusicPlayer.stopMusic();
 			MusicPlayer.playBackgroundMusic();
 	    	try {
-	            String nextLevelFXML = "/application/resources/levels/level3A.fxml";
+	            String nextLevelFXML = "/application/resources/levels/skillTest1.fxml";
 	            sceneSwitcher.switchScene(event, nextLevelFXML);
 	            audio.boopPlay();
 	        } catch (IOException exception) {
