@@ -41,6 +41,8 @@ public class roadmapController  implements Initializable{
 	  private Text classroom;
 	  @FXML
 	  Button instructorDashboard;
+	  
+	  private boolean[] levelLocked = {true, true, true, true, true}; //levels 2-6
 		
 	  Boolean isTeacher = AccountManager.isAdmin();
 	  
@@ -126,7 +128,7 @@ public class roadmapController  implements Initializable{
 		}
 		
 		public void levelTwo(MouseEvent event) throws IOException {	
-			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 75) {
+			if(levelLocked[0]) {
 				return;
 			}
 			try {
@@ -140,7 +142,7 @@ public class roadmapController  implements Initializable{
 		}
 		
 		public void levelThree(MouseEvent event) throws IOException {
-			if(AccountManager.getLevelScore(AccountManager.getLevelID(2)) < 75) {
+			if(levelLocked[1]) {
 				return;
 			}
 			try {	
@@ -154,7 +156,7 @@ public class roadmapController  implements Initializable{
 		}
 		
 		public void levelFour(MouseEvent event) throws IOException {
-			if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) < 75) {
+			if(levelLocked[2]) {
 				return;
 			}
 			try {
@@ -168,7 +170,7 @@ public class roadmapController  implements Initializable{
 		}
 		
 		public void levelFive(MouseEvent event) throws IOException {
-			if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) < 75) {
+			if(levelLocked[3]) {
 				return;
 			}
 			try {
@@ -182,7 +184,7 @@ public class roadmapController  implements Initializable{
 		}
 		
 		public void levelSix(MouseEvent event) throws IOException {	
-			if(AccountManager.getLevelScore(AccountManager.getLevelID(5)) < 75) {
+			if(levelLocked[4]) {
 				return;
 			}
 			try {	
@@ -237,39 +239,54 @@ public class roadmapController  implements Initializable{
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 75) {
+				levelLocked[0] = true;
 				BoxBlur bb2 = new BoxBlur();
 				bb2.setWidth(30);
 		        bb2.setHeight(30);
 		        bb2.setIterations(25);
 			    levelTwo.setEffect(bb2);
+			} else {
+				levelLocked[0] = false;
 			}
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(2)) < 75) {
+				levelLocked[1] = true;
 				BoxBlur bb3 = new BoxBlur();
 				bb3.setWidth(30);
 		        bb3.setHeight(30);
 		        bb3.setIterations(25);
 			    levelThree.setEffect(bb3);
+			} else {
+				levelLocked[1] = false;
 			}
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) < 75) {
+				levelLocked[2] = true;
 				BoxBlur bb4 = new BoxBlur();
 				bb4.setWidth(30);
 		        bb4.setHeight(30);
 		        bb4.setIterations(25);
 			    levelFour.setEffect(bb4);
+			} else {
+				levelLocked[2] = false;
 			}
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) < 75) {
+				levelLocked[3] = true;
 				BoxBlur bb5 = new BoxBlur();
 				bb5.setWidth(30);
 		        bb5.setHeight(30);
 		        bb5.setIterations(25);
 			    levelFive.setEffect(bb5);
+			} else {
+				levelLocked[3] = false;
 			}
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(5)) < 75) {
+				levelLocked[4] = true;
 				BoxBlur bb6 = new BoxBlur();
 				bb6.setWidth(30);
 		        bb6.setHeight(30);
 		        bb6.setIterations(25);
 			    levelSix.setEffect(bb6);
+			} else {
+				levelLocked[4] = false;
 			}
 		    
 			
@@ -315,58 +332,78 @@ public class roadmapController  implements Initializable{
 		
 		// Level2 HOVER
 		public void onLevelTwoHover() {
-			levelTwo.setScaleX(1.1);
-			levelTwo.setScaleY(1.1);
+			if(!levelLocked[0]) {
+				levelTwo.setScaleX(1.1);
+				levelTwo.setScaleY(1.1);
+			}
 		}
 		
 		public void offLevelTwoHover() {
-			levelTwo.setScaleX(0.9);
-			levelTwo.setScaleY(0.9);
+			if(!levelLocked[0]) {
+				levelTwo.setScaleX(0.9);
+				levelTwo.setScaleY(0.9);
+			}
 		}
 		
 		
 		// Level3 HOVER
 		public void onLevelThreeHover() {
-			levelThree.setScaleX(1.1);
-			levelThree.setScaleY(1.1);
+			if(!levelLocked[1]) {
+				levelThree.setScaleX(1.1);
+				levelThree.setScaleY(1.1);
+			}
 		}
 		
 		public void offLevelThreeHover() {
-			levelThree.setScaleX(0.9);
-			levelThree.setScaleY(0.9);
+			if(!levelLocked[1]) {
+				levelThree.setScaleX(0.9);
+				levelThree.setScaleY(0.9);
+			}
 		}
 		
 		// Level4 HOVER
 		public void onLevelFourHover() {
-			levelFour.setScaleX(1.1);
-			levelFour.setScaleY(1.1);
+			if(!levelLocked[2]) {
+				levelFour.setScaleX(1.1);
+				levelFour.setScaleY(1.1);
+			}
 		}
 		
 		public void offLevelFourHover() {
-			levelFour.setScaleX(0.9);
-			levelFour.setScaleY(0.9);
+			if(!levelLocked[2]) {
+				levelFour.setScaleX(0.9);
+				levelFour.setScaleY(0.9);
+			}
 		}
 		
 		// Level5 HOVER
 		public void onLevelFiveHover() {
-			levelFive.setScaleX(1.1);
-			levelFive.setScaleY(1.1);
+			if(!levelLocked[3]) {
+				levelFive.setScaleX(1.1);
+				levelFive.setScaleY(1.1);
+			}
 		}
 		
 		public void offLevelFiveHover() {
-			levelFive.setScaleX(0.9);
-			levelFive.setScaleY(0.9);
+			if(!levelLocked[3]) {
+				levelFive.setScaleX(0.9);
+				levelFive.setScaleY(0.9);
+			}
 		}
 
 		// Level6 HOVER
 		public void onLevelSixHover() {
-			levelSix.setScaleX(1.1);
-			levelSix.setScaleY(1.1);
+			if(!levelLocked[4]) {
+				levelSix.setScaleX(1.1);
+				levelSix.setScaleY(1.1);
+			}
 		}
 		
 		public void offLevelSixHover() {
-			levelSix.setScaleX(0.9);
-			levelSix.setScaleY(0.9);
+			if(!levelLocked[4]) {
+				levelSix.setScaleX(0.9);
+				levelSix.setScaleY(0.9);
+			}
 		}
 		
 
