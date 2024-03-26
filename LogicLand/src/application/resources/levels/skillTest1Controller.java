@@ -6,7 +6,6 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import application.AccountManager;
 import application.MusicPlayer;
 import application.resources.SceneSwitcher;
 import application.resources.MultiMediaPlayer;
@@ -175,10 +174,6 @@ public class skillTest1Controller extends sandboxController implements Initializ
 
 			        // This will block the user input until the modal dialog is dismissed
 			        alert.showAndWait();
-			        
-				if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) != 50) {
-					AccountManager.setLevelScore(AccountManager.getLevelID(1), 50);
-				}
 			}
 		}
 		
@@ -564,9 +559,6 @@ public class skillTest1Controller extends sandboxController implements Initializ
 		}
 		
 		public void next(ActionEvent event) throws IOException {
-			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 50) {
-				return;
-			}
 			audio.boopPlay();
 			try {			
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level3A.fxml");
