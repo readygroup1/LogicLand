@@ -2,8 +2,15 @@ package application.resources;
 
 
 
+import java.time.Duration;
+
+import javafx.application.Platform;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 /**
  * This class is responsible for playing the "boop" sound effect on a clicked button. 
@@ -20,6 +27,12 @@ public class MultiMediaPlayer {
     // Creating a MediaPlayer with the media
     MediaPlayer boop = new MediaPlayer(sound);
     
+    String videoDemo1A = getClass().getResource("/application/resources/1Aclip.mp4").toExternalForm();
+    Media video1A = new Media(videoDemo1A);
+    String videoDemo1B = getClass().getResource("/application/resources/1Bclip.mp4").toExternalForm();
+    Media video1B = new Media(videoDemo1B);
+   
+    
     /**
      * Play "boop" sound.
      */
@@ -32,4 +45,68 @@ public class MultiMediaPlayer {
     	MediaPlayer error = new MediaPlayer(errorSound);
     	error.play();
     }
+    
+    public void videoDemoPlay(int mode) {
+    	MediaPlayer mediaPlayer;
+		MediaView mediaView;
+    	if(mode == 0) {
+    		mediaPlayer = new MediaPlayer(video1A);
+    		mediaView = new MediaView(mediaPlayer);
+    	} else {
+    		mediaPlayer = new MediaPlayer(video1B);
+    		mediaView = new MediaView(mediaPlayer);
+    	}
+        
+        // Set the dialog dimensions
+        final double dialogWidth = 800;
+        final double dialogHeight = 450;
+
+        // Preserve the aspect ratio without filling the entire space
+        mediaView.setPreserveRatio(true);
+        
+        Dialog<Void> dialog = new Dialog<>();
+        dialog.setTitle("Level 1 Demo");
+        dialog.getDialogPane().setPrefSize(dialogWidth, dialogHeight); // Set the preferred size of the dialog
+        
+        // Since the MediaView's size adjustments are based on the media's inherent size,
+        // which might only be known once it's ready, consider setting fit dimensions upon media readiness.
+        mediaPlayer.setOnReady(() -> {
+            // Calculate the maximum possible size of the MediaView within the dialog while preserving the video's aspect ratio
+            double mediaWidth = mediaPlayer.getMedia().getWidth();
+            double mediaHeight = mediaPlayer.getMedia().getHeight();
+            double aspectRatio = mediaWidth / mediaHeight;
+            
+            double fitHeight = dialogHeight;
+            double fitWidth = dialogHeight * aspectRatio;
+            if (fitWidth > dialogWidth) {
+                // If width exceeds dialog width after initial calculation, recalculate based on width.
+                fitWidth = dialogWidth;
+                fitHeight = dialogWidth / aspectRatio;
+            }
+            
+            mediaView.setFitWidth(fitWidth);
+            mediaView.setFitHeight(fitHeight);
+        });
+
+        dialog.getDialogPane().setContent(mediaView); // Add the MediaView to the dialog pane
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL); // Add a Cancel button
+
+        mediaPlayer.setOnEndOfMedia(() -> {
+            // Loop the video by seeking to the start
+            Platform.runLater(() -> mediaPlayer.seek(javafx.util.Duration.ZERO));
+        });
+        
+        // Play the video when the dialog is shown
+        dialog.setOnShown(event -> mediaPlayer.play());
+
+
+        // Stop the video when the dialog is closed
+        dialog.setOnCloseRequest(event -> mediaPlayer.stop());
+
+        // Show the dialog and wait for it to be closed
+        Platform.runLater(dialog::showAndWait);
+    }
+
+    
+    
 }

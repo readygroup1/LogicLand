@@ -2,6 +2,7 @@ package application.resources.levels;
 
 import java.io.IOException;
 import java.net.URL;
+import javafx.util.Duration;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -20,6 +21,7 @@ import application.resources.gates.norController;
 import application.resources.gates.notController;
 import application.resources.gates.orController;
 import application.resources.gates.xorController;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -152,8 +154,13 @@ public class Level1AController extends sandboxController implements Initializabl
 			 endBulb = ((bulbController) bulb.getProperties().get("controller"));
 			// Create function calls to make wire if you want connections
 			
-			 
-			
+			 MultiMediaPlayer media = new MultiMediaPlayer();
+			 PauseTransition pause = new PauseTransition(Duration.seconds(1)); // 2 seconds delay
+			 pause.setOnFinished(event -> {
+				 media.videoDemoPlay(0);		
+			 });
+			 pause.play();
+				
 			
 		}
 		

@@ -21,6 +21,7 @@ import application.resources.gates.norController;
 import application.resources.gates.notController;
 import application.resources.gates.orController;
 import application.resources.gates.xorController;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +41,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 public class Level1BController extends sandboxController implements Initializable {
 
@@ -186,6 +188,13 @@ public class Level1BController extends sandboxController implements Initializabl
 			
 			((batteryController)battery1.getProperties().get("controller")).checktype();
 			((batteryController)battery2.getProperties().get("controller")).checktype();
+			
+			MultiMediaPlayer media = new MultiMediaPlayer();
+			 PauseTransition pause = new PauseTransition(Duration.seconds(1)); // 2 seconds delay
+			 pause.setOnFinished(event -> {
+				 media.videoDemoPlay(1);		
+			 });
+			 pause.play();
 			
 		}
 		
