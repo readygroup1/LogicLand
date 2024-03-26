@@ -219,6 +219,8 @@ public class Level1BController extends sandboxController implements Initializabl
 		        // This will block the user input until the modal dialog is dismissed
 		        alert.showAndWait();
 				title.setText("Great Job! Head to the next Level!");
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		

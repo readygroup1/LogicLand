@@ -170,11 +170,13 @@ public class skillTest2Controller extends sandboxController implements Initializ
 			        
 			        alert.setTitle("Level Completed");
 			        alert.setHeaderText(null);
-			        alert.setContentText("Great Job! Move on to Level5");
+			        alert.setContentText("Great Job! Move on to Level 5");
 
 			        // This will block the user input until the modal dialog is dismissed
 			        alert.showAndWait();
 			        
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		

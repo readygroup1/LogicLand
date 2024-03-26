@@ -175,6 +175,8 @@ public class Level4AController extends sandboxController implements Initializabl
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) != 50) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(4), 50);
 				}
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		

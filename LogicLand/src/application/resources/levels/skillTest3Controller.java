@@ -174,6 +174,8 @@ public class skillTest3Controller extends sandboxController implements Initializ
 
 			        // This will block the user input until the modal dialog is dismissed
 			        alert.showAndWait();
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		

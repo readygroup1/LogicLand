@@ -203,6 +203,8 @@ public class Level3BController extends sandboxController implements Initializabl
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) != 75) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(3), 75);
 				}
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		
