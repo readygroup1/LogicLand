@@ -151,7 +151,58 @@ public class skillTest2Controller extends sandboxController implements Initializ
 			 endBulb = ((bulbController) bulb.getProperties().get("controller"));
 			// Create function calls to make wire if you want connections
 			
-			 
+			 circuitBoardPane.setOnKeyPressed(event ->{
+					
+					try {
+						
+						
+						
+						switch(event.getCode()) {
+						
+						case W:
+							if(this.andGen != null) {
+								
+								this.andGenerator();}
+							break;
+						case E:
+							if(this.orGen != null) {
+								
+								this.orGenerator();}
+							break;
+						case R:
+							if(this.notGen != null) {
+								
+								this.notGenerator();}
+							break;
+						case T:
+							if(this.nandGen != null) {
+								
+								this.nandGenerator();}
+							break;
+						case Y:
+							if(this.norGen != null) {
+								
+								this.norGenerator();}
+							break;
+						case U:
+							if(this.xorGen != null) {
+								
+								this.xorGenerator();}
+							break;
+		
+						case O:
+		
+								this.deleteButton(null);
+							
+							break;
+						
+					}
+				}
+					catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				});
 			
 			
 		}
