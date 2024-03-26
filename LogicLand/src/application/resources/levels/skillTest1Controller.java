@@ -162,7 +162,7 @@ public class skillTest1Controller extends sandboxController implements Initializ
 		public void CheckWin() {
 			//if bulb is on win
 			if(endBulb.getState()) {
-				title.setText("Great Job! Level 1A Completed! Click Next");
+				title.setText("Excellent! You Know you stuff! Move on to Level3");
 				
 				 Alert alert = new Alert(AlertType.INFORMATION);
 				 	// Apply inline styling
@@ -171,7 +171,7 @@ public class skillTest1Controller extends sandboxController implements Initializ
 			        
 			        alert.setTitle("Level Completed");
 			        alert.setHeaderText(null);
-			        alert.setContentText("Great Job! Level 1A Completed!");
+			        alert.setContentText("Great Job! Move on to Level3");
 
 			        // This will block the user input until the modal dialog is dismissed
 			        alert.showAndWait();
