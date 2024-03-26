@@ -1,3 +1,18 @@
+/** sandboxController controls the user interface and some of the gate algorithms for making circuits and is the parent class of 
+ * all levelControllers which control the circuits in the levels.
+ * 
+ * @author Andres Pedreros Castro
+ * @author Callum Andrew Thompson
+ * @author Nicholas Howard
+ * @author Thomas Leonardo Llamzon
+ * 
+ * Credit where credit is due, some of the code for generating draggable nodes, as well as linking them with 
+ * a line, was inspired by / borrowed from Joell Graff's tutorial "Drag-and-Drop in JavaFX" found
+ * here https://monograff76.wordpress.com/2015/02/20/.
+ * 
+ * */
+
+
 package application.resources;
 
 import java.io.IOException;
