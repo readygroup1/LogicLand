@@ -31,7 +31,7 @@ public class developerLoginController {
 		@FXML
 		Button backButton;
 		
-		audioPlayer audio = new audioPlayer();
+		MultiMediaPlayer audio = new MultiMediaPlayer();
 		
 		// ----------------Button Functions -----------------------
 		public void login(ActionEvent event) throws Exception {

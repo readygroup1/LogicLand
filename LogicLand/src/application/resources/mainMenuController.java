@@ -101,7 +101,7 @@ public class mainMenuController {
 		@FXML
 		Line line;
 		
-		audioPlayer audio = new audioPlayer();
+		MultiMediaPlayer audio = new MultiMediaPlayer();
 	
 		//---------Functions----------------
 		

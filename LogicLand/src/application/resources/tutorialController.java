@@ -52,7 +52,7 @@ public class tutorialController extends sandboxController implements Initializab
 		@FXML
 		Pane not1;
 		
-		audioPlayer audio = new audioPlayer();
+		MultiMediaPlayer audio = new MultiMediaPlayer();
 		
 	//---------Button Functions-------------------
 	

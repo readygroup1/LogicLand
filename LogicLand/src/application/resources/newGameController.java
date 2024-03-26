@@ -58,7 +58,7 @@ public class newGameController implements Initializable{
 		TextField enterClassName; // Input field for teachers only.
 		Boolean isTeacher = false; // Used in imATeacher() to switch between input fields.
 		
-		audioPlayer audio = new audioPlayer();
+		MultiMediaPlayer audio = new MultiMediaPlayer();
 		
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		chooseClassName.getItems().addAll(AccountManager.getClassrooms());
