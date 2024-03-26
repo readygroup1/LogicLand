@@ -169,7 +169,7 @@ public class sandboxController implements Initializable{
 			// Delete is always bound to the click function but only works when deleteState is set to true by the delete button.
 			circuitBoardPane.setOnMousePressed(event ->{this.delete(event);});
 			
-			circuitBoardPane.setOnKeyReleased(event ->{
+			circuitBoardPane.setOnKeyPressed(event ->{
 				
 				try {
 					
@@ -181,22 +181,34 @@ public class sandboxController implements Initializable{
 							this.batteryGenerator();
 						break;
 					case W:
-							this.andGenerator();
+						if(!AccountManager.isAdmin()) {
+							if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) > 75) {
+							this.andGenerator();}}
 						break;
 					case E:
-							this.orGenerator();
+						if(!AccountManager.isAdmin()) {
+							if(AccountManager.getLevelScore(AccountManager.getLevelID(2)) > 75) {
+							this.orGenerator();}}
 						break;
 					case R:
-							this.notGenerator();
+						if(!AccountManager.isAdmin()) {
+							if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) > 75) {
+							this.notGenerator();}}
 						break;
 					case T:
-							this.nandGenerator();
+						if(!AccountManager.isAdmin()) {
+							if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) > 75) {
+							this.nandGenerator();}}
 						break;
 					case Y:
-							this.norGenerator();
+						if(!AccountManager.isAdmin()) {
+							if(AccountManager.getLevelScore(AccountManager.getLevelID(5)) > 75) {
+							this.norGenerator();}}
 						break;
 					case U:
-							this.xorGenerator();
+						if(!AccountManager.isAdmin()) {
+							if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) > 75) {
+							this.xorGenerator();}}
 						break;
 					case I:
 							this.bulbGenerator();
