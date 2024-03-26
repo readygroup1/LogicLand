@@ -638,7 +638,7 @@ public class Level6BController extends sandboxController implements Initializabl
 	     * @throws IOException If an I/O exception occurs during scene switching.
 	     */
 	    public void nextLevel(ActionEvent event) throws IOException {
-	    	if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) < 75) {
+	    	if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) < 75) {
 				return;
 			}
 	    	audio.boopPlay();
