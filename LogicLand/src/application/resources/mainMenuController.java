@@ -246,18 +246,21 @@ public class mainMenuController implements Initializable{
 		        exception.printStackTrace();
 		    }
 		}
+		
+		public void takeFocus() {
+			outerAnchorPane.requestFocus();
+		}
 
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			
 			Button buttonArray[] = {startNewGame, loadGame, tutorial, highScores, quit};
 			
-			
-			outerAnchorPane.setOnMouseMoved(move ->{
-				outerAnchorPane.requestFocus();
-			});
+			outerAnchorPane.setFocusTraversable(true);
+			anchorPane.setFocusTraversable(true);
 			
 			outerAnchorPane.addEventFilter(KeyEvent.KEY_PRESSED, key ->{
+				outerAnchorPane.requestFocus();
 				switch(key.getCode()) {
 				
 				 case ENTER: 
@@ -274,13 +277,14 @@ public class mainMenuController implements Initializable{
 					 
 				 case UP:
 					 buttonArrayIndex --;
-					 if(buttonArrayIndex < 0) {						  
-						 buttonArrayIndex += 5;	
+					 if(buttonArrayIndex < 0) {
+						 buttonArrayIndex += 5;					  
 					 }
 					 buttonArray[buttonArrayIndex].requestFocus();
 					 key.consume();
 					 break;
 					 }
+
 			
 			});
 			
