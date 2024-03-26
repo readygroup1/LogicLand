@@ -610,7 +610,7 @@ public class Level3AController extends sandboxController implements Initializabl
 		public void prev(ActionEvent event) throws IOException {
 			audio.boopPlay();
 			try {			
-				sceneSwitcher.switchScene(event, "/application/resources/levels/level2B.fxml");
+				sceneSwitcher.switchScene(event, "/application/resources/levels/skillTest1.fxml");
 			}			
 			catch(IOException exception) {				
 				exception.printStackTrace();				

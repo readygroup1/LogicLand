@@ -625,6 +625,7 @@ public class Level6BController extends sandboxController implements Initializabl
 	        }
 	    }
 
+
 	    /**
 	     * Switches the scene to the next level view when the "Next Level" button is clicked.
 	     *
@@ -632,17 +633,12 @@ public class Level6BController extends sandboxController implements Initializabl
 	     * @throws IOException If an I/O exception occurs during scene switching.
 	     */
 	    public void nextLevel(ActionEvent event) throws IOException {
-	    	if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) < 75) {
+	    	if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) < 75) {
 				return;
 			}
 	    	audio.boopPlay();
-	    	//play level music
-			MusicPlayer.stopMusic();
-			MusicPlayer.playBackgroundMusic();
 	    	try {
-	            currentLevel = extractLevelNumber(currentLevelLabel.getText());
-	            currentLevel++;
-	            String nextLevelFXML = "/application/resources/roadmap.fxml";
+	            String nextLevelFXML = "/application/resources/levels/skillTest3.fxml";
 	            sceneSwitcher.switchScene(event, nextLevelFXML);
 	            audio.boopPlay();
 	        } catch (IOException exception) {

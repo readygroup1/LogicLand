@@ -590,6 +590,7 @@ public class Level4BController extends sandboxController implements Initializabl
 				exception.printStackTrace();				
 			}		
 		}
+		
 		/**
 	     * Switches the scene to the previous level view when the "Previous Level" button is pressed.
 	     * 
@@ -623,7 +624,7 @@ public class Level4BController extends sandboxController implements Initializabl
 			}
 	    	audio.boopPlay();
 	    	try {
-	            String nextLevelFXML = "/application/resources/levels/level5A.fxml";
+	            String nextLevelFXML = "/application/resources/levels/skillTest2.fxml";
 	            sceneSwitcher.switchScene(event, nextLevelFXML);
 	            audio.boopPlay();
 	        } catch (IOException exception) {
