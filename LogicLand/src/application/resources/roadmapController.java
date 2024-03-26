@@ -46,7 +46,7 @@ public class roadmapController  implements Initializable{
 		
 	  Boolean isTeacher = AccountManager.isAdmin();
 	  
-	  audioPlayer audio = new audioPlayer();
+	  MultiMediaPlayer audio = new MultiMediaPlayer();
 	  
 	  
 	  

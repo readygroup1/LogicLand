@@ -10,7 +10,7 @@ import javafx.scene.media.MediaPlayer;
  * 
  * @author
  */
-public class audioPlayer {
+public class MultiMediaPlayer {
 	// Correct way to format the local file path as a URI
     String audioFile = getClass().getResource("/application/resources/sounds/boop.wav").toExternalForm();
     String errorSoundFile = getClass().getResource("/application/resources/sounds/error.wav").toExternalForm();

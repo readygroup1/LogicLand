@@ -38,7 +38,7 @@ public class loginController {
 	CheckBox imATeacher;
 	Boolean isTeacher = false; // Used in imATeacher() to switch between input fields.
 	
-	audioPlayer audio = new audioPlayer();
+	MultiMediaPlayer audio = new MultiMediaPlayer();
 	
 	
 	// ----------------Button Functions -----------------------
