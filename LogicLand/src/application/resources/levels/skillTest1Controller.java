@@ -250,6 +250,7 @@ public class skillTest1Controller extends sandboxController implements Initializ
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
 				object.setViewOrder(-1);
+				audio.gatePlay();
 				object.setLayoutY(origin.getLayoutY() - 100);
 				object.setLayoutX(origin.getLayoutX());
 			}		
@@ -392,6 +393,7 @@ public class skillTest1Controller extends sandboxController implements Initializ
 						if (startType == "output") {
 							
 							this.makeWire(startNode, endNode);
+							audio.wirePlay();
 							callChecktype(startNode);
 							
 							
@@ -402,6 +404,7 @@ public class skillTest1Controller extends sandboxController implements Initializ
 							
 							
 							this.makeWire(endNode, startNode);
+							audio.wirePlay();
 							callChecktype(endNode);
 							
 							
