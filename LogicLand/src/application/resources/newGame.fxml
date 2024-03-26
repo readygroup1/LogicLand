@@ -16,11 +16,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.newGameController">
    <children>
-      <Button layoutX="50.0" layoutY="625.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Back">
-      	<font>
-            <Font name="Vermin Vibes Regular" size="24.0" />
-         </font>
-      </Button>
       <TextField fx:id="username" layoutX="544.0" layoutY="300.0" />
       <Label layoutX="480.0" layoutY="14.0" text="Create New Game" textFill="WHITE">
          <font>
@@ -42,6 +37,11 @@
       	<font>
       		<Font name="Vermin Vibes Regular" size="24.0" />
       	</font>
+      </Button>
+      <Button layoutX="50.0" layoutY="625.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="100.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Back">
+      	<font>
+            <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
       </Button>
       <TextField fx:id="enterClassName" layoutX="544.0" layoutY="501.0" promptText="Enter Class Name" visible="false" />
       <ImageView fx:id="bulb" fitHeight="44.0" fitWidth="39.0" layoutX="599.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">

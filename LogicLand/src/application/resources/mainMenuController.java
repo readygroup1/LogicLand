@@ -264,6 +264,9 @@ public class mainMenuController implements Initializable{
 				switch(key.getCode()) {
 				
 				 case ENTER: 
+					 if(buttonArrayIndex < 0) {
+						 buttonArrayIndex = 0;
+					 }
 					 buttonArray[buttonArrayIndex].fire();
 					 key.consume();
 					 break;
