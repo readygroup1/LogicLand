@@ -171,8 +171,7 @@ public class sandboxController implements Initializable{
 			
 			circuitBoardPane.setOnKeyPressed(event ->{
 				
-				try {
-					
+				try {				
 					
 					
 					switch(event.getCode()) {
@@ -263,7 +262,10 @@ public class sandboxController implements Initializable{
 		
 		
 	//----------------Getter and Setter Functions ---------------------
-	
+		
+	/** Gets the pane which is the root of the scene
+	 * @return The Pane root of the scene*/
+		
 	public Pane getCircuitBoardPane() {
 		
 		return circuitBoardPane;
@@ -272,15 +274,15 @@ public class sandboxController implements Initializable{
 	
 	// ---------------- Object Generator Buttons -----------------------
 
-	/** This is the button that generates gatesObjects. The first in the block of code where all the object generator will be.
-	 * In the user interface, every gate is represented as a node. Nodes are what will be used to pass information from the 
-	 * user interface events to the sandboxController.
-	 * To get information from a node use .getProperties.get(KEY).
-	 * I set two keys below. "controller" will be a unique instance of the gate object. 
-	 * You can use "andController ctl = node..getProperties.get("controller);" to retreive the controller.
-	 * Then you would be to call any function andControllers have  it like ctl.getState().
-	 * I also set this instance of the sandboxController in every gate that is created. That may come in useful to pass information
-	 * to a central source. */
+	/** This is a button which generates all types of gate objects. The objects it generates are able to
+	 * be dragged by the user and connected with each other. As Parameter is takes an emum that describes its type, a string which represents the location 
+	 * of the fxml file for that particular gate object, and an object on the scene where to button to generate the gate is called origin. The new gate object will be 
+	 * inserted into the scene just above the origin on the y axis.
+	 * 
+	 *  @param String - location of the new gates fxml file.
+	 *  @param Type - an enum describing the type of gate.
+	 *  @param ImageView origin - the object that serves as the button which the user uses to make new gates.
+	 *  @throws IOException*/
 	public void generator(String fxml, Type type, ImageView origin) throws IOException{
 		try {
 			// Create the object and set up the properties
@@ -301,7 +303,10 @@ public class sandboxController implements Initializable{
 			e.printStackTrace();
 		}	
 	}
-	
+	/** generateFromSave is used to pull a file that represents a saved state of the sandbox
+	 * from the database. I takes that file and automatically calls generator to re-make the objects.
+	 * @see generator()
+	 * @throws IO exception*/
 	public void generateFromSave() throws IOException {
 		if(AccountManager.getSandboxSaveState() == null) {
 			return;
@@ -378,7 +383,9 @@ public class sandboxController implements Initializable{
 			}
 		}
 	}
-	
+	/** andGenerator calls generator to make and gates.
+	 * It is a wrapper class for generator. Wrapper classes were used so there could be an individual function for each button used to make each gate.
+	 * @throws IOException */
 	public void andGenerator() throws IOException {			
 			
 			try {
@@ -389,7 +396,9 @@ public class sandboxController implements Initializable{
 			}	
 		}
 	
-		
+	/** batteryGenerator calls generator to make and gates.
+	 * It is a wrapper class for generator. Wrapper classes were used so there could be an individual function for each button used to make each gate.
+	 * @throws IOException */	
 	public void batteryGenerator() throws IOException{
 		
 		try {		
@@ -399,7 +408,9 @@ public class sandboxController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
+	/** orGenerator calls generator to make and gates.
+	 * It is a wrapper class for generator. Wrapper classes were used so there could be an individual function for each button used to make each gate.
+	 * @throws IOException */
 	public void orGenerator() throws IOException{
 			
 			try {		
@@ -409,7 +420,9 @@ public class sandboxController implements Initializable{
 				e.printStackTrace();
 			}
 		}	
-	
+	/** bulbGenerator calls generator to make and gates.
+	 * It is a wrapper class for generator. Wrapper classes were used so there could be an individual function for each button used to make each gate.
+	 * @throws IOException */
 	public void bulbGenerator() throws IOException{
 		
 		try {		
@@ -419,7 +432,9 @@ public class sandboxController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
+	/** notGenerator calls generator to make and gates.
+	 * It is a wrapper class for generator. Wrapper classes were used so there could be an individual function for each button used to make each gate.
+	 * @throws IOException */
 	public void notGenerator() throws IOException{
 			
 			try {		
@@ -429,7 +444,9 @@ public class sandboxController implements Initializable{
 				e.printStackTrace();
 			}
 		}
-	
+	/** norGenerator calls generator to make and gates.
+	 * It is a wrapper class for generator. Wrapper classes were used so there could be an individual function for each button used to make each gate.
+	 * @throws IOException */
 	public void norGenerator() throws IOException{
 		
 		try {		
@@ -439,7 +456,9 @@ public class sandboxController implements Initializable{
 			e.printStackTrace();
 		}
 	}	
-	
+	/** nandGenerator calls generator to make and gates.
+	 * It is a wrapper class for generator. Wrapper classes were used so there could be an individual function for each button used to make each gate.
+	 * @throws IOException */
 	public void nandGenerator() throws IOException{
 		
 		try {		
@@ -449,7 +468,9 @@ public class sandboxController implements Initializable{
 			e.printStackTrace();
 		}
 	}	
-	
+	/** xorGenerator calls generator to make and gates.
+	 * It is a wrapper class for generator. Wrapper classes were used so there could be an individual function for each button used to make each gate.
+	 * @throws IOException */
 	public void xorGenerator() throws IOException{
 		
 		try {		
@@ -464,11 +485,14 @@ public class sandboxController implements Initializable{
 	
 	//--------------Object Interaction Functions -------------------------
 	
-	/** When a click is made on any terminal of a gate and the mouse is dragged, beginConnection draws a line on the screen from a terminal to the mouse while the mouse is dragged.
+	/**beginConnection is called when a click is made on any terminal of a gate and the mouse is dragged,
+	 *  beginConnection draws a line on the screen from a terminal to the mouse while the mouse is dragged.
 	 * It also records the starting node of the drag, and the ending node of the drag.
 	 * All terminal buttons are invisible rectangles that trigger events when clicked.
 	 * If both the start and stop of the drag are terminals, and the terminals are of different types,
-	 *   then the two nodes are passed to the function makeWire. */
+	 *   then the two nodes are passed to the function makeWire. 
+	 *   
+	 *   @param MouseEvent event - the event that represents the mouse click on a terminal of a gate object*/
 	public void beginConnection(MouseEvent event) {
 		
 		
@@ -594,10 +618,17 @@ public class sandboxController implements Initializable{
 		});
 	}
 	
-	/**This is probably where you will want to add code to manage the connections.
+	/**Make wire is called by begin connection when a user has drawn a line between two valid terminals signaling that they want to have them connected by a wire.
 	 * This draws a persistent wire between two valid terminals a user has connected with beginConnection.
-	 * The endpoints of the line that makes the connection is bound to the terminal nodes. So when they move the line is moved as well.
-	 * To find the instance gates the terminals belong to use *terminal*.getParent().getProperties().get("controller") */
+	 * The end points of the line that makes the connection is bound to the x, y coordinates of the terminal nodes. So when they move the line is moved as well.
+	 * To find the instance gates the terminals belong to use *terminal*.getParent().getProperties().get("controller") 
+	 * 
+	 * @param Rectangle output terminal - the object that represents the output of a circuit object
+	 * @param Rectangle input terminal - the object that represents the input of a gate
+	 * 
+	 * Credit to Joell Graff and his tutorial "Drag-and-Drop in JavaFX" for the idea of binding the end points of the wire to the x y 
+	 * coordinates of the terminals to make a persistent connection. The code in this method was inspired by / borrowed from that tutorial.
+	 * */
 	
 	
 	public void makeWire(Rectangle outputTerminal, Rectangle inputTerminal) {		
@@ -663,7 +694,9 @@ public class sandboxController implements Initializable{
 		inputTerminal.getProperties().put("put", outputTerminal);
 	}
 	
-	
+	/**  deleteButon switched the image of the trash can that represents the deleted function
+	 * cyclically from the color black to the color red on each user click.
+	 *  @param MouseEvent event - the object that represent the mouse click of the user*/
 	public void deleteButton(MouseEvent event) {
 		
 		if(deleteState) {
@@ -678,7 +711,11 @@ public class sandboxController implements Initializable{
 			circuitBoardPane.setCursor(Cursor.CROSSHAIR);			
 		}		
 	}
-	
+	/** Delete is the function that actually removes gate objects from the jave fx scene.
+	 * This function is bound to the mouse clicks at all times but only executes when the delete variable is set to true,
+	 * which is done when the user clicks the delete icon.
+	 * 
+	 *  @param MouseEvent - the location of a mouse click*/
 	public void delete(MouseEvent event) {
 				
 		if(deleteState && ((Node) event.getSource()).getLayoutY() < 600) {
@@ -717,7 +754,9 @@ public class sandboxController implements Initializable{
 			}
 		}
 	}
-		
+	/** This function removes all user generated objects from the screen.
+	 * 
+	 * @param ActionEvent Event - the click on the clear all button*/	
 	public void clearAll(ActionEvent event) {
 		AccountManager.setSandboxSaveState("");
 		try {
@@ -734,7 +773,9 @@ public class sandboxController implements Initializable{
 	// ----------------UserDashboard Button Functions -----------------------
 	
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
-	
+	/** This is a button that moves the user to different screen within the game.
+	 * @param ActionEvent event - the mouse click on the button.
+	 * @throws I0Exception - if the file representing the new screen, or any of it's dependencies,  is not found.*/
 	public void roadmap(ActionEvent event) throws IOException {			
 		try {
 			audio.boopPlay();
@@ -744,7 +785,9 @@ public class sandboxController implements Initializable{
 			exception.printStackTrace();				
 		}		
 	}
-	
+	/** This is a button that moves the user to different screen within the game.
+	 * @param ActionEvent event - the mouse click on the button.
+	 * @throws I0Exception - if the file representing the new screen, or any of it's dependencies, is not found.*/
 	public void sandbox(ActionEvent event) throws IOException {			
 		try {
 			audio.boopPlay();
@@ -754,7 +797,9 @@ public class sandboxController implements Initializable{
 			exception.printStackTrace();				
 		}		
 	}
-	
+	/** This is a button that moves the user to different screen within the game.
+	 * @param ActionEvent event - the mouse click on the button.
+	 * @throws I0Exception - if the file representing the new screen, or any of it's dependencies, is not found.*/
 	public void highscore(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();
@@ -764,7 +809,9 @@ public class sandboxController implements Initializable{
 			exception.printStackTrace();				
 		}		
 	}
-	
+	/** This is a button that moves the user to different screen within the game.
+	 * @param ActionEvent event - the mouse click on the button.
+	 * @throws I0Exception - if the file representing the new screen, or any of it's dependencies, is not found.*/
 	public void discoveries(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();
@@ -774,7 +821,9 @@ public class sandboxController implements Initializable{
 			exception.printStackTrace();				
 		}		
 	}
-	
+	/** This is a button that moves the user to different screen within the game.
+	 * @param ActionEvent event - the mouse click on the button.
+	 * @throws I0Exception - if the file representing the new screen, or any of it's dependencies, is not found.*/
 	public void options(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();
@@ -788,91 +837,127 @@ public class sandboxController implements Initializable{
 	
 	/*---SANDBOX OPTIONS HOVER EFFECTS---*/
 	
-	// BATTERY HOVER
+	//Battery Hover
+	/** This is a function that increases the size of an icon
+	 * when the mouse enters its bounds.*/
 	public void onBatteryHover() {
 		batteryGen.setScaleX(1.1);
 		batteryGen.setScaleY(1.1);
 	}
+	/** This is a function that decreases the size of an icon
+	 * when the mouse exits its bounds.*/
 	public void offBatteryHover() {
 		batteryGen.setScaleX(0.9);
 		batteryGen.setScaleY(0.9);
 	}
 
 	// AND HOVER
+	/** This is a function that increases the size of an icon
+	 * when the mouse enters its bounds.*/
 	public void onANDHover() {
 		andGen.setScaleX(1.1);
 		andGen.setScaleY(1.1);
 	}
+	/** This is a function that decreases the size of an icon
+	 * when the mouse exits its bounds.*/
 	public void offANDHover() {
 		andGen.setScaleX(0.9);
 		andGen.setScaleY(0.9);
 	}
 
 	// OR HOVER
+	/** This is a function that increases the size of an icon
+	 * when the mouse enters its bounds.*/
 	public void onORHover() {
 		orGen.setScaleX(1.1);
 		orGen.setScaleY(1.1);
 	}
+	/** This is a function that decreases the size of an icon
+	 * when the mouse exits its bounds.*/
 	public void offORHover() {
 		orGen.setScaleX(0.9);
 		orGen.setScaleY(0.9);
 	}
 
 	// NOT HOVER
+	/** This is a function that increases the size of an icon
+	 * when the mouse enters its bounds.*/
 	public void onNOTHover() {
 		notGen.setScaleX(1.1);
 		notGen.setScaleY(1.1);
 	}
+	/** This is a function that decreases the size of an icon
+	 * when the mouse exits its bounds.*/
 	public void offNOTHover() {
 		notGen.setScaleX(0.9);
 		notGen.setScaleY(0.9);
 	}
 
 	// NAND HOVER
+	/** This is a function that increases the size of an icon
+	 * when the mouse enters its bounds.*/
 	public void onNANDHover() {
 		nandGen.setScaleX(1.1);
 		nandGen.setScaleY(1.1);
 	}
+	/** This is a function that decreases the size of an icon
+	 * when the mouse exits its bounds.*/
 	public void offNANDHover() {
 		nandGen.setScaleX(0.9);
 		nandGen.setScaleY(0.9);
 	}
 
 	// NOR HOVER
+	/** This is a function that increases the size of an icon
+	 * when the mouse enters its bounds.*/
 	public void onNORHover() {
 		norGen.setScaleX(1.1);
 		norGen.setScaleY(1.1);
 	}
+	/** This is a function that decreases the size of an icon
+	 * when the mouse exits its bounds.*/
 	public void offNORHover() {
 		norGen.setScaleX(0.9);
 		norGen.setScaleY(0.9);
 	}
 
 	// XOR HOVER
+	/** This is a function that increases the size of an icon
+	 * when the mouse enters its bounds.*/
 	public void onXORHover() {
 		xorGen.setScaleX(1.1);
 		xorGen.setScaleY(1.1);
 	}
+	/** This is a function that decreases the size of an icon
+	 * when the mouse exits its bounds.*/
 	public void offXORHover() {
 		xorGen.setScaleX(0.9);
 		xorGen.setScaleY(0.9);
 	}
 
 	// BULB HOVER
+	/** This is a function that increases the size of an icon
+	 * when the mouse enters its bounds.*/
 	public void onBULBHover() {
 		bulbGen.setScaleX(1.1);
 		bulbGen.setScaleY(1.1);
 	}
+	/** This is a function that decreases the size of an icon
+	 * when the mouse exits its bounds.*/
 	public void offBULBHover() {
 		bulbGen.setScaleX(0.9);
 		bulbGen.setScaleY(0.9);
 	}
 	
 	// TRASH HOVER
+	/** This is a function that increases the size of an icon
+	 * when the mouse enters its bounds.*/
 	public void onTRASHHover() {
 		deleteImage.setScaleX(1.1);
 		deleteImage.setScaleY(1.1);
 	}
+	/** This is a function that decreases the size of an icon
+	 * when the mouse exits its bounds.*/
 	public void offTRASHHover() {
 		deleteImage.setScaleX(0.9);
 		deleteImage.setScaleY(0.9);
