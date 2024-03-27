@@ -564,9 +564,10 @@ public class skillTest3Controller extends sandboxController implements Initializ
 		}
 		
 		public void next(ActionEvent event) throws IOException {
-			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 50) {
-				return;
-			}
+			/*
+			 * if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 50) { return;
+			 * }
+			 */
 			audio.boopPlay();
 			try {			
 				sceneSwitcher.switchScene(event, "/application/resources/levels/lastScene.fxml");
