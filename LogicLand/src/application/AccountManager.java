@@ -351,7 +351,7 @@ public class AccountManager {
 		if(AccountManager.isAdmin()) {
 			return;
 		}
-		if(AccountManager.getLevelScore(levelID) <= score) {
+		if(AccountManager.getLevelScore(levelID) < score) {
 			AccountManager.setHighScore(AccountManager.getHighscore(AccountManager.currentUserID) + score);
 			db.updateLevelScore(levelID, db.getLevelScore(levelID) + score); 
 		}

@@ -186,7 +186,7 @@ public class MultiMediaPlayer {
             volume = 1.0;
         }
         
-        defaultVolume = volume;
+        defaultBoop = volume;
     }
     
         

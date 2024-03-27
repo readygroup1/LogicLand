@@ -107,11 +107,13 @@ class DBAccountManagerTest {
         AccountManager.logout(); // Reset for clean state
         AccountManager.verifyLogin("Student", "1234", false); // Log in as student
 
-        int levelID = 1; // Assuming a level ID for setting scores
+        int level = 1; // Assuming a level ID for setting scores
         int score = 100; // Sample score
 
+        //Set score back to 0
+        AccountManager.setLevelScore(AccountManager.getLevelID(level), 0);
         // Set a level score (assuming method exists and affects high scores)
-        AccountManager.setLevelScore(levelID, score);
+        AccountManager.setLevelScore(AccountManager.getLevelID(level), score);
         
         // Assuming getHighscore returns the highest score of the current user
         assertEquals(score, AccountManager.getHighscore(AccountManager.getCurrentUser()), "High score should match the set score");
