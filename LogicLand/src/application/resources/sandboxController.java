@@ -181,34 +181,28 @@ public class sandboxController implements Initializable{
 							this.batteryGenerator();
 						break;
 					case W:
-						if(!AccountManager.isAdmin()) {
-							if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) > 75) {
-							this.andGenerator();}}
+							if(AccountManager.isAdmin() || AccountManager.getLevelScore(AccountManager.getLevelID(1)) > 75) {
+							this.andGenerator();}
 						break;
 					case E:
-						if(!AccountManager.isAdmin()) {
-							if(AccountManager.getLevelScore(AccountManager.getLevelID(2)) > 75) {
-							this.orGenerator();}}
+							if(AccountManager.isAdmin() || AccountManager.getLevelScore(AccountManager.getLevelID(2)) > 75) {
+							this.orGenerator();}
 						break;
 					case R:
-						if(!AccountManager.isAdmin()) {
-							if(AccountManager.getLevelScore(AccountManager.getLevelID(3)) > 75) {
-							this.notGenerator();}}
+							if(AccountManager.isAdmin() ||AccountManager.getLevelScore(AccountManager.getLevelID(3)) > 75) {
+							this.notGenerator();}
 						break;
 					case T:
-						if(!AccountManager.isAdmin()) {
-							if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) > 75) {
-							this.nandGenerator();}}
+							if(AccountManager.isAdmin() || AccountManager.getLevelScore(AccountManager.getLevelID(4)) > 75) {
+							this.nandGenerator();}
 						break;
 					case Y:
-						if(!AccountManager.isAdmin()) {
-							if(AccountManager.getLevelScore(AccountManager.getLevelID(5)) > 75) {
-							this.norGenerator();}}
+							if(AccountManager.isAdmin() || AccountManager.getLevelScore(AccountManager.getLevelID(5)) > 75) {
+							this.norGenerator();}
 						break;
 					case U:
-						if(!AccountManager.isAdmin()) {
-							if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) > 75) {
-							this.xorGenerator();}}
+							if(AccountManager.isAdmin() || AccountManager.getLevelScore(AccountManager.getLevelID(6)) > 75) {
+							this.xorGenerator();}
 						break;
 					case I:
 							this.bulbGenerator();

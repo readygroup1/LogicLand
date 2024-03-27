@@ -1,27 +1,33 @@
 package application.resources;
 
 import java.io.IOException;
-
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import application.AccountManager;
 import application.GameSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class loginController {	
+public class loginController implements Initializable {	
 
 	//--------Constants/Resources---------
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	Image bulbOn = new Image(getClass().getResourceAsStream("images/bulbOn.png"));
 	
 	//---------------Variables--------------------	
+	@FXML
+	AnchorPane anchorPane;
 	@FXML
 	Text status;
 	@FXML
@@ -93,6 +99,29 @@ public class loginController {
 		} else {
 			isTeacher = true;
 		}
+	}
+
+
+
+
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		anchorPane.addEventFilter(KeyEvent.KEY_PRESSED, key ->{
+			
+			switch(key.getCode()) {
+			
+			 case ENTER: 
+				 login.fire();
+				 break;
+			
+			 case ESCAPE:
+				 backButton.fire();
+				 break;
+			}
+		
+		});
 	}
 	
 	

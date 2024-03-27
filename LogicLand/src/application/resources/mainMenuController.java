@@ -271,7 +271,7 @@ public class mainMenuController implements Initializable{
 					 key.consume();
 					 break;
 				
-				 case DOWN:
+				 case DOWN ,TAB:
 					 buttonArrayIndex++;
 					 buttonArrayIndex =  buttonArrayIndex%5;
 					 buttonArray[buttonArrayIndex].requestFocus();
@@ -287,6 +287,7 @@ public class mainMenuController implements Initializable{
 					 key.consume();
 					 break;
 					 }
+				
 
 			
 			});
