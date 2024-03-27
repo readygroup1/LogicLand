@@ -1,6 +1,8 @@
 package application.resources;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import application.AccountManager;
 import javafx.animation.ParallelTransition;
@@ -8,17 +10,20 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
-public class mainMenuController {
+public class mainMenuController implements Initializable{
 	
 	//--------Constants/Resources---------
 	
@@ -100,8 +105,12 @@ public class mainMenuController {
 		ImageView bulb;
 		@FXML
 		Line line;
-		
+		@FXML
+		AnchorPane outerAnchorPane;
+		@FXML
+		AnchorPane anchorPane;
 		MultiMediaPlayer audio = new MultiMediaPlayer();
+		int buttonArrayIndex = -1;
 	
 		//---------Functions----------------
 		
@@ -236,6 +245,54 @@ public class mainMenuController {
 		    } catch(Exception exception) {
 		        exception.printStackTrace();
 		    }
+		}
+		
+		public void takeFocus() {
+			outerAnchorPane.requestFocus();
+		}
+
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			
+			Button buttonArray[] = {startNewGame, loadGame, tutorial, highScores, quit};
+			
+			outerAnchorPane.setFocusTraversable(true);
+			anchorPane.setFocusTraversable(true);
+			
+			outerAnchorPane.addEventFilter(KeyEvent.KEY_PRESSED, key ->{
+				outerAnchorPane.requestFocus();
+				switch(key.getCode()) {
+				
+				 case ENTER: 
+					 if(buttonArrayIndex < 0) {
+						 buttonArrayIndex = 0;
+					 }
+					 buttonArray[buttonArrayIndex].fire();
+					 key.consume();
+					 break;
+				
+				 case DOWN ,TAB:
+					 buttonArrayIndex++;
+					 buttonArrayIndex =  buttonArrayIndex%5;
+					 buttonArray[buttonArrayIndex].requestFocus();
+					 key.consume();
+					 break;
+					 
+				 case UP:
+					 buttonArrayIndex --;
+					 if(buttonArrayIndex < 0) {
+						 buttonArrayIndex += 5;					  
+					 }
+					 buttonArray[buttonArrayIndex].requestFocus();
+					 key.consume();
+					 break;
+					 }
+				
+
+			
+			});
+			
+			
 		}
 	
 

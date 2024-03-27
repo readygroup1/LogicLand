@@ -2,6 +2,7 @@ package application.resources.levels;
 
 import java.io.IOException;
 import java.net.URL;
+import javafx.util.Duration;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -20,6 +21,7 @@ import application.resources.gates.norController;
 import application.resources.gates.notController;
 import application.resources.gates.orController;
 import application.resources.gates.xorController;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -148,12 +150,69 @@ public class Level1AController extends sandboxController implements Initializabl
 				e.printStackTrace();
 			}
 			 
+			 circuitBoardPane.setOnKeyPressed(event ->{
+					
+					try {
+						
+						
+						
+						switch(event.getCode()) {
+						
+						case W:
+							if(this.andGen != null) {
+								
+								this.andGenerator();}
+							break;
+						case E:
+							if(this.orGen != null) {
+								
+								this.orGenerator();}
+							break;
+						case R:
+							if(this.notGen != null) {
+								
+								this.notGenerator();}
+							break;
+						case T:
+							if(this.nandGen != null) {
+								
+								this.nandGenerator();}
+							break;
+						case Y:
+							if(this.norGen != null) {
+								
+								this.norGenerator();}
+							break;
+						case U:
+							if(this.xorGen != null) {
+								
+								this.xorGenerator();}
+							break;
+		
+						case O:
+		
+								this.deleteButton(null);
+							
+							break;
+						
+					}
+				}
+					catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				});
 			 
 			 endBulb = ((bulbController) bulb.getProperties().get("controller"));
 			// Create function calls to make wire if you want connections
 			
-			 
-			
+			 MultiMediaPlayer media = new MultiMediaPlayer();
+			 PauseTransition pause = new PauseTransition(Duration.seconds(1)); // 2 seconds delay
+			 pause.setOnFinished(event -> {
+				 media.videoDemoPlay(0);		
+			 });
+			 pause.play();
+				
 			
 		}
 		
@@ -179,6 +238,8 @@ public class Level1AController extends sandboxController implements Initializabl
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) != 50) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(1), 50);
 				}
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		
@@ -252,6 +313,7 @@ public class Level1AController extends sandboxController implements Initializabl
 				
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
+				audio.gatePlay();
 				object.setViewOrder(-1);
 				object.setLayoutY(origin.getLayoutY() - 100);
 				object.setLayoutX(origin.getLayoutX());
@@ -395,7 +457,9 @@ public class Level1AController extends sandboxController implements Initializabl
 						if (startType == "output") {
 							
 							this.makeWire(startNode, endNode);
+							audio.wirePlay();
 							callChecktype(startNode);
+							
 							
 							
 						
@@ -405,6 +469,7 @@ public class Level1AController extends sandboxController implements Initializabl
 							
 							
 							this.makeWire(endNode, startNode);
+							audio.wirePlay();
 							callChecktype(endNode);
 							
 							

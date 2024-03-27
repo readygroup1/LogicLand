@@ -2,6 +2,7 @@ package application.resources;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.EventObject;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import application.AccountManager;
 import application.Instructor;
@@ -17,6 +19,7 @@ import application.Main;
 import application.MusicPlayer;
 import application.User;
 import javafx.event.ActionEvent;
+import javafx.scene.input.KeyCode;
 
 public class roadmapController  implements Initializable{
 	
@@ -41,6 +44,8 @@ public class roadmapController  implements Initializable{
 	  private Text classroom;
 	  @FXML
 	  Button instructorDashboard;
+	  @FXML
+	  AnchorPane anchorPane;
 	  
 	  private boolean[] levelLocked = {true, true, true, true, true}; //levels 2-6
 		
@@ -127,7 +132,7 @@ public class roadmapController  implements Initializable{
 				}		  
 		}
 		
-		public void levelTwo(MouseEvent event) throws IOException {	
+		public void levelTwo(MouseEvent  event) throws IOException {	
 			if(levelLocked[0]) {
 				return;
 			}
@@ -141,7 +146,7 @@ public class roadmapController  implements Initializable{
 			}	
 		}
 		
-		public void levelThree(MouseEvent event) throws IOException {
+		public void levelThree(MouseEvent  event) throws IOException {
 			if(levelLocked[1]) {
 				return;
 			}
@@ -155,7 +160,7 @@ public class roadmapController  implements Initializable{
 			}		
 		}
 		
-		public void levelFour(MouseEvent event) throws IOException {
+		public void levelFour(MouseEvent  event) throws IOException {
 			if(levelLocked[2]) {
 				return;
 			}
@@ -169,7 +174,7 @@ public class roadmapController  implements Initializable{
 			}		
 		}
 		
-		public void levelFive(MouseEvent event) throws IOException {
+		public void levelFive(MouseEvent  event) throws IOException {
 			if(levelLocked[3]) {
 				return;
 			}
@@ -183,7 +188,7 @@ public class roadmapController  implements Initializable{
 			}		
 		}
 		
-		public void levelSix(MouseEvent event) throws IOException {	
+		public void levelSix(MouseEvent  event) throws IOException {	
 			if(levelLocked[4]) {
 				return;
 			}
@@ -197,7 +202,7 @@ public class roadmapController  implements Initializable{
 			}		
 		}
 		
-		public void levelSeven(MouseEvent event) throws IOException {	
+		public void levelSeven(MouseEvent  event) throws IOException {	
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) < 75) {
 				return;
 			}
@@ -309,6 +314,98 @@ public class roadmapController  implements Initializable{
 			  
 			  levelOne.setPickOnBounds(true);
 			  
+			  levelOne.setFocusTraversable(true);
+			  levelOne.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelOneHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelOneHover();
+		            }
+		        });
+			  levelTwo.setFocusTraversable(true);
+			  levelTwo.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelTwoHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelTwoHover();
+		            }
+		        });
+			  levelThree.setFocusTraversable(true);
+			  levelThree.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelThreeHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelThreeHover();
+		            }
+		        });
+			  levelFour.setFocusTraversable(true);
+			  levelFour.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelFourHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelFourHover();
+		            }
+		        });
+			  levelFive.setFocusTraversable(true);
+			  levelFive.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelFiveHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelFiveHover();
+		            }
+		        });
+			  levelSix.setFocusTraversable(true);
+			  levelSix.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelSixHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelSixHover();
+		            }
+		        });
+			  
+			  anchorPane.setOnKeyPressed(event ->{
+				
+			
+				  try {
+					  
+					  if(event.getCode() == KeyCode.ENTER) {
+						if(anchorPane.getScene().getFocusOwner() == levelOne) {
+							audio.boopPlay();
+							  sceneSwitcher.switchScene(event, "/application/resources/levels/level1A.fxml");
+						}
+						if(anchorPane.getScene().getFocusOwner() == levelTwo) {
+							audio.boopPlay();
+							  sceneSwitcher.switchScene(event, "/application/resources/levels/level2A.fxml");
+						}
+						if(anchorPane.getScene().getFocusOwner() == levelThree) {
+							audio.boopPlay();
+							  sceneSwitcher.switchScene(event, "/application/resources/levels/level3A.fxml");
+						}
+						if(anchorPane.getScene().getFocusOwner() == levelFour) {
+							audio.boopPlay();
+							  sceneSwitcher.switchScene(event, "/application/resources/levels/level4A.fxml");
+						}
+						if(anchorPane.getScene().getFocusOwner() == levelFive) {
+							audio.boopPlay();
+							  sceneSwitcher.switchScene(event, "/application/resources/levels/level5A.fxml");
+						}
+						if(anchorPane.getScene().getFocusOwner() == levelSix) {
+							audio.boopPlay();
+							  sceneSwitcher.switchScene(event, "/application/resources/levels/level6A.fxml");
+						}
+					}
+				  }
+				  
+				  catch(Exception e){
+					  
+				  }
+			});
 			  
 			
 		}

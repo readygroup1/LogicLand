@@ -4,7 +4,7 @@
   -fx-padding: -5px -10px;
   
 }
-.menuButton:hover {
+.menuButton:hover, .menuButton:focused {
   -fx-background-color: #FF9900; /* Bright orange on hover */
   -fx-cursor: hand; /* Change cursor to hand */
   -fx-padding: -5px -10px;
@@ -20,7 +20,7 @@
   -fx-text-fill: #FFFFFF; 
 }
 
-.backbutton:hover {
+.backbutton:hover, .backbutton:focused{
   -fx-background-color: #FFD700;
   -fx-text-fill: #FFFFFF; 
 }
@@ -31,7 +31,7 @@
   -fx-text-fill: #FFFFFF; 
 }
 
-.instructorDashboard:hover {
+.instructorDashboard:hover, .instructorDashboard:focused {
   -fx-background-color: #04D9FF;
   -fx-text-fill: #FFFFFF; 
 }
@@ -41,7 +41,7 @@
   -fx-text-fill: #FFFFFF; 
 }
 
-.menuBarButton:hover {
+.menuBarButton:hover , .menuBarButton:focused{
   -fx-background-color: #F500FF;
   -fx-text-fill: #FFFFFF; 
 }

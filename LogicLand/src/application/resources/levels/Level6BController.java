@@ -210,6 +210,8 @@ public class Level6BController extends sandboxController implements Initializabl
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) != 75) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(6), 75);
 				}
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		
@@ -311,6 +313,7 @@ public class Level6BController extends sandboxController implements Initializabl
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
 				object.setViewOrder(-1);
+				audio.gatePlay();
 				object.setLayoutY(origin.getLayoutY() - 100);
 				object.setLayoutX(origin.getLayoutX());
 			}		
@@ -446,6 +449,7 @@ public class Level6BController extends sandboxController implements Initializabl
 						// Check which is the output to match the parameter order of makeWire.
 						if (startType == "output") {
 							this.makeWire(startNode, endNode);
+							audio.wirePlay();
 							callChecktype(startNode);
 							
 							
@@ -456,6 +460,7 @@ public class Level6BController extends sandboxController implements Initializabl
 						else {
 
 							this.makeWire(endNode, startNode);
+							audio.wirePlay();
 							callChecktype(endNode);
 							
 							
@@ -633,7 +638,7 @@ public class Level6BController extends sandboxController implements Initializabl
 	     * @throws IOException If an I/O exception occurs during scene switching.
 	     */
 	    public void nextLevel(ActionEvent event) throws IOException {
-	    	if(AccountManager.getLevelScore(AccountManager.getLevelID(4)) < 75) {
+	    	if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) < 75) {
 				return;
 			}
 	    	audio.boopPlay();

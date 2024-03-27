@@ -11,19 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="instructorDashoard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.roadmapController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.roadmapController">
    <children>
-      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Options">
-         <font>
-            <Font name="Vermin Vibes Regular" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="High Scores">
-         <font>
-            <Font name="Vermin Vibes Regular" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Discoveries">
+      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="255.0" style="-fx-background-color: F38307; -fx-border-color: #607d8b; -fx-border-radius: 2;" stylesheets="@../application.css" text="RoadMap">
          <font>
             <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
@@ -33,9 +23,24 @@
             <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="255.0" style="-fx-background-color: F38307; -fx-border-color: #607d8b; -fx-border-radius: 2;" stylesheets="@../application.css" text="RoadMap">
+      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Discoveries">
          <font>
             <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="High Scores">
+         <font>
+            <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Options">
+         <font>
+            <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="instructorDashboard" layoutX="1025.0" layoutY="579.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="55.0" prefWidth="245.0" styleClass="instructorDashboard" stylesheets="@../application.css" text="Instructor Dashboard">
+         <font>
+            <Font name="Vermin Vibes" size="18.0" />
          </font>
       </Button>
       <Text fx:id="name" fill="WHITE" layoutX="62.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="343.40008544921875">
@@ -51,6 +56,11 @@
       <ImageView fx:id="levelOne" fitHeight="150.0" fitWidth="150.0" layoutX="187.0" layoutY="439.0" onMouseClicked="#levelOne" onMouseEntered="#onLevelOneHover" onMouseExited="#offLevelOneHover" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/and.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="levelTwo" fitHeight="150.0" fitWidth="150.0" layoutX="187.0" layoutY="96.0" onMouseClicked="#levelTwo" onMouseEntered="#onLevelTwoHover" onMouseExited="#offLevelTwoHover" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/or.png" />
          </image>
       </ImageView>
       <Text fx:id="classroom" fill="WHITE" layoutX="442.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="class" textAlignment="CENTER" wrappingWidth="351.93341064453125">
@@ -84,11 +94,6 @@
          </image>
       </ImageView>
       <Line endX="-100.0" endY="-181.5" layoutX="422.0" layoutY="520.0" startX="-100.0" startY="-6.0" strokeWidth="6.0" />
-      <ImageView fx:id="levelTwo" fitHeight="150.0" fitWidth="150.0" layoutX="187.0" layoutY="96.0" onMouseClicked="#levelTwo" onMouseEntered="#onLevelTwoHover" onMouseExited="#offLevelTwoHover" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/or.png" />
-         </image>
-      </ImageView>
       <Text fill="WHITE" layoutX="181.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level Two" textAlignment="CENTER" wrappingWidth="139.60006713867188">
          <font>
             <Font name="Vermin Vibes Regular" size="26.0" />
@@ -126,11 +131,6 @@
       <Line endX="-100.0" endY="-76.0" layoutX="898.0" layoutY="430.0" startX="-100.00003051757812" startY="80.0" strokeWidth="6.0" />
       <Line endX="23.9000244140625" endY="-75.0" layoutX="876.0" layoutY="426.0" startX="-78.0" startY="-76.24261474609375" strokeWidth="6.0" />
       <Line endX="35.9000244140625" endY="-76.24261474609375" layoutX="859.0" layoutY="379.0" startX="-60.0" startY="-74.75732421875" strokeWidth="6.0" />
-      <Button fx:id="instructorDashboard" layoutX="1025.0" layoutY="579.0" mnemonicParsing="false" onAction="#instructorDashboard" prefHeight="55.0" prefWidth="245.0" styleClass="instructorDashboard" stylesheets="@../application.css" text="Instructor Dashboard">
-         <font>
-            <Font name="Vermin Vibes" size="18.0" />
-         </font>
-      </Button>
       <ImageView fitHeight="126.0" fitWidth="130.0" layoutX="1032.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/bulbOn.png" />

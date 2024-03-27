@@ -1,3 +1,18 @@
+/** sandboxController controls the user interface and some of the gate algorithms for making circuits and is the parent class of 
+ * all levelControllers which control the circuits in the levels.
+ * 
+ * @author Andres Pedreros Castro
+ * @author Callum Andrew Thompson
+ * @author Nicholas Howard
+ * @author Thomas Leonardo Llamzon
+ * 
+ * Credit where credit is due, some of the code for generating draggable nodes, as well as linking them with 
+ * a line, was inspired by / borrowed from Joell Graff's tutorial "Drag-and-Drop in JavaFX" found
+ * here https://monograff76.wordpress.com/2015/02/20/.
+ * 
+ * */
+
+
 package application.resources;
 
 import java.io.IOException;
@@ -157,38 +172,48 @@ public class sandboxController implements Initializable{
 			circuitBoardPane.setOnKeyPressed(event ->{
 				
 				try {
-				switch(event.getCode()) {
-				
-				case Q:
-						this.batteryGenerator();
-					break;
-				case W:
-						this.andGenerator();
-					break;
-				case E:
-						this.orGenerator();
-					break;
-				case R:
-						this.notGenerator();
-					break;
-				case T:
-						this.nandGenerator();
-					break;
-				case Y:
-						this.norGenerator();
-					break;
-				case U:
-						this.xorGenerator();
-					break;
-				case I:
-						this.bulbGenerator();
-					break;
-
-				case O:
-
-						this.deleteButton(null);
 					
-					break;
+					
+					
+					switch(event.getCode()) {
+					
+					case Q:
+							this.batteryGenerator();
+						break;
+					case W:
+							if(AccountManager.isAdmin() || AccountManager.getLevelScore(AccountManager.getLevelID(1)) > 75) {
+							this.andGenerator();}
+						break;
+					case E:
+							if(AccountManager.isAdmin() || AccountManager.getLevelScore(AccountManager.getLevelID(2)) > 75) {
+							this.orGenerator();}
+						break;
+					case R:
+							if(AccountManager.isAdmin() ||AccountManager.getLevelScore(AccountManager.getLevelID(3)) > 75) {
+							this.notGenerator();}
+						break;
+					case T:
+							if(AccountManager.isAdmin() || AccountManager.getLevelScore(AccountManager.getLevelID(4)) > 75) {
+							this.nandGenerator();}
+						break;
+					case Y:
+							if(AccountManager.isAdmin() || AccountManager.getLevelScore(AccountManager.getLevelID(5)) > 75) {
+							this.norGenerator();}
+						break;
+					case U:
+							if(AccountManager.isAdmin() || AccountManager.getLevelScore(AccountManager.getLevelID(6)) > 75) {
+							this.xorGenerator();}
+						break;
+					case I:
+							this.bulbGenerator();
+						break;
+	
+					case O:
+	
+							this.deleteButton(null);
+						
+						break;
+					
 				}
 			}
 				catch (Exception e) {
@@ -196,6 +221,8 @@ public class sandboxController implements Initializable{
 					e.printStackTrace();
 				}
 			});
+			
+			
 			
 		}
 		
@@ -266,6 +293,7 @@ public class sandboxController implements Initializable{
 			
 			// Display the object
 			circuitBoardPane.getChildren().add(object);
+			audio.gatePlay();
 			object.setLayoutY(origin.getLayoutY() - 100);
 			object.setLayoutX(origin.getLayoutX());
 		}		
@@ -484,6 +512,7 @@ public class sandboxController implements Initializable{
 					if (startType == "output") {
 						
 						this.makeWire(startNode, endNode);
+						audio.wirePlay();
 						
 						switch( (String)(startNode.getProperties().get("ClassType")) ) {
 						case "AND":
@@ -525,7 +554,7 @@ public class sandboxController implements Initializable{
 					else {
 						
 						this.makeWire(endNode, startNode);
-						
+						audio.wirePlay();
 				
 						switch( (String)(endNode.getProperties().get("ClassType")) ) {
 						case "AND":

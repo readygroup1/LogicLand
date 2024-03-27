@@ -40,7 +40,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-public class lastSceneController extends sandboxController implements Initializable {
+public class lastSceneController {
 
 	// ----------------Variables ---------------------------------------
 		public Boolean deleteState = false;

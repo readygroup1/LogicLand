@@ -212,6 +212,8 @@ public class Level5BController extends sandboxController implements Initializabl
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(5)) != 75) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(5), 75);
 				}
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		
@@ -312,6 +314,7 @@ public class Level5BController extends sandboxController implements Initializabl
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
 				object.setViewOrder(-1);
+				audio.gatePlay();
 				object.setLayoutY(origin.getLayoutY() - 100);
 				object.setLayoutX(origin.getLayoutX());
 			}		
@@ -446,13 +449,9 @@ public class Level5BController extends sandboxController implements Initializabl
 						
 						// Check which is the output to match the parameter order of makeWire.
 						if (startType == "output") {
-							endNode.getProperties().put("put", startNode);	//Andres
-							startNode.getProperties().put("put", endNode);
-							
-							callChecktype(startNode);
-							
-							
 							this.makeWire(startNode, endNode);
+							audio.wirePlay();
+							callChecktype(startNode);
 						
 						}
 						
@@ -460,12 +459,9 @@ public class Level5BController extends sandboxController implements Initializabl
 							
 							
 							
-							endNode.getProperties().put("put", startNode);	//Andres
-							startNode.getProperties().put("put", endNode);
-							
-							callChecktype(endNode);
-							
 							this.makeWire(endNode, startNode);
+							audio.wirePlay();
+							callChecktype(endNode);
 						}
 					}
 				}

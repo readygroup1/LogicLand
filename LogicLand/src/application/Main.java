@@ -60,8 +60,6 @@ public class Main extends Application {
 			stage.setScene(scene);
 			stage.setTitle("Logic Land");
 			stage.setResizable(false);
-			// This removes the default highlighting of a single button. Comment it out to see what I mean. 
-			scene.getRoot().requestFocus();
 			
 			stage.show();	
 			stage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {

@@ -208,6 +208,8 @@ public class Level2BController extends sandboxController implements Initializabl
 				if(AccountManager.getLevelScore(AccountManager.getLevelID(2)) != 75) {
 					AccountManager.setLevelScore(AccountManager.getLevelID(2), 75);
 				}
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		
@@ -308,6 +310,7 @@ public class Level2BController extends sandboxController implements Initializabl
 				
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
+				audio.gatePlay();
 				object.setViewOrder(-1);
 				object.setLayoutY(origin.getLayoutY() - 100);
 				object.setLayoutX(origin.getLayoutX());
@@ -444,6 +447,7 @@ public class Level2BController extends sandboxController implements Initializabl
 						// Check which is the output to match the parameter order of makeWire.
 						if (startType == "output") {
 							this.makeWire(startNode, endNode);
+							audio.wirePlay();
 							callChecktype(startNode);
 						
 						}
@@ -451,6 +455,7 @@ public class Level2BController extends sandboxController implements Initializabl
 						else {
 														
 							this.makeWire(endNode, startNode);
+							audio.wirePlay();
 							callChecktype(endNode);
 							
 							

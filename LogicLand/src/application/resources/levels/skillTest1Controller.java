@@ -6,7 +6,6 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import application.AccountManager;
 import application.MusicPlayer;
 import application.resources.SceneSwitcher;
 import application.resources.MultiMediaPlayer;
@@ -151,6 +150,59 @@ public class skillTest1Controller extends sandboxController implements Initializ
 			 
 			 endBulb = ((bulbController) bulb.getProperties().get("controller"));
 			// Create function calls to make wire if you want connections
+			 
+			 circuitBoardPane.setOnKeyPressed(event ->{
+					
+					try {
+						
+						
+						
+						switch(event.getCode()) {
+						
+						case W:
+							if(this.andGen != null) {
+								
+								this.andGenerator();}
+							break;
+						case E:
+							if(this.orGen != null) {
+								
+								this.orGenerator();}
+							break;
+						case R:
+							if(this.notGen != null) {
+								
+								this.notGenerator();}
+							break;
+						case T:
+							if(this.nandGen != null) {
+								
+								this.nandGenerator();}
+							break;
+						case Y:
+							if(this.norGen != null) {
+								
+								this.norGenerator();}
+							break;
+						case U:
+							if(this.xorGen != null) {
+								
+								this.xorGenerator();}
+							break;
+		
+						case O:
+		
+								this.deleteButton(null);
+							
+							break;
+						
+					}
+				}
+					catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				});
 			
 			 
 			
@@ -171,14 +223,12 @@ public class skillTest1Controller extends sandboxController implements Initializ
 			        
 			        alert.setTitle("Level Completed");
 			        alert.setHeaderText(null);
-			        alert.setContentText("Great Job! Move on to Level3");
+			        alert.setContentText("Great Job! Move on to Level 3");
 
 			        // This will block the user input until the modal dialog is dismissed
 			        alert.showAndWait();
-			        
-				if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) != 50) {
-					AccountManager.setLevelScore(AccountManager.getLevelID(1), 50);
-				}
+			} else {
+				title.setText("Not quite! Try again.");
 			}
 		}
 		
@@ -253,6 +303,7 @@ public class skillTest1Controller extends sandboxController implements Initializ
 				// Display the object
 				circuitBoardPane.getChildren().add(object);
 				object.setViewOrder(-1);
+				audio.gatePlay();
 				object.setLayoutY(origin.getLayoutY() - 100);
 				object.setLayoutX(origin.getLayoutX());
 			}		
@@ -395,6 +446,7 @@ public class skillTest1Controller extends sandboxController implements Initializ
 						if (startType == "output") {
 							
 							this.makeWire(startNode, endNode);
+							audio.wirePlay();
 							callChecktype(startNode);
 							
 							
@@ -405,6 +457,7 @@ public class skillTest1Controller extends sandboxController implements Initializ
 							
 							
 							this.makeWire(endNode, startNode);
+							audio.wirePlay();
 							callChecktype(endNode);
 							
 							
@@ -564,9 +617,6 @@ public class skillTest1Controller extends sandboxController implements Initializ
 		}
 		
 		public void next(ActionEvent event) throws IOException {
-			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 50) {
-				return;
-			}
 			audio.boopPlay();
 			try {			
 				sceneSwitcher.switchScene(event, "/application/resources/levels/level3A.fxml");

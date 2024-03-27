@@ -12,17 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.discoveriesController">
    <children>
-      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Options">
-         <font>
-            <Font name="Vermin Vibes Regular" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="High Scores">
-         <font>
-            <Font name="Vermin Vibes Regular" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: F38307; -fx-border-color: #607d8b; -fx-border-radius: 2;" styleClass="menuBarButton" stylesheets="@../application.css" text="Discoveries">
+      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Road Map">
          <font>
             <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
@@ -32,7 +22,17 @@
             <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Road Map">
+      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: F38307; -fx-border-color: #607d8b; -fx-border-radius: 2;" styleClass="menuBarButton" stylesheets="@../application.css" text="Discoveries">
+         <font>
+            <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="High Scores">
+         <font>
+            <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Options">
          <font>
             <Font name="Vermin Vibes Regular" size="24.0" />
          </font>

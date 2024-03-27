@@ -16,6 +16,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 public class newGameController implements Initializable{
@@ -56,12 +58,29 @@ public class newGameController implements Initializable{
 		ChoiceBox<String> chooseClassName; // Input Field for students only. 
 		@FXML
 		TextField enterClassName; // Input field for teachers only.
+		@FXML
+		AnchorPane anchorPane;
 		Boolean isTeacher = false; // Used in imATeacher() to switch between input fields.
 		
 		MultiMediaPlayer audio = new MultiMediaPlayer();
 		
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		chooseClassName.getItems().addAll(AccountManager.getClassrooms());
+		
+		anchorPane.addEventFilter(KeyEvent.KEY_PRESSED, key ->{
+			
+			switch(key.getCode()) {
+			
+			 case ENTER: 
+				 createGame.fire();
+				 break;
+			
+			 case ESCAPE:
+				 backButton.fire();
+				 break;
+			}
+		
+		});
 	}
 		
 	//---------Button Functions-------------------
@@ -192,6 +211,8 @@ public class newGameController implements Initializable{
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
 
 }
