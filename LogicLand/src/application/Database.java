@@ -35,6 +35,8 @@ public class Database {
     private String dbURL = dbURLnocreate + ";create=true";
     /** The number of levels in the game. */
     private int numLevels = 8;
+    /** Boolean to create a new DB. */
+    private boolean createNew = false;
    
     /**
      * The constructor for the database. It creates the database if it does not exist.
@@ -49,9 +51,10 @@ public class Database {
     }
 
     private void createDB() {
-        if (databaseExists()) {
+        if (databaseExists() && !createNew) {
             return;
         }
+        createNew = false;
         executeSQL(
                 "CREATE TABLE SANDBOX (SandboxID INT PRIMARY KEY, ProjectTitle VARCHAR(255), LastModified DATE, SaveState VARCHAR(8000))");
         executeSQL("CREATE TABLE ADMIN (AdminID INT PRIMARY KEY, AdminName VARCHAR(255), Initials VARCHAR(255), AdminPassword VARCHAR(255), AdminEmail VARCHAR(255), SandboxID INT, FOREIGN KEY (SandboxID) REFERENCES SANDBOX(SandboxID))");
@@ -845,6 +848,7 @@ public class Database {
         executeSQL("DROP TABLE CLASSROOM");
         executeSQL("DROP TABLE ADMIN");
         executeSQL("DROP TABLE SANDBOX");
+        createNew = true;
         createDB();
     }
 }
