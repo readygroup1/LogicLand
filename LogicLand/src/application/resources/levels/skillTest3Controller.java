@@ -618,7 +618,7 @@ public class skillTest3Controller extends sandboxController implements Initializ
 		public void lastScene(ActionEvent event) throws IOException {
 	    	audio.boopPlay();
 	    	try {
-	            sceneSwitcher.switchScene(event, "/application/resources/levels/lastScene.fxml");
+	    		sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
 	            audio.boopPlay();
 	        } catch (IOException exception) {
 	            exception.printStackTrace();
