@@ -425,7 +425,6 @@ public class AccountManager {
 		AccountManager.currentUserID = db.addPlayer(username, initials, password, email, classID);
 		AccountManager.isAdmin = false;
 		AccountManager.setSandboxSaveState("");
-		db.printDB(); // Just for testing
 	}
 	
 	/**
@@ -441,6 +440,5 @@ public class AccountManager {
 		db.addClassroom(className, AccountManager.currentUserID);
 		AccountManager.isAdmin = true;
 		AccountManager.setSandboxSaveState("");
-		db.printDB(); // Just for testing
 	}
 }

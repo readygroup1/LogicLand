@@ -13,40 +13,55 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
 /**
- * This class is responsible for playing the "boop" sound effect on a clicked button. 
+ * This class is responsible for playing the sfx and video clips in the game.
  * 
- * @author
+ * <b>Example use:</b>
+ * <pre>
+ * {@code
+ * MultiMediaPlayer mmp = new MultiMediaPlayer();
+ * mmp.boopPlay();
+ * }
+ * <br>
+ * @version 1.0
+ * @since 1.0
+ * @author Callum Thompson
+ * @author Andres Pedreros
+ * @author Nicholas Howard
  */
 public class MultiMediaPlayer {
-	// Correct way to format the local file path as a URI
-    String audioFile = getClass().getResource("/application/resources/sounds/boop.wav").toExternalForm();
-    String errorSoundFile = getClass().getResource("/application/resources/sounds/error.wav").toExternalForm();
-    String newGate = getClass().getResource("/application/resources/sounds/newGate2.wav").toExternalForm();
-    String newWire = getClass().getResource("/application/resources/sounds/newWire.wav").toExternalForm();
-    
-    
-    // Creating a media object for the audio
-    Media sound = new Media(audioFile);
-    Media errorSound = new Media(errorSoundFile);
-    
-    // Creating media object for gate audio
-    Media gateSound = new Media(newGate);
-    Media wireSound = new Media(newWire);
-    
-    // Creating a MediaPlayer with the media
-    MediaPlayer boop = new MediaPlayer(sound);
-    
-    
-    String videoDemo1A = getClass().getResource("/application/resources/1Aclip.mp4").toExternalForm();
-    Media video1A = new Media(videoDemo1A);
-    String videoDemo1B = getClass().getResource("/application/resources/1Bclip.mp4").toExternalForm();
-    Media video1B = new Media(videoDemo1B);
-   
+	/** Location to the boop sfx */
+    private String audioFile = getClass().getResource("/application/resources/sounds/boop.wav").toExternalForm();
+    /** Location to the error sfx */
+    private String errorSoundFile = getClass().getResource("/application/resources/sounds/error.wav").toExternalForm();
+    /** Location to the gate sfx */
+    private String newGate = getClass().getResource("/application/resources/sounds/newGate2.wav").toExternalForm();
+    /** Location to the wire sfx */
+    private String newWire = getClass().getResource("/application/resources/sounds/newWire.wav").toExternalForm();
+    /** Media for the boop sfx */
+    private Media sound = new Media(audioFile);
+    /** Media for the error sfx */
+    private Media errorSound = new Media(errorSoundFile);
+    /** Media for the gate sfx */
+    private Media gateSound = new Media(newGate);
+    /** Media for the wire sfx */
+    private Media wireSound = new Media(newWire);
+    /** MediaPlayer for the boop sfx */
+    private MediaPlayer boop = new MediaPlayer(sound);
+    /** Location to the video demo 1A */
+    private String videoDemo1A = getClass().getResource("/application/resources/1Aclip.mp4").toExternalForm();
+    /** Media for video demo 1A */
+    private Media video1A = new Media(videoDemo1A);
+    /** Location to the video demo 1B */
+    private String videoDemo1B = getClass().getResource("/application/resources/1Bclip.mp4").toExternalForm();
+    /** Media for video demo 1B */
+    private Media video1B = new Media(videoDemo1B);
+    /** Volume of the boop sound */
     static public double defaultBoop = 0.2;
+    /** Volume of the video sound */
     static public double defaultVolume = 0.9;
     
     /**
-     * Play "boop" sound.
+     * Calling this method plays the boop sound effect.
      */
     public void boopPlay() {
     	// Playing the audio
@@ -54,23 +69,37 @@ public class MultiMediaPlayer {
         boop.setVolume(defaultBoop);
     }
    
+    /**
+     * Calling this method plays the error sound effect.
+     */
     public void errorPlay() {
     	MediaPlayer error = new MediaPlayer(errorSound);
     	error.play();
     	error.setVolume(defaultBoop);
     }
     
+    /**
+     * Calling this method plays the gate sound effect.
+     */
     public void gatePlay() {
     	MediaPlayer gate = new MediaPlayer(gateSound);
     	gate.play();
     	gate.setVolume(defaultVolume);
     }
     
+    /**
+     * Calling this method plays the wire sound effect.
+     */
     public void wirePlay() {
     	MediaPlayer wire = new MediaPlayer(wireSound);
     	wire.play();
     	wire.setVolume(defaultVolume);
     }
+    
+    /**
+     * Calling this method plays the video demo for level 1A or 1B. Use param 0 for 1A, and 1 for 1B.
+     * @param mode
+     */
     public void videoDemoPlay(int mode) {
     	MediaPlayer mediaPlayer;
 		MediaView mediaView;
@@ -132,7 +161,10 @@ public class MultiMediaPlayer {
         Platform.runLater(dialog::showAndWait);
     }
     
-    
+    /**
+     * Set the default volume for the boop sound effect.
+     * @param volume
+     */
     public void setDefaultVolume(double volume) {
         if (volume < 0.0) {
             volume = 0.0;
@@ -143,6 +175,10 @@ public class MultiMediaPlayer {
         defaultVolume = volume;
     }
     
+    /**
+     * Set the default volume for the boop sound effect.
+     * @param volume
+     */
     public void setBoopVolume(double volume) {
         if (volume < 0.0) {
             volume = 0.0;
