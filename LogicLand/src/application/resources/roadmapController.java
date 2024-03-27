@@ -309,6 +309,60 @@ public class roadmapController  implements Initializable{
 			  
 			  levelOne.setPickOnBounds(true);
 			  
+			  levelOne.setFocusTraversable(true);
+			  levelOne.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelOneHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelOneHover();
+		            }
+		        });
+			  levelTwo.setFocusTraversable(true);
+			  levelTwo.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelTwoHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelTwoHover();
+		            }
+		        });
+			  levelThree.setFocusTraversable(true);
+			  levelThree.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelThreeHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelThreeHover();
+		            }
+		        });
+			  levelFour.setFocusTraversable(true);
+			  levelFour.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelFourHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelFourHover();
+		            }
+		        });
+			  levelFive.setFocusTraversable(true);
+			  levelFive.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelFiveHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelFiveHover();
+		            }
+		        });
+			  levelSix.setFocusTraversable(true);
+			  levelSix.focusedProperty().addListener((observable, unfocused, focused) -> {
+		            if (focused) {
+		                this.onLevelSixHover();
+		            }
+		            if (unfocused) {
+		                this.offLevelSixHover();
+		            }
+		        });
 			  
 			
 		}

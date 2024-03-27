@@ -9,17 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0088FF" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.resources.optionsController">
    <children>
-      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: F38307; -fx-border-color: #607d8b; -fx-border-radius: 2;" styleClass="menuBarButton" stylesheets="@../application.css" text="Options">
-         <font>
-            <Font name="Vermin Vibes Regular" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="High Scores" textOverrun="CLIP" wrapText="true">
-         <font>
-            <Font name="Vermin Vibes Regular" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Discoveries">
+      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="RoadMap">
          <font>
             <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
@@ -29,16 +19,41 @@
             <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="roadmap" layoutY="661.0" mnemonicParsing="false" onAction="#roadmap" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="RoadMap">
+      <Button fx:id="discoveries" layoutX="512.0" layoutY="661.0" mnemonicParsing="false" onAction="#discoveries" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="Discoveries">
          <font>
             <Font name="Vermin Vibes Regular" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="quit" alignment="CENTER" contentDisplay="CENTER" layoutX="497.0" layoutY="528.0" mnemonicParsing="false" onAction="#quit" prefHeight="83.0" prefWidth="300.0" styleClass="menuButton" stylesheets="@../application.css" text="Quit" textAlignment="CENTER">
+      <Button fx:id="highscores" layoutX="768.0" layoutY="661.0" mnemonicParsing="false" onAction="#highscore" prefHeight="59.0" prefWidth="256.0" styleClass="menuBarButton" stylesheets="@../application.css" text="High Scores" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="options" layoutX="1024.0" layoutY="661.0" mnemonicParsing="false" onAction="#options" prefHeight="59.0" prefWidth="256.0" style="-fx-background-color: F38307; -fx-border-color: #607d8b; -fx-border-radius: 2;" styleClass="menuBarButton" stylesheets="@../application.css" text="Options">
+         <font>
+            <Font name="Vermin Vibes Regular" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="497.0" layoutY="172.0" mnemonicParsing="false" onAction="#mute" prefHeight="78.0" prefWidth="300.0" styleClass="menuButton" stylesheets="@../application.css" text="AUDIO ON/OFF">
+        	<font>
+            <Font name="Vermin Vibes Regular" size="36.0" />
+         </font>
+      </Button>
+      <Button layoutX="447.0" layoutY="251.0" mnemonicParsing="false" onAction="#tutorial" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="TUTORIAL" textAlignment="CENTER">
+         <font>
+            <Font name="Vermin Vibes Regular" size="36.0" />
+         </font>
+      </Button>
+      <Button layoutX="447.0" layoutY="331.0" mnemonicParsing="false" onAction="#gblHighscores" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="GLOBAL HIGH SCORES" textAlignment="CENTER">
+         <font>
+            <Font name="Vermin Vibes Regular" size="36.0" />
+         </font>
+      </Button>
+      <Button fx:id="logout" alignment="CENTER" contentDisplay="CENTER" layoutX="497.0" layoutY="422.0" mnemonicParsing="false" onAction="#logout" prefHeight="80.0" prefWidth="300.0" styleClass="menuButton" stylesheets="@../application.css" text="Log Out" textAlignment="CENTER">
          <font>
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font></Button>
-      <Button fx:id="logout" alignment="CENTER" contentDisplay="CENTER" layoutX="497.0" layoutY="422.0" mnemonicParsing="false" onAction="#logout" prefHeight="80.0" prefWidth="300.0" styleClass="menuButton" stylesheets="@../application.css" text="Log Out" textAlignment="CENTER">
+      <Button fx:id="quit" alignment="CENTER" contentDisplay="CENTER" layoutX="497.0" layoutY="528.0" mnemonicParsing="false" onAction="#quit" prefHeight="83.0" prefWidth="300.0" styleClass="menuButton" stylesheets="@../application.css" text="Quit" textAlignment="CENTER">
          <font>
             <Font name="Vermin Vibes Regular" size="36.0" />
          </font></Button>
@@ -52,25 +67,10 @@
             <Font name="Vermin Vibes Regular" size="64.0" />
          </font>
       </Text>
-      <Button layoutX="447.0" layoutY="251.0" mnemonicParsing="false" onAction="#tutorial" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="TUTORIAL" textAlignment="CENTER">
-         <font>
-            <Font name="Vermin Vibes Regular" size="36.0" />
-         </font>
-      </Button>
-      <Button layoutX="447.0" layoutY="331.0" mnemonicParsing="false" onAction="#gblHighscores" prefHeight="80.0" prefWidth="400.0" styleClass="menuButton" stylesheets="@../application.css" text="GLOBAL HIGH SCORES" textAlignment="CENTER">
-         <font>
-            <Font name="Vermin Vibes Regular" size="36.0" />
-         </font>
-      </Button>
       <Text fx:id="timePlayed" fill="#ff8f00" layoutX="712.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time played: &lt;&gt; minutes" textAlignment="RIGHT" wrappingWidth="559.2416381835938">
          <font>
             <Font name="Vermin Vibes Regular" size="34.0" />
          </font>
       </Text>
-      <Button layoutX="497.0" layoutY="172.0" mnemonicParsing="false" onAction="#mute" prefHeight="78.0" prefWidth="300.0" styleClass="menuButton" stylesheets="@../application.css" text="AUDIO ON/OFF">
-        	<font>
-            <Font name="Vermin Vibes Regular" size="36.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>
