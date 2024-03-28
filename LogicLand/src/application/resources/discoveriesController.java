@@ -10,6 +10,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
+/**
+ * @author Thomas Llamzon
+ * @author Nick Howard
+ * 
+ * This class is responsible for facilitating all actions available from the discoveries page.
+ * It also handles displaying the appropriate text and images that should be displayed on the page.
+ */
 public class discoveriesController implements Initializable{
 	
 	//---------------Variables----------------------------------------------

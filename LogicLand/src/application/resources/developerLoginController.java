@@ -19,7 +19,8 @@ import javafx.scene.text.Text;
 
 /**
  * This class is responsible for all actions connected to and available within the developer login page.
- * 
+ * @author Callum Thompson
+ * @author Nicholas Howard
  */
 public class developerLoginController implements Initializable{
 	

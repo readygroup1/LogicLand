@@ -9,7 +9,19 @@ import org.junit.jupiter.api.Test;
 
 import application.AccountManager;
 import application.Database;
-
+/**
+ * This JUnit test covers the following classes:
+ * {@link application.Database.java}
+ * AccountManager.java
+ * newGameController.java
+ * loginController.java
+ * developerLoginController.java
+ * highscoreController.java
+ * mainMenuHighscoreController.java
+ * User.java
+ * Classroom.java
+ * Instructor.java 
+ */
 class DBAccountManagerTest {
 
     @BeforeAll
