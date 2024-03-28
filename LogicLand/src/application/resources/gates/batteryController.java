@@ -21,7 +21,7 @@ public class batteryController extends gateObject implements Initializable{
 		boolean state = false;
 		sandboxController sboxController;
 		Pane circuitBoardPane;
-		Type type;
+		Type type = gateObject.Type.battery;
 		
 		boolean dragged = false;
 		Double dragStartX;
