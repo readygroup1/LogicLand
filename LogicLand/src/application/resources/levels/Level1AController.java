@@ -1,5 +1,18 @@
 package application.resources.levels;
 
+/** this class reuses essential methods and variables used in sandbox 
+ * although slightly altered to set up a game for players to complete.
+ * 
+ * 
+ * 
+ * @author Andres Pedreros Castro
+ * @author Callum Andrew Thompson
+ * @author Nicholas Howard
+ * @author Thomas Leonardo Llamzon
+ * 
+ * 
+ */
+
 import java.io.IOException;
 import java.net.URL;
 import javafx.util.Duration;
@@ -42,6 +55,26 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+/**
+ * This class represents the controller for Level 1A in the LogicLand application.
+ * It extends the `sandboxController` class and implements the `Initializable` interface.
+ * 
+ * The `Level1AController` class is responsible for managing the user interface and logic of Level 1A.
+ * It handles the generation of gate objects, pre-loading of objects, and checking if the game is won.
+ * 
+ * The class contains various instance variables, including the circuit board pane, buttons, image views,
+ * labels, and pre-loaded object panes. It also defines an enum `Type` to represent different types of objects.
+ * 
+ * The class provides methods for initializing the level, loading pre-loaded objects, generating gate objects,
+ * and checking if the game is won. It also includes getter and setter methods for accessing the circuit board pane.
+ * 
+ * The `Level1AController` class follows the JavaFX controller pattern and is designed to work with the LogicLand application.
+ * It interacts with the user interface and handles user input to create and manipulate gate objects on the circuit board.
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @author Andres Pedreros Castro
+ */
 public class Level1AController extends sandboxController implements Initializable {
 
 	// ----------------Variables ---------------------------------------
@@ -105,6 +138,15 @@ public class Level1AController extends sandboxController implements Initializabl
 	 	Image deleteOff = new Image(getClass().getResourceAsStream("/application/resources/images/deleteOff.png"));
 		
 		// --------------------Initializer-----------------------------------------
+		/**
+		 * Initializes the Level1AController.
+		 * This method is called after the FXML file has been loaded and the controller object has been created.
+		 * It sets up the initial state of the controller, including playing level music, initializing the fxmlPath map,
+		 * setting up the delete functionality, loading preloaded objects, handling key events, and playing a video demo.
+		 *
+		 * @param arg0 The URL of the FXML file.
+		 * @param arg1 The ResourceBundle for the FXML file.
+		 */
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			
@@ -133,75 +175,61 @@ public class Level1AController extends sandboxController implements Initializabl
 			// Use Load to create the preloaded object and store them in the previous placeholders.
 			 try {
 				battery1 = this.load(battery1, Type.BATTERY);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			 try {
-				battery2 = this.load(battery2, Type.BATTERY);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			 try {
+				battery2 = this.load(battery2, Type.BATTERY);	
 				bulb = this.load(bulb, Type.BULB);
+
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			 
+			 /**This code initializes a listener to the gates so it generates a new gate when a key is pressed */
 			 circuitBoardPane.setOnKeyPressed(event ->{
 					
-					try {
-						
-						
-						
-						switch(event.getCode()) {
-						
-						case W:
-							if(this.andGen != null) {
-								
-								this.andGenerator();}
-							break;
-						case E:
-							if(this.orGen != null) {
-								
-								this.orGenerator();}
-							break;
-						case R:
-							if(this.notGen != null) {
-								
-								this.notGenerator();}
-							break;
-						case T:
-							if(this.nandGen != null) {
-								
-								this.nandGenerator();}
-							break;
-						case Y:
-							if(this.norGen != null) {
-								
-								this.norGenerator();}
-							break;
-						case U:
-							if(this.xorGen != null) {
-								
-								this.xorGenerator();}
-							break;
-		
-						case O:
-		
-								this.deleteButton(null);
+				try {						
+					switch(event.getCode()) {
+					
+					case W:
+						if(this.andGen != null) {
 							
-							break;
+							this.andGenerator();}
+						break;
+					case E:
+						if(this.orGen != null) {
+							
+							this.orGenerator();}
+						break;
+					case R:
+						if(this.notGen != null) {
+							
+							this.notGenerator();}
+						break;
+					case T:
+						if(this.nandGen != null) {
+							
+							this.nandGenerator();}
+						break;
+					case Y:
+						if(this.norGen != null) {
+							
+							this.norGenerator();}
+						break;
+					case U:
+						if(this.xorGen != null) {
+							
+							this.xorGenerator();}
+						break;
+	
+					case O:
+	
+							this.deleteButton(null);
 						
+						break;
+					
 					}
 				}
-					catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				});
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
 			 
 			 endBulb = ((bulbController) bulb.getProperties().get("controller"));
 			// Create function calls to make wire if you want connections
