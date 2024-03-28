@@ -115,11 +115,11 @@ public class User {
 
 	
 	/** 
-	 * Gets the intutorial of the current user.
+	 * Gets the tutorial state of the current user.
 	 * 
 	 * @return String
 	 */
-	public String getIntutorial() {
+	public String getinTutorial() {
 		return intutorial;
 	}
 
