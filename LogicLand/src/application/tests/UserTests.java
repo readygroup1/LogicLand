@@ -12,23 +12,6 @@ import application.User;
 
 class UserTests {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-		
-	}
-
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
 	@Test
 	void getUsernameTest() {
 		int playerID = 1;
