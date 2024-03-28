@@ -18,6 +18,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+/**
+ * This class handles all activities that occur in the instructor dashboard. 
+ * Such activities may affect an instructor's class and be connected to other pages in the game.
+ * Only teachers and admins have the ability to access this page.
+ */
 public class instructorDashboard implements Initializable{
 
 	MultiMediaPlayer audio = new MultiMediaPlayer();
@@ -43,6 +48,15 @@ public class instructorDashboard implements Initializable{
 	@FXML
 	Button deletePlayer;
 	
+	/**
+	 * @param url 
+	 * @param resourceBundle
+	 * 
+	 * This method is responsible for loading the corresponding class to the logged-in teacher.
+	 * It loads the corresponding class with all students and their scores.
+	 * A teacher can add and remove students from their class.
+	 * If the user logged in is an admin they can also delete students, which a teacher cannot. 
+	 */
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		className.setText("Class: "+ AccountManager.getClassName(AccountManager.getCurrentClassID()));
 	    VBox contentBox = new VBox(20); // 10 is the spacing between elements
@@ -84,6 +98,14 @@ public class instructorDashboard implements Initializable{
 	
 	
 	//-------------------Buttons-------------------------------
+	
+	/**
+	 * 
+	 * @param event Back button clicked.
+	 * @throws IOException Thrown if the roadMap page cannot be found.
+	 * 
+	 * This method will take a teacher/admin to the roadmap page.
+	 */
 	public void back(ActionEvent event) throws IOException {			
 		try {		
 			audio.boopPlay();
@@ -94,6 +116,12 @@ public class instructorDashboard implements Initializable{
 		}		
 	}
 	
+	/**
+	 * 
+	 * @param event Add button clicked.
+	 * 
+	 * This method will add a student to the teacher's class. 
+	 */
 	public void addButton(ActionEvent event) {
 		String studentName = addBox.getSelectionModel().getSelectedItem();
 		if(studentName == null) {
@@ -111,6 +139,13 @@ public class instructorDashboard implements Initializable{
 		}
 	}
 
+	/**
+	 * 
+	 * @param event Remove button clicked.
+	 * 
+	 * This method will remove a student from a class.
+	 * Only teachers and admins can do this.
+	 */
 	public void removeButton(ActionEvent event) {
 		String studentName = removeBox.getSelectionModel().getSelectedItem();
 		if(studentName == null) {
@@ -128,6 +163,13 @@ public class instructorDashboard implements Initializable{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param event Delete button clicked.
+	 * 
+	 * This method will delete a student from the game. 
+	 * Only admins have the ability to do this.
+	 */
 	public void deletePlayer(ActionEvent event) {
 		String studentName = deleteBox.getSelectionModel().getSelectedItem();
 		if(studentName == null) {

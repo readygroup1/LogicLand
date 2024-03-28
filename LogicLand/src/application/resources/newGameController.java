@@ -20,6 +20,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+/**
+ * @author Callum Thompson
+ * 
+ * This class is responsible for gathering and storing a users information in the newGame page.
+ * A user must enter a name, initial, password, email, and class & teacher information.
+ */
 public class newGameController implements Initializable{
 	
 	//--------Constants/Resources---------
@@ -64,6 +70,9 @@ public class newGameController implements Initializable{
 		
 		MultiMediaPlayer audio = new MultiMediaPlayer();
 		
+	/**
+	 * This method is responsible for intitializing the newGame page.
+	 */
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		chooseClassName.getItems().addAll(AccountManager.getClassrooms());
 		
@@ -85,6 +94,11 @@ public class newGameController implements Initializable{
 		
 	//---------Button Functions-------------------
 	
+	/**
+	 * 
+	 * @param event Back button clicked.
+	 * @throws IOException Thrown is there is an error finding the mainMenu page.
+	 */
 	public void back(ActionEvent event) throws IOException {			
 		try {			
 			audio.boopPlay();
@@ -95,8 +109,14 @@ public class newGameController implements Initializable{
 		}		
 	}
 	
-	
-	// Function for imATeacher checkbox that switches between student and teacher class input fields.
+	/**
+	 * 
+	 * @param event I am a Teacher checkbox checked.
+	 * 
+	 * This method will check for whether or not the I am a Teacher checkbox is checked.
+	 * If it is, the user will then be able to name a corresponding class to create.
+	 * Otherwise, this is not an option for a regular user.
+	 */
 	public void imATeacher(ActionEvent event) {
 		if(isTeacher) {
 			userIcon.setImage(student);
@@ -116,6 +136,18 @@ public class newGameController implements Initializable{
 		}		
 	}
 	
+	/**
+	 * 
+	 * @param event Create Game button clicked.
+	 * @throws Exception Thrown if there is an error with the user input or with finding the roadmap page.
+	 * 
+	 * This method will verify the user input and store it with AccountManager if it is valid input.
+	 * The user must enter a name.
+	 * The user must enter a three letter initial.
+	 * The user must enter a password at least four characters in length and confirm it.
+	 * The user must select a class to belong to.
+	 * A teacher must name a class to create.
+	 */
 	public void createGame(ActionEvent event) throws Exception {
 		try {
 			String userName = username.getText();

@@ -24,6 +24,12 @@ public class discoveriesController implements Initializable{
 	
 	MultiMediaPlayer audio = new MultiMediaPlayer();
 	
+	/**
+	 * Take user to roadmap page.
+	 * 
+	 * @param event Roadmap menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the mainMenu page.
+	 */
 	public void roadmap(ActionEvent event) throws IOException {			
 		try {			
 			audio.boopPlay();
@@ -33,7 +39,13 @@ public class discoveriesController implements Initializable{
 			exception.printStackTrace();				
 		}		
 	}
-	
+
+	/**
+	 * Take user to sandbox page.
+	 * 
+	 * @param event Sandbox menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the mainMenu page.
+	 */
 	public void sandbox(ActionEvent event) throws IOException {			
 		try {			
 			audio.boopPlay();
@@ -43,7 +55,13 @@ public class discoveriesController implements Initializable{
 			exception.printStackTrace();				
 		}		
 	}
-	
+
+	/**
+	 * Take user to highscore page.
+	 * 
+	 * @param event Highscore menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the mainMenu page.
+	 */
 	public void highscore(ActionEvent event) throws IOException {			
 		try {		
 			audio.boopPlay();
@@ -53,7 +71,13 @@ public class discoveriesController implements Initializable{
 			exception.printStackTrace();				
 		}		
 	}
-	
+
+	/**
+	 * Take user to discoveries page.
+	 * 
+	 * @param event Discoveries menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the mainMenu page.
+	 */
 	public void discoveries(ActionEvent event) throws IOException {			
 		try {		
 			audio.boopPlay();
@@ -63,7 +87,13 @@ public class discoveriesController implements Initializable{
 			exception.printStackTrace();				
 		}		
 	}
-	
+
+	/**
+	 * Take user to options page.
+	 * 
+	 * @param event Options menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the mainMenu page.
+	 */
 	public void options(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();
@@ -73,8 +103,14 @@ public class discoveriesController implements Initializable{
 			exception.printStackTrace();				
 		}		
 	}
-	
-public void instructorDashboard(ActionEvent event) throws IOException {	
+
+	/**
+	 * Take user to instructorDashboard page.
+	 * 
+	 * @param event instructorDashboard button clicked.
+	 * @throws IOException Thrown if there is an error finding the mainMenu page.
+	 */
+	public void instructorDashboard(ActionEvent event) throws IOException {	
 		
 		try {	
 			audio.boopPlay();
@@ -86,14 +122,14 @@ public void instructorDashboard(ActionEvent event) throws IOException {
 	}
 
 	@Override
+	/**
+	 * This method is responsible for ensuring that the instructor dashboard button is not displayed if the user is not an instructor/admin. 
+	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		if(!isTeacher) {
 			instructorDashboard.setVisible(false);
 		}
-		
-		
-		
 	}
 
 }

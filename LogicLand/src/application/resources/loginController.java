@@ -19,6 +19,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+
+/**
+ * This class controls the login page. It handles username and password verification in the login page, 
+ * as well as handling setting teacher status for other classes.
+ */
 public class loginController implements Initializable {	
 
 	//--------Constants/Resources---------
@@ -48,6 +53,12 @@ public class loginController implements Initializable {
 	
 	
 	// ----------------Button Functions -----------------------
+	
+	/**
+	 * 
+	 * @param event Occurs when the user clicks the login button.
+	 * @throws Exception Thrown when there is an error with the login action.
+	 */
 	public void login(ActionEvent event) throws Exception {
 		String userName = username.getText();
 		String userPassword = password.getText();
@@ -79,10 +90,11 @@ public class loginController implements Initializable {
 		}
 	}
 	
-	
-	
-	
-	
+	/**
+	 * 
+	 * @param event Occurs when the back button is clicked.
+	 * @throws IOException Thrown when the mainMenu page cannot be found.
+	 */
 	public void back(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();
@@ -93,6 +105,10 @@ public class loginController implements Initializable {
 		}		
 	}
 	
+	/**
+	 * 
+	 * @param event Occurs when the "I am a Teacher" checkbox is checked.
+	 */
 	public void imATeacher(ActionEvent event) {
 		if(isTeacher) {
 			isTeacher = false;
@@ -103,9 +119,10 @@ public class loginController implements Initializable {
 
 
 
-
-
 	@Override
+	/**
+	 * This method handles the startup process of the login page.
+	 */
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		anchorPane.addEventFilter(KeyEvent.KEY_PRESSED, key ->{

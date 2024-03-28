@@ -21,6 +21,9 @@ import application.User;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyCode;
 
+/**
+ * This class is responsible for facilitating all actions available in the roadmap page.
+ */
 public class roadmapController  implements Initializable{
 	
 	// ------------------Variables--------------------------------------------
@@ -63,7 +66,13 @@ public class roadmapController  implements Initializable{
 	// ----------------User Dashboard Button Functions -----------------------
 	
 		
-		
+		/**
+		 * 
+		 * @param event The roadmap menu bar button is clicked.
+		 * @throws IOException Thrown if there is an error finding the boop sound effect or the roadmap page.
+		 * 
+		 * This method will take the user to the roadmap page.
+		 */
 		public void roadmap(ActionEvent event) throws IOException {	
 			 
 			try {	
@@ -74,7 +83,14 @@ public class roadmapController  implements Initializable{
 				exception.printStackTrace();				
 			}		
 		}
-		
+
+		/**
+		 * 
+		 * @param event The sandbox menu bar button is clicked.
+		 * @throws IOException Thrown if there is an error finding the boop sound effect or the sandbox page.
+		 * 
+		 * This method will take the user to the sandbox page.
+		 */
 		public void sandbox(ActionEvent event) throws IOException {			
 			try {	
 				audio.boopPlay();
@@ -84,7 +100,14 @@ public class roadmapController  implements Initializable{
 				exception.printStackTrace();				
 			}		
 		}
-		
+
+		/**
+		 * 
+		 * @param event The highscore menu bar button is clicked.
+		 * @throws IOException Thrown if there is an error finding the boop sound effect or the highscore page.
+		 * 
+		 * This method will take the user to the highscore page.
+		 */
 		public void highscore(ActionEvent event) throws IOException {			
 			try {
 				audio.boopPlay();
@@ -94,7 +117,14 @@ public class roadmapController  implements Initializable{
 				exception.printStackTrace();				
 			}		
 		}
-		
+
+		/**
+		 * 
+		 * @param event The discoveries menu bar button is clicked.
+		 * @throws IOException Thrown if there is an error finding the boop sound effect or the discoveries page.
+		 * 
+		 * This method will take the user to the discoveries page.
+		 */
 		public void discoveries(ActionEvent event) throws IOException {			
 			try {	
 				audio.boopPlay();
@@ -104,7 +134,14 @@ public class roadmapController  implements Initializable{
 				exception.printStackTrace();				
 			}		
 		}
-		
+
+		/**
+		 * 
+		 * @param event The options menu bar button is clicked.
+		 * @throws IOException Thrown if there is an error finding the boop sound effect or the options page.
+		 * 
+		 * This method will take the user to the options page.
+		 */
 		public void options(ActionEvent event) throws IOException {			
 			try {	
 				audio.boopPlay();
@@ -120,7 +157,13 @@ public class roadmapController  implements Initializable{
 		
 		
 		
-		
+		/**
+		 * 
+		 * @param event LevelOne button clicked
+		 * @throws IOException Thrown if there is an error finding the roadmap page or boop sound effect.
+		 * 
+		 * This method will take the user to the first level of the game.
+		 */
 		public void levelOne(MouseEvent event) throws IOException {	
 			 try {	
 				  
@@ -131,7 +174,14 @@ public class roadmapController  implements Initializable{
 					exception.printStackTrace();				
 				}		  
 		}
-		
+
+		/**
+		 * 
+		 * @param event LevelTwo button clicked
+		 * @throws IOException Thrown if there is an error finding the roadmap page or boop sound effect.
+		 * 
+		 * This method will take the user to the second level of the game, assuming they have completed level one.
+		 */
 		public void levelTwo(MouseEvent  event) throws IOException {	
 			if(levelLocked[0]) {
 				return;
@@ -145,7 +195,14 @@ public class roadmapController  implements Initializable{
 				exception.printStackTrace();				
 			}	
 		}
-		
+
+		/**
+		 * 
+		 * @param event LevelThree button clicked
+		 * @throws IOException Thrown if there is an error finding the roadmap page or boop sound effect.
+		 * 
+		 * This method will take the user to the third level of the game, assuming they have completed all levels up to level two.
+		 */
 		public void levelThree(MouseEvent  event) throws IOException {
 			if(levelLocked[1]) {
 				return;
@@ -159,7 +216,14 @@ public class roadmapController  implements Initializable{
 				exception.printStackTrace();				
 			}		
 		}
-		
+
+		/**
+		 * 
+		 * @param event LevelFour button clicked
+		 * @throws IOException Thrown if there is an error finding the roadmap page or boop sound effect.
+		 * 
+		 * This method will take the user to the fourth level of the game, assuming they have completed all levels up to level three.
+		 */
 		public void levelFour(MouseEvent  event) throws IOException {
 			if(levelLocked[2]) {
 				return;
@@ -173,7 +237,14 @@ public class roadmapController  implements Initializable{
 				exception.printStackTrace();				
 			}		
 		}
-		
+
+		/**
+		 * 
+		 * @param event LevelFive button clicked
+		 * @throws IOException Thrown if there is an error finding the roadmap page or boop sound effect.
+		 * 
+		 * This method will take the user to the fifth level of the game, assuming they have completed all levels up to level four.
+		 */
 		public void levelFive(MouseEvent  event) throws IOException {
 			if(levelLocked[3]) {
 				return;
@@ -187,7 +258,14 @@ public class roadmapController  implements Initializable{
 				exception.printStackTrace();				
 			}		
 		}
-		
+
+		/**
+		 * 
+		 * @param event LevelSix button clicked
+		 * @throws IOException Thrown if there is an error finding the roadmap page or boop sound effect.
+		 * 
+		 * This method will take the user to the sixth level of the game, assuming they have completed all levels up to level five.
+		 */
 		public void levelSix(MouseEvent  event) throws IOException {	
 			if(levelLocked[4]) {
 				return;
@@ -201,7 +279,14 @@ public class roadmapController  implements Initializable{
 				exception.printStackTrace();				
 			}		
 		}
-		
+
+		/**
+		 * 
+		 * @param event LevelSeven button clicked
+		 * @throws IOException Thrown if there is an error finding the roadmap page or boop sound effect.
+		 * 
+		 * This method will take the user to the seventh level of the game, assuming they have completed all levels up to level six.
+		 */
 		public void levelSeven(MouseEvent  event) throws IOException {	
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(6)) < 75) {
 				return;
@@ -215,7 +300,14 @@ public class roadmapController  implements Initializable{
 				exception.printStackTrace();				
 			}		
 		}
-		
+
+		/**
+		 * 
+		 * @param event LevelEight button clicked
+		 * @throws IOException Thrown if there is an error finding the roadmap page or boop sound effect.
+		 * 
+		 * This method will take the user to the eighth level of the game, assuming they have completed all levels up to level seven.
+		 */
 		public void levelEight(MouseEvent event) throws IOException {	
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(7)) < 75) {
 				return;
@@ -230,6 +322,11 @@ public class roadmapController  implements Initializable{
 			}		
 		}
 
+		/**
+		 * 
+		 * @param event Instructor Dashboard button clicked.
+		 * @throws IOException Thrown if there is an error finding the boop sound effect or instructor dashboard page.
+		 */
 		public void instructorDashboard(ActionEvent event) throws IOException {	
 			
 			try {	
@@ -242,6 +339,10 @@ public class roadmapController  implements Initializable{
 		}
 
 		@Override
+		/**
+		 * This method is responsible for displaying the levels the user has unlocked in the roadmap page.
+		 * Levels wll not be blurred if the user is a teacher or admin.
+		 */
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 75) {
 				levelLocked[0] = true;
@@ -409,11 +510,8 @@ public class roadmapController  implements Initializable{
 			  
 			
 		}
+		
 		/*---SANDBOX OPTIONS HOVER EFFECTS---*/
-		
-		
-		
-		
 		
 		// Level1 HOVER
 		public void onLevelOneHover() {

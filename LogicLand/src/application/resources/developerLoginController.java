@@ -17,6 +17,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+/**
+ * This class is responsible for all actions connected to and available within the developer login page.
+ * 
+ */
 public class developerLoginController implements Initializable{
 	
 	//--------Constants/Resources---------
@@ -26,7 +30,6 @@ public class developerLoginController implements Initializable{
 		//---------------Variables--------------------
 		@FXML
 		Text status;
-		
 		@FXML
 		ImageView lightning;
 		@FXML
@@ -43,6 +46,16 @@ public class developerLoginController implements Initializable{
 		MultiMediaPlayer audio = new MultiMediaPlayer();
 		
 		// ----------------Button Functions -----------------------
+		
+		/**
+		 * 
+		 * @param event Login button clicked.
+		 * @throws Exception Thrown if there is an error finding the roadmap page.
+		 * 
+		 * This method is responsible for handling the login process of developers.
+		 * It will check for a valid username and password. 
+		 * It has also been programmed to check if the ID of the user logging in is a valid developer ID.
+		 */
 		public void login(ActionEvent event) throws Exception {
 			String userName = devUsername.getText();
 			String userPassword = devPassword.getText();
@@ -52,12 +65,12 @@ public class developerLoginController implements Initializable{
 			}
 			
 			if(AccountManager.verifyLogin(userName, userPassword, true) == false) {
-				status.setText("Incorrect username or password");
+				status.setText("Incorrect username or password.");
 				return;
 			}
 			
 			if(AccountManager.getCurrentUser() > 6) {
-				status.setText("You arent a developer!");
+				status.setText("You are not a developer!");
 				return;
 			}
 		
@@ -74,8 +87,8 @@ public class developerLoginController implements Initializable{
 		/**
 		 * Take user back to main menu from developer login page.
 		 * 
-		 * @param event
-		 * @throws IOException
+		 * @param event Back button clicked.
+		 * @throws IOException Thrown if there is an error finding the mainMenu page.
 		 */
 		public void back(ActionEvent event) throws IOException {			
 			try {			
@@ -88,6 +101,9 @@ public class developerLoginController implements Initializable{
 		}
 
 		@Override
+		/**
+		 * This method is responsible for initializing the developerLogin page.
+		 */
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			
 
