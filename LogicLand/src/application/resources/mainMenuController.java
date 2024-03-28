@@ -22,7 +22,10 @@ import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
+/**
+ * This class is responsible for all operations available in the main menu.
+ * This is the first page a palyer sees when they open the game.
+ */
 public class mainMenuController implements Initializable{
 	
 	//--------Constants/Resources---------
@@ -30,8 +33,16 @@ public class mainMenuController implements Initializable{
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	
 	//---------Buttons-------------------
+	
 	@FXML 
 	Button startNewGame;
+	/**
+	 * 
+	 * @param event Start New Game button clicked.
+	 * @throws IOException 
+	 * 
+	 * This method will take the user to the newGame page where they can make a user account.
+	 */
 	public void newGame(ActionEvent event) throws IOException {	
 		audio.boopPlay();
 		transitionScene("newGame.fxml", event);	
@@ -39,6 +50,13 @@ public class mainMenuController implements Initializable{
 	
 	@FXML
 	Button loadGame;
+	/**
+	 * 
+	 * @param event Load Game button clicked.
+	 * @throws IOException 
+	 * 
+	 * This method will take the user to the login page where they can log in with their user account.
+	 */
 	public void loadGame(ActionEvent event) throws IOException {	
 		audio.boopPlay();
 		transitionScene("login.fxml", event);	
@@ -46,6 +64,13 @@ public class mainMenuController implements Initializable{
 	
 	@FXML 
 	Button tutorial;
+	/**
+	 * 
+	 * @param event Tutorial button clicked.
+	 * @throws IOException 
+	 * 
+	 * This method will take the user to the tutorial page where they can learn how to play the game.
+	 */
 	public void tutorial(ActionEvent event) throws IOException {	
 		audio.boopPlay();
 		transitionScene("tutorial.fxml", event);			
@@ -53,6 +78,13 @@ public class mainMenuController implements Initializable{
 	
 	@FXML
 	Button highScores;
+	/**
+	 * 
+	 * @param event Highscores button clicked.
+	 * @throws IOException 
+	 * 
+	 * This method will take the user to the global high scores page where they can view all highscores across all classes.
+	 */
 	public void highScores(ActionEvent event) throws IOException {	
 		audio.boopPlay();
 		transitionScene("mainMenuHighscores.fxml", event);	
@@ -60,6 +92,13 @@ public class mainMenuController implements Initializable{
 	
 	@FXML
 	Button quit;
+	/**
+	 * 
+	 * @param event Quit button clicked.
+	 * @throws IOException 
+	 * 
+	 * This method will close the game window.
+	 */
 	public void quit(ActionEvent event) {
 		audio.boopPlay();
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -67,6 +106,13 @@ public class mainMenuController implements Initializable{
 		
 	}
 	
+	/**
+	 * 
+	 * @param event Illuminated lightbulb button clicked.
+	 * @throws IOException 
+	 * 
+	 * This method is responsible for a hidden function in the main menu that takes a user to the developer login page.
+	 */
 	public void developerLogin(MouseEvent event) throws IOException {
 		
 		if(state) {

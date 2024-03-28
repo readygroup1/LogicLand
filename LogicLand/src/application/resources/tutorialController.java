@@ -56,6 +56,13 @@ public class tutorialController extends sandboxController implements Initializab
 		
 	//---------Button Functions-------------------
 	
+		/**
+		 * 
+		 * @param event Back button clicked.
+		 * @throws IOException Thrown if there is an error finding the mainMenu/options page or the boop sound effect.
+		 * 
+		 * This method will take the user back to the main menu or options page, depending on if the user is logged in or not.
+		 */
 	public void back(ActionEvent event) throws IOException {			
 		try {			
 			audio.boopPlay();
@@ -84,6 +91,11 @@ public class tutorialController extends sandboxController implements Initializab
  	Image deleteOff = new Image(getClass().getResourceAsStream("/application/resources/images/deleteOff.png"));
 	
 	// --------------------Initializer-----------------------------------------
+ 	
+ 	/**
+ 	 * This method is responsible for the setup of the tutorial page.
+ 	 * It will load a batteries, light bulbs, and a NOT gate for the user to interact with.
+ 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -152,7 +164,16 @@ public class tutorialController extends sandboxController implements Initializab
 	
 
 	//------------------Object Pre-Load Functions-----------------------
-	// use these to pre-load up objects into the level, not object generator.
+	
+	/**
+	 * 
+	 * @param origin
+	 * @param type
+	 * @return 
+	 * @throws IOException
+	 * 
+	 * Used to pre-load objects into the level, rather than the object generator.
+	 */
 	
 	public Pane load(Pane origin,  Type type) throws IOException{
 		try {
@@ -185,7 +206,8 @@ public class tutorialController extends sandboxController implements Initializab
 	
 	// Use these to let the user add objects to the level
 
-	/** This is the button that generates gatesObjects. The first in the block of code where all the object generator will be.
+	/** 
+	 * This is the button that generates gatesObjects. The first in the block of code where all the object generator will be.
 	 * In the user interface, every gate is represented as a node. Nodes are what will be used to pass information from the 
 	 * user interface events to the sandboxController.
 	 * To get information from a node use .getProperties.get(KEY).
@@ -193,18 +215,23 @@ public class tutorialController extends sandboxController implements Initializab
 	 * You can use "andController ctl = node..getProperties.get("controller);" to retrieve the controller.
 	 * Then you would be to call any function andControllers have  it like ctl.getState().
 	 * I also set this instance of the sandboxController in every gate that is created. That may come in useful to pass information
-	 * to a central source.*/
+	 * to a central source.
+	 */
 
 
 	
 	
 	//--------------Object Interaction Functions -------------------------
 	
-	/** When a click is made on any terminal of a gate and the mouse is dragged, beginConnection draws a line on the screen from a terminal to the mouse while the mouse is dragged.
+	/** 
+	 * 
+	 * @param event Battery terminal, gate terminal, or bulb terminal clicked.
+	 * 
+	 * When a click is made on any terminal of a gate and the mouse is dragged, beginConnection draws a line on the screen from a terminal to the mouse while the mouse is dragged.
 	 * It also records the starting node of the drag, and the ending node of the drag.
 	 * All terminal buttons are invisible rectangles that trigger events when clicked.
-	 * If both the start and stop of the drag are terminals, and the terminals are of different types,
-	 *   then the two nodes are passed to the function makeWire. */
+	 * If both the start and stop of the drag are terminals, and the terminals are of different types, then the two nodes are passed to the function makeWire. 
+	 */
 	public void beginConnection(MouseEvent event) {
 		
 		// Store the start node information while the line is being drawn.
@@ -279,12 +306,14 @@ public class tutorialController extends sandboxController implements Initializab
 		
 	}
 	
-	/**This is probably where you will want to add code to manage the connections.
+	/**
+	 * @param outputTerminal Terminal the wire sends input to.
+	 * @param inputTerminal Terminal the wire gathers input from.
+	 * 
 	 * This draws a persistent wire between two valid terminals a user has connected with beginConnection.
 	 * The endpoints of the line that makes the connection is bound to the terminal nodes. So when they move the line is moved as well.
-	 * To find the instance gates the terminals belong to use *terminal*.getParent().getProperties().get("controller") */
-	
-	
+	 * To find the instance gates the terminals belong to use *terminal*.getParent().getProperties().get("controller") 
+	 */
 	public void makeWire(Rectangle outputTerminal, Rectangle inputTerminal) {		
 		
 		// Get the parent node of the terminal, the gate, so I can figure out the absolute position of the terminal. 

@@ -12,6 +12,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
+/**
+ * @author Callum Thompson
+ * @version 1.0
+ * 
+ * This class is responsible for displaying the top 5 scores of players across all classes in the highscores page accessible from the main menu and options page.
+ */
 public class mainMenuHighscoresController implements Initializable{
 	
 	//--------Constants/Resources---------
@@ -44,6 +50,10 @@ public class mainMenuHighscoresController implements Initializable{
 	
 	MultiMediaPlayer audio = new MultiMediaPlayer();
 	
+	/**
+	 * This method will gather and display the top 5 names and scores from the AccountManager class.
+	 * The names and scores will be shown in assigned text fields.
+	 */
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		ArrayList<String> top5Names = AccountManager.getTopFiveNames();
 		ArrayList<Integer> top5Scores = AccountManager.getTopFiveScores();
@@ -59,6 +69,12 @@ public class mainMenuHighscoresController implements Initializable{
 		fifthScore.setText(top5Scores.get(4).toString());
 	}
 	// ----------------Buttons Functions-----------------------
+	
+	/**
+	 * 
+	 * @param event Back button clicked.
+	 * @throws IOException Thrown if there is an error finding the mainMenu/options page or with getting the current user.
+	 */
 	public void back(ActionEvent event) throws IOException {			
 		try {		
 			audio.boopPlay();

@@ -15,6 +15,9 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * This class is responsible for facilitating all actions available in the options page.
+ */
 public class optionsController implements Initializable {
 	
 	
@@ -34,6 +37,12 @@ public class optionsController implements Initializable {
 		
 		@FXML 
 		Button quit;
+		/**
+		 * 
+		 * @param event Quit button clicked.
+		 * 
+		 * This method will close the game window.
+		 */
 		public void quit(ActionEvent event) {
 			audio.boopPlay();
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -44,6 +53,12 @@ public class optionsController implements Initializable {
 		
 		@FXML
 		Button logout;
+		/**
+		 * 
+		 * @param event Log Out button clicked.
+		 * 
+		 * This method will log the user out and return them to the main menu.
+		 */
 		public void logout(ActionEvent event) {
 			try {		
 				audio.boopPlay();
@@ -57,8 +72,13 @@ public class optionsController implements Initializable {
 	
 	// ----------- User Dashboard Button Functions ---------
 	
-	
-	
+	/**
+	 * 
+	 * @param event Roadmap menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the roadmap page.
+	 * 
+	 * This method will take the user to the roadmap page.
+	 */
 	public void roadmap(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();
@@ -68,7 +88,14 @@ public class optionsController implements Initializable {
 			exception.printStackTrace();				
 		}		
 	}
-	
+
+	/**
+	 * 
+	 * @param event Sanbox menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the sanbox page.
+	 * 
+	 * This method will take the user to the sandbox page.
+	 */
 	public void sandbox(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();
@@ -78,7 +105,14 @@ public class optionsController implements Initializable {
 			exception.printStackTrace();				
 		}		
 	}
-	
+
+	/**
+	 * 
+	 * @param event Highscore menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the highscore page.
+	 * 
+	 * This method will take the user to the highscore page.
+	 */
 	public void highscore(ActionEvent event) throws IOException {	
 		
 			
@@ -91,7 +125,14 @@ public class optionsController implements Initializable {
 			}
 			
 	}
-	
+
+	/**
+	 * 
+	 * @param event Discoveries menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the discoveries page.
+	 * 
+	 * This method will take the user to the discoveries page.
+	 */
 	public void discoveries(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();
@@ -101,7 +142,14 @@ public class optionsController implements Initializable {
 			exception.printStackTrace();				
 		}		
 	}
-	
+
+	/**
+	 * 
+	 * @param event Options menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the options page.
+	 * 
+	 * This method will take the user to the options page.
+	 */
 	public void options(ActionEvent event) throws IOException {	
 		
 		try {	
@@ -112,7 +160,14 @@ public class optionsController implements Initializable {
 			exception.printStackTrace();				
 		}		
 	}
-	
+
+	/**
+	 * 
+	 * @param event Instructor Dashboard button clicked.
+	 * @throws IOException Thrown if there is an error finding the instructorDashboard page.
+	 * 
+	 * This method will take the user to the instructorDashboard page.
+	 */
    public void instructorDashboard(ActionEvent event) throws IOException {	
 		
 		try {	
@@ -123,7 +178,14 @@ public class optionsController implements Initializable {
 			exception.printStackTrace();				
 		}		
 	}
-	
+
+	/**
+	 * 
+	 * @param event Highscores button clicked.
+	 * @throws IOException Thrown if there is an error finding the global highscores page.
+	 * 
+	 * This method will take the user to the global highscores page.
+	 */
    public void gblHighscores(ActionEvent event) throws IOException {	
 		
 		try {	
@@ -135,6 +197,13 @@ public class optionsController implements Initializable {
 		}		
 	}
 
+	/**
+	 * 
+	 * @param event Tutorial menu bar button clicked.
+	 * @throws IOException Thrown if there is an error finding the tutorial page.
+	 * 
+	 * This method will take the user to the tutorial page.
+	 */
    public void tutorial(ActionEvent event) throws IOException {	
 		
 		try {	
@@ -146,6 +215,11 @@ public class optionsController implements Initializable {
 		}		
 	}
 
+
+	/**
+	 * 
+	 * This method is responsible for displaying the instructor dashboard button if the user is a teacher.
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -159,14 +233,14 @@ public class optionsController implements Initializable {
 			instructorDashboard.setVisible(true);
 			timePlayed.setVisible(false);
 			timePlayed.setDisable(true);
-		}
-		
-		/* I feel like this code makes more sense? We can clear it up later. -Thomas */
-			
-
+		}			
 	}
 	
-	
+
+	/**
+	 * 
+	 * This method will interact with MultiMediaPlayer class to turn off all music and sound effects throughout the game.
+	 */
 	public void mute() {
 		
 		if(MultiMediaPlayer.defaultBoop == 0) {
