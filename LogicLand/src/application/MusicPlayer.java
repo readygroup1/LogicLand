@@ -1,5 +1,6 @@
 package application;
 
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -7,45 +8,83 @@ import javafx.application.Application;
 
 import java.io.File;
 
+
+
+/**
+ * The `Media` class represents a media resource that can be played by a media player.
+ * It provides methods to retrieve information about the media, such as its duration and metadata.
+ * 
+ * To play a media, create an instance of `Media` with the URL of the media resource,
+ * and pass it to a media player, such as `javafx.scene.media.MediaPlayer`.
+ *
+ * 
+ * <b>Example use:</b>
+ * <pre>
+ * {@code
+ *      String mediaUrl = "http://example.com/media.mp4";
+ *      Media media = new Media(mediaUrl);
+ *      MediaPlayer mediaPlayer = new MediaPlayer(media);
+ *      mediaPlayer.play();
+ * }
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @author Andres Pedreros 
+ */
+/**
+ * The MusicPlayer class provides functionality to play background music and level music in a game.
+ * It uses the JavaFX MediaPlayer class to play the music files.
+ */
 public class MusicPlayer {
     private static MediaPlayer mediaPlayer;
     public static double defaultVolume = 0.3; // Default volume level
     
-    
-    // link to copyright free music https://uppbeat.io/track/sulyya/mirthaflare
-    // Path to the default background music
+    /** Path to the default background music*/ 
     private static final String DEFAULT_BACKGROUND_MUSIC = "/application/resources/sounds/backgroundMusic.wav";
-    // Path to the default level music
+    /** Path to the default level music */
     private static final String DEFAULT_LEVEL_MUSIC = "/application/resources/sounds/levelMusic.wav";
 
-    // Play the default background music
+    /**
+     * Plays the default background music.
+     */
     public static void playBackgroundMusic() {
         playMusic(DEFAULT_BACKGROUND_MUSIC);
     }
 
-    // Play the default level music
+    /**
+     * Plays the default level music.
+     */
     public static void playLevelMusic() {
         playMusic(DEFAULT_LEVEL_MUSIC);
     }
 
-    // Play music from the given path
+    /**
+     * Plays music from the given path.
+     *
+     * @param musicPath The path to the music file.
+     */
     private static void playMusic(String musicPath) {
         Media media = new Media(MusicPlayer.class.getResource(musicPath).toExternalForm());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // loop indefinitely
         mediaPlayer.play();
         mediaPlayer.setVolume(defaultVolume);
-   
     }
 
-    // Stop the currently playing music
+    /**
+     * Stops the currently playing music.
+     */
     public static void stopMusic() {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
         }
     }
 
-    // Lower the volume to the specified level
+    /**
+     * Lowers the volume to the specified level.
+     *
+     * @param volume The volume level to set. Should be between 0 and 1.
+     */
     public static void lowerVolume(double volume) {
         if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
             if (volume >= 0 && volume <= 1) {
@@ -58,7 +97,9 @@ public class MusicPlayer {
         }
     }
 
-    // Reset the volume to the default level
+    /**
+     * Resets the volume to the default level.
+     */
     public static void resetVolume() {
         if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
             mediaPlayer.setVolume(0.3);

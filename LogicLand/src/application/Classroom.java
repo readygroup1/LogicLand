@@ -7,6 +7,20 @@ package application;
  * 
  * This class represents a classroom. Each class is associated with a name, ID, teacher (name and ID), and a database.
  * This class is used to keep track of students within a class and their progress.
+ * <b>Example use:</b>
+ * <pre>
+ * {@code
+ * Classroom class = new Classroom(currentPlayerID);
+ * 
+ * class.getClassID();
+ *
+ * }
+ * 
+ * <b>Output:</b> <code>12</code>
+ * <br>
+ * @version 1.0
+ * @since 1.0
+ * @author Andres Pedreros
  */
 public class Classroom {
 	private String className;
