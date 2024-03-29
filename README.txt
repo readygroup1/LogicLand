@@ -4,7 +4,7 @@ Built with Java, Logic Land is an educational game designed to teach the fundame
 
 Installation
 Prerequisites
-Java 11 or above installed on your system. You can check your Java version by running java -version in your command line or terminal.
+Java 21 installed on your system. You can check your Java version by running java -version in your command line or terminal.
 Ensure you have permissions to execute scripts on your system.
 Steps
 Download the JAR File: Download the LogicLand.jar file found in this directory.
