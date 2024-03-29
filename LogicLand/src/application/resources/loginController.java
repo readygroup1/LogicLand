@@ -23,6 +23,10 @@ import javafx.scene.text.Text;
 /**
  * This class controls the login page. It handles username and password verification in the login page, 
  * as well as handling setting teacher status for other classes.
+ * 
+ * @author Callum Thompson
+ * @author Nicholas Howard
+ * 
  */
 public class loginController implements Initializable {	
 

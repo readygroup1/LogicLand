@@ -33,14 +33,7 @@ public class MultiMediaTest  extends platformTest{
 
     @AfterAll
     static void tearDownClass() {
-        // Properly shutdown JavaFX platform to clean up after tests
-        try {
-            // Pause for 1 second (1000 milliseconds)
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            // Handle the interruption
-            e.printStackTrace();
-        }
+        
     }
 
     @Test

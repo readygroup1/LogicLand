@@ -25,6 +25,9 @@ import javafx.util.Duration;
 /**
  * This class is responsible for all operations available in the main menu.
  * This is the first page a palyer sees when they open the game.
+ * 
+ * @author Callum Thompson
+ * @author Nicholas Howard
  */
 public class mainMenuController implements Initializable{
 	

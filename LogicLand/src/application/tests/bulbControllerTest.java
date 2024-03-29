@@ -33,6 +33,7 @@ class bulbControllerTest extends platformTest {
 	static void setUpBeforeClass() throws Exception {
 
 		if (! platformStarted) {
+			platformStarted = true;
 			Platform.startup(() -> {
 				
 				try {
