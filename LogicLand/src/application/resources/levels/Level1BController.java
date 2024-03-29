@@ -13,7 +13,7 @@ package application.resources.levels;
  * The class provides methods for initializing the level, loading pre-loaded objects, generating gate objects,
  * and checking if the game is won. It also includes getter and setter methods for accessing the circuit board pane.
  * 
- * The `Level1AController` class follows the JavaFX controller pattern and is designed to work with the LogicLand application.
+ * The `Level1BController` class follows the JavaFX controller pattern and is designed to work with the LogicLand application.
  * It interacts with the user interface and handles user input to create and manipulate gate objects on the circuit board.
  * 
  * @version 1.0
