@@ -60,12 +60,6 @@ public class gateObject {
 		circuitBoardPane = sboxController.getCircuitBoardPane();
 	}
 	
-	/**
-	 * Checks the type of the gate object.
-	 */
-	public void checktype() {
-		// TODO: Implement the logic to check the type of the gate object
-	}
 	
 	/**
 	 * Sets the body of the gate object.
