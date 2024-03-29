@@ -15,6 +15,16 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
+
+/**
+ * Generators in Sandbox and Levels create instances of Batteries. This class then controls the the on\off states of the batteries, while also handling dragging and dropping.
+ * 
+ * @see sandboxController
+ * @version 1.0
+ * @since 1.0
+ * @author Group 1
+ */
+
 public class batteryController extends gateObject implements Initializable{
 	
 	//----------------Variables-------------------

@@ -16,7 +16,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
+
 class andControllerTest extends platformTest{
+
 
 	static Pane pane;
 	static Pane andGate;
@@ -25,6 +27,7 @@ class andControllerTest extends platformTest{
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+
 		
 		if(!platformStarted) {
 			platformStarted = true;
@@ -45,6 +48,7 @@ class andControllerTest extends platformTest{
 			});	
 		}	
 		else {
+
 			try {
 				
 				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/and.fxml"));
@@ -56,14 +60,17 @@ class andControllerTest extends platformTest{
 			 catch (Exception e) {
 			    e.printStackTrace();
 			}
+
 			
 		}
+
 		
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		
+
+
 	}
 
 	@Test
@@ -190,3 +197,4 @@ class andControllerTest extends platformTest{
 	
 
 }
+

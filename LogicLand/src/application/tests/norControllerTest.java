@@ -9,23 +9,28 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import application.resources.gates.orController;
 import application.resources.gates.gateObject;
 import application.resources.gates.norController;
+
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+
 
 class norControllerTest extends platformTest{
 
 	static Pane pane;
 	static Pane gate;
 	static norController controller;
+
 	static FXMLLoader loader;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+
 		if (! platformStarted) {
 			Platform.startup(() -> {
 				
@@ -65,6 +70,7 @@ class norControllerTest extends platformTest{
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		
+
 	}
 
 	@Test
@@ -73,7 +79,9 @@ class norControllerTest extends platformTest{
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {
 			
+
 			if(controller.getType() == gateObject.Type.nor) {
+
 				testStatus.set(true);
 			}
 			latch.countDown();
@@ -87,14 +95,16 @@ class norControllerTest extends platformTest{
         Assertions.assertTrue(testStatus.get());
 	}
 	
-	
+
 	@Test
 	void getStateTest() {
 		final CountDownLatch latch = new CountDownLatch(1);
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {			
 			
+
 			if(!controller.getState()) {
+
 				testStatus.set(true);
 			}
 			latch.countDown();
@@ -114,7 +124,9 @@ class norControllerTest extends platformTest{
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {
 			
+
 			if(controller.getInput1()  instanceof Rectangle && controller.getInput1().getProperties().get("type")  == "input") {
+
 				testStatus.set(true);
 			}
 			latch.countDown();
@@ -134,7 +146,9 @@ class norControllerTest extends platformTest{
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {
 			
+
 			if(controller.getInput1()  instanceof Rectangle && controller.getInput2().getProperties().get("type")  == "input") {
+
 				testStatus.set(true);
 			}
 			latch.countDown();
@@ -154,7 +168,9 @@ class norControllerTest extends platformTest{
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {
 			
+
 			if(controller.getInput1()  instanceof Rectangle && controller.getOutput().getProperties().get("type")  == "output") {
+
 				testStatus.set(true);
 			}
 			latch.countDown();
