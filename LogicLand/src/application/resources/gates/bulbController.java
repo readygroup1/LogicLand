@@ -222,6 +222,11 @@ public class bulbController extends gateObject implements Initializable {
 	}
 
 
+	public Pane getCircuitBoardPane() {
+		return circuitBoardPane;
+	}
+
+
 	
 
 }
