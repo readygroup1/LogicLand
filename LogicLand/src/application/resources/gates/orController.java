@@ -59,13 +59,15 @@ public class orController extends gateObject implements Initializable {
 			body.setOnMousePressed(event ->{			
 				 dragStartX = event.getSceneX() - pane.getLayoutX();
 				 dragStartY = event.getSceneY() - pane.getLayoutY();
+				 AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "o");
 			});
 			
 			body.setOnMouseDragged(event -> {
-				AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "o");
 				pane.setLayoutX(event.getSceneX() - dragStartX);
 				pane.setLayoutY(event.getSceneY() - dragStartY);	
-				
+			});
+			
+			body.setOnMouseReleased(event -> {
 				saveState = "o," + Double.toString(pane.getLayoutX()) + "," + Double.toString(pane.getLayoutY()) + ",";
 				AccountManager.setIndividualGate(saveState);
 			});

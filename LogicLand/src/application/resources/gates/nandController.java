@@ -57,13 +57,16 @@ public class nandController extends gateObject implements Initializable {
 				body.setOnMousePressed(event ->{			
 					 dragStartX = event.getSceneX() - pane.getLayoutX();
 					 dragStartY = event.getSceneY() - pane.getLayoutY();
+					 AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "d");
 				});
 				
 				body.setOnMouseDragged(event -> {
-					AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "d");
+					
 					pane.setLayoutX(event.getSceneX() - dragStartX);
 					pane.setLayoutY(event.getSceneY() - dragStartY);	
-					
+				});
+				
+				body.setOnMouseReleased(event -> {
 					saveState = "d," + Double.toString(pane.getLayoutX()) + "," + Double.toString(pane.getLayoutY()) + ",";
 					AccountManager.setIndividualGate(saveState);
 				});

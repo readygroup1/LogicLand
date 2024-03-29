@@ -57,13 +57,15 @@ public class xorController extends gateObject implements Initializable{
 			body.setOnMousePressed(event ->{			
 				 dragStartX = event.getSceneX() - pane.getLayoutX();
 				 dragStartY = event.getSceneY() - pane.getLayoutY();
+				 AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "x");
 			});
 			
 			body.setOnMouseDragged(event -> {
-				AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "x");
 				pane.setLayoutX(event.getSceneX() - dragStartX);
 				pane.setLayoutY(event.getSceneY() - dragStartY);
-				
+			});
+			
+			body.setOnMouseReleased(event -> {
 				saveState = "x," + Double.toString(pane.getLayoutX()) + "," + Double.toString(pane.getLayoutY()) + ",";
 				AccountManager.setIndividualGate(saveState);
 			});

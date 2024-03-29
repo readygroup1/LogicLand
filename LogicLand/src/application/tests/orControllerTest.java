@@ -9,29 +9,53 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import application.resources.gates.andController;
+
+import application.resources.gates.orController;
+
 import application.resources.gates.gateObject;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
-class orControllerTest {
+
+class orControllerTest extends platformTest{
 
 	static Pane pane;
-	static Pane orGate;
-	static andController orController;
+	static Pane gate;
+	static orController controller;
+
 	static FXMLLoader loader;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		Platform.startup(() -> {
-			
+
+		
+		if(!platformStarted) {
+			platformStarted = true;
+			Platform.startup(() -> {
+				
+				try {
+					
+					loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/or.fxml"));
+					gate = loader.load();
+					controller = loader.getController();
+					
+				}
+					
+				 catch (Exception e) {
+				    e.printStackTrace();
+				}
+	
+			});	
+		}	
+		else {
 			try {
 				
 				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/or.fxml"));
-				orGate = loader.load();
-				orController = loader.getController();
+				gate = loader.load();
+				controller = loader.getController();
+
 				
 			}
 				
@@ -39,15 +63,15 @@ class orControllerTest {
 			    e.printStackTrace();
 			}
 
-		});	
-			
-		
+		}
+
 		
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		Platform.exit();
+
+		
 	}
 
 	@Test
@@ -56,7 +80,7 @@ class orControllerTest {
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {
 			
-			if(orController.getType() == gateObject.Type.and) {
+			if(controller.getType() == gateObject.Type.or) {
 				testStatus.set(true);
 			}
 			latch.countDown();
@@ -69,25 +93,7 @@ class orControllerTest {
 		} 
         Assertions.assertTrue(testStatus.get());
 	}
-	@Test
-	void getInputTest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			
-			if(orController.getInput1()  instanceof Rectangle) {
-				testStatus.set(true);
-			}
-			latch.countDown();
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-        Assertions.assertTrue(testStatus.get());
-	}
+	
 	
 	@Test
 	void getStateTest() {
@@ -95,7 +101,7 @@ class orControllerTest {
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {			
 			
-			if(!orController.getState()) {
+			if(!controller.getState()) {
 				testStatus.set(true);
 			}
 			latch.countDown();
@@ -108,6 +114,7 @@ class orControllerTest {
 		} 
         Assertions.assertTrue(testStatus.get());
 	}
+
 	
 	@Test
 	void getInput1Test() {
@@ -115,7 +122,9 @@ class orControllerTest {
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {
 			
-			if(orController.getInput1()  instanceof Rectangle && orController.getInput1().getProperties().get("type")  == "input") {
+
+			if(controller.getInput1()  instanceof Rectangle && controller.getInput1().getProperties().get("type")  == "input") {
+
 				testStatus.set(true);
 			}
 			latch.countDown();
@@ -135,7 +144,9 @@ class orControllerTest {
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {
 			
-			if(orController.getInput1()  instanceof Rectangle && orController.getInput2().getProperties().get("type")  == "input") {
+
+			if(controller.getInput1()  instanceof Rectangle && controller.getInput2().getProperties().get("type")  == "input") {
+
 				testStatus.set(true);
 			}
 			latch.countDown();
@@ -155,7 +166,9 @@ class orControllerTest {
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {
 			
-			if(orController.getInput1()  instanceof Rectangle && orController.getOutput().getProperties().get("type")  == "output") {
+
+			if(controller.getInput1()  instanceof Rectangle && controller.getOutput().getProperties().get("type")  == "output") {
+
 				testStatus.set(true);
 			}
 			latch.countDown();

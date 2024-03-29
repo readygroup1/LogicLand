@@ -24,7 +24,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
-class sandboxControllerTest {
+class sandboxControllerTest extends platformTest {
 	static Pane pane;
 	static sandboxController controller;
 	static Pane battery;
@@ -34,26 +34,51 @@ class sandboxControllerTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		Platform.startup(() -> {
-			FXMLLoader loader;
-		try {
-			loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/sandbox.fxml"));
-			pane = loader.load();
-			controller = loader.getController();
-			
-			loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/battery.fxml"));
-			battery = loader.load();
-			batController = loader.getController();
-			
-			loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/bulb.fxml"));
-			bulb = loader.load();
-			bulbyController = loader.getController();
-			
-		} catch (Exception e) {
-		    e.printStackTrace();
-		}
+		
+		if(!platformStarted) {
 
-		});	
+			Platform.startup(() -> {
+				FXMLLoader loader;
+			try {
+				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/sandbox.fxml"));
+				pane = loader.load();
+				controller = loader.getController();
+				
+				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/battery.fxml"));
+				battery = loader.load();
+				batController = loader.getController();
+				
+				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/bulb.fxml"));
+				bulb = loader.load();
+				bulbyController = loader.getController();
+				
+			} catch (Exception e) {
+			    e.printStackTrace();
+			}
+	
+			});	
+		}
+		
+		else {
+			FXMLLoader loader;
+			try {
+				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/sandbox.fxml"));
+				pane = loader.load();
+				controller = loader.getController();
+				
+				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/battery.fxml"));
+				battery = loader.load();
+				batController = loader.getController();
+				
+				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/bulb.fxml"));
+				bulb = loader.load();
+				bulbyController = loader.getController();
+				
+			} catch (Exception e) {
+			    e.printStackTrace();
+			}
+			
+		}
 			
 		
 		
@@ -61,7 +86,7 @@ class sandboxControllerTest {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		Platform.exit();
+		
 	}
 
 //---------------- Generator Tests-------------------------------------
