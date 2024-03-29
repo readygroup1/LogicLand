@@ -305,6 +305,8 @@ public class Level1AController extends sandboxController implements Initializabl
 		
 		/*
 		 * This function is used to load the preloaded objects into the level.
+		 * @param origin The pane that the object will be loaded into.
+		 * @param type The type of object that will be loaded.
 		 */
 		public Pane load(Pane origin,  Type type) throws IOException{
 			try {

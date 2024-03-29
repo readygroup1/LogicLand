@@ -268,7 +268,11 @@ public class Level2AController extends sandboxController implements Initializabl
 				title.setText("Not quite! Try again.");
 			}
 		}
-		
+		/**
+		 * Calls the CheckWin function when the checkWin button is clicked.
+		 * 
+		 * @param event The action event that triggers the function.
+		 */
 		public void callChecktype(Rectangle node) {
 			switch( (String)(node.getProperties().get("ClassType")) ) {
 			case "AND":
@@ -314,8 +318,11 @@ public class Level2AController extends sandboxController implements Initializabl
 		}
 		
 		//------------------Object Pre-Load Functions-----------------------
-		/*
+		/**
 		 * This function is used to load the preloaded objects into the level.
+		 * @param origin The pane that the object will be loaded into.
+		 * @param type The type of object that will be loaded.
+		 * 
 		 */
 		public Pane load(Pane origin,  Type type) throws IOException{
 			try {
