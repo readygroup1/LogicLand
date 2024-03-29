@@ -1,5 +1,27 @@
 package application.resources.levels;
 
+/**
+ * This class represents the controller for Level 1B in the LogicLand application.
+ * It extends the `sandboxController` class and implements the `Initializable` interface.
+ * 
+ * The `Level1BController` class is responsible for managing the user interface and logic of Level 1B.
+ * It handles the generation of gate objects, pre-loading of objects, and checking if the game is won.
+ * 
+ * The class contains various instance variables, including the circuit board pane, buttons, image views,
+ * labels, and pre-loaded object panes. It also defines an enum `Type` to represent different types of objects.
+ * 
+ * The class provides methods for initializing the level, loading pre-loaded objects, generating gate objects,
+ * and checking if the game is won. It also includes getter and setter methods for accessing the circuit board pane.
+ * 
+ * The `Level1AController` class follows the JavaFX controller pattern and is designed to work with the LogicLand application.
+ * It interacts with the user interface and handles user input to create and manipulate gate objects on the circuit board.
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @author Andres Pedreros Castro
+ * @author Nicholas Howard
+ */
+
 import java.io.IOException;
 
 import java.net.URL;
