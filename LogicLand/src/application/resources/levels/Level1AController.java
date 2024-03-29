@@ -74,6 +74,7 @@ import javafx.scene.text.Text;
  * @version 1.0
  * @since 1.0
  * @author Andres Pedreros Castro
+ * @author Nicholas Howard
  */
 public class Level1AController extends sandboxController implements Initializable {
 
