@@ -27,6 +27,16 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * The `tutorialController` class is responsible for controlling the tutorial page in the LogicLand application.
+ * The tutorial page allows users to interact with batteries, light bulbs, and a NOT gate to familiaize themselfs with the game.
+ * It provides functionality for switching back to the main menu or options page, depending on the user's login status.
+ * 
+ * @author Andres Pedreros
+ * @author Nicholas Howard
+ * @author Thomas Llamzon
+ * 
+ */
 public class tutorialController extends sandboxController implements Initializable{
 	
 	//--------Constants/Resources---------
@@ -201,25 +211,8 @@ public class tutorialController extends sandboxController implements Initializab
 		}	
 	}
 	
-	
-	// ---------------- Object Generator Buttons -----------------------
-	
-	// Use these to let the user add objects to the level
-
-	/** 
-	 * This is the button that generates gatesObjects. The first in the block of code where all the object generator will be.
-	 * In the user interface, every gate is represented as a node. Nodes are what will be used to pass information from the 
-	 * user interface events to the sandboxController.
-	 * To get information from a node use .getProperties.get(KEY).
-	 * I set two keys below. "controller" will be a unique instance of the gate object. 
-	 * You can use "andController ctl = node..getProperties.get("controller);" to retrieve the controller.
-	 * Then you would be to call any function andControllers have  it like ctl.getState().
-	 * I also set this instance of the sandboxController in every gate that is created. That may come in useful to pass information
-	 * to a central source.
-	 */
 
 
-	
 	
 	//--------------Object Interaction Functions -------------------------
 	
