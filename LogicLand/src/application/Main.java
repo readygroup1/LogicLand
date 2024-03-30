@@ -28,11 +28,7 @@ import javafx.scene.text.Font;
  * @version 1.0
  */
 public class Main extends Application {
-	
-	// ***** For Development. Remove before handing in!!! ******
-	boolean skipLogin = false;
 
-	
 	@Override
 	/**
 	 * This is boiler plate code to open up a window. 
@@ -41,18 +37,11 @@ public class Main extends Application {
 	public void start(Stage stage) {		
 		
 		try {
+			// Load fonts
 			Font.loadFont(getClass().getResourceAsStream("/application/resources/Vermin Vibes 1989.ttf"), 12);
 			Font.loadFont(getClass().getResourceAsStream("/application/resources/tahoma.ttf"), 12);
-			
-			Parent root;
-						
-			// Skip login Code
-			if(skipLogin) {
-				root = FXMLLoader.load(getClass().getResource("/application/resources/roadmap.fxml"));
-			}
-			else {
-				root = FXMLLoader.load(getClass().getResource("/application/resources/mainMenu.fxml"));
-			}
+			// Load FXML file
+			Parent root = FXMLLoader.load(getClass().getResource("/application/resources/mainMenu.fxml"));;
 			
 			Scene scene = new Scene(root);
 			Image applicationIcon = new Image(getClass().getResourceAsStream("/application/resources/images/Arcadebox.png"));

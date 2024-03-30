@@ -74,7 +74,6 @@ public class highscoreController implements Initializable {
 		if(AccountManager.isAdmin()) {
 			className.setText(AccountManager.getClassName(AccountManager.db.getClassIDAdmin(AccountManager.getCurrentUser())));
 		} else {
-			System.out.println(AccountManager.db.getClassID(AccountManager.getCurrentUser()));
 			className.setText(AccountManager.getClassName(AccountManager.db.getClassID(AccountManager.getCurrentUser())));
 		}
 		

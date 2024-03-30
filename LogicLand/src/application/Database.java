@@ -51,10 +51,11 @@ public class Database {
     }
 
     private void createDB() {
-        if (databaseExists() && !createNew) {
+        if (databaseExists() && !createNew) { // If the database exists and we are not creating a new one
             return;
         }
-        createNew = false;
+        createNew = false; // Set to false so that the database is not recreated
+        // Create the tables
         executeSQL(
                 "CREATE TABLE SANDBOX (SandboxID INT PRIMARY KEY, ProjectTitle VARCHAR(255), LastModified DATE, SaveState VARCHAR(8000))");
         executeSQL("CREATE TABLE ADMIN (AdminID INT PRIMARY KEY, AdminName VARCHAR(255), Initials VARCHAR(255), AdminPassword VARCHAR(255), AdminEmail VARCHAR(255), SandboxID INT, FOREIGN KEY (SandboxID) REFERENCES SANDBOX(SandboxID))");
@@ -94,7 +95,7 @@ public class Database {
     private void executeSQL(String SQL) {
         try (Connection conn = DriverManager.getConnection(dbURL);
                 Statement stmt = conn.createStatement()) {
-            stmt.execute(SQL);
+            stmt.execute(SQL); // Execute the SQL statement
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -104,7 +105,7 @@ public class Database {
      * @return boolean
      */
     private boolean databaseExists() {
-        try (Connection conn = DriverManager.getConnection(dbURLnocreate)) {
+        try (Connection conn = DriverManager.getConnection(dbURLnocreate)) { // Try to connect to the database
             return true;
         } catch (SQLException e) {
             return false;
@@ -118,8 +119,8 @@ public class Database {
     private int executeQueryGetInt(String SQLquery) {
         try (Connection conn = DriverManager.getConnection(dbURL);
                 Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery(SQLquery);
-            return rs.next() ? rs.getInt(1) : -1;
+            ResultSet rs = stmt.executeQuery(SQLquery); // Execute the SQL query
+            return rs.next() ? rs.getInt(1) : -1; // Return the result of the query
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -632,10 +633,11 @@ public class Database {
      * @return int The ID of the player.
      */
     public int addPlayer(String name, String initials, String password, String email, int ClassID) {
-        int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM PLAYER") + 1;
-        int sandboxID = executeQueryGetInt("SELECT COUNT(*) FROM SANDBOX") + 1;
-        executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '')");
+        int primaryKey = executeQueryGetInt("SELECT COUNT(*) FROM PLAYER") + 1; // Count how many rows in table to find next primary key
+        int sandboxID = executeQueryGetInt("SELECT COUNT(*) FROM SANDBOX") + 1; // Count how many rows in table to find next primary key for sandbox
+        executeSQL("INSERT INTO SANDBOX VALUES (" + sandboxID + ", 'New Project', CURRENT_DATE, '')"); // Create a new sandbox for the player
 
+        // Insert the player into the database
         executeSQL("INSERT INTO PLAYER VALUES (" + primaryKey + ", '" + name + "', '" + initials + "', '" + password
                 + "', '" + email
                 + "', " + sandboxID + ", " + false + ", " + ClassID + ", " + 0 + ")");
@@ -848,7 +850,7 @@ public class Database {
         executeSQL("DROP TABLE CLASSROOM");
         executeSQL("DROP TABLE ADMIN");
         executeSQL("DROP TABLE SANDBOX");
-        createNew = true;
+        createNew = true; // Set to true so that the database is recreated
         createDB();
     }
 }

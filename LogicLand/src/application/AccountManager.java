@@ -276,14 +276,14 @@ public class AccountManager {
 	 */
 	public static boolean verifyLogin(String name, String password, boolean isAdmin) {
 		if(isAdmin) {
-			if(db.verifyAdmin(name, password)) {
+			if(db.verifyAdmin(name, password)) { /// If the user is an admin
 				AccountManager.currentUserID = db.getAdminID(name);
 				AccountManager.isAdmin = true;
 				AccountManager.setSandboxSaveState(db.getSandboxSaveStateAdmin(currentUserID));
 				return true;
 			}
 		} else {
-			if(db.verifyPlayer(name, password)) {
+			if(db.verifyPlayer(name, password)) { /// If the user is a player
 				AccountManager.currentUserID = db.getPlayerID(name);
 				AccountManager.isAdmin = false;
 				AccountManager.setSandboxSaveState(db.getSandboxSaveState(currentUserID));

@@ -558,7 +558,6 @@ public class Level6BController extends sandboxController implements Initializabl
 		
 		public void delete(MouseEvent event) {
 			audio.boopPlay();
-			//System.out.println("deleteState: " + deleteState + ", X: " + event.getX() + ", Y: " +event.getY());
 			if(deleteState && event.getY() < 570 && event.getY() > 155 && event.getX() < 1000 && event.getX() > 260 ){
 				//If it is wire
 				if(event.getPickResult().getIntersectedNode() instanceof Line) {

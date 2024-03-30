@@ -620,7 +620,6 @@ public class skillTest2Controller extends sandboxController implements Initializ
 		 * @param event The mouse event that triggers the function.
 		 */
 		public void delete(MouseEvent event) {
-			//System.out.println("deleteState: " + deleteState + ", X: " + event.getX() + ", Y: " +event.getY());
 			audio.boopPlay();
 			
 			if(deleteState && event.getY() < 570 && event.getY() > 155 && event.getX() < 1000 && event.getX() > 260 ){
