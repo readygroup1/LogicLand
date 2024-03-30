@@ -44,7 +44,7 @@ import javafx.scene.shape.Rectangle;
 
  * It extends the `sandboxController` class and implements the `Initializable` interface.
  * 
- * The `Level1BController` class is responsible for managing the user interface and logic of Level 1B.
+ * The `Level3BController` class is responsible for managing the user interface and logic of Level 3B.
  * It handles the generation of gate objects, pre-loading of objects, and checking if the game is won.
  * 
  * The class contains various instance variables, including the circuit board pane, buttons, image views,
@@ -53,7 +53,7 @@ import javafx.scene.shape.Rectangle;
  * The class provides methods for initializing the level, loading pre-loaded objects, generating gate objects,
  * and checking if the game is won. It also includes getter and setter methods for accessing the circuit board pane.
  * 
- * The `Level1BController` class follows the JavaFX controller pattern and is designed to work with the LogicLand application.
+ * The `Level3BController` class follows the JavaFX controller pattern and is designed to work with the LogicLand application.
  * It interacts with the user interface and handles user input to create and manipulate gate objects on the circuit board.
  * 
  * @version 1.0
