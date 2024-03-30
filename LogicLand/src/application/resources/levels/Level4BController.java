@@ -40,6 +40,28 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
+/**
+
+ * It extends the `sandboxController` class and implements the `Initializable` interface.
+ * 
+ * The `Level4BController` class is responsible for managing the user interface and logic of Level 4B.
+ * It handles the generation of gate objects, pre-loading of objects, and checking if the game is won.
+ * 
+ * The class contains various instance variables, including the circuit board pane, buttons, image views,
+ * labels, and pre-loaded object panes. It also defines an enum `Type` to represent different types of objects.
+ * 
+ * The class provides methods for initializing the level, loading pre-loaded objects, generating gate objects,
+ * and checking if the game is won. It also includes getter and setter methods for accessing the circuit board pane.
+ * 
+ * The `Level4BController` class follows the JavaFX controller pattern and is designed to work with the LogicLand application.
+ * It interacts with the user interface and handles user input to create and manipulate gate objects on the circuit board.
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @author Andres Pedreros Castro
+ * @author Nicholas Howard
+ * @author Kalundi Serumaga
+ */
 public class Level4BController extends sandboxController implements Initializable {
 
 	// ----------------Variables ---------------------------------------
@@ -105,7 +127,12 @@ public class Level4BController extends sandboxController implements Initializabl
 	    MultiMediaPlayer audio = new MultiMediaPlayer();
 		
 		//-------------Constants / Resources--------------------------------------------
-		
+	    
+	    
+	    /**
+	     * Enumeration representing different types of gate objects.
+	     * The types include: BATTERY, AND, OR, NOT, NOR, XOR, NAND, and BULB.
+	     */
 		public enum Type{
 			BATTERY, AND, OR, NOT, NOR, XOR, NAND, BULB		
 		}
@@ -117,7 +144,16 @@ public class Level4BController extends sandboxController implements Initializabl
 	 	Image deleteOff = new Image(getClass().getResourceAsStream("/application/resources/images/deleteOff.png"));
 		
 		// --------------------Initializer-----------------------------------------
-		@Override
+		
+	 	/**
+	     * Initializes the controller after its root element has been completely processed.
+	     * This method sets up the initial state of the sandbox controller, pre-loading gate objects
+	     * into placeholders, creating connections between them, and starting a video demo.
+	     *
+	     * @param arg0 URL for the root object initialization, not used in this method
+	     * @param arg1 ResourceBundle, not used in this method
+	     */
+	 	@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			
 			// Create Enum Map to file locations. This is used in the parameters for load. There is probably somewhere better I could put this initialization.
@@ -188,9 +224,14 @@ public class Level4BController extends sandboxController implements Initializabl
 		
 		///----------------Check For Win -----------------------------------
 		
-		public void CheckToWin() {
-			
 		
+		/**
+	     * Checks if the current state of the outputs indicates a win condition for the level.
+	     * If the outputs match the expected values, updates the level score in the AccountManager
+	     * and displays a congratulatory message using an Alert dialog.
+	     * If the outputs do not match, displays a message indicating to try again.
+	     */
+		public void CheckToWin() {
 			
 			if(Textoutput1.getText().equals("1") && Textoutput2.getText().equals("1") && Textoutput3.getText().equals("1") && Textoutput4.getText().equals("0")) {
 				title.setText("Great Job! Head to the next Level!");
@@ -214,6 +255,12 @@ public class Level4BController extends sandboxController implements Initializabl
 		}
 		
 		
+		/**
+	     * Calls the checktype method of the appropriate gateController based on the ClassType of the given node.
+	     * This method is used to update the gate's state based on its inputs.
+	     *
+	     * @param node The Rectangle node representing a gate's terminal.
+	     */
 		public void callChecktype(Rectangle node) {
 			switch( (String)(node.getProperties().get("ClassType")) ) {
 			case "AND":
@@ -248,6 +295,11 @@ public class Level4BController extends sandboxController implements Initializabl
 		
 		//----------------Getter and Setter Functions ---------------------
 		
+		/**
+	     * Gets the circuit board pane.
+	     *
+	     * @return The circuit board pane, which represents the area where gate objects are placed and wired.
+	     */
 		public Pane getCircuitBoardPane() {
 			
 			return circuitBoardPane;
@@ -255,8 +307,18 @@ public class Level4BController extends sandboxController implements Initializabl
 		}
 		
 		//------------------Object Pre-Load Functions-----------------------
-		// use these to pre-load up objects into the level, not object generator.
 		
+		/**
+	     * Loads a pre-defined gate object onto the circuit board.
+	     * This method is used to pre-load objects into the level (not object generator).
+	     * The pre-defined gate objects are created based on the specified type.
+	     * The gate object loaded by this method is set to be immovable.
+	     *
+	     * @param origin The origin pane where the gate object will be loaded from.
+	     * @param type   The type of gate (e.g., Type.AND, Type.OR, Type.NOT, etc.).
+	     * @return The loaded gate object as a Pane.
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
 		public Pane load(Pane origin,  Type type) throws IOException{
 			try {
 				
@@ -286,17 +348,17 @@ public class Level4BController extends sandboxController implements Initializabl
 		
 		// ---------------- Object Generator Buttons -----------------------
 		
-		// Use these to let the user add objects to the level
 
-		/** This is the button that generates gatesObjects. The first in the block of code where all the object generator will be.
-		 * In the user interface, every gate is represented as a node. Nodes are what will be used to pass information from the 
-		 * user interface events to the sandboxController.
-		 * To get information from a node use .getProperties.get(KEY).
-		 * I set two keys below. "controller" will be a unique instance of the gate object. 
-		 * You can use "andController ctl = node..getProperties.get("controller);" to retrieve the controller.
-		 * Then you would be to call any function andControllers have  it like ctl.getState().
-		 * I also set this instance of the sandboxController in every gate that is created. That may come in useful to pass information
-		 * to a central source.*/
+		/**
+	     * Generates a gate object on the circuit board based on the provided parameters.
+	     * Each gate object is represented as a node in the user interface.
+	     * Nodes are used to pass information from user interface events to the sandboxController.
+	     *
+	     * @param fxml   The path to the FXML file that defines the gate object.
+	     * @param type   The type of gate (e.g., Type.AND, Type.OR, Type.NOT, etc.).
+	     * @param origin The ImageView representing the origin of the gate generation (e.g., button image).
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
 		public void generator(String fxml, Type type, ImageView origin) throws IOException{
 			try {
 				
@@ -321,6 +383,15 @@ public class Level4BController extends sandboxController implements Initializabl
 			}	
 		}
 		
+		
+		/**
+	     * Generates an AND gate on the circuit board when called.
+	     * This method is responsible for creating an AND gate by calling the general
+	     * generator method with specific parameters for the AND gate.
+	     * If an exception occurs during the generation process, it is caught and printed.
+	     *
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
 		public void andGenerator() throws IOException {			
 				
 				try {
@@ -332,6 +403,15 @@ public class Level4BController extends sandboxController implements Initializabl
 			}
 		
 			
+		
+		/**
+	     * Generates a BATTERY gate on the circuit board when called.
+	     * This method is responsible for creating a BATTERY gate by calling the general
+	     * generator method with specific parameters for the BATTERY gate.
+	     * If an exception occurs during the generation process, it is caught and printed.
+	     *
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
 		public void batteryGenerator() throws IOException{
 			
 			try {		
@@ -342,6 +422,15 @@ public class Level4BController extends sandboxController implements Initializabl
 			}
 		}
 		
+		
+		/**
+	     * Generates an OR gate on the circuit board when called.
+	     * This method is responsible for creating an OR gate by calling the general
+	     * generator method with specific parameters for the OR gate.
+	     * If an exception occurs during the generation process, it is caught and printed.
+	     *
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
 		public void orGenerator() throws IOException{
 				
 				try {		
@@ -352,6 +441,15 @@ public class Level4BController extends sandboxController implements Initializabl
 				}
 			}	
 		
+		
+		/**
+	     * Generates a BULB gate on the circuit board when called.
+	     * This method is responsible for creating a BULB gate by calling the general
+	     * generator method with specific parameters for the BULB gate.
+	     * If an exception occurs during the generation process, it is caught and printed.
+	     *
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
 		public void bulbGenerator() throws IOException{
 			
 			try {		
@@ -362,6 +460,15 @@ public class Level4BController extends sandboxController implements Initializabl
 			}
 		}
 		
+		
+		/**
+	     * Generates a NOT gate on the circuit board when called.
+	     * This method is responsible for creating a NOT gate by calling the general
+	     * generator method with specific parameters for the NOT gate.
+	     * If an exception occurs during the generation process, it is caught and printed.
+	     *
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
 		public void notGenerator() throws IOException{
 				
 				try {		
@@ -372,6 +479,15 @@ public class Level4BController extends sandboxController implements Initializabl
 				}
 			}
 		
+		
+		/**
+	     * Generates a NOR gate on the circuit board when called.
+	     * This method is responsible for creating a NOR gate by calling the general
+	     * generator method with specific parameters for the NOR gate.
+	     * If an exception occurs during the generation process, it is caught and printed.
+	     *
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
 		public void norGenerator() throws IOException{
 			
 			try {		
@@ -382,6 +498,15 @@ public class Level4BController extends sandboxController implements Initializabl
 			}
 		}	
 		
+		
+		/**
+	     * Generates a NAND gate on the circuit board when called.
+	     * This method is responsible for creating a NAND gate by calling the general
+	     * generator method with specific parameters for the NAND gate.
+	     * If an exception occurs during the generation process, it is caught and printed.
+	     *
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
 		public void nandGenerator() throws IOException{
 			
 			try {		
@@ -392,6 +517,15 @@ public class Level4BController extends sandboxController implements Initializabl
 			}
 		}	
 		
+		
+		/**
+	     * Generates an XOR gate on the circuit board when called.
+	     * This method is responsible for creating an XOR gate by calling the general
+	     * generator method with specific parameters for the XOR gate.
+	     * If an exception occurs during the generation process, it is caught and printed.
+	     *
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
 		public void xorGenerator() throws IOException{
 			
 			try {		
@@ -406,11 +540,16 @@ public class Level4BController extends sandboxController implements Initializabl
 		
 		//--------------Object Interaction Functions -------------------------
 		
-		/** When a click is made on any terminal of a gate and the mouse is dragged, beginConnection draws a line on the screen from a terminal to the mouse while the mouse is dragged.
-		 * It also records the starting node of the drag, and the ending node of the drag.
-		 * All terminal buttons are invisible rectangles that trigger events when clicked.
-		 * If both the start and stop of the drag are terminals, and the terminals are of different types,
-		 *   then the two nodes are passed to the function makeWire. */
+		/**
+	     * Initiates the process of creating a wire connection when a mouse click and drag occurs on a terminal of a gate.
+	     * Draws a temporary line on the screen from the terminal to the mouse cursor while the mouse is dragged.
+	     * Records the starting node of the drag and the ending node of the drag.
+	     * All terminal buttons are represented as invisible rectangles that trigger events when clicked.
+	     * If both the start and stop of the drag are terminals, and the terminals are of different types,
+	     * then the two nodes are passed to the function makeWire to create a wire connection.
+	     *
+	     * @param event The MouseEvent triggered when the user clicks on a terminal.
+	     */
 		public void beginConnection(MouseEvent event) {
 			
 			// Store the start node information while the line is being drawn.
@@ -474,12 +613,15 @@ public class Level4BController extends sandboxController implements Initializabl
 			});
 		}
 		
-		/**This is probably where you will want to add code to manage the connections.
-		 * This draws a persistent wire between two valid terminals a user has connected with beginConnection.
-		 * The endpoints of the line that makes the connection is bound to the terminal nodes. So when they move the line is moved as well.
-		 * To find the instance gates the terminals belong to use *terminal*.getParent().getProperties().get("controller") */
-		
-		
+		/**
+	     * Creates a visual wire connecting two terminals on the circuit board.
+	     * The wire is drawn as a Line between the output and input terminals.
+	     * Adjusts the Line's position based on the terminals' positions within their parent panes.
+	     * Handles the logic for replacing old wires when new ones are created.
+	     *
+	     * @param outputTerminal The Rectangle representing the output terminal.
+	     * @param inputTerminal  The Rectangle representing the input terminal.
+	     */
 		public void makeWire(Rectangle outputTerminal, Rectangle inputTerminal) {		
 			
 			// Get the parent node of the terminal, the gate, so I can figure out the absolute position of the terminal. 
@@ -540,6 +682,12 @@ public class Level4BController extends sandboxController implements Initializabl
 			
 		}
 		
+		/**
+	     * Toggles the delete state and cursor style for deleting components on the circuit board.
+	     * Plays a sound effect and changes the delete button's appearance based on the state.
+	     *
+	     * @param event The MouseEvent triggered by clicking the delete button.
+	     */
 		public void deleteButton(MouseEvent event) {
 			audio.boopPlay();
 			if(deleteState) {
@@ -555,6 +703,12 @@ public class Level4BController extends sandboxController implements Initializabl
 			}		
 		}
 		
+		/**
+	     * Handles the deletion of components in the LogicLand circuit board.
+	     * Plays a sound effect and deletes either a wire connection or a gate based on the user's interaction.
+	     *
+	     * @param event The MouseEvent triggered by the user's interaction with the circuit board.
+	     */
 		public void delete(MouseEvent event) {
 			audio.boopPlay();
 			if(deleteState && event.getY() < 570 && event.getY() > 155 && event.getX() < 1000 && event.getX() > 260 ){
@@ -577,6 +731,13 @@ public class Level4BController extends sandboxController implements Initializabl
 		
 		SceneSwitcher sceneSwitcher = new SceneSwitcher();
 		
+		/**
+	     * Handles the "Back" button action event to take user back to the roadmap.
+	     * Plays a sound effect and switches the scene to the roadmap.
+	     *
+	     * @param event The ActionEvent triggered by clicking the "Back" button.
+	     * @throws IOException If an error occurs while switching scenes.
+	     */
 		public void back(ActionEvent event) throws IOException {			
 			audio.boopPlay();
 			try {			
@@ -588,6 +749,13 @@ public class Level4BController extends sandboxController implements Initializabl
 		}
 		
 		
+		/**
+	     * Handles the action event for going back to Part A of Level 4.
+	     * This method plays a "boop" sound, then switches the scene to Level 4A.
+	     *
+	     * @param event The ActionEvent that triggers this method.
+	     * @throws IOException If an I/O exception occurs while switching scenes.
+	     */
 		public void backPart(ActionEvent event) throws IOException {			
 			audio.boopPlay();
 			try {			
