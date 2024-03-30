@@ -648,18 +648,21 @@ public class Level5BController extends sandboxController implements Initializabl
 				inputTerminal.getProperties().put("wire", null);
 			}
 			
+			// Remove existing wires connected to outputTerminal
 			if(outputTerminal.getProperties().get("wire")!= null) {
 				circuitBoardPane.getChildren().remove(outputTerminal.getProperties().get("wire"));
 				outputTerminal.getProperties().put("wire", null);
 
 			}
 			
+			// Remove existing wires connected to inputTerminal
 			if(inputTerminal.getProperties().get("wire")!= null) {
 				circuitBoardPane.getChildren().remove(inputTerminal.getProperties().get("wire"));
 				inputTerminal.getProperties().put("wire", null);
 
 			}
 			
+			// Remove 'put' property from previous connections
 			if(outputTerminal.getProperties().get("put") != null) {
 				((Rectangle)outputTerminal.getProperties().get("put")).getProperties().put("put", null);
 			}
@@ -668,9 +671,9 @@ public class Level5BController extends sandboxController implements Initializabl
 
 			}
 			
-			
+			// Update properties to establish the wire connection between terminals
 			outputTerminal.getProperties().put("wire", connectLine);
-			outputTerminal.getProperties().put("put", inputTerminal);	//Andres
+			outputTerminal.getProperties().put("put", inputTerminal);	
 			
 			inputTerminal.getProperties().put("wire", connectLine);
 			inputTerminal.getProperties().put("put", outputTerminal);
@@ -685,14 +688,19 @@ public class Level5BController extends sandboxController implements Initializabl
 	     * @param event The MouseEvent triggered by clicking the delete button.
 	     */
 		public void deleteButton(MouseEvent event) {
+			// Play a sound effect
 			audio.boopPlay();
+			
+			// Toggle the delete state and update the delete button's appearance
 			if(deleteState) {
+				// If deleteState is true, set it to false and update the button appearance
 				deleteState = false;
 				deleteImage.setImage(deleteOff);
 				circuitBoardPane.setCursor(Cursor.DEFAULT);
 			}
 			
 			else {
+				// If deleteState is false, set it to true and update the button appearance
 				deleteState = true;
 				deleteImage.setImage(deleteOn);
 				circuitBoardPane.setCursor(Cursor.CROSSHAIR);			

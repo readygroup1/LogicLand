@@ -323,6 +323,7 @@ public class Level1BController extends sandboxController implements Initializabl
 		}
 		
 		//------------------Object Pre-Load Functions-----------------------
+		
 		/**
 	     * Loads a pre-defined gate object onto the circuit board.
 	     * This method is used to pre-load objects into the level (not object generator).
