@@ -1,6 +1,7 @@
 package application.resources.gates;
 
 import java.net.URL;
+
 import java.util.ResourceBundle;
 
 import application.AccountManager;
@@ -14,6 +15,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
+
+/**
+  * The {@code batteryController} class represents a battery object controller extending {@link gateObject}.
+ * It contains functionality specific to battery behavior in a circuit simulation.
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @authors Kalundi Serumaga, Nick Howard
+ *
+ */
 
 public class batteryController extends gateObject implements Initializable{
 	

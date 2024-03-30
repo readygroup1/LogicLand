@@ -18,13 +18,14 @@ import javafx.scene.shape.Rectangle;
 
 
 /**
- * This class controls functionality of the AND gates throughout the game. It handles dragging and logic cases.
+ * The {@code andController} class represents a AND gate controller extending {@link gateObject}.
+ * It contains functionality specific to NAND gate behavior in a circuit simulation.
  * 
- * <b>Example use:</b>
  * 
  * @version 1.0
  * @since 1.0
- * @author Group 1
+ * @authors Kalundi Serumaga, Nick Howard
+ *
  */
 
 public class andController extends gateObject implements Initializable {

@@ -18,14 +18,14 @@ import javafx.scene.shape.Rectangle;
 
 
 /**
- * This class controls functionality of the lightBulbs throughout the game. It handles image switching ---.
- * 
- * <b>Example use:</b>
- * 
- * @version 1.0
- * @since 1.0
- * @author Group 1
- */
+ * The {@code bulbController} class represents a bulb object controller extending {@link gateObject}.
+* It contains functionality specific to bulb behavior in a circuit simulation.
+* 
+* @version 1.0
+* @since 1.0
+* @authors Kalundi Serumaga, Nick Howard
+*
+*/
 public class bulbController extends gateObject implements Initializable {
 	//----------------Variables----------------------
 	boolean state = false;
