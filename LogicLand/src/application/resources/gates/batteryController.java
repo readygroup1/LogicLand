@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
+
 /**
   * The {@code batteryController} class represents a battery object controller extending {@link gateObject}.
  * It contains functionality specific to battery behavior in a circuit simulation.
@@ -24,6 +25,16 @@ import javafx.scene.shape.Rectangle;
  * @since 1.0
  * @authors Kalundi Serumaga, Nick Howard
  *
+=======
+
+/**
+ * Generators in Sandbox and Levels create instances of Batteries. This class then controls the the on\off states of the batteries, while also handling dragging and dropping.
+ * 
+ * @see sandboxController
+ * @version 1.0
+ * @since 1.0
+ * @author Group 1
+>>>>>>> 9cd0b45feaafc1d9d2656b4123755afb0eb80df5
  */
 
 public class batteryController extends gateObject implements Initializable{
@@ -75,13 +86,17 @@ public class batteryController extends gateObject implements Initializable{
 			body.setOnMousePressed(event ->{			
 				 dragStartX = event.getSceneX() - pane.getLayoutX();
 				 dragStartY = event.getSceneY() - pane.getLayoutY();
+				 AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "b");
 			});
 			
 			body.setOnMouseDragged(event -> {
-				AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "b");
+				
 				pane.setLayoutX(event.getSceneX() - dragStartX);
 				pane.setLayoutY(event.getSceneY() - dragStartY);
 				dragged = true;
+			});
+			
+			body.setOnMouseReleased(event -> {
 				saveState = "b," + Double.toString(pane.getLayoutX()) + "," + Double.toString(pane.getLayoutY()) + ",";
 				AccountManager.setIndividualGate(saveState);
 			});

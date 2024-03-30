@@ -1,16 +1,26 @@
 package application.resources.levels;
 
-/** this class reuses essential methods and variables used in sandbox 
- * although slightly altered to set up a game for players to complete.
+/**
+ * This class represents the controller for Level 1A in the LogicLand application.
+ * It extends the `sandboxController` class and implements the `Initializable` interface.
  * 
+ * The `Level1AController` class is responsible for managing the user interface and logic of Level 1A.
+ * It handles the generation of gate objects, pre-loading of objects, and checking if the game is won.
  * 
+ * The class contains various instance variables, including the circuit board pane, buttons, image views,
+ * labels, and pre-loaded object panes. It also defines an enum `Type` to represent different types of objects.
  * 
+ * The class provides methods for initializing the level, loading pre-loaded objects, generating gate objects,
+ * and checking if the game is won. It also includes getter and setter methods for accessing the circuit board pane.
+ * 
+ * The `Level1AController` class follows the JavaFX controller pattern and is designed to work with the LogicLand application.
+ * It interacts with the user interface and handles user input to create and manipulate gate objects on the circuit board.
+ * 
+ * @see sandboxController
+ * @version 1.0
+ * @since 1.0
  * @author Andres Pedreros Castro
- * @author Callum Andrew Thompson
  * @author Nicholas Howard
- * @author Thomas Leonardo Llamzon
- * 
- * 
  */
 
 import java.io.IOException;
@@ -74,6 +84,7 @@ import javafx.scene.text.Text;
  * @version 1.0
  * @since 1.0
  * @author Andres Pedreros Castro
+ * @author Nicholas Howard
  */
 public class Level1AController extends sandboxController implements Initializable {
 
@@ -245,7 +256,10 @@ public class Level1AController extends sandboxController implements Initializabl
 		}
 		
 		//----------------Check if game is won----------------------------
-		
+		/**
+		 * Checks if the game is won by verifying that the bulb is on.
+		 * 
+		 */
 		public void CheckWin() {
 			//if bulb is on win
 			if(endBulb.getState()) {
@@ -278,7 +292,9 @@ public class Level1AController extends sandboxController implements Initializabl
 		
 		
 		//----------------Getter and Setter Functions ---------------------
-		
+		/**
+		 * Gets the circuit board pane.
+		 */
 		public Pane getCircuitBoardPane() {
 			
 			return circuitBoardPane;
@@ -286,8 +302,12 @@ public class Level1AController extends sandboxController implements Initializabl
 		}
 		
 		//------------------Object Pre-Load Functions-----------------------
-		// use these to pre-load up objects into the level, not object generator.
 		
+		/*
+		 * This function is used to load the preloaded objects into the level.
+		 * @param origin The pane that the object will be loaded into.
+		 * @param type The type of object that will be loaded.
+		 */
 		public Pane load(Pane origin,  Type type) throws IOException{
 			try {
 				
@@ -319,15 +339,15 @@ public class Level1AController extends sandboxController implements Initializabl
 		
 		// Use these to let the user add objects to the level
 
-		/** This is the button that generates gatesObjects. The first in the block of code where all the object generator will be.
-		 * In the user interface, every gate is represented as a node. Nodes are what will be used to pass information from the 
-		 * user interface events to the sandboxController.
-		 * To get information from a node use .getProperties.get(KEY).
-		 * I set two keys below. "controller" will be a unique instance of the gate object. 
-		 * You can use "andController ctl = node..getProperties.get("controller);" to retrieve the controller.
-		 * Then you would be to call any function andControllers have  it like ctl.getState().
-		 * I also set this instance of the sandboxController in every gate that is created. That may come in useful to pass information
-		 * to a central source.*/
+
+		/**
+		 * Generates a new object based on the specified FXML file, type, and origin ImageView.
+		 * 
+		 * @param fxml   the path to the FXML file
+		 * @param type   the type of the object
+		 * @param origin the origin ImageView
+		 * @throws IOException if an I/O error occurs while loading the FXML file
+		 */
 		public void generator(String fxml, Type type, ImageView origin) throws IOException{
 			try {
 				
@@ -350,7 +370,9 @@ public class Level1AController extends sandboxController implements Initializabl
 				e.printStackTrace();
 			}	
 		}
-		
+		/**
+		 * This is a function that generates AND gates.
+		 */
 		public void andGenerator() throws IOException {			
 				
 				try {
@@ -361,7 +383,10 @@ public class Level1AController extends sandboxController implements Initializabl
 				}	
 			}
 		
-			
+		/**
+		 * this is a function that generates a battery.
+		 *  
+		 */	
 		public void batteryGenerator() throws IOException{
 			
 			try {		
@@ -372,6 +397,10 @@ public class Level1AController extends sandboxController implements Initializabl
 			}
 		}
 		
+		/**
+		 * this is a function that generates OR gate.
+		 *  
+		 */
 		public void orGenerator() throws IOException{
 				
 				try {		
@@ -382,6 +411,9 @@ public class Level1AController extends sandboxController implements Initializabl
 				}
 			}	
 		
+		/*
+		 * This is a function that generates a bulb.
+		 */
 		public void bulbGenerator() throws IOException{
 			
 			try {		
@@ -392,6 +424,10 @@ public class Level1AController extends sandboxController implements Initializabl
 			}
 		}
 		
+		/**
+		 * this is a function that generates a NOT gate.
+		 *  
+		 */
 		public void notGenerator() throws IOException{
 				
 				try {		
@@ -402,6 +438,10 @@ public class Level1AController extends sandboxController implements Initializabl
 				}
 			}
 		
+		/**
+		 * this is a function that generates a NOR gate.
+		 * 
+		 */
 		public void norGenerator() throws IOException{
 			
 			try {		
@@ -412,6 +452,10 @@ public class Level1AController extends sandboxController implements Initializabl
 			}
 		}	
 		
+		/**
+		 * this is a function that generates a NAND gate.
+		 * 
+		 */
 		public void nandGenerator() throws IOException{
 			
 			try {		
@@ -422,6 +466,10 @@ public class Level1AController extends sandboxController implements Initializabl
 			}
 		}	
 		
+		/**
+		 * this is a function that generates a XOR gate.
+		 * 
+		 */
 		public void xorGenerator() throws IOException{
 			
 			try {		
@@ -436,11 +484,11 @@ public class Level1AController extends sandboxController implements Initializabl
 		
 		//--------------Object Interaction Functions -------------------------
 		
-		/** When a click is made on any terminal of a gate and the mouse is dragged, beginConnection draws a line on the screen from a terminal to the mouse while the mouse is dragged.
-		 * It also records the starting node of the drag, and the ending node of the drag.
-		 * All terminal buttons are invisible rectangles that trigger events when clicked.
-		 * If both the start and stop of the drag are terminals, and the terminals are of different types,
-		 *   then the two nodes are passed to the function makeWire. */
+		/**
+		 * This function is called when a terminal is clicked. It checks the type of the terminal and calls the checkType function.
+		 * This is used to update the state of the gate when a wire is deleted.
+		 * @param event The mouse event that triggers the function.
+		 */
 		public void beginConnection(MouseEvent event) {
 			
 			// Store the start node information while the line is being drawn.
@@ -516,12 +564,13 @@ public class Level1AController extends sandboxController implements Initializabl
 			
 		}
 		
-		/**This is probably where you will want to add code to manage the connections.
-		 * This draws a persistent wire between two valid terminals a user has connected with beginConnection.
-		 * The endpoints of the line that makes the connection is bound to the terminal nodes. So when they move the line is moved as well.
-		 * To find the instance gates the terminals belong to use *terminal*.getParent().getProperties().get("controller") */
 		
-		
+		/** This function is called when a wire is made. It takes the two terminals that are connected and draws a line between them.
+		 * It also stores the wire in the terminal properties so it can be deleted later. 
+		 * @param outputTerminal The output terminal of the wire.
+		 * @param inputTerminal The input terminal of the wire.
+		 * 
+		 * */
 		public void makeWire(Rectangle outputTerminal, Rectangle inputTerminal) {		
 			
 			// Get the parent node of the terminal, the gate, so I can figure out the absolute position of the terminal. 
@@ -589,7 +638,10 @@ public class Level1AController extends sandboxController implements Initializabl
 		
 		
 		
-		
+		/**
+		 * This functions puts the player into delete mode where they can delete gates and wires
+		 * @param event The mouse event that triggers the function.
+		 */
 		public void deleteButton(MouseEvent event) {
 			
 			audio.boopPlay();
@@ -607,8 +659,12 @@ public class Level1AController extends sandboxController implements Initializabl
 			}		
 		}
 		
+		/**
+		 * This function is called when a gate is deleted. It checks the type of the terminal and calls the checkType function.
+		 * This is used to update the state of the gate when a wire is deleted.
+		 * @param event The mouse event that triggers the function.
+		 */
 		public void delete(MouseEvent event) {
-			//System.out.println("deleteState: " + deleteState + ", X: " + event.getX() + ", Y: " +event.getY());
 			audio.boopPlay();
 			
 			if(deleteState && event.getY() < 570 && event.getY() > 155 && event.getX() < 1000 && event.getX() > 260 ){
@@ -643,6 +699,12 @@ public class Level1AController extends sandboxController implements Initializabl
 		
 		SceneSwitcher sceneSwitcher = new SceneSwitcher();
 		
+		/**
+		 * This function switches the scene to the roadmap when the back button is clicked.
+		 * 
+		 * @param event The action event that triggers the function.
+		 * @throws IOException Signals that an I/O exception has occurred.
+		 */
 		public void back(ActionEvent event) throws IOException {			
 			audio.boopPlay();
 			//play level music
@@ -656,6 +718,12 @@ public class Level1AController extends sandboxController implements Initializabl
 			}		
 		}
 		
+		/**
+		 * This function switches the scene to Level 1B when the next button is clicked.
+		 * 
+		 * @param event The action event that triggers the function.
+		 * @throws IOException Signals that an I/O exception has occurred.
+		 */
 		public void next(ActionEvent event) throws IOException {
 			if(AccountManager.getLevelScore(AccountManager.getLevelID(1)) < 50) {
 				return;

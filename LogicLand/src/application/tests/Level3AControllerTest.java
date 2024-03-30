@@ -11,22 +11,19 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import application.resources.sandboxController;
-import application.resources.sandboxController.Type;
 import application.resources.gates.batteryController;
 import application.resources.gates.bulbController;
-import application.resources.gates.gateObject;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+import application.resources.levels.Level3AController;
+import application.resources.levels.Level3AController.Type;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
-class sandboxControllerTest extends platformTest {
+class Level3AControllerTest extends platformTest{
+
 	static Pane pane;
-	static sandboxController controller;
+	static Level3AController controller;
 	static Pane battery;
 	static Pane bulb;
 	static batteryController batController;
@@ -36,11 +33,11 @@ class sandboxControllerTest extends platformTest {
 	static void setUpBeforeClass() throws Exception {
 		
 		if(!platformStarted) {
-
+			platformStarted = true;
 			Platform.startup(() -> {
 				FXMLLoader loader;
 			try {
-				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/sandbox.fxml"));
+				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/levels/level3A.fxml"));
 				pane = loader.load();
 				controller = loader.getController();
 				
@@ -62,7 +59,7 @@ class sandboxControllerTest extends platformTest {
 		else {
 			FXMLLoader loader;
 			try {
-				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/sandbox.fxml"));
+				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/levels/level3A.fxml"));
 				pane = loader.load();
 				controller = loader.getController();
 				
@@ -90,6 +87,36 @@ class sandboxControllerTest extends platformTest {
 	}
 
 //---------------- Generator Tests-------------------------------------
+	@Test
+	void loadTest() {
+		final CountDownLatch latch = new CountDownLatch(1);
+        final AtomicBoolean testStatus = new AtomicBoolean(false);
+		Platform.runLater(() -> {
+			try {
+			Pane view = new Pane();
+			pane.getChildren().add(view) ;
+			int children  = pane.getChildren().size() ;
+			controller.load( view, Type.BULB );
+			if(pane.getChildren().size() - children == 1) {
+				testStatus.set(true);
+			};
+		} 
+		catch (Exception e) {
+		    e.printStackTrace();
+		}
+		finally {
+		    latch.countDown();
+		}
+
+		});
+		try {
+			latch.await();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+        Assertions.assertTrue(testStatus.get());
+	}
 	
 	@Test
 	void generatorTest() {
@@ -122,124 +149,8 @@ class sandboxControllerTest extends platformTest {
         Assertions.assertTrue(testStatus.get());
 	}
 	
-	@Test
-	void andGeneratorTest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			try {
-//			
-			int children  = pane.getChildren().size() ;
-			controller.andGenerator();
-			if(pane.getChildren().size() - children == 1) {
-				testStatus.set(true);
-			};
-		} 
-		catch (Exception e) {
-		    e.printStackTrace();
-		}
-		finally {
-		    latch.countDown();
-		}
-
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
-        Assertions.assertTrue(testStatus.get());
-	}
-	@Test
-	void batteryGeneratorTest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			try {
-//			
-			int children  = pane.getChildren().size() ;
-			controller.batteryGenerator();
-			if(pane.getChildren().size() - children == 1) {
-				testStatus.set(true);
-			};
-		} 
-		catch (Exception e) {
-		    e.printStackTrace();
-		}
-		finally {
-		    latch.countDown();
-		}
-
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
-        Assertions.assertTrue(testStatus.get());
-	}
 	
-	@Test
-	void orGeneratorTest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			try {
-//			
-			int children  = pane.getChildren().size() ;
-			controller.orGenerator();
-			if(pane.getChildren().size() - children == 1) {
-				testStatus.set(true);
-			};
-		} 
-		catch (Exception e) {
-		    e.printStackTrace();
-		}
-		finally {
-		    latch.countDown();
-		}
-
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		} 
-        Assertions.assertTrue(testStatus.get());
-	}
 	
-	@Test
-	void bulbGeneratorTest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			try {
-//			
-			int children  = pane.getChildren().size() ;
-			controller.bulbGenerator();
-			if(pane.getChildren().size() - children == 1) {
-				testStatus.set(true);
-			};
-		} 
-		catch (Exception e) {
-		    e.printStackTrace();
-		}
-		finally {
-		    latch.countDown();
-		}
-
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		} 
-        Assertions.assertTrue(testStatus.get());
-	}
 
 	@Test
 	void notGeneratorTest() {
@@ -271,95 +182,7 @@ class sandboxControllerTest extends platformTest {
         Assertions.assertTrue(testStatus.get());
 	}
 	
-	@Test
-	void norGeneratorTest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			try {
-//			
-			int children  = pane.getChildren().size() ;
-			controller.norGenerator();
-			if(pane.getChildren().size() - children == 1) {
-				testStatus.set(true);
-			};
-		} 
-		catch (Exception e) {
-		    e.printStackTrace();
-		}
-		finally {
-		    latch.countDown();
-		}
-
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		} 
-        Assertions.assertTrue(testStatus.get());
-	}
 	
-	@Test
-	void nandGeneratorTest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			try {
-//			
-			int children  = pane.getChildren().size() ;
-			controller.nandGenerator();
-			if(pane.getChildren().size() - children == 1) {
-				testStatus.set(true);
-			};
-		} 
-		catch (Exception e) {
-		    e.printStackTrace();
-		}
-		finally {
-		    latch.countDown();
-		}
-
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		} 
-        Assertions.assertTrue(testStatus.get());
-	}
-	
-	@Test
-	void xorGeneratorTest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			try {
-//			
-			int children  = pane.getChildren().size() ;
-			controller.xorGenerator();
-			if(pane.getChildren().size() - children == 1) {
-				testStatus.set(true);
-			};
-		} 
-		catch (Exception e) {
-		    e.printStackTrace();
-		}
-		finally {
-		    latch.countDown();
-		}
-
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		} 
-        Assertions.assertTrue(testStatus.get());
-	}
 //---------------- Connection Tests-------------------------------------
 	@Test
 	void makeWireTest() {
@@ -423,38 +246,5 @@ class sandboxControllerTest extends platformTest {
 		} 
 		Assertions.assertTrue(testStatus.get());
 	}
-
-// --------------Getters and Setters Test --------------------
-	@Test
-	void getCircuitboardTest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(true);
-		Platform.runLater(() -> {
-			try {
-				Pane paney = controller.getCircuitBoardPane();
-				if(paney == null) {
-					testStatus.set(false);
-				}
-				}
-		
-		catch (Exception e) {
-		    e.printStackTrace();
-		    testStatus.set(false);
-		}
-		finally {
-		    latch.countDown();
-		}
-
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		} 
-		Assertions.assertTrue(testStatus.get());
-	}
-
-
 
 }

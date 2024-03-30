@@ -21,7 +21,9 @@ import javafx.scene.shape.Rectangle;
  * The {@code andController} class represents a AND gate controller extending {@link gateObject}.
  * It contains functionality specific to NAND gate behavior in a circuit simulation.
  * 
+ * Generators in Sandbox and Levels create instances of AND gates. This class then controls the AND logic cases of those gates, while also handling dragging and dropping.
  * 
+ * @see sandboxController
  * @version 1.0
  * @since 1.0
  * @authors Kalundi Serumaga, Nick Howard
@@ -81,36 +83,42 @@ public class andController extends gateObject implements Initializable {
 		body.setOnMousePressed(event ->{			
 			 dragStartX = event.getSceneX() - pane.getLayoutX();
 			 dragStartY = event.getSceneY() - pane.getLayoutY();
+			 AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "a");
 		});
 		
 		body.setOnMouseDragged(event -> {
-			AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "a");
+			
 			pane.setLayoutX(event.getSceneX() - dragStartX);
 			pane.setLayoutY(event.getSceneY() - dragStartY);	
 			
+			
+		});
+		
+		body.setOnMouseReleased(event -> {
 			saveState = "a," + Double.toString(pane.getLayoutX()) + "," + Double.toString(pane.getLayoutY()) + ",";
 			AccountManager.setIndividualGate(saveState);
 		});
 		
-		input1.getProperties().put("type", "input");
-		input1.getProperties().put("state", false);		//Andres
-		input1.getProperties().put("parentGate", this);//Andres
-		input1.getProperties().put("put", null);
-		input1.getProperties().put("ClassType", "AND");
-		input1.getProperties().put("wire", null);
+		//Stores information about terminals 
+		input1.getProperties().put("type", "input");	//type of terminal
+		input1.getProperties().put("state", false);		//State of terminal on/off
+		input1.getProperties().put("parentGate", this);	//returns the instance of the class holding the terminal
+		input1.getProperties().put("put", null);		//Connect to another terminal in a different gate
+		input1.getProperties().put("ClassType", "AND");	//the type of gate the terminals parent is
+		input1.getProperties().put("wire", null);		//holds the instance of the wire connecting 2 terminals
 
-		
+		//same for the rest
 		input2.getProperties().put("type", "input");
-		input2.getProperties().put("state", false);		//Andres
-		input2.getProperties().put("parentGate", this);//Andres
+		input2.getProperties().put("state", false);		
+		input2.getProperties().put("parentGate", this);
 		input2.getProperties().put("put", null);
 		input2.getProperties().put("ClassType", "AND");
 		input2.getProperties().put("wire", null);
 		
 		output.getProperties().put("type", "output");
-		output.getProperties().put("state", false);//Andres
-		output.getProperties().put("parentGate", this);//Andres
-		output.getProperties().put("put", null);	//Andres
+		output.getProperties().put("state", false);
+		output.getProperties().put("parentGate", this);
+		output.getProperties().put("put", null);	
 		output.getProperties().put("ClassType", "AND");
 		output.getProperties().put("wire", null);
 		
@@ -200,10 +208,10 @@ public class andController extends gateObject implements Initializable {
 	public void callChecktype(Rectangle node) {
 		switch( (String)(node.getProperties().get("ClassType")) ) {
 		case "AND":
-			((andController)(node.getProperties().get("parentGate"))).checktype();			//Andres
+			((andController)(node.getProperties().get("parentGate"))).checktype();			
 			break;
 		case "BATTERY":
-			((batteryController)node.getProperties().get("parentGate")).checktype();			//Andres
+			((batteryController)node.getProperties().get("parentGate")).checktype();			
 			break;
 		case "BULB":
 			((bulbController)node.getProperties().get("parentGate")).checktype();
@@ -234,37 +242,37 @@ public class andController extends gateObject implements Initializable {
 	 * If both inputs are connected and active, the output is set to true.
 	 * If either input is not connected or inactive, the output is set to false.
 	 * Updates the output state and calls {@link #callCheckType(Rectangle)} on the connected node.
-	 *
-	 *
-	 *
 	 */
 	public void checktype() {
 		
+		//checks if both terminals have a connection 
 		if((( (Rectangle)input1.getProperties().get("put") != null) && ((Rectangle)input2.getProperties().get("put")) != null)) {
-		
+			
+			//checks if the state of the terminals satisfy the AND gate
 			if (((boolean)((Rectangle)input1.getProperties().get("put")).getProperties().get("state")) && ((boolean)((Rectangle)input2.getProperties().get("put")).getProperties().get("state"))) {
+				
+				//if both inputs are true the output is true
 				output.getProperties().put("state", true);
+				
+				//if the output is connected to a terminal update that terminal
 				if( ( (Rectangle)output.getProperties().get("put")) != null) {
+					
 					((Rectangle)output.getProperties().get("put")).getProperties().put("state", true);
-					
-					
+					//recursively check the rest of the circuit
 					callChecktype((Rectangle)output.getProperties().get("put"));				
 				}
 				
-				
+				//update image
 				setImageOn();
 			}
 			
 			else {
+
 				output.getProperties().put("state", false);
 				if( ( (Rectangle)output.getProperties().get("put")) != null) {
+					
 					((Rectangle)output.getProperties().get("put")).getProperties().put("state", false);
-					
-
 					callChecktype((Rectangle)output.getProperties().get("put"));
-					
-					
-					
 				}
 				
 				setImageOff();
@@ -273,13 +281,9 @@ public class andController extends gateObject implements Initializable {
 		else {
 			output.getProperties().put("state", false);
 			if( ( (Rectangle)output.getProperties().get("put")) != null) {
+				
 				((Rectangle)output.getProperties().get("put")).getProperties().put("state", false);
-				
-				
-				
 				callChecktype((Rectangle)output.getProperties().get("put"));			
-			
-			
 			}
 			
 			setImageOff();

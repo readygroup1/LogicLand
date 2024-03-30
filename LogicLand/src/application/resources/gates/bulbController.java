@@ -71,13 +71,17 @@ public class bulbController extends gateObject implements Initializable {
 		body.setOnMousePressed(event ->{			
 			 dragStartX = event.getSceneX() - pane.getLayoutX();
 			 dragStartY = event.getSceneY() - pane.getLayoutY();
+			 AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "l");
 		});
 		
 		body.setOnMouseDragged(event -> {
-			AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "l");
+			
 			pane.setLayoutX(event.getSceneX() - dragStartX); 
 			pane.setLayoutY(event.getSceneY() - dragStartY);
-			
+		
+		});
+		
+		body.setOnMouseReleased(event -> {
 			saveState = "l," + Double.toString(pane.getLayoutX()) + "," + Double.toString(pane.getLayoutY()) + ",";
 			AccountManager.setIndividualGate(saveState);
 		});
@@ -219,6 +223,11 @@ public class bulbController extends gateObject implements Initializable {
 			setState(false);
 			bulb.setImage(bulbOff);
 		}
+	}
+
+
+	public Pane getCircuitBoardPane() {
+		return circuitBoardPane;
 	}
 
 

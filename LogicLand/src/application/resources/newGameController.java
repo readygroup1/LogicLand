@@ -22,6 +22,7 @@ import javafx.scene.text.Text;
 
 /**
  * @author Callum Thompson
+ * @author Nicholas Howard
  * 
  * This class is responsible for gathering and storing a users information in the newGame page.
  * A user must enter a name, initial, password, email, and class & teacher information.

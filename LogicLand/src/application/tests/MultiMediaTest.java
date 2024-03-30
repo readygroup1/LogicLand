@@ -9,21 +9,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.concurrent.CountDownLatch;
 
-public class MultiMediaTest {
+public class MultiMediaTest  extends platformTest{
 
     @BeforeAll
     static void setUpClass() throws InterruptedException {
-        // Initialize the JavaFX runtime
-        // This block ensures that JavaFX runtime is initialized before any tests run
-        final CountDownLatch latch = new CountDownLatch(1);
-        Platform.startup(() -> latch.countDown());
-        latch.await();
+        
+    	if(!platformStarted) {
+    		platformStarted = true;
+	    	// Initialize the JavaFX runtime
+	        // This block ensures that JavaFX runtime is initialized before any tests run
+	        final CountDownLatch latch = new CountDownLatch(1);
+	        Platform.startup(() -> latch.countDown());
+	        latch.await();
+	        platformStarted = true;
+    	}
+    	
+    	else {
+    		final CountDownLatch latch = new CountDownLatch(1);
+	        latch.countDown();
+	        latch.await();
+    	}
     }
 
     @AfterAll
     static void tearDownClass() {
-        // Properly shutdown JavaFX platform to clean up after tests
-        Platform.exit();
+        
     }
 
     @Test

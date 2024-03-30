@@ -9,36 +9,35 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import application.resources.sandboxController;
-import application.resources.gates.batteryController;
+import application.resources.gates.andController;
 import application.resources.gates.gateObject;
-import application.resources.gates.gateObject.Type;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
-class batteryControllerTest extends platformTest  {
+
+class andControllerTest extends platformTest{
+
 
 	static Pane pane;
-	static Pane battery;
-	static batteryController batController;
+	static Pane andGate;
+	static andController andController;
 	static FXMLLoader loader;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+
 		
 		if(!platformStarted) {
 			platformStarted = true;
 			Platform.startup(() -> {
-			
+				
 				try {
 					
-					loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/battery.fxml"));
-					battery = loader.load();
-					batController = loader.getController();
+					loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/and.fxml"));
+					andGate = loader.load();
+					andController = loader.getController();
 					
 				}
 					
@@ -47,14 +46,14 @@ class batteryControllerTest extends platformTest  {
 				}
 	
 			});	
-			
-		}
+		}	
 		else {
+
 			try {
 				
-				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/battery.fxml"));
-				battery = loader.load();
-				batController = loader.getController();
+				loader = new FXMLLoader(sandboxControllerTest.class.getResource("/application/resources/gates/and.fxml"));
+				andGate = loader.load();
+				andController = loader.getController();
 				
 			}
 				
@@ -62,64 +61,25 @@ class batteryControllerTest extends platformTest  {
 			    e.printStackTrace();
 			}
 
-		
 			
 		}
+
 		
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
+
+
 	}
 
-	@Test
-	void setStatetest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			batController.setState(true);
-			if(batController.getState()) {
-				testStatus.set(true);
-			}
-			latch.countDown();
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-        Assertions.assertTrue(testStatus.get());
-	}
-	
-	@Test
-	void clicktest() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			batController.setState(false);
-			batController.batteryClick(null);
-			if(batController.getState()) {
-				testStatus.set(true);
-			}
-			latch.countDown();
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-        Assertions.assertTrue(testStatus.get());
-	}
-	
 	@Test
 	void typeTest() {
 		final CountDownLatch latch = new CountDownLatch(1);
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {
 			
-			if(batController.getType() == gateObject.Type.battery) {
+			if(andController.getType() == gateObject.Type.and) {
 				testStatus.set(true);
 			}
 			latch.countDown();
@@ -133,31 +93,12 @@ class batteryControllerTest extends platformTest  {
         Assertions.assertTrue(testStatus.get());
 	}
 	@Test
-	void getOutput1Test() {
+	void getInputTest() {
 		final CountDownLatch latch = new CountDownLatch(1);
         final AtomicBoolean testStatus = new AtomicBoolean(false);
 		Platform.runLater(() -> {
 			
-			if(batController.getOutput1() instanceof Rectangle) {
-				testStatus.set(true);
-			}
-			latch.countDown();
-		});
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-        Assertions.assertTrue(testStatus.get());
-	}	
-	@Test
-	void getOutput2Test() {
-		final CountDownLatch latch = new CountDownLatch(1);
-        final AtomicBoolean testStatus = new AtomicBoolean(false);
-		Platform.runLater(() -> {
-			
-			if(batController.getOutput2() instanceof Rectangle) {
+			if(andController.getInput1()  instanceof Rectangle) {
 				testStatus.set(true);
 			}
 			latch.countDown();
@@ -171,6 +112,89 @@ class batteryControllerTest extends platformTest  {
         Assertions.assertTrue(testStatus.get());
 	}
 	
+	@Test
+	void getStateTest() {
+		final CountDownLatch latch = new CountDownLatch(1);
+        final AtomicBoolean testStatus = new AtomicBoolean(false);
+		Platform.runLater(() -> {			
+			
+			if(!andController.getState()) {
+				testStatus.set(true);
+			}
+			latch.countDown();
+		});
+		try {
+			latch.await();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+        Assertions.assertTrue(testStatus.get());
+	}
+	
+	@Test
+	void getInput1Test() {
+		final CountDownLatch latch = new CountDownLatch(1);
+        final AtomicBoolean testStatus = new AtomicBoolean(false);
+		Platform.runLater(() -> {
+			
+			if(andController.getInput1()  instanceof Rectangle && andController.getInput1().getProperties().get("type")  == "input") {
+				testStatus.set(true);
+			}
+			latch.countDown();
+		});
+		try {
+			latch.await();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+        Assertions.assertTrue(testStatus.get());
+	}
+	
+	@Test
+	void getInput2Test() {
+		final CountDownLatch latch = new CountDownLatch(1);
+        final AtomicBoolean testStatus = new AtomicBoolean(false);
+		Platform.runLater(() -> {
+			
+			if(andController.getInput1()  instanceof Rectangle && andController.getInput2().getProperties().get("type")  == "input") {
+				testStatus.set(true);
+			}
+			latch.countDown();
+		});
+		try {
+			latch.await();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+        Assertions.assertTrue(testStatus.get());
+	}
+	
+	@Test
+	void getOutputTest() {
+		final CountDownLatch latch = new CountDownLatch(1);
+        final AtomicBoolean testStatus = new AtomicBoolean(false);
+		Platform.runLater(() -> {
+			
+			if(andController.getInput1()  instanceof Rectangle && andController.getOutput().getProperties().get("type")  == "output") {
+				testStatus.set(true);
+			}
+			latch.countDown();
+		});
+		try {
+			latch.await();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+        Assertions.assertTrue(testStatus.get());
+	}
+	
+	
+		
 	
 
 }
+

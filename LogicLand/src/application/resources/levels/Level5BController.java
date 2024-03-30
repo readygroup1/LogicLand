@@ -189,13 +189,6 @@ public class Level5BController extends sandboxController implements Initializabl
 		///----------------Check For Win -----------------------------------
 		
 		public void CheckToWin() {
-			
-			System.out.println(Textoutput1.getText());
-			System.out.println(Textoutput2.getText());
-			System.out.println(Textoutput3.getText());
-			System.out.println(Textoutput4.getText());
-			
-			
 			if(Textoutput1.getText().equals("1") && Textoutput2.getText().equals("0") && Textoutput3.getText().equals("0") && Textoutput4.getText().equals("0")) {
 				title.setText("Great Job! Head to the next Level!");
 				Alert alert = new Alert(AlertType.INFORMATION);
@@ -556,7 +549,6 @@ public class Level5BController extends sandboxController implements Initializabl
 		
 		public void delete(MouseEvent event) {
 			audio.boopPlay();
-			//System.out.println("deleteState: " + deleteState + ", X: " + event.getX() + ", Y: " +event.getY());
 			if(deleteState && event.getY() < 570 && event.getY() > 155 && event.getX() < 1000 && event.getX() > 260 ){
 				//If it is wire
 				if(event.getPickResult().getIntersectedNode() instanceof Line) {

@@ -66,13 +66,15 @@ public class notController extends gateObject implements Initializable {
 			body.setOnMousePressed(event ->{			
 				 dragStartX = event.getSceneX() - pane.getLayoutX();
 				 dragStartY = event.getSceneY() - pane.getLayoutY();
+				 AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "n");
 			});
 			
 			body.setOnMouseDragged(event -> {
-				AccountManager.removeOldPosition(pane.getLayoutX(), pane.getLayoutY(), "n");
 				pane.setLayoutX(event.getSceneX() - dragStartX);
 				pane.setLayoutY(event.getSceneY() - dragStartY);
-				
+			});
+			
+			body.setOnMouseReleased(event -> {
 				saveState = "n," + Double.toString(pane.getLayoutX()) + "," + Double.toString(pane.getLayoutY()) + ",";
 				AccountManager.setIndividualGate(saveState);
 			});
