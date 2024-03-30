@@ -17,6 +17,13 @@ import javafx.stage.Stage;
 
 /**
  * This class is responsible for facilitating all actions available in the options page.
+ * 
+ * @version 1.0
+ * @since 1.0
+ * @author Andres Pedreros
+ * @author Callum Thompson
+ * @author Nicholas Howard
+ * 
  */
 public class optionsController implements Initializable {
 	

@@ -27,6 +27,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @since 1.0
  * @author Callum Thompson
+ * @author Andres Pedreros
  */
 public class Database {
     /** The URL to connect to the database. This URL has creating a new database disabled. */

@@ -11,29 +11,12 @@ import java.io.File;
 
 
 /**
- * The `Media` class represents a media resource that can be played by a media player.
- * It provides methods to retrieve information about the media, such as its duration and metadata.
- * 
- * To play a media, create an instance of `Media` with the URL of the media resource,
- * and pass it to a media player, such as `javafx.scene.media.MediaPlayer`.
- *
- * 
- * <b>Example use:</b>
- * <pre>
- * {@code
- *      String mediaUrl = "http://example.com/media.mp4";
- *      Media media = new Media(mediaUrl);
- *      MediaPlayer mediaPlayer = new MediaPlayer(media);
- *      mediaPlayer.play();
- * }
+ * The MusicPlayer class provides functionality to play background music and level music in a game.
+ * It uses the JavaFX MediaPlayer class to play the music files.
  * 
  * @version 1.0
  * @since 1.0
- * @author Andres Pedreros 
- */
-/**
- * The MusicPlayer class provides functionality to play background music and level music in a game.
- * It uses the JavaFX MediaPlayer class to play the music files.
+ * @author Andres Pedreros
  */
 public class MusicPlayer {
     private static MediaPlayer mediaPlayer;
