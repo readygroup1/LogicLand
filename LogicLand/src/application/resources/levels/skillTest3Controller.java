@@ -47,7 +47,9 @@ import javafx.scene.text.Text;
  * @see sandboxController
  * @version 1.0
  * @since 1.0
- * @author Group 1
+ * @author Andres Pedreros Castro
+ * @author Nicholas Howard
+ * @author Kalundi Serumaga
  */
 public class skillTest3Controller extends sandboxController implements Initializable {
 
