@@ -592,6 +592,13 @@ public class Level2BController extends sandboxController implements Initializabl
 			}		
 		}
 		
+		/**
+	     * Handles the action event for going back to Part A of Level 2.
+	     * This method plays a "boop" sound, then switches the scene to Level 2A.
+	     *
+	     * @param event The ActionEvent that triggers this method.
+	     * @throws IOException If an I/O exception occurs while switching scenes.
+	     */
 		public void backPart(ActionEvent event) throws IOException {			
 			audio.boopPlay();
 			try {			
