@@ -26,13 +26,18 @@ import javafx.scene.text.Font;
  * @author Kalundi Serumaga
  * @author Thomas Llamzon
  * @version 1.0
+ * 
+ * This class contains some auto-generated code for opening up a window in javafx.
  */
 public class Main extends Application {
 
 	@Override
 	/**
-	 * This is boiler plate code to open up a window. 
-	// There is an explanation for how this works in SceneSwitcher
+	 * This class is called by the javaFX function launch. Launch provides the input parameter stage.
+	 * start() will open a window and display the main menu
+	 * 
+	 * @parm Stage - automatically provided my javafx when launch is called in public static void main
+	 * @throws - Exception of the fmxl file or any of its dependencies cannot be loaded
 	 */
 	public void start(Stage stage) {		
 		
@@ -67,8 +72,8 @@ public class Main extends Application {
 	}
 	
 	/**
-	 * To open window for game.
-	 * @param args
+	 * This is the beginning. Run this to open window for game.
+	 * @param args - default parameters. No need to input anything.
 	 */
 	public static void main(String[] args) {	
 		MusicPlayer.playBackgroundMusic();
