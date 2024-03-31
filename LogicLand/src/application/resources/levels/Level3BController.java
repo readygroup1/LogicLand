@@ -70,7 +70,7 @@ public class Level3BController extends sandboxController implements Initializabl
 		@FXML
 		Pane circuitBoardPane;
 		@FXML
-		Button back;
+		Button roadMap;
 		
 		//Uncomment @FXML above any generator/delete objects that you want to include in the level and make sure the names match in the fxml file
 		//@FXML
@@ -747,7 +747,7 @@ public class Level3BController extends sandboxController implements Initializabl
 	     * @param event The ActionEvent triggered by clicking the "Back" button.
 	     * @throws IOException If an error occurs while switching scenes.
 	     */
-		public void back(ActionEvent event) throws IOException {			
+		public void roadMap(ActionEvent event) throws IOException {			
 			audio.boopPlay();
 			try {			
 				sceneSwitcher.switchScene(event, "/application/resources/roadmap.fxml");
