@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * This class is used to interact with the database. It is used to create the database, add, delete, and update players, and get player information.
- * It is used directly in the class called {@link application.AccountManager.java}, which is static so each class can freely access the database.
+ * It is used directly in the class called AccountManager.java, which is static so each class can freely access the database.
  * 
  * <b>Example use:</b>
  * <pre>
@@ -24,6 +24,7 @@ import java.util.ArrayList;
  * <pre>
  * <b>Output:</b> <code>1</code>
  * <br>
+ * </pre>
  * @version 1.0
  * @since 1.0
  * @author Callum Thompson
@@ -166,7 +167,7 @@ public class Database {
 
     /**
      * This method gets the ID of the admin given the admin's class ID.
-     * @param int The ID of the class.
+     * @param ClassID The ID of the class.
      * @return int
      */
     public int getAdminID(int ClassID) {
@@ -345,7 +346,7 @@ public class Database {
     /**
      * This method gets the top 5 names of users for the highscore page. 
      * This is for the global highscore page. 
-     * @return ArrayList<String>
+     * @return ArrayList
      * @throws SQLException
      */
     public ArrayList<String> getTopFiveNames() throws SQLException {
@@ -376,7 +377,7 @@ public class Database {
     /**
      * This method gets the top 5 scores of users for the highscore page. 
      * This is for the global highscore page. 
-     * @return ArrayList<Integer>
+     * @return ArrayList
      * @throws SQLException
      */
     public ArrayList<Integer> getTopFiveScores() throws SQLException {
@@ -408,7 +409,7 @@ public class Database {
      * This method gets the top 5 names of users for the highscore page. 
      * This is for the classroom highscore page. 
      * @param classID The ID of the classroom.
-     * @return ArrayList<String>
+     * @return ArrayList
      * @throws SQLException
      */
     public ArrayList<String> getTop5NamesClassroom(int classID) throws SQLException{
@@ -440,7 +441,7 @@ public class Database {
      * This method gets the top 5 scores of users for the highscore page. 
      * This is for the classroom highscore page. 
      * @param classID The ID of the classroom.
-     * @return ArrayList<Integer>
+     * @return ArrayList
      * @throws SQLException
      */
     public ArrayList<Integer> getTop5ScoresClassroom(int classID) throws SQLException {
@@ -470,7 +471,7 @@ public class Database {
 
     /**
      * This method gets a list of every classroom.
-     * @return ArrayList<String>
+     * @return ArrayList
      */
     public ArrayList<String> getClassrooms() {
         ArrayList<String> classrooms = new ArrayList<>();

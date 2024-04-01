@@ -14,7 +14,7 @@ package application;
  * 		user.initials();
  * 		user.getEmail();
  * }
- * 
+ * </pre>
  * @version 1.0
  * @since 1.0
  * @see AccountManager

@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * AccountManager.setSandboxSaveState("l,243.443,232.423");
  * AccountManager.setIndividualGate("l,243.443,232.423");
  * }
+ * </pre>
  * <br>
  * @version 1.0
  * @since 1.0
@@ -141,7 +142,7 @@ public class AccountManager {
 	/**
 	 * This method returns the top five names of players with the highest scores.
 	 * Global high scores.
-	 * @return ArrayList<String>
+	 * @return ArrayList
 	 */
 	public static ArrayList<String> getTopFiveNames() {
 		ArrayList<String> list = null;
@@ -157,7 +158,7 @@ public class AccountManager {
 	 * This method returns the top five names of players with the highest scores.
 	 * Class specific high scores.
 	 * @param classID
-	 * @return ArrayList<String>
+	 * @return ArrayList
 	 */
 	public static ArrayList<String> getTopFiveNames(int classID) {
 		ArrayList<String> list = null;
@@ -172,7 +173,7 @@ public class AccountManager {
 	/**
 	 * This method returns the top five scores of players with the highest scores.
 	 * Global high scores.
-	 * @return ArrayList<Integer>
+	 * @return ArrayList
 	 */
 	public static ArrayList<Integer> getTopFiveScores() {
 		ArrayList<Integer> list = null;
@@ -188,7 +189,7 @@ public class AccountManager {
 	 * This method returns the top five scores of players with the highest scores.
 	 * Class specific high scores.
 	 * @param classID
-	 * @return ArrayList<Integer>
+	 * @return ArrayList
 	 */
 	public static ArrayList<Integer> getTopFiveScores(int classID) {
 		ArrayList<Integer> list = null;
