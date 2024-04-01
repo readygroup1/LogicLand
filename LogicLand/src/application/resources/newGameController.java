@@ -25,7 +25,7 @@ import javafx.scene.text.Text;
  * @author Nicholas Howard
  * 
  * This class is responsible for gathering and storing a users information in the newGame page.
- * A user must enter a name, initial, password, email, and class & teacher information.
+ * A user must enter a name, initial, password, email, and class plus teacher information.
  */
 public class newGameController implements Initializable{
 	

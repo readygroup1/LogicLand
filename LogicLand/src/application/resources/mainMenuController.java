@@ -99,7 +99,6 @@ public class mainMenuController implements Initializable{
 	/**
 	 * 
 	 * @param event Quit button clicked.
-	 * @throws IOException 
 	 * 
 	 * This method will close the game window.
 	 */

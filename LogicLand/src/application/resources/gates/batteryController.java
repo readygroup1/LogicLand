@@ -264,9 +264,8 @@ public class batteryController extends gateObject implements Initializable{
 		 * Sets the state of the batter to the input state
 		 * passed in to the method
 		 * 
-		 * @param an input state of boolean type
+		 * @param inputState an input state of boolean type
 		 *
-		 * @return The state of battery.
 		 */
 		public void setState(Boolean inputState) {
 			this.state = inputState;		

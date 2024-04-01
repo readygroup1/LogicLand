@@ -241,7 +241,7 @@ public class andController extends gateObject implements Initializable {
 	 * Checks the type of the AND gate based on its inputs.
 	 * If both inputs are connected and active, the output is set to true.
 	 * If either input is not connected or inactive, the output is set to false.
-	 * Updates the output state and calls {@link #callCheckType(Rectangle)} on the connected node.
+	 * Updates the output state and calls Rectangle on the connected node.
 	 */
 	public void checktype() {
 		

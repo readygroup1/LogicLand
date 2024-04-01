@@ -60,7 +60,6 @@ import javafx.scene.text.Text;
  * a line (makeWire()), was inspired by / borrowed from Joell Graff's tutorial "Drag-and-Drop in JavaFX" found
  * here https://monograff76.wordpress.com/2015/02/20/. 
  * 
- * @see ..\sandboxController.java
  * @version 1.0
  * @since 1.0
  * @author Andres Pedreros Castro
@@ -274,7 +273,7 @@ public class Level3AController extends sandboxController implements Initializabl
 		/**
 		 * Calls the CheckWin function when the checkWin button is clicked.
 		 * 
-		 * @param event The action event that triggers the function.
+		 * @param node
 		 */
 		public void callChecktype(Rectangle node) {
 			switch( (String)(node.getProperties().get("ClassType")) ) {

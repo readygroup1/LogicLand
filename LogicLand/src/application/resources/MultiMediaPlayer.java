@@ -21,6 +21,7 @@ import javafx.scene.media.MediaView;
  * MultiMediaPlayer mmp = new MultiMediaPlayer();
  * mmp.boopPlay();
  * }
+ * </pre>
  * <br>
  * @version 1.0
  * @since 1.0

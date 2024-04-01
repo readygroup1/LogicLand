@@ -282,10 +282,11 @@ public class sandboxController implements Initializable{
 	 * of the fxml file for that particular gate object, and an object on the scene where to button to generate the gate is called origin. The new gate object will be 
 	 * inserted into the scene just above the origin on the y axis.
 	 * 
-	 *  @param String - location of the new gates fxml file.
-	 *  @param Type - an enum describing the type of gate.
-	 *  @param ImageView origin - the object that serves as the button which the user uses to make new gates.
-	 *  @throws IOException*/
+	 *  @param fxml  location of the new gates fxml file.
+	 *  @param type an enum describing the type of gate.
+	 *  @param origin the object that serves as the button which the user uses to make new gates.
+	 *  @throws IOException
+	 */
 	public void generator(String fxml, Type type, ImageView origin) throws IOException{
 		try {
 			// Create the object and set up the properties
@@ -308,8 +309,8 @@ public class sandboxController implements Initializable{
 	}
 	/** generateFromSave is used to pull a file that represents a saved state of the sandbox
 	 * from the database. I takes that file and automatically calls generator to re-make the objects.
-	 * @see generator()
-	 * @throws IO exception*/
+	 * @throws IOException
+	 */
 	public void generateFromSave() throws IOException {
 		if(AccountManager.getSandboxSaveState() == null) {
 			return;
@@ -494,8 +495,7 @@ public class sandboxController implements Initializable{
 	 * All terminal buttons are invisible rectangles that trigger events when clicked.
 	 * If both the start and stop of the drag are terminals, and the terminals are of different types,
 	 *   then the two nodes are passed to the function makeWire. 
-	 *   
-	 *   @param MouseEvent event - the event that represents the mouse click on a terminal of a gate object*/
+	 *   @param event The event that represents the mouse click on a terminal of a gate object*/
 	public void beginConnection(MouseEvent event) {
 		
 		
@@ -626,8 +626,8 @@ public class sandboxController implements Initializable{
 	 * The end points of the line that makes the connection is bound to the x, y coordinates of the terminal nodes. So when they move the line is moved as well.
 	 * To find the instance gates the terminals belong to use *terminal*.getParent().getProperties().get("controller") 
 	 * 
-	 * @param Rectangle output terminal - the object that represents the output of a circuit object
-	 * @param Rectangle input terminal - the object that represents the input of a gate
+	 * @param outputTerminal The object that represents the output of a circuit object
+	 * @param inputTerminal The object that represents the input of a gate
 	 * 
 	 * Credit to Joell Graff and his tutorial "Drag-and-Drop in JavaFX" for the idea of binding the end points of the wire to the x y 
 	 * coordinates of the terminals to make a persistent connection. The code in this method was inspired by / borrowed from that tutorial.
@@ -699,7 +699,7 @@ public class sandboxController implements Initializable{
 	
 	/**  deleteButon switched the image of the trash can that represents the deleted function
 	 * cyclically from the color black to the color red on each user click.
-	 *  @param MouseEvent event - the object that represent the mouse click of the user*/
+	 *  @param event The object that represent the mouse click of the user*/
 	public void deleteButton(MouseEvent event) {
 		
 		if(deleteState) {
@@ -718,7 +718,7 @@ public class sandboxController implements Initializable{
 	 * This function is bound to the mouse clicks at all times but only executes when the delete variable is set to true,
 	 * which is done when the user clicks the delete icon.
 	 * 
-	 *  @param MouseEvent - the location of a mouse click*/
+	 *  @param event The location of a mouse click*/
 	public void delete(MouseEvent event) {
 				
 		if(deleteState && ((Node) event.getSource()).getLayoutY() < 600) {
@@ -759,7 +759,7 @@ public class sandboxController implements Initializable{
 	}
 	/** This function removes all user generated objects from the screen.
 	 * 
-	 * @param ActionEvent Event - the click on the clear all button*/	
+	 * @param event The click on the clear all button*/	
 	public void clearAll(ActionEvent event) {
 		AccountManager.setSandboxSaveState("");
 		try {
@@ -777,8 +777,9 @@ public class sandboxController implements Initializable{
 	
 	SceneSwitcher sceneSwitcher = new SceneSwitcher();
 	/** This is a button that moves the user to different screen within the game.
-	 * @param ActionEvent event - the mouse click on the button.
-	 * @throws I0Exception - if the file representing the new screen, or any of it's dependencies,  is not found.*/
+	 * @param event The mouse click on the button.
+	 * @throws IOException If the file representing the new screen, or any of it's dependencies,  is not found.
+	 */
 	public void roadmap(ActionEvent event) throws IOException {			
 		try {
 			audio.boopPlay();
@@ -789,8 +790,9 @@ public class sandboxController implements Initializable{
 		}		
 	}
 	/** This is a button that moves the user to different screen within the game.
-	 * @param ActionEvent event - the mouse click on the button.
-	 * @throws I0Exception - if the file representing the new screen, or any of it's dependencies, is not found.*/
+	 * @param event The mouse click on the button.
+	 * @throws IOException If the file representing the new screen, or any of it's dependencies, is not found.
+	 */
 	public void sandbox(ActionEvent event) throws IOException {			
 		try {
 			audio.boopPlay();
@@ -801,8 +803,9 @@ public class sandboxController implements Initializable{
 		}		
 	}
 	/** This is a button that moves the user to different screen within the game.
-	 * @param ActionEvent event - the mouse click on the button.
-	 * @throws I0Exception - if the file representing the new screen, or any of it's dependencies, is not found.*/
+	 * @param event The mouse click on the button.
+	 * @throws IOException If the file representing the new screen, or any of it's dependencies, is not found.
+	 */
 	public void highscore(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();
@@ -813,8 +816,9 @@ public class sandboxController implements Initializable{
 		}		
 	}
 	/** This is a button that moves the user to different screen within the game.
-	 * @param ActionEvent event - the mouse click on the button.
-	 * @throws I0Exception - if the file representing the new screen, or any of it's dependencies, is not found.*/
+	 * @param event The mouse click on the button.
+	 * @throws IOException If the file representing the new screen, or any of it's dependencies, is not found.
+	 */
 	public void discoveries(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();
@@ -825,8 +829,9 @@ public class sandboxController implements Initializable{
 		}		
 	}
 	/** This is a button that moves the user to different screen within the game.
-	 * @param ActionEvent event - the mouse click on the button.
-	 * @throws I0Exception - if the file representing the new screen, or any of it's dependencies, is not found.*/
+	 * @param event The mouse click on the button.
+	 * @throws IOException If the file representing the new screen, or any of it's dependencies, is not found.
+	 */
 	public void options(ActionEvent event) throws IOException {			
 		try {	
 			audio.boopPlay();

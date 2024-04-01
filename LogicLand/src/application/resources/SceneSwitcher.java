@@ -41,10 +41,10 @@ public class SceneSwitcher {
 		 * It also takes a string which is a location of the fxml file of the new screen.
 		 * It switches the current window that is open to the new screen and returns nothing 
 		 * 
-		 * @param EventObject An event of the current scene.
-		 * @param String The file location of the next scene.
+		 * @param event An event of the current scene.
+		 * @param fxml The file location of the next scene.
 		 * @throws IOException if file of next scene, or any of its dependencies, cannot be found. 
-		 * */
+		 */
 		public void switchScene(EventObject event, String fxml) throws IOException {
 			try {
 				if(fxml.equals("/application/resources/sandbox.fxml")) {
@@ -82,10 +82,9 @@ public class SceneSwitcher {
 		 * It also takes a string which is a location of the fxml file of the new screen.
 		 * It switches the current window that is open to the new screen and returns nothing 
 		 * 
-		 * @param EventObject An event of the current scene.
-		 * @param String The file location of the next scene.
-		 * @throws IOException if file of next scene, or any of its dependencies, cannot be found. 
-		 * */
+		 * @param event An event of the current scene.
+		 * @param fxml The file location of the next scene.
+		 */
 		public void fadeSwitchScene(ActionEvent event, String fxml) {
 			try {
 				  

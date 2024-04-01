@@ -274,7 +274,7 @@ public class Level4AController extends sandboxController implements Initializabl
 		/**
 		 * Calls the CheckWin function when the checkWin button is clicked.
 		 * 
-		 * @param event The action event that triggers the function.
+		 * @param node
 		 */
 		public void callChecktype(Rectangle node) {
 			switch( (String)(node.getProperties().get("ClassType")) ) {
