@@ -814,14 +814,5 @@ public class Level4BController extends sandboxController implements Initializabl
 	        }
 	    }
 
-	    /**
-	     * Extracts the level number from the given label text.
-	     * Assumes the label text is in the format "LevelX".
-	     *
-	     * @param labelText The text of the label, assumed to be in the format "LevelX".
-	     * @return The extracted level number.
-	     */
-	    private int extractLevelNumber(String labelText) {
-	        return Integer.parseInt(labelText.substring(5)); // Assuming "LevelX" format
-	    }
+	    
 }		
