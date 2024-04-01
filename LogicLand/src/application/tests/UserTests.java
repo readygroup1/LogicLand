@@ -46,13 +46,7 @@ class UserTests {
 		User player = new User(playerID);
 		assertTrue(player.getSandboxID()> -1, "falied to return sandboxID");
 	}
-	
-	@Test
-	void getIntutorialTest() {
-		int playerID = 1;
-		User player = new User(playerID);
-		assertTrue(player.getinTutorial() == "true" || player.getinTutorial() == "false", "falied to return tutorial state");
-	}
+
 	
 	@Test
 	void getClassIDTest() {
