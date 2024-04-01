@@ -26,9 +26,7 @@ import javafx.scene.shape.Rectangle;
  * @see sandboxController
  * @version 1.0
  * @since 1.0
- * @author Kalundi Serumaga
- * @author Nicholas Howard
- * @author Andres Pedreros
+ * @author Group 1
  *
  */
 

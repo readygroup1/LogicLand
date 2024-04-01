@@ -125,8 +125,7 @@ public class Level6BController extends sandboxController implements Initializabl
 		@FXML
 		Label title;
 		
-		// Store the current level
-	    private int currentLevel; // currentLevel as its integer value
+		
 
 	    @FXML
 	    private Label currentLevelLabel; // Inject the Label from FXML
@@ -805,8 +804,6 @@ public class Level6BController extends sandboxController implements Initializabl
 	    public void previousLevel(ActionEvent event) throws IOException {
 	    	audio.boopPlay();
 	    	try {
-	            currentLevel = extractLevelNumber(currentLevelLabel.getText());
-	            currentLevel--;
 	            String previousLevelFXML = "/application/resources/levels/level6A.fxml";
 	            sceneSwitcher.switchScene(event, previousLevelFXML);
 	            audio.boopPlay();
@@ -836,14 +833,5 @@ public class Level6BController extends sandboxController implements Initializabl
 	        }
 	    }
 
-	    /**
-	     * Extracts the level number from the given label text.
-	     * Assumes the label text is in the format "LevelX".
-	     *
-	     * @param labelText The text of the label, assumed to be in the format "LevelX".
-	     * @return The extracted level number.
-	     */
-	    private int extractLevelNumber(String labelText) {
-	        return Integer.parseInt(labelText.substring(5)); // Assuming "LevelX" format
-	    }
+	    
 }		
