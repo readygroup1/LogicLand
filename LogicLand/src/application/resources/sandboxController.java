@@ -8,7 +8,8 @@
  * 
  * Credit where credit is due, some of the code for generating draggable nodes, as well as linking them with 
  * a line, was inspired by / borrowed from Joell Graff's tutorial "Drag-and-Drop in JavaFX" found
- * here https://monograff76.wordpress.com/2015/02/20/.
+ * here https://monograff76.wordpress.com/2015/02/20/. Some of this code in reuse, with slight alteration, in the level controllers. 
+ * 
  * 
  * */
 
@@ -169,6 +170,8 @@ public class sandboxController implements Initializable{
 			// Delete is always bound to the click function but only works when deleteState is set to true by the delete button.
 			circuitBoardPane.setOnMousePressed(event ->{this.delete(event);});
 			
+			
+			// This sets the key bindings for generating gates.
 			circuitBoardPane.setOnKeyPressed(event ->{
 				
 				try {				

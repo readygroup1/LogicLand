@@ -56,6 +56,10 @@ import javafx.scene.shape.Rectangle;
  * The `Level3BController` class follows the JavaFX controller pattern and is designed to work with the LogicLand application.
  * It interacts with the user interface and handles user input to create and manipulate gate objects on the circuit board.
  * 
+ * Credit where credit is due, some of the code for generating draggable nodes, as well as linking them with 
+ * a line (makeWire()), was inspired by / borrowed from Joell Graff's tutorial "Drag-and-Drop in JavaFX" found
+ * here https://monograff76.wordpress.com/2015/02/20/. 
+ * 
  * @version 1.0
  * @since 1.0
  * @author Andres Pedreros Castro
