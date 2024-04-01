@@ -69,7 +69,7 @@ public class AccountManager {
 	
 	/**
 	 * This method returns a list of all the classrooms that exist in the database.
-	 * @return ArrayList<String>
+	 * @return ArrayList
 	 */
 	public static ArrayList<String> getClassrooms() {
 		return db.getClassrooms();
