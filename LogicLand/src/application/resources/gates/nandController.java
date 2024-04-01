@@ -22,8 +22,7 @@ import javafx.scene.shape.Rectangle;
 *
 * @version 1.0
 * @since 1.0
-* @authors Kalundi Serumaga, Nick Howard
-*
+* @author Group 1
 */
 public class nandController extends gateObject implements Initializable {
 
